@@ -1,0 +1,1621 @@
+##############################################################################
+#                                                                            #
+# IAR 8051 C-Compiler V5.20A/386                                             #
+# Front End V4.20N                                       19/Sep/104  17:59:49 #
+# Global Optimizer V1.04E                                                    #
+#                                                                            #
+#       Target option =  8051                                                #
+#       Memory model  =  large                                               #
+#       Source file   =  rs232.c                                             #
+#       List file     =  release\list\rs232.lst                              #
+#       Object file   =  release\obj\rs232.r03                               #
+#       Command line  =  rs232.c -S -ml -v0 -e -K -u -s9 -RCODE -gA          #
+#                        -IC:\IAR\EW\8051\inc\ -ORelease\Obj\                #
+#                        -LRelease\List\ -q -i -t8 -x                        #
+#                                                                            #
+#                                             (c) Copyright IAR Systems 1996 #
+##############################################################################
+
+   \   0000                    NAME    rs232(18)
+   \   0000                    RSEG    CODE(0)
+   \   0000                    PUBLIC  InitializeRS232
+   \   0000                    $DEFFN  InitializeRS232(0,0,0,0,32768,0,0,0)
+   \   0000                    PUBLIC  ReceiveLineRS232
+   \   0000                    $DEFFN  ReceiveLineRS232(0,0,4,0,32768,0,5,0),WaitAndReceiveRS232,WaitAndReceiveRS232,
+   \   0000                            SendRS232,SendRS232,SendRS232,SendRS232,SendRS232,SendRS232
+   \   0000                    PUBLIC  SendRS232
+   \   0000                    $DEFFN  SendRS232(0,0,0,0,32768,0,1,0)
+   \   0000                    PUBLIC  SendStringEOLRS232
+   \   0000                    $DEFFN  SendStringEOLRS232(0,0,6,0,32768,0,3,0),myStrLen,SendRS232,SendRS232,
+   \   0000                            SendRS232
+   \   0000                    PUBLIC  SendStringRS232
+   \   0000                    $DEFFN  SendStringRS232(0,0,6,0,32768,0,3,0),myStrLen,SendRS232
+   \   0000                    PUBLIC  WaitAndReceiveRS232
+   \   0000                    $DEFFN  WaitAndReceiveRS232(0,0,1,0,32768,0,0,0)
+   \   0000                    PUBLIC  WaitAndReceiveTimeout
+   \   0000                    $DEFFN  WaitAndReceiveTimeout(0,0,1,0,32768,0,0,0)
+   \   0000                    EXTERN  myStrLen
+   \   0000                    $DEFFN  myStrLen(32768,0,3,0)
+   \   0000                    EXTERN  timeout
+   \   0000                    EXTERN  ?ST_A_R567_L17
+   \   0000                    EXTERN  ?LD_A_R567_DISP_L17
+   \   0000                    EXTERN  ?ST_A_R567_DISP_L17
+   \   0000                    EXTERN  ?CL8051L_5_20_L17
+   \   0000                    RSEG    CODE
+      1          /*************************************************************
+      2          Fil:            $Id: rs232.c,v 1.4 2003/11/20 22:08:53 Gemensam Exp $
+      3          
+      4          Beskrivning:    Procedurer och funktioner för RS232-port till 
+      5                          SuperComputer
+      6          
+      7          Skapad:         99-09-19
+      8          
+      9          Ändrad:         $Date: 2003/11/20 22:08:53 $
+     10          
+     11          Ägare:          Fredrik Hoffman
+     12          
+     13          Revisionshistoria:
+     14                                          $Log: rs232.c,v $
+     15                                          Revision 1.4  2003/11/20 22:08:53  Gemensam
+     16                                          Various declarations changes.
+     17                                          Still version 0200.
+     18                                          
+     19                                          Revision 1.3  2003/11/18 19:17:36  Gemensam
+     20                                          Added menu option of setting speaker volume (untested)
+     21                                          Completely changed header files
+     22                                          Version 0200.
+     23                                          
+     24                                          Revision 1.2  2003/11/10 22:44:46  Gemensam
+     25                                          Added header information
+     26                                          
+     27          
+     28          *************************************************************/
+     29          
+     30          //////////////////////
+     31          // Inkluderingar
+     32          
+     33          #include <io517a.h>
+      1          /*                     - IO517A.H -
+      2          
+      3             Special header for the Siemens SAB 80C517A/83C517A-5 processors.
+      4          
+      5             Version 5.20 [IMAF]
+      6          
+      7          */
+      8          
+      9          #pragma language=extended
+     10          
+     11          /* Pre-defined SFR byte addresses: */
+     12          
+     13          /* CPU */
+     14          sfr     ACC    = 0xE0;
+     15          sfr     B      = 0xF0;
+     16          sfr     SP     = 0x81;
+     17          sfr     DPL    = 0x82;
+     18          sfr     DPH    = 0x83;
+     19          sfr     DPSEL  = 0x92;
+     20          sfr     PSW    = 0xD0;
+     21          sfr     XPAGE  = 0x91;
+     22          sfr     SYSCON = 0xB1;
+     23          
+     24          /* Timer 0/Timer 1 */
+     25          sfr     TCON   = 0x88;
+     26          sfr     TMOD   = 0x89;
+     27          sfr     TL0    = 0x8A;
+     28          sfr     TL1    = 0x8B;
+     29          sfr     TH0    = 0x8C;
+     30          sfr     TH1    = 0x8D;
+     31          
+     32          /* CCU */
+     33          sfr     CCEN   = 0xC1;
+     34          sfr     CC4EN  = 0xC9;
+     35          sfr     CCL1   = 0xC2;
+     36          sfr     CCH1   = 0xC3;
+     37          sfr     CCL2   = 0xC4;
+     38          sfr     CCH2   = 0xC5;
+     39          sfr     CCL3   = 0xC6;
+     40          sfr     CCH3   = 0xC7;
+     41          sfr     CCL4   = 0xCE;
+     42          sfr     CCH4   = 0xCF;
+     43          sfr     CMEN   = 0xF6;
+     44          sfr     CML0   = 0xD2;
+     45          sfr     CMH0   = 0xD3;
+     46          sfr     CML1   = 0xD4;
+     47          sfr     CMH1   = 0xD5;
+     48          sfr     CML2   = 0xD6;
+     49          sfr     CMH2   = 0xD7;
+     50          sfr     CML3   = 0xE2;
+     51          sfr     CMH3   = 0xE3;
+     52          sfr     CML4   = 0xE4;
+     53          sfr     CMH4   = 0xE5;
+     54          sfr     CML5   = 0xE6;
+     55          sfr     CMH5   = 0xE7;
+     56          sfr     CML6   = 0xF2;
+     57          sfr     CMH6   = 0xF3;
+     58          sfr     CML7   = 0xF4;
+     59          sfr     CMH7   = 0xF5;
+     60          sfr     CMSEL  = 0xF7;
+     61          sfr     CRCL   = 0xCA;
+     62          sfr     CRCH   = 0xCB;
+     63          sfr     CTCON  = 0xE1;
+     64          sfr     CTRELL = 0xDE;
+     65          sfr     CTRELH = 0xDF;
+     66          sfr     TL2    = 0xCC;
+     67          sfr     TH2    = 0xCD;
+     68          sfr     T2CON  = 0xC8;
+     69          sfr     COMSETL= 0xA1;
+     70          sfr     COMSETH= 0xA2;
+     71          sfr     COMCLRL= 0xA3;
+     72          sfr     COMCLRH= 0xA4;
+     73          sfr     SETMSK = 0xA5;
+     74          sfr     CLRMSK = 0xA6;
+     75          
+     76          /* Ports */
+     77          sfr     P0     = 0x80;
+     78          sfr     P1     = 0x90;
+     79          sfr     P2     = 0xA0;
+     80          sfr     P3     = 0xB0;
+     81          sfr     P4     = 0xE8;
+     82          sfr     P5     = 0xF8;
+     83          sfr     P6     = 0xFA;
+     84          sfr     P7     = 0xDB;        /* Analog/Digital Input */
+     85          sfr     P8     = 0xDD;        /* Analog/Digital Input, 4 Bit */
+     86          
+     87          /* Serial Channels */
+     88          sfr     PCON   = 0x87;
+     89          sfr     S0CON  = 0x98;
+     90          sfr     S0BUF  = 0x99;
+     91          sfr     S1CON  = 0x9B;
+     92          sfr     S1BUF  = 0x9C;
+     93          sfr     S0RELL = 0xAA;
+     94          sfr     S0RELH = 0xBA;
+     95          sfr     S1RELL = 0x9D;
+     96          sfr     S1RELH = 0xBB;
+     97          
+     98          /* A/D Converter */
+     99          sfr     ADCON0 = 0xD8;
+    100          sfr     ADCON1 = 0xDC;
+    101          sfr     ADDATH = 0xD9;
+    102          sfr     ADDATL = 0xDA;
+    103          
+    104          /* MUL/DIV Unit */
+    105          sfr     ARCON  = 0xEF;
+    106          sfr     MD0    = 0xE9;
+    107          sfr     MD1    = 0xEA;
+    108          sfr     MD2    = 0xEB;
+    109          sfr     MD3    = 0xEC;
+    110          sfr     MD4    = 0xED;
+    111          sfr     MD5    = 0xEE;
+    112          
+    113          /* Interrupt System */
+    114          sfr     IEN0   = 0xA8;
+    115          sfr     IP0    = 0xA9;
+    116          sfr     IEN1   = 0xB8;
+    117          sfr     IP1    = 0xB9;
+    118          sfr     IEN2   = 0x9A;
+    119          sfr     IRCON0 = 0xC0;
+    120          sfr     IRCON1 = 0xD1;
+    121          
+    122          
+    123          /* Watchdog */
+    124          sfr     WDTREL = 0x86;
+    125          
+    126          
+    127          /* Pre-defined SFR bit addresses */
+    128          
+    129          /*========ADCON0=======*/
+    130          
+    131          bit     BD     = 0xDF;
+    132          bit     CLK    = 0xDE;
+    133          bit     ADEX   = 0xDD;
+    134          bit     BSY    = 0xDC;
+    135          bit     ADM    = 0xDB;
+    136          bit     MX2    = 0xDA;
+    137          bit     MX1    = 0xD9;
+    138          bit     MX0    = 0xD8;
+    139          
+    140          
+    141          /*========IRCON0=======*/
+    142          
+    143          bit     EXF2   = 0xC7;
+    144          bit     TF2    = 0xC6;
+    145          bit     IEX6   = 0xC5;
+    146          bit     IEX5   = 0xC4;
+    147          bit     IEX4   = 0xC3;
+    148          bit     IEX3   = 0xC2;
+    149          bit     IEX2   = 0xC1;
+    150          bit     IADC   = 0xC0;
+    151          
+    152          /*========T2CON=======*/
+    153          
+    154          bit     T2PS   = 0xCF;
+    155          bit     I3FR   = 0xCE;
+    156          bit     I2FR   = 0xCD;
+    157          bit     T2R1   = 0xCC;
+    158          bit     T2R0   = 0xCB;
+    159          bit     T2CM   = 0xCA;
+    160          bit     T2I1   = 0xC9;
+    161          bit     T2I0   = 0xC8;
+    162          
+    163          /*========PSW=========*/
+    164          
+    165          bit     CY     = 0xD7;
+    166          bit     AC     = 0xD6;
+    167          bit     F0     = 0xD5;
+    168          bit     RS1    = 0xD4;
+    169          bit     RS0    = 0xD3;
+    170          bit     OV     = 0xD2;
+    171          bit     F1     = 0xD1;
+    172          bit     P      = 0xD0;
+    173          
+    174          /*========TCON========*/
+    175          
+    176          bit     TF1    = 0x8F;
+    177          bit     TR1    = 0x8E;
+    178          bit     TF0    = 0x8D;
+    179          bit     TR0    = 0x8C;
+    180          bit     IE1    = 0x8B;
+    181          bit     IT1    = 0x8A;
+    182          bit     IE0    = 0x89;
+    183          bit     IT0    = 0x88;
+    184          
+    185          /*========IEN0========*/
+    186          
+    187          bit     EAL    = 0xAF;
+    188          bit     WDT    = 0xAE;
+    189          bit     ET2    = 0xAD;
+    190          bit     ES0    = 0xAC;
+    191          bit     ET1    = 0xAB;
+    192          bit     EX1    = 0xAA;
+    193          bit     ET0    = 0xA9;
+    194          bit     EX0    = 0xA8;
+    195          
+    196          /*========IEN1========*/
+    197          
+    198          bit     EXEN2  = 0xBF;
+    199          bit     SWDT   = 0xBE;
+    200          bit     EX6    = 0xBD;
+    201          bit     EX5    = 0xBC;
+    202          bit     EX4    = 0xBB;
+    203          bit     EX3    = 0xBA;
+    204          bit     EX2    = 0xB9;
+    205          bit     EADC   = 0xB8;
+    206          
+    207          /*========P3=========*/
+    208          
+    209          bit     RD     = 0xB7;
+    210          bit     WR     = 0xB6;
+    211          bit     T1     = 0xB5;
+    212          bit     T0     = 0xB4;
+    213          bit     INT1   = 0xB3;
+    214          bit     INT0   = 0xB2;
+    215          bit     TXD    = 0xB1;
+    216          bit     RXD    = 0xB0;
+    217          
+    218          /*========S0CON========*/
+    219          
+    220          bit     SM0    = 0x9F;
+    221          bit     SM1    = 0x9E;
+    222          bit     SM20   = 0x9D;
+    223          bit     REN0   = 0x9C;
+    224          bit     TB80   = 0x9B;
+    225          bit     RB80   = 0x9A;
+    226          bit     TI0    = 0x99;
+    227          bit     RI0    = 0x98;
+    228          
+    229          
+    230          /* Interrupt Vector Definitions */
+    231          
+    232          interrupt [0x03] void EX0_int (void);     /* External Interrupt 0 */
+    233          
+    234          interrupt [0x0B] void T0_int (void);      /* Timer 0 Overflow */
+    235          
+    236          interrupt [0x13] void EX1_int (void);     /* External Interrupt 1 */
+    237          
+    238          interrupt [0x1B] void T1_int (void);      /* Timer 1 Overflow */
+    239          
+    240          interrupt [0x23] void SCON0_int (void);   /* Serial Port 0 */
+    241          
+    242          interrupt [0x2B] void T2_int (void);      /* Timer 2 Overflow */
+    243          
+    244          interrupt [0x2B] void T2EX_int (void);    /* Negative Transition on T2EX */
+    245          
+    246          interrupt [0x43] void ADC_int (void);     /* ADC Interrupt */
+    247          
+    248          interrupt [0x4B] void EX2_int (void);     /* External Interrupt 2 */
+    249          
+    250          interrupt [0x53] void EX3_int (void);     /* External Interrupt 3 */
+    251          
+    252          interrupt [0x5B] void EX4_int (void);     /* External Interrupt 4 */
+    253          
+    254          interrupt [0x63] void EX5_int (void);     /* External Interrupt 5 */
+    255          
+    256          interrupt [0x6B] void EX6_int (void);     /* External Interrupt 6 */
+    257          
+    258          interrupt [0x83] void SCON1_int (void);   /* Serial Port 1 */
+    259          
+    260          interrupt [0x93] void ICMP_int (void);    /* Compare match interrupt */
+    261          
+    262          interrupt [0x9B] void CT_int (void);      /* Compare Timer Overflow */
+    263          
+    264          interrupt [0xA3] void ICS_int (void);     /* COMSET interrupt */
+    265          
+    266          interrupt [0xAB] void ICR_int (void);     /* COMCLR interrupt */
+    267          
+    268          
+     34          #include <stdio.h>
+      1          /*                      - STDIO.H -
+      2          
+      3             Subset of ANSI standard I/O function declarations.
+      4          
+      5             Version: 3.30 04/Nov/94 IHAW
+      6          
+      7          
+      8          */
+      9          
+     10          #ifndef _STDIO_INCLUDED
+     11          #define _STDIO_INCLUDED
+     12          
+     13          #ifndef NULL
+     14          #define NULL    (void *) 0
+     15          #endif
+     16          
+     17          #ifndef EOF
+     18          #define EOF     (-1)
+     19          #endif
+     20          
+     21          #ifndef size_t
+     22          #if     sizeof((char*)0 - (char*)0) <= sizeof(int)
+     23          #define size_t  unsigned int
+     24          #else
+     25          #define size_t  unsigned long 
+     26          #endif
+     27          #endif
+     28          
+     29          /* ===
+     30          
+     31          #if __TID__ & 0x8000
+     32          #pragma function=intrinsic(0)
+     33          #endif
+     34          
+     35          === */
+     36          
+     37          #ifndef MEMORY_ATTRIBUTE
+     38          #define MEMORY_ATTRIBUTE
+     39          #endif
+     40          
+     41          MEMORY_ATTRIBUTE int    puts(const char *__s);
+     42          MEMORY_ATTRIBUTE int    putchar(int __value);
+     43          MEMORY_ATTRIBUTE int    getchar(void);
+     44          MEMORY_ATTRIBUTE int    sprintf(char *__s,const char *__format,...);
+     45          MEMORY_ATTRIBUTE int    printf(const char *__format,...);
+     46          MEMORY_ATTRIBUTE int    scanf(const char *__format,...);
+     47          MEMORY_ATTRIBUTE int    sscanf(const char *__s, const char *__format,...);
+     48          MEMORY_ATTRIBUTE char   *gets(char *__s);
+     49          
+     50          #if __TID__ & 0x8000
+     51          #pragma function=default
+     52          #endif
+     53          
+     54          #endif
+     55          
+     56          
+     57          
+     35          #include <string.h>
+      1          /*                       - STRING.H -
+      2          
+      3             The ANSI 'string' function declarations.
+      4                     
+      5             Version: 3.30 04/Nov/94 IHAW
+      6                             
+      7          */
+      8          
+      9          #ifndef _STRING_INCLUDED
+     10          #define _STRING_INCLUDED
+     11          
+     12          #ifndef NULL
+     13          #define NULL    (void*)0     /* changed from char* 93.01.21 ICLM */
+     14          #endif
+     15          
+     16          #ifndef size_t
+     17          #if sizeof((char *)0 - (char *)0) <= sizeof(int)
+     18          #define size_t          unsigned int
+     19          #else
+     20          #define size_t          unsigned long
+     21          #endif
+     22          #endif
+     23          
+     24          #if __TID__ & 0x8000
+     25          #pragma function=intrinsic(0)
+     26          #endif
+     27          
+     28          #ifndef MEMORY_ATTRIBUTE
+     29          #define MEMORY_ATTRIBUTE
+     30          #endif
+     31          
+     32          MEMORY_ATTRIBUTE void *memcpy(void *s1, const void *s2, size_t n);
+     33          
+     34          MEMORY_ATTRIBUTE void *memmove(void *s1, const void *s2, size_t n);
+     35          
+     36          MEMORY_ATTRIBUTE void *memchr(const void *s, int c, size_t n);
+     37          
+     38          MEMORY_ATTRIBUTE void *memset(void *s, int c, size_t n);
+     39          
+     40          MEMORY_ATTRIBUTE int memcmp(const void *s1, const void *s2, size_t n);
+     41          
+     42          MEMORY_ATTRIBUTE char *strchr(const char *s, int c);
+     43          
+     44          MEMORY_ATTRIBUTE int strcmp(const char *s1, const char *s2);
+     45          
+     46          MEMORY_ATTRIBUTE int strncmp(const char *s1, const char *s2, size_t n);
+     47          
+     48          MEMORY_ATTRIBUTE int strcoll(const char *s1, const char *s2);
+     49          
+     50          MEMORY_ATTRIBUTE size_t strlen(const char *s);
+     51          
+     52          MEMORY_ATTRIBUTE size_t strcspn(const char *s1, const char *s2);
+     53          
+     54          MEMORY_ATTRIBUTE size_t strspn(const char *s1, const char *s2);
+     55          
+     56          MEMORY_ATTRIBUTE char *strpbrk(const char *s1, const char *s2);
+     57          
+     58          MEMORY_ATTRIBUTE char *strrchr(const char *s, int c);
+     59          
+     60          MEMORY_ATTRIBUTE char *strstr(const char *s1, const char *s2);
+     61          
+     62          MEMORY_ATTRIBUTE char *strcat(char *s1, const char *s2);
+     63          
+     64          MEMORY_ATTRIBUTE char *strncat(char *s1, const char *s2, size_t n);
+     65          
+     66          MEMORY_ATTRIBUTE char *strcpy(char *s1, const char *s2);
+     67          
+     68          MEMORY_ATTRIBUTE char *strncpy(char *s1, const char *s2, size_t n);
+     69          
+     70          MEMORY_ATTRIBUTE char *strerror(int errnum);
+     71          
+     72          MEMORY_ATTRIBUTE char *strtok(char *s1, const char *s2);
+     73          
+     74          MEMORY_ATTRIBUTE size_t strxfrm(char *s1, const char *s2, size_t n);
+     75          
+     76          #if __TID__ & 0x8000
+     77          #pragma function=default
+     78          #endif
+     79          
+     80          #endif
+     81          
+     82          
+     36          #include "RS232.h"
+      1          /********************************************************
+      2          Fil:            $Id: RS232.h,v 1.2 2003/11/20 22:08:53 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/11/20 22:08:53 $
+      5          
+      6          Revisionshistoria:
+      7                                          $Log: RS232.h,v $
+      8                                          Revision 1.2  2003/11/20 22:08:53  Gemensam
+      9                                          Various declarations changes.
+     10                                          Still version 0200.
+     11                                          
+     12                                          Revision 1.1  2003/11/18 19:17:36  Gemensam
+     13                                          Added menu option of setting speaker volume (untested)
+     14                                          Completely changed header files
+     15                                          Version 0200.
+     16                                          
+     17                                          
+     18          
+     19          ********************************************************/
+     20          
+     21          #ifndef _RS232_INCLUDED_
+     22          #define _RS232_INCLUDED_
+     23          
+     24          ///////////////////////////////////
+     25          // Definitioner
+     26          
+     27          
+     28          ///////////////////////////////////
+     29          // Strukturer
+     30          
+     31          
+     32          ///////////////////////////////////
+     33          // Funktioner och procedurer
+     34          
+     35          extern void             InitializeRS232( void );
+     36          extern void             SendRS232(char tecken);
+     37          extern void             SendStringRS232(const char *str);
+     38          extern void             SendStringEOLRS232(const char *str);
+     39          extern char             WaitAndReceiveRS232( void );
+     40          extern char             WaitAndReceiveTimeout( void );
+     41          extern int      ReceiveLineRS232(char* str, int maxLen);
+     42          
+     43          #endif
+     37          #include "Main.h"
+      1          /*************************************************************
+      2          Fil:            $Id: Main.h,v 1.10 2003/12/26 16:17:01 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/12/26 16:17:01 $
+      5          
+      6          Revisionshistoria:
+      7                                          $Log: Main.h,v $
+      8                                          Revision 1.10  2003/12/26 16:17:01  Gemensam
+      9                                          Reinstate 500 ms wait for hang up detection to settle (if not PPD is used).
+     10                                          Fixed PPD detection by decreasing phone volume from 63 to 15.
+     11                                          Version 0304.
+     12                                          
+     13                                          Revision 1.9  2003/12/09 20:52:49  Gemensam
+     14                                          Commented out PPD detection since the HW not work yet.
+     15                                          Ver 0302.
+     16                                          
+     17                                          Revision 1.8  2003/11/29 22:35:59  Gemensam
+     18                                          Fixed problem with to short pulse width on PPD.
+     19                                          Ver 0302.
+     20                                          
+     21                                          Revision 1.7  2003/11/24 22:44:36  Gemensam
+     22                                          Fixed PPD, not working yet,
+     23                                          New command: speaker volume.
+     24                                          Version 0301.
+     25                                          
+     26                                          Revision 1.6  2003/11/23 21:40:03  Gemensam
+     27                                          Parallell phone detection included.
+     28                                          Removed obsolete #define's regarding LCD interface.
+     29                                          Ver 0300
+     30                                          
+     31                                          Revision 1.5  2003/11/23 20:29:34  Gemensam
+     32                                          Complete and tested volume setting in options menu.
+     33                                          Ver 0201
+     34                                          
+     35                                          Revision 1.4  2003/11/20 22:08:53  Gemensam
+     36                                          Various declarations changes.
+     37                                          Still version 0200.
+     38                                          
+     39                                          Revision 1.3  2003/11/18 19:17:36  Gemensam
+     40                                          Added menu option of setting speaker volume (untested)
+     41                                          Completely changed header files
+     42                                          Version 0200.
+     43                                          
+     44                                          Revision 1.2  2003/11/10 22:44:45  Gemensam
+     45                                          Added header information
+     46                                          
+     47          *************************************************************/
+     48          
+     49          #ifndef _MAIN_INCLUDED_
+     50          #define _MAIN_INCLUDED_
+     51          
+     52          #include "FileSystem.h"
+      1          /**************************************************************************************
+      2          Fil:            $Id: FileSystem.h,v 1.4 2003/11/20 22:08:53 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/11/20 22:08:53 $
+      5          
+      6          Kommentarer:    Filhuvudet befinner sig i "Spare" arean tillhörande filens första sida. Huvudet består 
+      7                                          av 16 bytes enligt följande lista:
+      8                                          0       Huvud       0xAA = Legalt filhuvud, annat tillsvidare odefinierat
+      9                                          1-4     Fillängd    Pos 1 = MSB, pos 4 = LSB
+     10                                          5-12    Filtitel    Enl "Titel.ext". Om titeln är mindre än 8 tecken avslutas det med nollor
+     11                                          13-15   Filext      Enl "Titel.ext". Om ext är mindre än 3 tecken avslutas det med nollor
+     12          
+     13                                          En nolla skriven i fileName[0] indikerar att
+     14                                          filstrukturen är ledig.
+     15                  
+     16          Revisionshistoria:
+     17                                          $Log: FileSystem.h,v $
+     18                                          Revision 1.4  2003/11/20 22:08:53  Gemensam
+     19                                          Various declarations changes.
+     20                                          Still version 0200.
+     21                                          
+     22                                          Revision 1.3  2003/11/18 19:17:36  Gemensam
+     23                                          Added menu option of setting speaker volume (untested)
+     24                                          Completely changed header files
+     25                                          Version 0200.
+     26                                          
+     27                                          Revision 1.2  2003/11/10 22:44:45  Gemensam
+     28                                          Added header information
+     29                                          
+     30          
+     31          **************************************************************************************/
+     32          
+     33          #ifndef _FILESYSTEM_INCLUDED_
+     34          #define _FILESYSTEM_INCLUDED_
+     35          
+     36          ///////////////////////////////////
+     37          // Definitioner
+     38          
+     39          #define FS_MAXFILES         8 
+     40          #define FS_FILENAMELENGTH   13
+     41          #define FS_FLASHSIZE        0x800000
+     42          
+     43          #define OFF            0
+     44          #define READY        1
+     45          #define NEMPTY        2
+     46          #define WRITING        3
+     47          #define OCCUPIED    4
+     48          
+     49          #define CLE     P4.0                                //Command Latch Enable
+     50          #define ALE     P4.1                                //Address Latch Enable
+     51          #define WP      P4.2                                //Write Protect
+     52          #define SE      P4.3                                //Spare Enable
+     53          //#define CE      P4.4                                //Chip Enable
+     54          #define FBUSY   P4.5                                //Busy
+     55          
+     56          #define FREG (*(unsigned char xdata *) 0xE000)
+     57          #define FLASH (*(unsigned char xdata *) 0xB000) 
+     58          
+     59          ///////////////////////////////////
+     60          // Strukturer
+     61          
+     62          struct ST_FILE_HEAD {
+     63              unsigned long   length;
+     64              char            name[FS_FILENAMELENGTH];
+     65          };
+     66          #define FILE_HEAD struct ST_FILE_HEAD
+     67          
+     68          
+     69          struct ST_FILE {
+     70              char            fileName[FS_FILENAMELENGTH];
+     71              unsigned long   startAddress;
+     72              unsigned long   length; 
+     73              unsigned long   offset; 
+     74              char            write;
+     75              char            append;
+     76          };
+     77          #define FILE struct ST_FILE 
+     78          
+     79          
+     80          
+     81          ///////////////////////////////////
+     82          // Funktioner och procedurer
+     83          
+     84          extern void            InitializeFileSystem( void );
+     85          extern void            InitializeFlash( void );
+     86          extern void            SetupReadSeq( void );
+     87          extern unsigned char   ReadFLASH( void );
+     88          extern void            TerminateReadSeq( void );
+     89          extern void            GetDeviceIDRS232(void);
+     90          extern void            SetupWriteSeq( void );
+     91          extern void            WriteFLASH(unsigned char);
+     92          extern void            TerminateWriteSeq( void );
+     93          extern void            PerformWriteSeq( void );
+     94          extern void            EraseBlock( void );
+     95          extern void            WriteFileHead(const char* name, long size);
+     96          extern FILE*           fopen(const char* name, const char* def);
+     97          extern FILE*               fopenA(const char* name, long maxSize, long offset);
+     98          extern void            fputc(FILE* filePtr, char c);
+     99          extern void            fputLine(FILE* filePtr, const char* str);
+    100          extern void            fupLoad( void );
+    101          extern int             fgetc(FILE* filePtr);
+    102          extern void            fgetLine(FILE* filePtr, char* str, int maxLen);
+    103          extern void            fdownLoad( void );
+    104          extern void            fclose(FILE* filePtr);
+    105          extern long            ftell(FILE* filePtr);
+    106          //void            Rewind(FILE* filePtr);
+    107          extern void            fSetPos(FILE* filePtr, long offset);
+    108          extern void            ReleaseCurrFile( void );
+    109          extern void            EraseAll( void );
+    110          extern void            StartDynamic( void );
+    111          extern void            EraseDynamic( void );
+    112          extern char                        MemUsage( void );
+    113          extern void                        Dir( void );
+    114          extern void                        Type( void );
+    115          extern void                        TypeA( void );
+    116          
+    117          #endif
+     53          
+     54          
+     55          ///////////////////////////////////
+     56          // Definitioner
+     57          
+     58          #define VERSION_MENU_STRING     "Telestation 3.5       (c) 2004-09-19 FRHA"
+     59          
+     60          #define CM_PARSIZE              24
+     61          #define CM_NRPAR                16
+     62          
+     63          #define MAX_LABEL_LEN   8
+     64          #define MAX_LABELS      64
+     65          
+     66          // Nedan var ett försök till multipla bat-filer, kanske införs senare
+     67          /*
+     68          #define MAX_BATFILES    8
+     69          */
+     70          
+     71          ///////////////////////////////////
+     72          // Strukturer
+     73          
+     74          // Nedan var ett försök till multipla bat-filer, kanske införs senare
+     75          /*
+     76          struct ST_Label {
+     77              char    name[MAX_LABEL_LEN];
+     78              long    pos;
+     79          };
+     80          #define Label struct ST_Label
+     81           
+     82          struct ST_BatFileObj {
+     83              FILE*       fp;                 //Filpekare till bat-filen
+     84              Label*      labels;             //Pekare till lista med ingående labels
+     85              char        labelIndex;         //Pekar på nästa lediga label
+     86              BatFileObj* caller;             //Den batfil som kallade på denna. Om användaren gav kommandot 
+     87                                              //skall den inehålla NULL
+     88              char        occupied;           //1 om detta objekt används, 0 annars
+     89          };    
+     90          #define BatFileObj struct ST_BatFileObj
+     91          */
+     92          
+     93          ///////////////////////////////////
+     94          // Funktioner och procedurer
+     95          
+     96          extern void    InitializeComputer1( void );
+     97          extern void    InitializePhoneAnsApp( void );
+     98          extern void    MainShell( void );
+     99          extern char    DecodeAndPerform(const char* cmdStr);
+    100          //int     MainCommandInterper(char c);
+    101          extern void    Hello( void );
+    102          extern void    TestHW( void );
+    103          extern void    FlashID( void );
+    104          extern void    Erase( void );
+    105          extern void    BackRead( void );
+    106          extern void    ReadSpare( void );
+    107          extern void    WF1( void );
+    108          extern void    WF2( void );
+    109          extern void    WF3( void );
+    110          extern void    RF1( void );
+    111          extern void    RF2( void );
+    112          extern void    RF3( void );
+    113          extern void    CreateLong( void );
+    114          extern void    ReadSpare2( void );
+    115          extern void    Append( void );
+    116          
+    117          extern void    SetupBatFile( void );
+    118          extern void    ClearLabelList( void );
+    119          extern void    ExecuteBatFile(const char* batFileName);
+    120          extern char    InsertLabel(const char* name, long pos);
+    121          extern int     FindLabel(const char *name);
+    122          extern char    GotoLabel(const char* name);
+    123          
+    124          extern void    myStrCpy(char* dest, const char* src);
+    125          extern int     myStrLen(char* str);
+    126          extern void    myLong2HexStr(long v, char* str);
+    127          extern void    myInt2DecStr(int v, char* str);
+    128          extern void    myInt2DecStr00(char v, char* str);
+    129          extern int     myStr2Int(const char* str);
+    130          extern char    myStrCmpNoCase(const char* s1, const char* s2);
+    131          
+    132          // Nedan var ett försök till multipla bat-filer, kanske införs senare
+    133          /*
+    134          void    SetupBatFile( void );
+    135          void    ClearLabelList( void );
+    136          void    ClearLabelList(Label* list);
+    137          BatFileObj*    VacantBatFileObj(FILE* fp);
+    138          void    ExecuteBatFile(const char* batFileName);
+    139          char    InsertLabel(const char* name, long pos);
+    140          char    FindLabel(const char *name, Label* l);
+    141          char    GotoLabel(const char* name);
+    142          */
+    143          
+    144          ///////////////////////////
+    145          // Globala variabler
+    146          
+    147          
+    148          ///////////////////////////
+    149          // Lokala variabler
+    150          
+    151          
+    152          #endif
+     38          
+     39          
+     40          //////////////////////
+     41          // Globala variabler
+     42          
+     43          extern xdata char       timeout;                        //Tidsmätningsvariabel
+     44          
+     45          
+     46          //////////////////////
+     47          // Lokala variabler
+     48          
+     49          //xdata char  transBusy;
+     50          //xdata char  receivedChar;
+     51          
+     52          
+     53          //////////////////////
+     54          // Kod
+     55          
+     56          void InitializeRS232( void )
+     57          {
+   \   0000            InitializeRS232:
+     58              
+     59              S1CON = 0x98;                                //Ställer in mode B = 8-bit UART, nollar flaggor och enablar mottagning
+   \   0000  759B98            MOV     155,#152
+     60              S1RELH = 0x03;                                //Ställer in baudrate 19200 bytes/s                                
+   \   0003  75BB03            MOV     187,#3
+     61              S1RELL = 0xEE;
+   \   0006  759DEE            MOV     157,#238
+     62              ADCON0 = 0x80;                                //Startar baudrate generering
+   \   0009  75D880            MOV     216,#128
+     63          
+     64              S1BUF = '>';                                    //Dummytecken för att SendRS232 skall funka    
+   \   000C  759C3E            MOV     156,#62
+     65              
+     66          //    IEN2 &= ~1;                                    //Sätter ES1, dvs möjliggör avbrott på serieport 1
+     67          }                                                                        
+   \   000F  22                RET
+     68          
+     69          void    SendStringRS232(const char *str)
+     70          //Skickar en 0-terminerad sträng på RS232 porten.
+     71          {
+   \   0010            SendStringRS232:
+   \   0010  900000            MOV     DPTR,#$LOCBX SendStringRS232+4
+   \   0013  D0E0              POP     ACC
+   \   0015  F0                MOVX    @DPTR,A
+   \   0016  A3                INC     DPTR
+   \   0017  D0E0              POP     ACC
+   \   0019  F0                MOVX    @DPTR,A
+     72              xdata int   i, l;
+     73              
+     74              l = myStrLen(str);
+   \   001A  A3                INC     DPTR
+   \   001B  EF                MOV     A,R7
+   \   001C  F0                MOVX    @DPTR,A
+   \   001D  A3                INC     DPTR
+   \   001E  EE                MOV     A,R6
+   \   001F  F0                MOVX    @DPTR,A
+   \   0020  A3                INC     DPTR
+   \   0021  ED                MOV     A,R5
+   \   0022  F0                MOVX    @DPTR,A
+   \   0023  120000            LCALL   $REFFN myStrLen
+   \   0026  900000            MOV     DPTR,#$LOCBX SendStringRS232+2
+   \   0029  ED                MOV     A,R5
+   \   002A  F0                MOVX    @DPTR,A
+   \   002B  A3                INC     DPTR
+   \   002C  EC                MOV     A,R4
+   \   002D  F0                MOVX    @DPTR,A
+     75              for (i = 0 ; i < l ; i++) {
+   \   002E  900000            MOV     DPTR,#$LOCBX SendStringRS232
+   \   0031  E4                CLR     A
+   \   0032  F0                MOVX    @DPTR,A
+   \   0033  A3                INC     DPTR
+   \   0034  F0                MOVX    @DPTR,A
+   \   0035            ?0001:
+   \   0035  900000            MOV     DPTR,#$LOCBX SendStringRS232
+   \   0038  E0                MOVX    A,@DPTR
+   \   0039  FD                MOV     R5,A
+   \   003A  A3                INC     DPTR
+   \   003B  E0                MOVX    A,@DPTR
+   \   003C  FC                MOV     R4,A
+   \   003D  A3                INC     DPTR
+   \   003E  A3                INC     DPTR
+   \   003F  E0                MOVX    A,@DPTR
+   \   0040  D3                SETB    C
+   \   0041  9C                SUBB    A,R4
+   \   0042  900000            MOV     DPTR,#$LOCBX SendStringRS232+2
+   \   0045  E0                MOVX    A,@DPTR
+   \   0046  6480              XRL     A,#128
+   \   0048  CD                XCH     A,R5
+   \   0049  6480              XRL     A,#128
+   \   004B  CD                XCH     A,R5
+   \   004C  9D                SUBB    A,R5
+   \   004D  4031              JC      ?0000
+   \   004F            ?0002:
+     76                  SendRS232(*(str + i));                          //Sänder tecken     
+   \   004F  900000            MOV     DPTR,#$LOCBX SendStringRS232+6
+   \   0052  E0                MOVX    A,@DPTR
+   \   0053  FF                MOV     R7,A
+   \   0054  A3                INC     DPTR
+   \   0055  E0                MOVX    A,@DPTR
+   \   0056  FE                MOV     R6,A
+   \   0057  A3                INC     DPTR
+   \   0058  E0                MOVX    A,@DPTR
+   \   0059  FD                MOV     R5,A
+   \   005A  900000            MOV     DPTR,#$LOCBX SendStringRS232
+   \   005D  E0                MOVX    A,@DPTR
+   \   005E  FC                MOV     R4,A
+   \   005F  A3                INC     DPTR
+   \   0060  E0                MOVX    A,@DPTR
+   \   0061  F582              MOV     DPL,A
+   \   0063  8C83              MOV     DPH,R4
+   \   0065  120000            LCALL   ?LD_A_R567_DISP_L17
+   \   0068  FC                MOV     R4,A
+   \   0069  120000            LCALL   $REFFN SendRS232
+     77                  WDT = 1;
+   \   006C  D2AE              SETB    IE.6
+     78                  SWDT = 1;
+   \   006E  D2BE              SETB    IP.6
+   \   0070  900000            MOV     DPTR,#$LOCBX SendStringRS232+1
+   \   0073  E0                MOVX    A,@DPTR
+   \   0074  04                INC     A
+   \   0075  F0                MOVX    @DPTR,A
+   \   0076  900000            MOV     DPTR,#$LOCBX SendStringRS232
+   \   0079  7003              JNZ     ?0037
+   \   007B  E0                MOVX    A,@DPTR
+   \   007C  04                INC     A
+   \   007D  F0                MOVX    @DPTR,A
+   \   007E            ?0037:
+     79              }
+     80          }        
+   \   007E  80B5              SJMP    ?0001
+   \   0080            ?0000:
+   \   0080  900000            MOV     DPTR,#$LOCBX SendStringRS232+4
+   \   0083  E0                MOVX    A,@DPTR
+   \   0084  F8                MOV     R0,A
+   \   0085  A3                INC     DPTR
+   \   0086  E0                MOVX    A,@DPTR
+   \   0087  C0E0              PUSH    ACC
+   \   0089  E8                MOV     A,R0
+   \   008A  C0E0              PUSH    ACC
+   \   008C  22                RET
+     81          
+     82          void    SendStringEOLRS232(const char *str)
+     83          //Skickar en 0-terminerad sträng på RS232 porten med "Carrige Return" och "Line Feed" efterråt.
+     84          {
+   \   008D            SendStringEOLRS232:
+   \   008D  900000            MOV     DPTR,#$LOCBX SendStringEOLRS232+4
+   \   0090  D0E0              POP     ACC
+   \   0092  F0                MOVX    @DPTR,A
+   \   0093  A3                INC     DPTR
+   \   0094  D0E0              POP     ACC
+   \   0096  F0                MOVX    @DPTR,A
+     85              xdata int   i, l;
+     86                                                                  
+     87              l = myStrLen(str);                                    //Längden på strängen
+   \   0097  A3                INC     DPTR
+   \   0098  EF                MOV     A,R7
+   \   0099  F0                MOVX    @DPTR,A
+   \   009A  A3                INC     DPTR
+   \   009B  EE                MOV     A,R6
+   \   009C  F0                MOVX    @DPTR,A
+   \   009D  A3                INC     DPTR
+   \   009E  ED                MOV     A,R5
+   \   009F  F0                MOVX    @DPTR,A
+   \   00A0  120000            LCALL   $REFFN myStrLen
+   \   00A3  900000            MOV     DPTR,#$LOCBX SendStringEOLRS232+2
+   \   00A6  ED                MOV     A,R5
+   \   00A7  F0                MOVX    @DPTR,A
+   \   00A8  A3                INC     DPTR
+   \   00A9  EC                MOV     A,R4
+   \   00AA  F0                MOVX    @DPTR,A
+     88              for (i = 0 ; i < l ; i++) {
+   \   00AB  900000            MOV     DPTR,#$LOCBX SendStringEOLRS232
+   \   00AE  E4                CLR     A
+   \   00AF  F0                MOVX    @DPTR,A
+   \   00B0  A3                INC     DPTR
+   \   00B1  F0                MOVX    @DPTR,A
+   \   00B2            ?0005:
+   \   00B2  900000            MOV     DPTR,#$LOCBX SendStringEOLRS232
+   \   00B5  E0                MOVX    A,@DPTR
+   \   00B6  FD                MOV     R5,A
+   \   00B7  A3                INC     DPTR
+   \   00B8  E0                MOVX    A,@DPTR
+   \   00B9  FC                MOV     R4,A
+   \   00BA  A3                INC     DPTR
+   \   00BB  A3                INC     DPTR
+   \   00BC  E0                MOVX    A,@DPTR
+   \   00BD  D3                SETB    C
+   \   00BE  9C                SUBB    A,R4
+   \   00BF  900000            MOV     DPTR,#$LOCBX SendStringEOLRS232+2
+   \   00C2  E0                MOVX    A,@DPTR
+   \   00C3  6480              XRL     A,#128
+   \   00C5  CD                XCH     A,R5
+   \   00C6  6480              XRL     A,#128
+   \   00C8  CD                XCH     A,R5
+   \   00C9  9D                SUBB    A,R5
+   \   00CA  4031              JC      ?0004
+   \   00CC            ?0006:
+     89                  SendRS232(*(str + i));                          //Sänder tecken     
+   \   00CC  900000            MOV     DPTR,#$LOCBX SendStringEOLRS232+6
+   \   00CF  E0                MOVX    A,@DPTR
+   \   00D0  FF                MOV     R7,A
+   \   00D1  A3                INC     DPTR
+   \   00D2  E0                MOVX    A,@DPTR
+   \   00D3  FE                MOV     R6,A
+   \   00D4  A3                INC     DPTR
+   \   00D5  E0                MOVX    A,@DPTR
+   \   00D6  FD                MOV     R5,A
+   \   00D7  900000            MOV     DPTR,#$LOCBX SendStringEOLRS232
+   \   00DA  E0                MOVX    A,@DPTR
+   \   00DB  FC                MOV     R4,A
+   \   00DC  A3                INC     DPTR
+   \   00DD  E0                MOVX    A,@DPTR
+   \   00DE  F582              MOV     DPL,A
+   \   00E0  8C83              MOV     DPH,R4
+   \   00E2  120000            LCALL   ?LD_A_R567_DISP_L17
+   \   00E5  FC                MOV     R4,A
+   \   00E6  120000            LCALL   $REFFN SendRS232
+     90                  WDT = 1;
+   \   00E9  D2AE              SETB    IE.6
+     91                  SWDT = 1;
+   \   00EB  D2BE              SETB    IP.6
+   \   00ED  900000            MOV     DPTR,#$LOCBX SendStringEOLRS232+1
+   \   00F0  E0                MOVX    A,@DPTR
+   \   00F1  04                INC     A
+   \   00F2  F0                MOVX    @DPTR,A
+   \   00F3  900000            MOV     DPTR,#$LOCBX SendStringEOLRS232
+   \   00F6  7003              JNZ     ?0038
+   \   00F8  E0                MOVX    A,@DPTR
+   \   00F9  04                INC     A
+   \   00FA  F0                MOVX    @DPTR,A
+   \   00FB            ?0038:
+   \   00FB  80B5              SJMP    ?0005
+   \   00FD            ?0004:
+     92              }
+     93          
+     94              SendRS232('\r');                                      //"Carrige Return"
+   \   00FD  7C0D              MOV     R4,#13
+   \   00FF  120000            LCALL   $REFFN SendRS232
+     95              SendRS232('\n');                                      //"Line Feed"
+     96           
+   \   0102  7C0A              MOV     R4,#10
+   \   0104  120000            LCALL   $REFFN SendRS232
+     97          }        
+   \   0107  900000            MOV     DPTR,#$LOCBX SendStringEOLRS232+4
+   \   010A  E0                MOVX    A,@DPTR
+   \   010B  F8                MOV     R0,A
+   \   010C  A3                INC     DPTR
+   \   010D  E0                MOVX    A,@DPTR
+   \   010E  C0E0              PUSH    ACC
+   \   0110  E8                MOV     A,R0
+   \   0111  C0E0              PUSH    ACC
+   \   0113  22                RET
+     98          
+     99          
+    100          char   WaitAndReceiveRS232( void )
+    101          //Väntar tills det finns ett tecken på RS232 porten redo för mottagning. Retunerar det tecknet.
+    102          {
+   \   0114            WaitAndReceiveRS232:
+   \   0114            ?0009:
+    103              char    tecken;
+    104          
+    105              while(!(S1CON & 0x01)) {                               //Väntar på mottagning
+   \   0114  E59B              MOV     A,155
+   \   0116  20E006            JB      ACC.0,?0008
+   \   0119            ?0010:
+    106                  WDT = 1;
+   \   0119  D2AE              SETB    IE.6
+    107                  SWDT = 1;
+   \   011B  D2BE              SETB    IP.6
+   \   011D  80F5              SJMP    ?0009
+   \   011F            ?0008:
+    108              }
+    109              tecken = S1BUF;                                     //Läser mottaget tecken   
+   \   011F  E59C              MOV     A,156
+   \   0121  900000            MOV     DPTR,#$LOCBX WaitAndReceiveRS232
+   \   0124  F0                MOVX    @DPTR,A
+    110              S1CON &= ~(1);                                   //Nollar mottagnings-interrupt-flagga          
+   \   0125  539BFE            ANL     155,#254
+    111              
+    112              return tecken;
+   \   0128  E0                MOVX    A,@DPTR
+   \   0129  FC                MOV     R4,A
+    113          }
+   \   012A  22                RET
+    114          
+    115          char   WaitAndReceiveTimeout( void )
+    116          //Väntar på att ett tecken skall bli klart för mottagning på RS232-porten men inte
+    117          //längre än 4 ms. Timer 0 används för tidtagning. 
+    118          //Retunerar det mottagna tecknet om det går bra eller 0x00 om det blir timeout.
+    119          {
+   \   012B            WaitAndReceiveTimeout:
+    120              xdata unsigned char     tecken;
+    121          
+    122              TL0 = 0x00;                                         //Reset timeout value
+   \   012B  758A00            MOV     TL0,#0
+    123              TH0 = 0x00;                                         //0 <=> ca 71 ms timeout
+   \   012E  758C00            MOV     TH0,#0
+    124              timeout = 0;
+   \   0131  E4                CLR     A
+   \   0132  900000            MOV     DPTR,#timeout
+   \   0135  F0                MOVX    @DPTR,A
+    125              TR0 = 1;                                            //Start timer
+   \   0136  D28C              SETB    TCON.4
+   \   0138            ?0012:
+    126           
+    127              while((!(S1CON & 1)) && (!timeout)) {           //Väntar på mottagning
+   \   0138  E59B              MOV     A,155
+   \   013A  20E00C            JB      ACC.0,?0011
+   \   013D  900000            MOV     DPTR,#timeout
+   \   0140  E0                MOVX    A,@DPTR
+   \   0141  7006              JNZ     ?0011
+   \   0143            ?0015:
+   \   0143            ?0014:
+   \   0143            ?0013:
+    128                  WDT = 1;
+   \   0143  D2AE              SETB    IE.6
+    129                  SWDT = 1;
+   \   0145  D2BE              SETB    IP.6
+   \   0147  80EF              SJMP    ?0012
+   \   0149            ?0011:
+    130              }
+    131          
+    132              TR0 = 0;
+   \   0149  C28C              CLR     TCON.4
+    133              if (!timeout) {    
+   \   014B  900000            MOV     DPTR,#timeout
+   \   014E  E0                MOVX    A,@DPTR
+   \   014F  700B              JNZ     ?0017
+   \   0151            ?0016:
+    134                  tecken = S1BUF;                                 //Läser mottaget tecken   
+   \   0151  E59C              MOV     A,156
+   \   0153  900000            MOV     DPTR,#$LOCBX WaitAndReceiveTimeout
+   \   0156  F0                MOVX    @DPTR,A
+    135                  S1CON &= ~(1);                                  //Nollar mottagnings-interrupt-flagga     
+   \   0157  539BFE            ANL     155,#254
+    136              } else {
+   \   015A  8005              SJMP    ?0018
+   \   015C            ?0017:
+    137                  tecken = 0x00;
+   \   015C  E4                CLR     A
+   \   015D  900000            MOV     DPTR,#$LOCBX WaitAndReceiveTimeout
+   \   0160  F0                MOVX    @DPTR,A
+   \   0161            ?0018:
+    138              }
+    139              return tecken;
+   \   0161  E0                MOVX    A,@DPTR
+   \   0162  FC                MOV     R4,A
+    140          }
+   \   0163  22                RET
+    141          
+    142          void    SendRS232(char tecken)
+    143          //Sänder ett tecken på RS232-porten och väntar tills det är sänt.
+    144          {
+   \   0164            SendRS232:
+   \   0164  EC                MOV     A,R4
+   \   0165  900000            MOV     DPTR,#$LOCBX SendRS232
+   \   0168  F0                MOVX    @DPTR,A
+   \   0169            ?0020:
+    145              while (!(S1CON & 0x02));
+   \   0169  E59B              MOV     A,155
+   \   016B  20E102            JB      ACC.1,?0019
+   \   016E            ?0021:
+   \   016E  80F9              SJMP    ?0020
+   \   0170            ?0019:
+    146              S1CON &= ~(2);                                      //Nollar sändnings-interrupt-flagga      
+   \   0170  539BFD            ANL     155,#253
+    147              S1BUF = tecken;                                     //Sänder tecken 
+   \   0173  900000            MOV     DPTR,#$LOCBX SendRS232
+   \   0176  E0                MOVX    A,@DPTR
+   \   0177  F59C              MOV     156,A
+    148          }
+   \   0179  22                RET
+    149          
+    150          int        ReceiveLineRS232(char* str, int maxLen)
+    151          {
+   \   017A            ReceiveLineRS232:
+   \   017A  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+2
+   \   017D  D0E0              POP     ACC
+   \   017F  F0                MOVX    @DPTR,A
+   \   0180  A3                INC     DPTR
+   \   0181  D0E0              POP     ACC
+   \   0183  F0                MOVX    @DPTR,A
+    152              xdata char    c;
+    153              xdata char    index = 0;
+    154          
+    155              str[index] = 0;
+   \   0184  E4                CLR     A
+   \   0185  120000            LCALL   ?ST_A_R567_L17
+   \   0188  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+4
+   \   018B  EF                MOV     A,R7
+   \   018C  F0                MOVX    @DPTR,A
+   \   018D  A3                INC     DPTR
+   \   018E  EE                MOV     A,R6
+   \   018F  F0                MOVX    @DPTR,A
+   \   0190  A3                INC     DPTR
+   \   0191  ED                MOV     A,R5
+   \   0192  F0                MOVX    @DPTR,A
+   \   0193  E4                CLR     A
+   \   0194  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+1
+   \   0197  F0                MOVX    @DPTR,A
+   \   0198            ?0024:
+    156          
+    157              do {
+    158                  c = WaitAndReceiveRS232();
+   \   0198  120000            LCALL   $REFFN WaitAndReceiveRS232
+    159                  if (c == 0x1B) {                                //ESC
+   \   019B  EC                MOV     A,R4
+   \   019C  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232
+   \   019F  F0                MOVX    @DPTR,A
+   \   01A0  B41B36            CJNE    A,#27,?0026
+   \   01A3            ?0025:
+    160                      str[0] = 0x1B;
+   \   01A3  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+4
+   \   01A6  E0                MOVX    A,@DPTR
+   \   01A7  FF                MOV     R7,A
+   \   01A8  A3                INC     DPTR
+   \   01A9  E0                MOVX    A,@DPTR
+   \   01AA  FE                MOV     R6,A
+   \   01AB  A3                INC     DPTR
+   \   01AC  E0                MOVX    A,@DPTR
+   \   01AD  FD                MOV     R5,A
+   \   01AE  741B              MOV     A,#27
+   \   01B0  120000            LCALL   ?ST_A_R567_L17
+    161                      c = WaitAndReceiveRS232();
+   \   01B3  120000            LCALL   $REFFN WaitAndReceiveRS232
+    162                      str[1] = c;
+   \   01B6  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+4
+   \   01B9  E0                MOVX    A,@DPTR
+   \   01BA  FF                MOV     R7,A
+   \   01BB  A3                INC     DPTR
+   \   01BC  E0                MOVX    A,@DPTR
+   \   01BD  FE                MOV     R6,A
+   \   01BE  A3                INC     DPTR
+   \   01BF  E0                MOVX    A,@DPTR
+   \   01C0  FD                MOV     R5,A
+   \   01C1  EC                MOV     A,R4
+   \   01C2  900001            MOV     DPTR,#1
+   \   01C5  120000            LCALL   ?ST_A_R567_DISP_L17
+   \   01C8  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232
+   \   01CB  F0                MOVX    @DPTR,A
+    163                      str[2] = 0;
+   \   01CC  E4                CLR     A
+   \   01CD  900002            MOV     DPTR,#2
+   \   01D0  120000            LCALL   ?ST_A_R567_DISP_L17
+    164                      return 2;
+    165                  }
+   \   01D3  FD                MOV     R5,A
+   \   01D4  7C02              MOV     R4,#2
+   \   01D6  0202A4            LJMP    ?0036
+   \   01D9            ?0026:
+    166                  if (c >= ' ') {
+   \   01D9  24E0              ADD     A,#224
+   \   01DB  504F              JNC     ?0028
+   \   01DD            ?0027:
+    167                      if (index < maxLen) {
+   \   01DD  A3                INC     DPTR
+   \   01DE  E0                MOVX    A,@DPTR
+   \   01DF  7D00              MOV     R5,#0
+   \   01E1  FC                MOV     R4,A
+   \   01E2  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+8
+   \   01E5  E0                MOVX    A,@DPTR
+   \   01E6  D3                SETB    C
+   \   01E7  9C                SUBB    A,R4
+   \   01E8  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+7
+   \   01EB  E0                MOVX    A,@DPTR
+   \   01EC  6480              XRL     A,#128
+   \   01EE  CD                XCH     A,R5
+   \   01EF  6480              XRL     A,#128
+   \   01F1  CD                XCH     A,R5
+   \   01F2  9D                SUBB    A,R5
+   \   01F3  4035              JC      ?0030
+   \   01F5            ?0029:
+    168                          SendRS232(c);
+   \   01F5  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232
+   \   01F8  E0                MOVX    A,@DPTR
+   \   01F9  FC                MOV     R4,A
+   \   01FA  120000            LCALL   $REFFN SendRS232
+    169                          str[index++] = c;
+   \   01FD  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232
+   \   0200  E0                MOVX    A,@DPTR
+   \   0201  FC                MOV     R4,A
+   \   0202  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+4
+   \   0205  E0                MOVX    A,@DPTR
+   \   0206  FF                MOV     R7,A
+   \   0207  A3                INC     DPTR
+   \   0208  E0                MOVX    A,@DPTR
+   \   0209  FE                MOV     R6,A
+   \   020A  A3                INC     DPTR
+   \   020B  E0                MOVX    A,@DPTR
+   \   020C  FD                MOV     R5,A
+   \   020D  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+1
+   \   0210  E0                MOVX    A,@DPTR
+   \   0211  FA                MOV     R2,A
+   \   0212  04                INC     A
+   \   0213  F0                MOVX    @DPTR,A
+   \   0214  8A82              MOV     DPL,R2
+   \   0216  758300            MOV     DPH,#0
+   \   0219  EC                MOV     A,R4
+   \   021A  120000            LCALL   ?ST_A_R567_DISP_L17
+    170                          str[index] = 0;
+   \   021D  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+1
+   \   0220  E0                MOVX    A,@DPTR
+   \   0221  F582              MOV     DPL,A
+   \   0223  758300            MOV     DPH,#0
+   \   0226  E4                CLR     A
+   \   0227  120000            LCALL   ?ST_A_R567_DISP_L17
+   \   022A            ?0030:
+   \   022A  8035              SJMP    ?0031
+   \   022C            ?0028:
+    171                      }
+    172                  } else if (c == '\b') {
+   \   022C  EC                MOV     A,R4
+   \   022D  B40831            CJNE    A,#8,?0033
+   \   0230            ?0032:
+    173                      if (index > 0) {
+   \   0230  A3                INC     DPTR
+   \   0231  E0                MOVX    A,@DPTR
+   \   0232  602D              JZ      ?0035
+   \   0234            ?0034:
+    174                          SendRS232('\b');
+   \   0234  7C08              MOV     R4,#8
+   \   0236  120000            LCALL   $REFFN SendRS232
+    175                          SendRS232(' ');
+   \   0239  7C20              MOV     R4,#32
+   \   023B  120000            LCALL   $REFFN SendRS232
+    176                          SendRS232('\b');
+   \   023E  7C08              MOV     R4,#8
+   \   0240  120000            LCALL   $REFFN SendRS232
+    177                          index--;
+   \   0243  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+1
+   \   0246  E0                MOVX    A,@DPTR
+   \   0247  14                DEC     A
+   \   0248  F0                MOVX    @DPTR,A
+    178                          str[index] = 0;
+   \   0249  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+4
+   \   024C  E0                MOVX    A,@DPTR
+   \   024D  FF                MOV     R7,A
+   \   024E  A3                INC     DPTR
+   \   024F  E0                MOVX    A,@DPTR
+   \   0250  FE                MOV     R6,A
+   \   0251  A3                INC     DPTR
+   \   0252  E0                MOVX    A,@DPTR
+   \   0253  FD                MOV     R5,A
+   \   0254  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+1
+   \   0257  E0                MOVX    A,@DPTR
+   \   0258  F582              MOV     DPL,A
+   \   025A  758300            MOV     DPH,#0
+   \   025D  E4                CLR     A
+   \   025E  120000            LCALL   ?ST_A_R567_DISP_L17
+   \   0261            ?0035:
+   \   0261            ?0033:
+   \   0261            ?0031:
+    179                      }
+    180                  }
+    181              
+    182              } while (c != '\r');
+   \   0261  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232
+   \   0264  E0                MOVX    A,@DPTR
+   \   0265  B40D02            CJNE    A,#13,$+5
+   \   0268  8003              SJMP    $+5
+   \   026A  020198            LJMP    ?0024
+   \   026D            ?0022:
+    183              str[index] = 0;
+   \   026D  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+4
+   \   0270  E0                MOVX    A,@DPTR
+   \   0271  FF                MOV     R7,A
+   \   0272  A3                INC     DPTR
+   \   0273  E0                MOVX    A,@DPTR
+   \   0274  FE                MOV     R6,A
+   \   0275  A3                INC     DPTR
+   \   0276  E0                MOVX    A,@DPTR
+   \   0277  FD                MOV     R5,A
+   \   0278  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+1
+   \   027B  E0                MOVX    A,@DPTR
+   \   027C  F582              MOV     DPL,A
+   \   027E  758300            MOV     DPH,#0
+   \   0281  E4                CLR     A
+   \   0282  120000            LCALL   ?ST_A_R567_DISP_L17
+    184              str[index+1] = 0;
+   \   0285  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+1
+   \   0288  E0                MOVX    A,@DPTR
+   \   0289  F582              MOV     DPL,A
+   \   028B  758300            MOV     DPH,#0
+   \   028E  A3                INC     DPTR
+   \   028F  E4                CLR     A
+   \   0290  120000            LCALL   ?ST_A_R567_DISP_L17
+    185           
+    186              SendRS232('\r');                                      //"Carrige Return"
+   \   0293  7C0D              MOV     R4,#13
+   \   0295  120000            LCALL   $REFFN SendRS232
+    187              SendRS232('\n');                                      //"Line Feed"
+   \   0298  7C0A              MOV     R4,#10
+   \   029A  120000            LCALL   $REFFN SendRS232
+    188          
+    189              return index;
+    190          }
+   \   029D  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+1
+   \   02A0  E0                MOVX    A,@DPTR
+   \   02A1  7D00              MOV     R5,#0
+   \   02A3  FC                MOV     R4,A
+   \   02A4            ?0036:
+   \   02A4  900000            MOV     DPTR,#$LOCBX ReceiveLineRS232+2
+   \   02A7  E0                MOVX    A,@DPTR
+   \   02A8  F8                MOV     R0,A
+   \   02A9  A3                INC     DPTR
+   \   02AA  E0                MOVX    A,@DPTR
+   \   02AB  C0E0              PUSH    ACC
+   \   02AD  E8                MOV     A,R0
+   \   02AE  C0E0              PUSH    ACC
+   \   02B0  22                RET
+    191              
+    192                      
+    193           
+    194          
+   \   02B1                    END
+
+
+                                       S Y M B O L - T A B L E
+                                       =======================
+
+
+            #include file(s):
+
+       [1]       c:\iar\ew\8051\inc\io517a.h
+       [2]       c:\iar\ew\8051\inc\stdio.h
+       [3]       c:\iar\ew\8051\inc\string.h
+       [4]       rs232.h
+       [5]       main.h
+       [6]       filesystem.h
+
+
+            Symbol                     Type     Mem     Class   Defline   Refline(s)
+            ------                     ----     ---     -----   -------   ----------
+
+AC                                      bit             ---      166:1  
+ACC                                     sfr             ---       14:1  
+ADCON0                                  sfr             ---       99:1         62
+ADCON1                                  sfr             ---      100:1  
+ADDATH                                  sfr             ---      101:1  
+ADDATL                                  sfr             ---      102:1  
+ADEX                                    bit             ---      133:1  
+ADM                                     bit             ---      135:1  
+ARCON                                   sfr             ---      105:1  
+B                                       sfr             ---       15:1  
+BD                                      bit             ---      131:1  
+BSY                                     bit             ---      134:1  
+CC4EN                                   sfr             ---       34:1  
+CCEN                                    sfr             ---       33:1  
+CCH1                                    sfr             ---       36:1  
+CCH2                                    sfr             ---       38:1  
+CCH3                                    sfr             ---       40:1  
+CCH4                                    sfr             ---       42:1  
+CCL1                                    sfr             ---       35:1  
+CCL2                                    sfr             ---       37:1  
+CCL3                                    sfr             ---       39:1  
+CCL4                                    sfr             ---       41:1  
+CLK                                     bit             ---      132:1  
+CLRMSK                                  sfr             ---       74:1  
+CMEN                                    sfr             ---       43:1  
+CMH0                                    sfr             ---       45:1  
+CMH1                                    sfr             ---       47:1  
+CMH2                                    sfr             ---       49:1  
+CMH3                                    sfr             ---       51:1  
+CMH4                                    sfr             ---       53:1  
+CMH5                                    sfr             ---       55:1  
+CMH6                                    sfr             ---       57:1  
+CMH7                                    sfr             ---       59:1  
+CML0                                    sfr             ---       44:1  
+CML1                                    sfr             ---       46:1  
+CML2                                    sfr             ---       48:1  
+CML3                                    sfr             ---       50:1  
+CML4                                    sfr             ---       52:1  
+CML5                                    sfr             ---       54:1  
+CML6                                    sfr             ---       56:1  
+CML7                                    sfr             ---       58:1  
+CMSEL                                   sfr             ---       60:1  
+COMCLRH                                 sfr             ---       72:1  
+COMCLRL                                 sfr             ---       71:1  
+COMSETH                                 sfr             ---       70:1  
+COMSETL                                 sfr             ---       69:1  
+CRCH                                    sfr             ---       62:1  
+CRCL                                    sfr             ---       61:1  
+CTCON                                   sfr             ---       63:1  
+CTRELH                                  sfr             ---       65:1  
+CTRELL                                  sfr             ---       64:1  
+CY                                      bit             ---      165:1  
+DPH                                     sfr             ---       18:1  
+DPL                                     sfr             ---       17:1  
+DPSEL                                   sfr             ---       19:1  
+EADC                                    bit             ---      205:1  
+EAL                                     bit             ---      187:1  
+ES0                                     bit             ---      190:1  
+ET0                                     bit             ---      193:1  
+ET1                                     bit             ---      191:1  
+ET2                                     bit             ---      189:1  
+EX0                                     bit             ---      194:1  
+EX1                                     bit             ---      192:1  
+EX2                                     bit             ---      204:1  
+EX3                                     bit             ---      203:1  
+EX4                                     bit             ---      202:1  
+EX5                                     bit             ---      201:1  
+EX6                                     bit             ---      200:1  
+EXEN2                                   bit             ---      198:1  
+EXF2                                    bit             ---      143:1  
+F0                                      bit             ---      167:1  
+F1                                      bit             ---      171:1  
+I2FR                                    bit             ---      156:1  
+I3FR                                    bit             ---      155:1  
+IADC                                    bit             ---      150:1  
+IE0                                     bit             ---      182:1  
+IE1                                     bit             ---      180:1  
+IEN0                                    sfr             ---      114:1  
+IEN1                                    sfr             ---      116:1  
+IEN2                                    sfr             ---      118:1  
+IEX2                                    bit             ---      149:1  
+IEX3                                    bit             ---      148:1  
+IEX4                                    bit             ---      147:1  
+IEX5                                    bit             ---      146:1  
+IEX6                                    bit             ---      145:1  
+INT0                                    bit             ---      214:1  
+INT1                                    bit             ---      213:1  
+IP0                                     sfr             ---      115:1  
+IP1                                     sfr             ---      117:1  
+IRCON0                                  sfr             ---      119:1  
+IRCON1                                  sfr             ---      120:1  
+IT0                                     bit             ---      183:1  
+IT1                                     bit             ---      181:1  
+InitializeRS232                    function    code    public       57       35:4
+MD0                                     sfr             ---      106:1  
+MD1                                     sfr             ---      107:1  
+MD2                                     sfr             ---      108:1  
+MD3                                     sfr             ---      109:1  
+MD4                                     sfr             ---      110:1  
+MD5                                     sfr             ---      111:1  
+MX0                                     bit             ---      138:1  
+MX1                                     bit             ---      137:1  
+MX2                                     bit             ---      136:1  
+OV                                      bit             ---      170:1  
+P                                       bit             ---      172:1  
+P0                                      sfr             ---       77:1  
+P1                                      sfr             ---       78:1  
+P2                                      sfr             ---       79:1  
+P3                                      sfr             ---       80:1  
+P4                                      sfr             ---       81:1  
+P5                                      sfr             ---       82:1  
+P6                                      sfr             ---       83:1  
+P7                                      sfr             ---       84:1  
+P8                                      sfr             ---       85:1  
+PCON                                    sfr             ---       88:1  
+PSW                                     sfr             ---       20:1  
+RB80                                    bit             ---      225:1  
+RD                                      bit             ---      209:1  
+REN0                                    bit             ---      223:1  
+RI0                                     bit             ---      227:1  
+RS0                                     bit             ---      169:1  
+RS1                                     bit             ---      168:1  
+RXD                                     bit             ---      216:1  
+ReceiveLineRS232                   function    code    public      151       41:4
+S0BUF                                   sfr             ---       90:1  
+S0CON                                   sfr             ---       89:1  
+S0RELH                                  sfr             ---       94:1  
+S0RELL                                  sfr             ---       93:1  
+S1BUF                                   sfr             ---       92:1         64      109      134      147
+S1CON                                   sfr             ---       91:1         59      105      110      127
+                                                                              135      145      146
+S1RELH                                  sfr             ---       96:1         60
+S1RELL                                  sfr             ---       95:1         61
+SETMSK                                  sfr             ---       73:1  
+SM0                                     bit             ---      220:1  
+SM1                                     bit             ---      221:1  
+SM20                                    bit             ---      222:1  
+SP                                      sfr             ---       16:1  
+SWDT                                    bit             ---      199:1         78       91      107      129
+SYSCON                                  sfr             ---       22:1  
+SendRS232                          function    code    public      144         76       89       94       95
+                                                                             36:4      168      174      175
+                                                                              176      186      187
+SendStringEOLRS232                 function    code    public       84       38:4
+SendStringRS232                    function    code    public       71       37:4
+T0                                      bit             ---      212:1  
+T1                                      bit             ---      211:1  
+T2CM                                    bit             ---      159:1  
+T2CON                                   sfr             ---       68:1  
+T2I0                                    bit             ---      161:1  
+T2I1                                    bit             ---      160:1  
+T2PS                                    bit             ---      154:1  
+T2R0                                    bit             ---      158:1  
+T2R1                                    bit             ---      157:1  
+TB80                                    bit             ---      224:1  
+TCON                                    sfr             ---       25:1  
+TF0                                     bit             ---      178:1  
+TF1                                     bit             ---      176:1  
+TF2                                     bit             ---      144:1  
+TH0                                     sfr             ---       29:1        123
+TH1                                     sfr             ---       30:1  
+TH2                                     sfr             ---       67:1  
+TI0                                     bit             ---      226:1  
+TL0                                     sfr             ---       27:1        122
+TL1                                     sfr             ---       28:1  
+TL2                                     sfr             ---       66:1  
+TMOD                                    sfr             ---       26:1  
+TR0                                     bit             ---      179:1        125      132
+TR1                                     bit             ---      177:1  
+TXD                                     bit             ---      215:1  
+WDT                                     bit             ---      188:1         77       90      106      128
+WDTREL                                  sfr             ---      124:1  
+WR                                      bit             ---      210:1  
+WaitAndReceiveRS232                function    code    public      102       39:4      158      161
+WaitAndReceiveTimeout              function    code    public      119       40:4
+XPAGE                                   sfr             ---       21:1  
+myStrLen                           function    code    extern    125:5         74       87
+timeout                                char   xdata    extern       43        124      127      133
+
+
+Errors: none
+Warnings: none
+Code size: 689
+Constant size: 0
+Static variable size: Data(0) Idata(0) Bit(0) Xdata(0) Pdata(0) Bdata(0)
+

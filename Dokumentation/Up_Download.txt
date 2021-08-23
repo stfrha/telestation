@@ -1,0 +1,55 @@
+	Download förfarande:
+
+	PC				TeleStation
+	#####################		#####################
+
+	0x1B ESC
+	0x44 'D' Download
+					0x4F 'O' Ok eller 0x45 'E' Error
+	Om 'O' mottaget:
+	0x46 'F' Filename
+För alla filer i TeleStation:
+					0x46 'F' Filename
+					Filnamn inkl nollterminering, max 13 tecken
+	0x46 'F' Filename
+Slut på filer:
+					0x44 'D' Done
+	0x53 'S' Send file
+	MSB filindex
+	LSB filindex
+					0x4C 'L' Length
+					MSB fillängd
+					    fillängd
+					    fillängd
+					LSB fillängd
+	0x4F 'O' Ok send now
+					Fildata (fillängd antal)
+					Checksum (en byte)
+					0x44 'D' Done
+Slut
+
+
+	Upload förfarande:
+
+	PC				TeleStation
+	#####################		#####################
+
+	0x1B ESC
+	0x55 'U' Upload
+					0x4F 'O' Ok eller 0x45 'E' Error
+	Om 'O' mottaget:
+	0x46 'F' Filename
+	Filnamn inkl nollterminering, max 13 tecken
+					0x4F 'O' Ok eller 0x45 'E' Error
+Loop:
+	0x4C 'L' Packetlength
+	Paketlängd-1 (en byte)
+					0x4F 'O' Ok eller 0x45 'E' Error
+	Ett paket (max 256 bytes)
+	Checksum (en byte)
+					0x4F 'O' Ok eller 0x45 'E' Error
+End loop
+	0x44 'D' Done
+Slut
+
+

@@ -1,0 +1,260 @@
+SECTION General
+KEY FileType "Intergraph VeriBest Analog Setup File"
+KEY ProjectFile ""
+ENDSECTION
+SECTION SummaryInfo
+LIST Comments
+ENDLIST
+KEY Title ""
+KEY Subject ""
+KEY Engineer ""
+KEY KeyWords ""
+ENDSECTION
+SECTION Options
+KEY DisplayUnnamedNets "False"
+KEY AutoViewResults "True"
+KEY DisplayRecentFiles "True"
+KEY NumRecentFiles "4"
+KEY AutoSaveEnable "True"
+KEY AutoSaveInterval "10"
+KEY SchematicStyle "Engineering"
+KEY SchematicPrecision "2"
+KEY SchematicDefStyle "SPICE"
+KEY SchematicDefPrecision "3"
+KEY CircuitStyle "SPICE"
+KEY CircuitPrecision "3"
+KEY CircuitDefStyle "SPICE"
+KEY CircuitDefPrecision "3"
+KEY AnalysisStyle "SPICE"
+KEY AnalysisPrecision "0"
+KEY AnalysisDefStyle "SPICE"
+KEY AnalysisDefPrecision "3"
+KEY TimeStyle "Scientific"
+KEY TimePrecision "3"
+KEY TimeDefStyle "SPICE"
+KEY TimeDefPrecision "3"
+KEY MapNetNames "False"
+KEY MapDeviceNames "True"
+KEY MapModelNames "True"
+KEY DesignCapturePath "desview -project=@ProjName"
+KEY ConnectivityExtractorPath "m_cdbc -project=@ProjName"
+KEY SimulatorPath "vbase @SpiFile -o @ApoFile -e @ApoFile"
+KEY ElaborateIsActive "True"
+KEY SimulationIsActive "True"
+KEY WaitOnSimulation "True"
+ENDSECTION
+SECTION Sources
+LIST SourceNames
+ENDLIST
+ENDSECTION
+SECTION VoltageMonitors
+LIST MonitorNames
+ENDLIST
+LIST AcEnabled
+ENDLIST
+LIST DcEnabled
+ENDLIST
+LIST TimeEnabled
+ENDLIST
+KEY MonitorAll "True"
+ENDSECTION
+SECTION CurrentMonitors
+LIST MonitorNames
+ENDLIST
+LIST AcEnabled
+ENDLIST
+LIST DcEnabled
+ENDLIST
+LIST TimeEnabled
+ENDLIST
+KEY MonitorAll "False"
+ENDSECTION
+SECTION PowerMonitors
+LIST MonitorNames
+ENDLIST
+LIST AcEnabled
+ENDLIST
+LIST DcEnabled
+ENDLIST
+LIST TimeEnabled
+ENDLIST
+KEY MonitorAll "False"
+ENDSECTION
+SECTION DcAnalysis
+KEY Enabled "False"
+KEY OperatingPoint "False"
+KEY StressAnalysis "False"
+KEY Sensitivity "False"
+KEY TransferFunction "False"
+KEY Param1Type "0"
+KEY Param1Name ""
+KEY Param1Parameter ""
+KEY Param1From "0"
+KEY Param1To "1"
+KEY Param1By "0.01"
+KEY Param1StepType "0"
+KEY Param2Type "0"
+KEY Param2Name ""
+KEY Param2Parameter ""
+KEY Param2From "0"
+KEY Param2To "1"
+KEY Param2By "0.01"
+KEY Param2StepType "0"
+KEY InputSource ""
+KEY OutputNode ""
+ENDSECTION
+SECTION DcSensitivity
+LIST Variables
+ENDLIST
+LIST DcSensitivityType
+ENDLIST
+ENDSECTION
+SECTION AcAnalysis
+KEY Enabled "False"
+KEY Sensitivity "False"
+KEY Distortion "False"
+KEY Noise "False"
+KEY StartFrequency "1"
+KEY StopFrequency "1000"
+KEY NumPoints "10"
+KEY SweepType "0"
+KEY LoadResistor ""
+KEY ReferencePowerLevel "0.001"
+KEY PrintoutInterval "0"
+KEY F2F1Ratio "0.9"
+KEY F2Amplitude "1"
+KEY OutputNode ""
+KEY IndependentSource ""
+KEY PrintFrequency "0"
+ENDSECTION
+SECTION AcSensitivity
+LIST Variables
+ENDLIST
+LIST Frequencies
+ENDLIST
+ENDSECTION
+SECTION TransientAnalysis
+KEY Enabled "False"
+KEY IcEnabled "False"
+KEY StressEnabled "False"
+KEY Start "0"
+KEY Stop "1E-007"
+KEY Step "1E-009"
+KEY MaxStepSize "0"
+KEY SaveToFile "False"
+KEY SaveToFileName ""
+KEY RestartFromFile "False"
+KEY RestartFromFileName ""
+ENDSECTION
+SECTION Loads
+LIST PositiveNodes
+ENDLIST
+LIST NegativeNodes
+ENDLIST
+LIST Types
+ENDLIST
+LIST Resistances
+ENDLIST
+LIST Inductances
+ENDLIST
+LIST Capacitances
+ENDLIST
+ENDSECTION
+SECTION Settings
+KEY Method "1"
+KEY AbsoluteDelta "0"
+KEY RelativeDelta "0.001"
+KEY CapacitorMin "1E-018"
+KEY DcMode "0"
+KEY TransientMode "0"
+KEY MOSChargeModel "0"
+KEY Bypass "False"
+KEY BJTSubcircuits "True"
+KEY UseSPICE "False"
+KEY JFETLimiting "False"
+KEY MESFETLimiting "False"
+KEY MOSFETLimiting "False"
+KEY IterationLimit "0"
+KEY TransientTotalLimit "0"
+KEY MaxPrintPoints "0"
+KEY MaxFuncLines "10000"
+KEY MESFETChannelLength "1"
+KEY MESFETChannelWidth "1"
+KEY MESFETParasiticResistanceFactorDrain "0"
+KEY MESFETParasiticResistanceFactorSource "0"
+KEY MESFETParasiticResistanceFactorGate "0"
+KEY MESFETParasiticResistanceFactorBulk "0"
+KEY MESFETAreaDrain "0"
+KEY MESFETAreaSource "0"
+KEY MESFETPeripheryDrain "0"
+KEY MESFETPeripherySource "0"
+KEY MOSFETChannelLength "0.0001"
+KEY MOSFETChannelWidth "0.0001"
+KEY MOSFETDiffusionAreaDrain "0"
+KEY MOSFETDiffusionAreaSource "0"
+KEY MOSFETPerimeterDrain "0"
+KEY MOSFETPerimeterSource "0"
+KEY MOSFETParasiticResistanceFactorDrain "0"
+KEY MOSFETParasiticResistanceFactorSource "0"
+KEY AccountingInfo "True"
+KEY OptionValues "False"
+KEY ModelParameters "False"
+KEY ConnectedElements "False"
+KEY NodeVoltages "False"
+KEY TotalNodeCapacitance "False"
+KEY EchoFiles "False"
+KEY Format "Scientific"
+KEY SignificantDigits "4"
+KEY ColumnWidth "80"
+KEY SuppressPageEjects "False"
+KEY DcAbsoluteCurrent "1E-012"
+KEY DcAbsoluteVoltage "1E-006"
+KEY RelativeVandI "0.001"
+KEY ChargeTolerance "1E-014"
+KEY MinimumConductance "1E-012"
+KEY FluxTolerance "1E-013"
+KEY AbsoluteCurrent "1E-012"
+KEY ConvergenceAbsoluteVoltage "1E-006"
+KEY ConvergenceRelativeVoltage "0.001"
+KEY BypassAbsoluteCurrent "1E-009"
+KEY BypassRelativeCurrent "0.001"
+KEY BypassAbsoluteVoltage "1E-006"
+KEY BypassRelativeVoltage "0.001"
+KEY NominalTemperature "27"
+ENDSECTION
+SECTION InitialSettings
+LIST Nodes
+ENDLIST
+LIST Voltages
+ENDLIST
+LIST Type
+ENDLIST
+KEY Enabled "False"
+KEY Temperature "1"
+KEY Iterations "1"
+ENDSECTION
+SECTION TempSweep
+LIST SweepNames
+ENDLIST
+KEY SweepEnabled "False"
+ENDSECTION
+SECTION ParamSweep
+LIST SweepNames
+ENDLIST
+KEY SweepEnabled "False"
+ENDSECTION
+SECTION Overrides
+LIST OverrideNames
+ENDLIST
+ENDSECTION
+SECTION StatisticalAnalysis
+KEY MonteCarlo "False"
+KEY WorstCase "False"
+KEY DevicesAreIndependent "False"
+KEY NumberOfRuns "100"
+KEY SeedValue "9999"
+ENDSECTION
+SECTION Distributions
+LIST DistributionNames
+ENDLIST
+ENDSECTION

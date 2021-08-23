@@ -1,0 +1,97 @@
+-! -------------------------------------------------------
+Fil:            $Id: Tele.xcl,v 1.5 2003/11/12 23:19:21 Gemensam Exp $
+
+Ändrad:         $Date: 2003/11/12 23:19:21 $
+
+Revisionshistoria:
+				$Log: Tele.xcl,v $
+				Revision 1.5  2003/11/12 23:19:21  Gemensam
+				All compile controlling files now produce exactly the same output as IAR project.
+				
+				Revision 1.4  2003/11/12 22:24:51  Gemensam
+				Fixed spelling error in XCL file
+				
+				Revision 1.3  2003/11/12 22:16:48  Gemensam
+				Created with IAR project as model.
+				
+				Revision 1.2  2003/11/10 22:44:45  Gemensam
+				Added header information
+				
+
+------------------------------------------------------- -!
+
+
+-! Source files -!
+Release\Obj\Calender.r03
+Release\Obj\DPot.r03
+Release\Obj\DTMF.r03
+Release\Obj\FileSystem.r03
+Release\Obj\Keyboard.r03
+Release\Obj\LCD.r03
+Release\Obj\LogFile.r03
+Release\Obj\main.r03
+Release\Obj\Phone.r03
+Release\Obj\PhoneAns.r03
+Release\Obj\rs232.r03
+Release\Obj\Timer.r03
+Release\Obj\wav.r03
+
+CL517STR.R03
+CL8051L.R03
+
+-! First: define CPU  -!
+-c8051
+
+-! If you have register independent code use: -D_R=0  -!
+-! (or 8,16,24) to choose the register bank used at startup -!
+-D_R=0
+
+-!  Setup "bit" segments (always zero if there is no need to reserve
+    bit variable space for some other purpose) -!
+-Z(BIT)C_ARGB,BITVARS=0
+
+-!  Setup "data" segments.  Start address may not be less
+    than start of register bank + 8.  Space must also
+    be left for interrupt functions with the "using" attribute. -!
+-Z(DATA)B_UDATA,B_IDATA,C_ARGD,D_UDATA,D_IDATA=20
+
+-!  Setup "idata" segments (usually loaded after "data") -!
+-Z(IDATA)C_ARGI,I_UDATA,I_IDATA,CSTACK
+
+-!  Setup "xdata" segments to the start address of external RAM.
+    Note that it starts from 1 since a pointer to address zero is regarded
+    as NULL.
+    Note that this declaration does no harm even if you use a memory
+    model that does not utilize external data RAM -!
+-Z(XDATA)P_UDATA,P_IDATA,C_ARGX,X_UDATA,X_IDATA,ECSTR,RF_XDATA,XSTACK=1-7FFF,F800  -! XRAM -!
+
+-!  Setup all read-only segments (PROM). Usually at zero -!
+-Z(CODE)INTVEC,RCODE,D_CDATA,B_CDATA,I_CDATA,P_CDATA,X_CDATA,C_ICALL,C_RECFN,CSTR,CCSTR,CODE,CONST=0-77FF
+-Z(CODE)HIGHCODE=8000-F7FF
+
+-!  See configuration section concerning printf/sprintf -!
+-e_medium_write=_formatted_write
+
+-!  See configuration section concerning scanf/sscanf -!
+-e_medium_read=_formatted_read
+
+-! Set output format to Intel standard, end with :00000001FF -!
+-FINTEL-STANDARD 
+-Y0 
+
+-! Use Segment overlap warnings (-z) to reduce segment 
+   overlap errors to warnings, making it possible to 
+   produce cross-reference maps, etc. -!
+-z 
+
+-! Create listing file with module map -!
+-l Release\List\Telestation8051.map
+-xms
+
+-! Set include path to precompiled libraries -!
+-I80C517A\LIB\
+
+-! Set the result file -!
+-o Release\Exe\Telestation8051.a03
+
+

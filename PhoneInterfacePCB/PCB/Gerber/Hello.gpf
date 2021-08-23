@@ -1,0 +1,83 @@
+.FILETYPE GerberPlotSetupFile
+.VERSION "VB99.0"
+.CREATOR "Expedition PCB Gerber Output"
+.DATE "Thursday, September 14, 2000 11:39 AM"
+
+.DataOffset 0 0
+.DataCopies 1 1
+ ..OriginOffset 0 0
+
+.DCodeToApertureFile "f:\\veribest\\2000\\VBExpPCB\\Config\\VBExpPCB\\GerberD-Codes.dac"
+.GerberMachineFormatFile "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Config\\GerberMachineFile1.gmf"
+
+.GerberOutputFile "Placement.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "F:\\SuperComputer\\PhoneInterfacePCB\\PCB\\Output\\Gerber\\Placement.gdo"
+ ..CellType Buried
+ ..CellType Connector
+ ..CellType DiscreteAxial
+ ..CellType DiscreteChip
+ ..CellType DiscreteOther
+ ..CellType DiscreteRadial
+ ..CellType EdgeConnector
+ ..CellType General
+ ..CellType Graphic
+ ..CellType ICBareDie
+ ..CellType ICBGA
+ ..CellType ICDIP
+ ..CellType ICFlipChip
+ ..CellType ICLCC
+ ..CellType ICOther
+ ..CellType ICPGA
+ ..CellType ICPLCC
+ ..CellType ICSIP
+ ..CellType ICSOIC
+ ..CellType Jumper
+ ..CellType Mechanical
+ ..CellType TestPoint
+ ..CellItemsSide Top
+   ...CellItem AssemblyOutline
+   ...CellItem AssemblyReferenceDesignator
+
+.GerberOutputFile "LayerTop.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "F:\\SuperComputer\\PhoneInterfacePCB\\PCB\\Output\\Gerber\\LayerTop.gdo"
+ ..ConductiveLayer 1
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsTest
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem ResistorAreas
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ProcessUnconnectedPads Yes
+
+.GerberOutputFile "LayerBott.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "F:\\SuperComputer\\PhoneInterfacePCB\\PCB\\Output\\Gerber\\LayerBott.gdo"
+ ..ConductiveLayer 2
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsTest
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem ResistorAreas
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ProcessUnconnectedPads Yes
+
+.GerberOutputFile "Holes.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "F:\\SuperComputer\\PhoneInterfacePCB\\PCB\\Output\\Gerber\\Holes.gdo"
+ ..ConductiveLayer 1
+   ...ConductiveItem ViaHoles
+ ..BoardItem MountingHoles
+ ..BoardItem PartHoles
+
+.GerberOutputFile "Border.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "F:\\SuperComputer\\PhoneInterfacePCB\\PCB\\Output\\Gerber\\Border.gdo"
+ ..BoardItem BoardOutline

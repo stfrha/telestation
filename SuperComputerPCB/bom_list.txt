@@ -1,0 +1,43 @@
+02/19/99 12:29:48                                     Electronics Design System                                            Page: 0001
+                                                          Bill of Materials
+                                <<<From Job:  H:\users\cce\frha\Privat\SuperComputer\SuperCptr.prj>>>
+                                                                  
+                                                           VeriBest, Inc.
+                                                                  
+                                                                  
+-------------------------------------------------------------------------------------------------------------------------------------
+ item |  qty |    vendor part number     | internal part |                description                |          references
+-------------------------------------------------------------------------------------------------------------------------------------
+
+    1 |    1 | AD7528_SOL20_50           | ZD1610/02/5/0 | No PDB description available              | U16
+    2 |    9 | CE9002_CWR11D             | CE9002/../... | No PDB description available              | C20-C28
+    3 |   19 | CK9001_C0805              | CK9001/.././0 | No PDB description available              | C1-C19
+    4 |    1 | CON_PB8302/104/0          | PB8302/104/0  | No PDB description available              | P10
+    5 |    1 | CON_PB8302/116/0          | PB8302/116/0  | No PDB description available              | P9
+    6 |    2 | CON_PB8302/303/0          | PB8302/303/0  | No PDB description available              | P11,P12
+    7 |    6 | CON_PB8302/304/0          | PB8302/304/0  | No PDB description available              | P3-P8
+    8 |    2 | CON_PB8302/306/0          | PB8302/306/0  | No PDB description available              | P15,P16
+    9 |    1 | CON_PB8302/307/0          | PB8302/307/0  | No PDB description available              | P13
+   10 |    2 | CON_PB8302/308/0          | PB8302/308/0  | No PDB description available              | P1,P2
+   11 |    1 | DAC8229_SOL20_50          | ZD1618/../5/0 | Dual 8-bit D/A Converter                  | U14
+   12 |    1 | HCT373_SOL20_50           | HCT373_SOL20_ | No PDB description available              | U13
+   13 |    1 | HC00_SO14_50              | ZD4601/../5/0 | 4 x 2-Input NAND-gate                     | U2
+   14 |    1 | HC32_SO14_50              | ZD4607/../5/0 | 4 x 2-Input OR-gate                       | U7
+   15 |    1 | HC138_SO16_50             | ZD4615/../5/0 | Decoder,BIN to 1 of 8                     | U10
+   16 |    2 | KM29N32000_TSOP40/44_0.8  | ZD2872/01     | Flash Memory                              | U8,U9
+   17 |    1 | MAX232_SO16_50            | 631925490     | No PDB description available              | U3
+   18 |    1 | MAX664_SO8_50             | ZC1107/12/0   | No PDB description available              | U15
+   19 |    1 | MAX814_SO8_50             | MAX814_SO8_50 | Supervisory Circuit                       | U1
+   20 |    1 | PB1046/016/0              | PB1046/016/0  | No PDB description available              | P14
+   21 |   16 | RM9003_R0805              | RM9003/./.... | Chip Resistor size 0805                   | R1-R16
+   22 |    1 | RV9003_J                  | RV9003/J/.../ | Trimpot 3224J                             | R18
+   23 |    1 | XX1053                    | XX1053/../0   | Crystal                                   | X2
+   24 |    1 | XX2016                    | XX2016/.../.  | No PDB description available              | X1
+   25 |    1 | X9241_SOL20_50            | X9241_SOL20_5 | Quad potentiometer                        | R17
+   26 |    2 | 28C256_SOL28_50           | ZD2865/.././0 | PROM 32k x 8-bit                          | U5,U6
+   27 |    1 | 80C517A_QFP100_25.6-3.2   | ZD6856/../205 | No PDB description available              | U4
+   28 |    1 | 7805_TO220                | ZC1039/03/3/0 | Voltage Regulator                         | U11
+   29 |    1 | 71256_SOLJ28_50           | ZD6022/../5/. | No PDB description available              | U12
+
+Total Parts Used: 80
+Total Parts Cost: 0

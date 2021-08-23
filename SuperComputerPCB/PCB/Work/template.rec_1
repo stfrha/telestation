@@ -1,0 +1,12 @@
+* Version 1.0: Started on Thursday, March 18, 1999 16:43:37
+* Current design file is: C:\veribest\VBExpPCB\templates\Central Library\LayoutTemplates\4 Layer Template\Work\template.rec
+*
+w 0 0 0 0 1 <147,61><936,671><-1,-1>
+*
+* Set Mouse Buttons For New Mapping
+c 0 33156
+v 0 2 template:1 <0, 0, 0, 0>, 0
+*
+* Exit
+c 0 57665
+* 

@@ -1,0 +1,28 @@
+
+
+
+	C D B C  -  CDB Compiler. Version 16.0.0.7
+	Copyright (c) VeriBest, Inc. 1998.
+
+
+--------------------
+command line passed in is:
+f:\veribest\2000\VBDC\Bin\cdbc.exe /flatten /noitc /project="F:\SuperComputer\PhoneInterfacePCB\PhoneInterfacePCB.prj"
+--------------------
+	Checking for design hierarchy changes...
+	.processing block F:\SuperComputer\PhoneInterfacePCB\design_definition\graphics\PhoneInterface.sbk ...
+	.reading page 1 ...
+	.writing ...
+	.processing block F:\SuperComputer\PhoneInterfacePCB\design_definition\graphics\DS1307.sbk ...
+	.reading page 1 ...
+	.writing ...
+
+	flattening the design ...
+WARNING block design_definition\graphics\PhoneInterface.sbk page 1, Pin VCC on Block DS13074: 
+	Global net +5V and global net VCC are shorted through pin VCC on DS13074
+	Moving all connections from net VCC to net +5V.
+
+	Design has 41 flat nets.
+
+Compiler finished, 0 error(s) and 1 warning(s) issued.
+

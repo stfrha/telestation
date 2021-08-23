@@ -1,0 +1,214 @@
+# Format, Version
+#
+# Author: VeriBest CAD GerbTool Aperture List Extractor
+#
+#    Shape     Width  Height Type Tool  Size Legend R90
+#
+# D101 - Round dia=1 off=0
+D101 Round     0.0010 0.0010 TH   1     0.0  0     0
+# D102 - Round dia=2 off=0
+D102 Round     0.0020 0.0020 TH   1     0.0  0     0
+# D103 - Round dia=3 off=0
+D103 Round     0.0030 0.0030 TH   1     0.0  0     0
+# D104 - Round dia=4 off=0
+D104 Round     0.0040 0.0040 TH   1     0.0  0     0
+# D105 - Round dia=5 off=0
+D105 Round     0.0050 0.0050 TH   1     0.0  0     0
+# D106 - Round dia=6 off=0
+D106 Round     0.0060 0.0060 TH   1     0.0  0     0
+# D107 - Round dia=7 off=0
+D107 Round     0.0070 0.0070 TH   1     0.0  0     0
+# D108 - Round dia=8 off=0
+D108 Round     0.0080 0.0080 TH   1     0.0  0     0
+# D109 - Round dia=9 off=0
+D109 Round     0.0090 0.0090 TH   1     0.0  0     0
+# D110 - Round dia=10 off=0
+D110 Round     0.0100 0.0100 TH   1     0.0  0     0
+# D111 - Round dia=11 off=0
+D111 Round     0.0110 0.0110 TH   1     0.0  0     0
+# D112 - Round dia=12 off=0
+D112 Round     0.0120 0.0120 TH   1     0.0  0     0
+# D113 - Round dia=13 off=0
+D113 Round     0.0130 0.0130 TH   1     0.0  0     0
+# D114 - Round dia=14 off=0
+D114 Round     0.0140 0.0140 TH   1     0.0  0     0
+# D115 - Round dia=15 off=0
+D115 Round     0.0150 0.0150 TH   1     0.0  0     0
+# D116 - Round dia=16 off=0
+D116 Round     0.0160 0.0160 TH   1     0.0  0     0
+# D117 - Round dia=17 off=0
+D117 Round     0.0170 0.0170 TH   1     0.0  0     0
+# D118 - Round dia=18 off=0
+D118 Round     0.0180 0.0180 TH   1     0.0  0     0
+# D119 - Round dia=19 off=0
+D119 Round     0.0190 0.0190 TH   1     0.0  0     0
+# D120 - Round dia=20 off=0
+D120 Round     0.0200 0.0200 TH   1     0.0  0     0
+# D121 - Round dia=22 off=0
+D121 Round     0.0220 0.0220 TH   1     0.0  0     0
+# D122 - Round dia=24 off=0
+D122 Round     0.0240 0.0240 TH   1     0.0  0     0
+# D123 - Round dia=26 off=0
+D123 Round     0.0260 0.0260 TH   1     0.0  0     0
+# D124 - Round dia=28 off=0
+D124 Round     0.0280 0.0280 TH   1     0.0  0     0
+# D125 - Round dia=30 off=0
+D125 Round     0.0300 0.0300 TH   1     0.0  0     0
+# D126 - Round dia=31 off=0
+D126 Round     0.0310 0.0310 TH   1     0.0  0     0
+# D127 - Round dia=33 off=0
+D127 Round     0.0330 0.0330 TH   1     0.0  0     0
+# D128 - Round dia=35 off=0
+D128 Round     0.0350 0.0350 TH   1     0.0  0     0
+# D129 - Round dia=37 off=0
+D129 Round     0.0370 0.0370 TH   1     0.0  0     0
+# D130 - Round dia=39 off=0
+D130 Round     0.0390 0.0390 TH   1     0.0  0     0
+# D131 - Round dia=40 off=0
+D131 Round     0.0400 0.0400 TH   1     0.0  0     0
+# D132 - Round dia=41 off=0
+D132 Round     0.0410 0.0410 TH   1     0.0  0     0
+# D133 - Round dia=43 off=0
+D133 Round     0.0430 0.0430 TH   1     0.0  0     0
+# D134 - Round dia=45 off=0
+D134 Round     0.0450 0.0450 TH   1     0.0  0     0
+# D135 - Round dia=47 off=0
+D135 Round     0.0470 0.0470 TH   1     0.0  0     0
+# D136 - Round dia=49 off=0
+D136 Round     0.0490 0.0490 TH   1     0.0  0     0
+# D137 - Round dia=50 off=0
+D137 Round     0.0500 0.0500 TH   1     0.0  0     0
+# D138 - Round dia=51 off=0
+D138 Round     0.0510 0.0510 TH   1     0.0  0     0
+# D139 - Round dia=53 off=0
+D139 Round     0.0530 0.0530 TH   1     0.0  0     0
+# D140 - Round dia=55 off=0
+D140 Round     0.0550 0.0550 TH   1     0.0  0     0
+# D141 - Round dia=57 off=0
+D141 Round     0.0570 0.0570 TH   1     0.0  0     0
+# D142 - Round dia=59 off=0
+D142 Round     0.0590 0.0590 TH   1     0.0  0     0
+# D143 - Round dia=60 off=0
+D143 Round     0.0600 0.0600 TH   1     0.0  0     0
+# D144 - Round dia=61 off=0
+D144 Round     0.0610 0.0610 TH   1     0.0  0     0
+# D145 - Round dia=63 off=0
+D145 Round     0.0630 0.0630 TH   1     0.0  0     0
+# D146 - Round dia=65 off=0
+D146 Round     0.0650 0.0650 TH   1     0.0  0     0
+# D147 - Round dia=67 off=0
+D147 Round     0.0670 0.0670 TH   1     0.0  0     0
+# D148 - Round dia=69 off=0
+D148 Round     0.0690 0.0690 TH   1     0.0  0     0
+# D149 - Round dia=70 off=0
+D149 Round     0.0700 0.0700 TH   1     0.0  0     0
+# D150 - Round dia=71 off=0
+D150 Round     0.0710 0.0710 TH   1     0.0  0     0
+# D151 - Round dia=73 off=0
+D151 Round     0.0730 0.0730 TH   1     0.0  0     0
+# D152 - Round dia=75 off=0
+D152 Round     0.0750 0.0750 TH   1     0.0  0     0
+# D153 - Round dia=77 off=0
+D153 Round     0.0770 0.0770 TH   1     0.0  0     0
+# D154 - Round dia=79 off=0
+D154 Round     0.0790 0.0790 TH   1     0.0  0     0
+# D155 - Round dia=80 off=0
+D155 Round     0.0800 0.0800 TH   1     0.0  0     0
+# D156 - Round dia=81 off=0
+D156 Round     0.0810 0.0810 TH   1     0.0  0     0
+# D157 - Round dia=83 off=0
+D157 Round     0.0830 0.0830 TH   1     0.0  0     0
+# D158 - Round dia=85 off=0
+D158 Round     0.0850 0.0850 TH   1     0.0  0     0
+# D159 - Round dia=87 off=0
+D159 Round     0.0870 0.0870 TH   1     0.0  0     0
+# D160 - Round dia=89 off=0
+D160 Round     0.0890 0.0890 TH   1     0.0  0     0
+# D161 - Round dia=90 off=0
+D161 Round     0.0900 0.0900 TH   1     0.0  0     0
+# D162 - Round dia=91 off=0
+D162 Round     0.0910 0.0910 TH   1     0.0  0     0
+# D163 - Round dia=94 off=0
+D163 Round     0.0940 0.0940 TH   1     0.0  0     0
+# D164 - Round dia=98 off=0
+D164 Round     0.0980 0.0980 TH   1     0.0  0     0
+# D165 - Round dia=100 off=0
+D165 Round     0.1000 0.1000 TH   1     0.0  0     0
+# D166 - Round dia=102 off=0
+D166 Round     0.1020 0.1020 TH   1     0.0  0     0
+# D167 - Round dia=106 off=0
+D167 Round     0.1060 0.1060 TH   1     0.0  0     0
+# D168 - Round dia=110 off=0
+D168 Round     0.1100 0.1100 TH   1     0.0  0     0
+# D169 - Round dia=114 off=0
+D169 Round     0.1140 0.1140 TH   1     0.0  0     0
+# D170 - Round dia=118 off=0
+D170 Round     0.1180 0.1180 TH   1     0.0  0     0
+# D171 - Round dia=122 off=0
+D171 Round     0.1220 0.1220 TH   1     0.0  0     0
+# D172 - Round dia=126 off=0
+D172 Round     0.1260 0.1260 TH   1     0.0  0     0
+# D173 - Round dia=130 off=0
+D173 Round     0.1300 0.1300 TH   1     0.0  0     0
+# D174 - Round dia=134 off=0
+D174 Round     0.1340 0.1340 TH   1     0.0  0     0
+# D175 - Round dia=138 off=0
+D175 Round     0.1380 0.1380 TH   1     0.0  0     0
+# D176 - Round dia=142 off=0
+D176 Round     0.1420 0.1420 TH   1     0.0  0     0
+# D177 - Round dia=146 off=0
+D177 Round     0.1460 0.1460 TH   1     0.0  0     0
+# D178 - Round dia=150 off=0
+D178 Round     0.1500 0.1500 TH   1     0.0  0     0
+# D179 - Round dia=154 off=0
+D179 Round     0.1540 0.1540 TH   1     0.0  0     0
+# D180 - Round dia=157 off=0
+D180 Round     0.1570 0.1570 TH   1     0.0  0     0
+# D181 - Round dia=161 off=0
+D181 Round     0.1610 0.1610 TH   1     0.0  0     0
+# D182 - Round dia=165 off=0
+D182 Round     0.1650 0.1650 TH   1     0.0  0     0
+# D183 - Round dia=169 off=0
+D183 Round     0.1690 0.1690 TH   1     0.0  0     0
+# D184 - Round dia=173 off=0
+D184 Round     0.1730 0.1730 TH   1     0.0  0     0
+# D185 - Round dia=177 off=0
+D185 Round     0.1770 0.1770 TH   1     0.0  0     0
+# D186 - Round dia=181 off=0
+D186 Round     0.1810 0.1810 TH   1     0.0  0     0
+# D187 - Round dia=185 off=0
+D187 Round     0.1850 0.1850 TH   1     0.0  0     0
+# D188 - Round dia=189 off=0
+D188 Round     0.1890 0.1890 TH   1     0.0  0     0
+# D189 - Round dia=193 off=0
+D189 Round     0.1930 0.1930 TH   1     0.0  0     0
+# D190 - Round dia=197 off=0
+D190 Round     0.1970 0.1970 TH   1     0.0  0     0
+# D191 - Round dia=207 off=0
+D191 Round     0.2070 0.2070 TH   1     0.0  0     0
+# D192 - Round dia=217 off=0
+D192 Round     0.2170 0.2170 TH   1     0.0  0     0
+# D193 - Round dia=226 off=0
+D193 Round     0.2260 0.2260 TH   1     0.0  0     0
+# D194 - Round dia=236 off=0
+D194 Round     0.2360 0.2360 TH   1     0.0  0     0
+# D195 - Round dia=246 off=0
+D195 Round     0.2460 0.2460 TH   1     0.0  0     0
+# D196 - Round dia=256 off=0
+D196 Round     0.2560 0.2560 TH   1     0.0  0     0
+# D197 - Round dia=266 off=0
+D197 Round     0.2660 0.2660 TH   1     0.0  0     0
+# D198 - Round dia=276 off=0
+D198 Round     0.2760 0.2760 TH   1     0.0  0     0
+# D199 - Round dia=285 off=0
+D199 Round     0.2850 0.2850 TH   1     0.0  0     0
+# D200 - Round dia=295 off=0
+D200 Round     0.2950 0.2950 TH   1     0.0  0     0
+# D210 - Rectangle off=0
+D210 Rectangle 0.0100 0.0100 TH   1     0.0  0     0
+# D220 - Rectangle off=0
+D220 Rectangle 0.0200 0.0200 TH   1     0.0  0     0
+# D230 - Rectangle off=0
+D230 Rectangle 0.0300 0.0300 TH   1     0.0  0     0
+# D240 - Rectangle off=0
+D240 Rectangle 0.0400 0.0400 TH   1     0.0  0     0

@@ -1,0 +1,336 @@
+.FILETYPE GerberPlotSetupFile
+.VERSION "VB99.0"
+.CREATOR "Expedition PCB Gerber Output"
+.DATE "Wednesday, November 24, 1999 03:32 PM"
+
+.DataOffset 0 0
+.DataCopies 1 1
+ ..OriginOffset 0 0
+
+.DCodeToApertureFile "d:\\veribest\\VBExpPCB\\Config\\VBExpPCB\\GerberD-Codes.dac"
+.GerberMachineFormatFile "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Config\\GerberMachineFile1.gmf"
+
+.GerberOutputFile "Solder Paste Secondary.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Solder Paste Secondary.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..ConductiveLayer 12
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ProcessUnconnectedPads Yes
+ ..BoardItem BoardOutline
+ ..BoardItem SolderpasteBottom
+ ..BoardItem SolderpasteTop
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Bottom Solder Paste"
+
+.GerberOutputFile "Solder Paste Primary.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Solder Paste Primary.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..ConductiveLayer 1
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ProcessUnconnectedPads Yes
+ ..BoardItem BoardOutline
+ ..BoardItem SolderpasteTop
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Top Solder Paste"
+
+.GerberOutputFile "Solder Mask Secondary.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Solder Mask Secondary.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..ConductiveLayer 12
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsTest
+   ...ConductiveItem PartPadsThru
+   ...ProcessUnconnectedPads Yes
+ ..BoardItem SoldermaskBottom
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Bottom Solder Mask"
+
+.GerberOutputFile "Solder Mask Primary.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Solder Mask Primary.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..ConductiveLayer 1
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsTest
+   ...ConductiveItem PartPadsThru
+   ...ProcessUnconnectedPads Yes
+ ..BoardItem SoldermaskTop
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Top Solder Mask"
+
+.GerberOutputFile "Placement Secondary.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Placement Secondary.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..BoardItem BoardOutline
+ ..BoardItem MountingHoles
+ ..CellType Buried
+ ..CellType Connector
+ ..CellType DiscreteAxial
+ ..CellType DiscreteChip
+ ..CellType DiscreteOther
+ ..CellType DiscreteRadial
+ ..CellType EdgeConnector
+ ..CellType General
+ ..CellType Graphic
+ ..CellType ICBareDie
+ ..CellType ICBGA
+ ..CellType ICDIP
+ ..CellType ICFlipChip
+ ..CellType ICLCC
+ ..CellType ICOther
+ ..CellType ICPGA
+ ..CellType ICPLCC
+ ..CellType ICSIP
+ ..CellType ICSOIC
+ ..CellType Jumper
+ ..CellType Mechanical
+ ..CellType TestPoint
+ ..CellItemsSide Bottom
+   ...CellItem AssemblyOutline
+   ...CellItem AssemblyReferenceDesignator
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Bottom Assembly"
+
+.GerberOutputFile "Placement Primary.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Placement Primary.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..BoardItem BoardOutline
+ ..BoardItem MountingHoles
+ ..CellType Buried
+ ..CellType Connector
+ ..CellType DiscreteAxial
+ ..CellType DiscreteChip
+ ..CellType DiscreteOther
+ ..CellType DiscreteRadial
+ ..CellType EdgeConnector
+ ..CellType General
+ ..CellType Graphic
+ ..CellType ICBareDie
+ ..CellType ICBGA
+ ..CellType ICDIP
+ ..CellType ICFlipChip
+ ..CellType ICLCC
+ ..CellType ICOther
+ ..CellType ICPGA
+ ..CellType ICPLCC
+ ..CellType ICSIP
+ ..CellType ICSOIC
+ ..CellType Jumper
+ ..CellType Mechanical
+ ..CellType TestPoint
+ ..CellItemsSide Top
+   ...CellItem AssemblyOutline
+   ...CellItem AssemblyReferenceDesignator
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Top Assembly "
+
+.GerberOutputFile "Mechanical Drawing.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Mechanical Drawing.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..BoardItem BoardOutline
+ ..BoardItem DrillDrawingThru
+ ..UserLayer "A3 Ritn Ram EP 1"
+ ..UserLayer "Drill Drawing 2"
+ ..UserLayer "User Dimension 1"
+
+.GerberOutputFile "Layer9.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Layer9.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..ConductiveLayer 9
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ProcessUnconnectedPads Yes
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Layer 9"
+
+.GerberOutputFile "Layer8.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Layer8.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..ConductiveLayer 8
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ProcessUnconnectedPads Yes
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Layer 8"
+
+.GerberOutputFile "Layer7.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Layer7.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..ConductiveLayer 7
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ProcessUnconnectedPads Yes
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Layer 7"
+
+.GerberOutputFile "Layer6.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Layer6.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..ConductiveLayer 6
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ProcessUnconnectedPads Yes
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Layer 6"
+
+.GerberOutputFile "Layer5.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Layer5.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..ConductiveLayer 5
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ProcessUnconnectedPads Yes
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Layer 5"
+
+.GerberOutputFile "Layer4.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Layer4.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..ConductiveLayer 4
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ProcessUnconnectedPads Yes
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Layer 4"
+
+.GerberOutputFile "Layer3.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Layer3.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..ConductiveLayer 3
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ProcessUnconnectedPads Yes
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Layer 3"
+
+.GerberOutputFile "Layer2.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Layer2.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..ConductiveLayer 2
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ProcessUnconnectedPads Yes
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Layer 2"
+
+.GerberOutputFile "Layer12.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Layer12.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..ConductiveLayer 12
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ProcessUnconnectedPads Yes
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Layer 12"
+
+.GerberOutputFile "Layer11.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Layer11.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..ConductiveLayer 11
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ProcessUnconnectedPads Yes
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Layer 11"
+
+.GerberOutputFile "Layer10.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Layer10.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..ConductiveLayer 11
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ProcessUnconnectedPads Yes
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Layer 10"
+
+.GerberOutputFile "Layer1.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Output\\Gerber\\Layer1.gdo"
+ ..ApertureCorrelationFile "D:\\AAA\\Europa\\Europa\\Config\\perfag.acf"
+ ..ConductiveLayer 1
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ProcessUnconnectedPads Yes
+ ..UserLayer "A4 Rubrik MF"
+ ..UserLayer "User Layer 1"

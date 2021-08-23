@@ -1,0 +1,27 @@
+--------------------
+command line:
+WINPLOT.EXE "/PROJECT=F:\SuperComputer\SuperCptr.prj" /SCALE=FIT "F:\SuperComputer\SuperCptr.sbk(1)"
+--------------------
+
+	W I N P L O T - generate plots from schematics. Version 14.6.0.1
+		  Copyright (c) Intergraph 1995.
+
+	..reading project file
+	..reading system parameter file
+	..reading user parameter file
+	..reading font file
+	..reading plotter control file
+WYSIWYG plotting is on
+
+	..scaling circuit(s) to fit paper.
+
+		load
+**** Instance info for sheet (01;60) not found in block 'F:\SuperComputer\SuperCptr.sbk'.
+*** Plotting block without instance info
+ed sheet F:\SuperComputer\SuperCptr.sbk(01;60)	(scale=0.342)
+
+			..cells .............
+			..transitions
+			..wires
+			..subnet text, ..loose text, ..loose gfx, ..done
+Plot utility program completed

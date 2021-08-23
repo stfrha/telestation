@@ -1,0 +1,50 @@
+SECTION Main
+KEY Map_Device_Names "True"
+KEY Map_Net_Names "False"
+KEY Map_Model_Names "True"
+KEY Root_Block_Name "_SpeakerPower"
+ENDSECTION
+SECTION Blocks
+LIST Block_Names
+VALUE "_SpeakerPower"
+ENDLIST
+ENDSECTION
+SECTION Block___SpeakerPower
+LIST Devices
+VALUE "XCMP1"
+VALUE "XCMP2"
+VALUE "XCMP3"
+VALUE "XCMP4"
+VALUE "XCMP5"
+VALUE "XCMP6"
+VALUE "VCC"
+VALUE "VEE"
+VALUE "VIN"
+ENDLIST
+KEY XCMP1__Map_Name "XXCMP1"
+KEY XCMP1__Def "False"
+KEY XCMP2__Map_Name "QXCMP2"
+KEY XCMP2__Def "False"
+KEY XCMP3__Map_Name "RXCMP3"
+KEY XCMP3__Def "False"
+KEY XCMP4__Map_Name "RXCMP4"
+KEY XCMP4__Def "False"
+KEY XCMP5__Map_Name "RXCMP5"
+KEY XCMP5__Def "False"
+KEY XCMP6__Map_Name "RXCMP6"
+KEY XCMP6__Def "False"
+KEY VCC__Map_Name "VVCC"
+KEY VCC__Def "False"
+KEY VEE__Map_Name "VVEE"
+KEY VEE__Def "False"
+KEY VIN__Map_Name "VVIN"
+KEY VIN__Def "False"
+ENDSECTION
+SECTION Models
+LIST Model_Names
+VALUE "_OPAMPPNPD"
+VALUE "MM3904"
+ENDLIST
+KEY _OPAMPPNPD__Map_Name "__OPAMPPNPD"
+KEY MM3904__Map_Name "_MM3904"
+ENDSECTION

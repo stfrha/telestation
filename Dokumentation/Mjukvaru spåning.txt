@@ -1,0 +1,109 @@
+Hur skall den användas?
+
+Kopplad till terminal skall man kunna ge kommandon. Tangenttryckningar skall ekas till lokal skärm och till extern terminal.
+
+>playfile meddelande.wav
+
+>dispfile gubbe.bmp
+
+>prewritten_script.bat
+
+>set p1.2
+
+>get p2.5
+p2.5 = '1'
+
+>get p2
+p2 = "01001011" = 0x4B = 75
+
+Exempel på skriptfil (recfile.bat) som spelar in ett ljud till en fil:
+>
+>wait p1.2=1
+>
+>loopfile beep.wav until p1.2=0
+>
+>recstart [1] 30000
+>
+>wait p1.3=1
+>
+>recend
+>
+
+Denna fil skulle användas på följande sätt:
+
+> recfile message.wav
+
+Skilj på kommandon och skript.
+
+Kommandon ligger i ROM. Inga kommandon kan laddas ner till RAM. Kommandon skall kunna läsa parametrar och systemvariabler. Kommandon skall kunna skriva till systemvariabler. Systemvariabler definieras i ROM men hämtar startvärden från en startup fil typ "autoexec.bat".
+
+
+Filsystem:
+
+Filer skall kunna laddas ner, laddas upp, skapas automatiskt, förlängas och tas bort.
+
+8+3 tecken + terminatornolla. "12345678.wav" är 12 tecken. En filstartadress är 2 bytes. En filtabell finns på en bestämd adress (000000h) i FLASH-minnet. Ett fördefinierat antal filer kan sparas. Filtabellen är 3 pages (=96 filer).
+En fil tar minst upp en page. En page är 512 bytes. Varje page slutar med adress till nästa page för den filen eller kod för slut på filen. Det måste gå att skriva och läsa en fil i en följd utan att 
+
+Olika typer av filer:
+
+	Typ				Attribut			Kommentar
+	Läsfil				Start, Längd			
+	Skrivfil oneshot		Start, Längd	 		När en fil öppnad som oneshot stängs kan 
+									den inte skrivas till längre utan blir en 
+									läsfil och Maxsize sätts till Längd
+	Skrivfil predecided size	Start, Maxsize			Kan skrivas till flera gånger. När man försöker
+									skriva mer data än maxsize skrivs inget mer. 									Längden på denna typ av fil kan bara extraheras
+									fram eftersom oskrivet data innehåller 0xFF.
+
+Skrivfiler kan öppnas som läsfiler om man vill.
+
+Öppna fil:
+
+FileId = OpenFile TestFile.txt -wo -wp -r [MAXSIZE]
+
+Om -wo används får inte filen existera. Om -wp används och filen inte existerar måste parametern MAXSIZE (antal bytes decimalt) skickas med. Om filen inte existerar när -wp används skapas den. Om filen existerar ignoreras en sådan parameter. En fils MAXSIZE kan inte ändras när den har skapats.
+
+FileID är indexnummer som pekar på en data struktur som skapas när en fil öppnas. I internminnet finns en filindex- tabell. Den består av adresser till fileinfopacket's. Fileinfopackets är packet som innehåller information om filens status. Ett fileinfopacket skapas när en fil öppnas. Informationen till fileinfopacket hämtas från filecat och filen i sig. "Filecat" är en fil av typen "predecided size" som innehåller startaddress för varje lagrad fil.
+
+Filecatpacket:
+	Filename	(12 bytes)
+	Startaddress
+
+File:
+	Length (= maxsize om filen är av type "predefined size")
+	Mode	"oneshot"/"predecided size"
+	Data
+	0xFF 0xFF 0xFF ...
+
+Fileinfopacket:
+	Startaddress		Hämtas från filecat.
+	Length			Hämtas från filen i sig.
+	Mode = read/write 	Hämtas från filen i sig.
+	Position		Nollställs vid filens öppnande.
+
+Fileindextable:
+	Adress till fil med index 1
+	Adress till fil med index 2
+	....
+
+Summering:
+
+En fil skapas med kommandot: 
+
+>
+>FileID=OpenFile Goddag.txt -wo
+>
+
+Extrahera fram första lediga plats i FLASH-minnet ur senaste "entriet" i "filecat" och den senast skapade filen. Denna adress kallas här "startaddress". Skriv nytt "entry" i "filecat" med "startaddress" och filnamn. Öppna FLASH-minnet för skrivning på "startaddress" + x bytes. Skapa minne för ett nytt "filinfopacket". Spara info i packetet. Skriv nytt entry i "fileindextable". Retunera filindex.
+
+
+Funktioner och Procedurer:
+
+Filsystem:
+	Openfile
+
+
+
+
+

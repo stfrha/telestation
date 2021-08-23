@@ -1,0 +1,20 @@
+Bygg ett träd:
+
+*	Börja från start-labeln med departure
+*	Vid grenval används samma ordning som TRANSITION-TYPE
+	(detta ger alltid default instruktionen omedelbart efter)
+*	Bygg rekursivt tills en instruktion som redan är byggd påträffas.
+
+
+När kan man slippa en label?
+
+*	När en instruktion endast har ett transition till sig och denna är:
+	1.	av typen TT_DEFAULT
+	eller
+	2.	
+
+När kan man slippa ett GOTO?
+
+*	När GOTO-satsen pekar på instruktionen omedelbart efter.
+
+

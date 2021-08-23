@@ -1,0 +1,39 @@
+#-- Synplicity, Inc.
+#-- Synplify version 5.3.1
+#-- Project file F:\SuperComputer\CPUPldProj\CPUPLD\Default\synthesis\XC9536.prj
+#-- Written on Mon Sep 11 07:41:17 2000
+
+#device options
+set_option -technology XC9500
+set_option -part XC9536
+set_option -package PC44
+set_option -speed_grade -5
+
+#add_file options
+add_file -vhdl -lib work "W:\\synplcty\\LIB\\xilinx\\xc4000.vhd"
+add_file -vhdl -lib UNISIM "W:\\Xilinx\\vhdl\\src\\unisims\\unisim_VCOMP.vhd"
+add_file -vhdl -lib work "F:\\SuperComputer\\CPUPldProj\\CPUPLD\\design_definition\\hdl\\vhdl\\XC9536.vhd"
+
+#compilation/mapping options
+set_option -default_enum_encoding sequential
+set_option -symbolic_fsm_compiler true
+set_option -resource_sharing true
+
+#map options
+set_option -frequency 100.000
+set_option -fanout_limit 100
+set_option -maxfan_hard false
+set_option -disable_io_insertion false
+
+#simulation options
+set_option -write_vhdl true
+set_option -write_vhdl true
+
+#automatic place and route (vendor) options
+set_option -write_apr_constraint true
+
+#MTI Cross Probe options
+set_option -mti_root ""
+
+#set result format/file last
+project -result_file "f:/supercomputer/cpupldproj/cpupld/default/place_and_route/xilinxm1/xc9536.edf"

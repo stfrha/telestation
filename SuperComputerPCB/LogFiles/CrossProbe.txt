@@ -1,0 +1,6 @@
+VERIBEST INC.
+Cross Probe Log
+Date: Thursday 03/18/99  Time: 16:42:18
+
+XPDAEMON - RELEASE NAME=01.981129.00
+Schematic called for in VBDC project file does not exist

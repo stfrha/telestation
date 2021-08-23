@@ -1,0 +1,77 @@
+Detta är en instruktion för att lägga till en ny funktion i CAnsweringScript klassen.
+
+Denna har inte verifierats och kan därför visa sig vara inkomplett.
+
+I Resource editor
+-----------------
+*	Rita en ny bitmap och döp den till något (ex IDB_NYBM)
+*	Lägg till en motsv toolbar i IDR_SCRIPT_TOOLS, döp den till exempelvis: ID_SCRIPT_NEW_FUNC
+*	Lägg till samma ID i menyn: IDR_ANSWERSCRIPTTYPE, Script->Place object
+
+I TeleStation.cpp
+-----------------
+*	Deklarera en global instans av CBitmap (exempelvis nyBM) i början av TeleStation.cpp
+*	Lägg till "nyBM.LoadBitmap(IDB_NYBM);" i InitInstance i klassen CTeleStationApp
+
+I AnswerScriptDoc.h
+-------------------
+*	Definiera en ny objekttyp enl (lägg till ny i slutet av listan och öka värdet med ett):
+	#define	OT_NEW_FUNC  0xXX
+
+I AnswerScriptDoc.cpp
+---------------------
+*	Deklarera en global referens till nyBM som deklarerades globalt i TeleStation.cpp
+*	Skapa en Transition list enligt nedanstående exempel:
+	      int NewFuncTransList[] = {TTI_1, TTI_0, TTI_0, TTI_0, TTI_0, TTI_0, TTI_0, 
+					TTI_0, TTI_0, TTI_0, TTI_0, TTI_0, TTI_0, TTI_0, 
+					TTI_0, TTI_0, TTI_0, TTI_0, TTI_0};
+*	Om en speciell dialog skall användas för egenskaper av objektet skall den definieras.
+	-	Rita en ny dialog i Resource editorn
+	-	Lägg till (exempelvis): "#include "NewFuncDlg.h" i början på AnswerScriptDoc.cpp
+*	I CAnswerScriptDoc::OnObjectProp() skall, om ingen ny egenskapsdialog behövs, en CASE-rad
+	infogas i så att rätt egenskapsdialog används. Annars får en ny (egen) CASE-rad definiera
+	hur den nya egenskapsdialogen skall kallas.
+*	I CAnswerScriptDoc::AskForTransitionType(CScriptObject* srcObj) läggs följande rader till (exempel):
+		case OT_NEW_FUNC:
+			defaultFlag = NewFuncTransList;
+			break;
+*	I CScriptObject::CScriptObject(CPoint startPoint, int objectType, int identity) läggs följande till:
+	case OT_NEW_FUNC:
+		nyBM.GetBitmap(&tmpBM);
+		break;
+*	I CScriptObject::DrawObject( CDC* dc ) läggs följande till:
+	case OT_NEW_FUNC:
+		pbmOld = dcMem.SelectObject(&nyBM);
+		break;
+*	Speciella objekttyper kan behöva ritas annorlunda, detta görs i så fall i CScriptObject::DrawObject( CDC* dc )
+
+I AnswerScriptView.cpp
+----------------------
+*	Använd ClassWizard (eller likn) för att hantera meddelandet ID_SCRIPT_NEW_FUNC, lägg till följande i den nya
+	medlemsfunktionen: 	OnObjectNew(OT_NEW_FUNC);
+
+
+
+
+
+Om en ny Transition type också måste skapas så måste även följande göras:
+
+I TeleStation.cpp
+-----------------
+*	Lägg till följande rad EFTER alla liknande rader:
+	TransTypeStrings.Add("Beskrivning av Transition");
+
+
+I AnswerScriptDoc.h
+-------------------
+*	Ändra raden "#define NUM_TRANS_TYPE	[n]" till "#define NUM_TRANS_TYPE	[n+1]"
+*	Lägg till en definition på den nya transition type:en enl:
+	#define TT_NEW_TRANS	0xm, där m är ett större än senaste TT
+
+I AnswerScriptDoc.cpp
+---------------------
+*	Lägg till en TTI_0 eller TTI_1 i slutet på ALLA TransList:ar. TTI_1 betyder att objekt kan
+	hantera Transitions av den nya typen.
+
+
+

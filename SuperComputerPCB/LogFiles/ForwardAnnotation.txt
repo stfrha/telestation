@@ -1,0 +1,1767 @@
+
+                               Forward Annotation
+                               ------------------
+
+                         02:19 PM Friday, June 04, 1999
+         Job Name: H:\users\cce\frha\Privat\SuperComputer\SuperCmp2.pcb
+
+
+     Version:  99.00.04
+
+     The schematic source is a Common Data Base.
+
+     The AllowAlphaRefDes status indicates that reference
+      designators containing all alpha characters should be deleted
+      and the relevant symbols repackaged.
+
+     The PDBs listed in the project file will be searched to satisfy the parts
+      requirements of the CDB only for parts not already found in the
+      Target PDB.
+
+     The FLATNETNAMEs status indicates that the present set
+      of schematic netnames should be used to update the
+      FLATNETNAMEs.
+
+     The present Common DataBase is up to date with the schematic
+      source files.
+
+     Common Data Base has been read
+
+     Target PDB Name: Work\Layout_Temp\PartsDB.pdb
+
+     Number of Part Numbers: 29
+          Part Numb: CE9002_CWR11D -> Vend Part:  
+          Part Numb: CON_PB8302/104/0 -> Vend Part:  
+          Part Numb: CON_PB8302/116/0 -> Vend Part:  
+          Part Numb: CON_PB8302/308/0 -> Vend Part:  
+          Part Numb: CON_PB8302/304/0 -> Vend Part:  
+          Part Numb: XX1053 -> Vend Part:  
+          Part Numb: X9241_SOL20_50 -> Vend Part:  
+          Part Numb: 71256_SOLJ28_50 -> Vend Part:  
+          Part Numb: 7805_TO220 -> Vend Part:  
+          Part Numb: RV9003_J -> Vend Part:  
+          Part Numb: CON_PB8302/306/0 -> Vend Part:  
+          Part Numb: HCT373_SOL20_50 -> Vend Part:  
+          Part Numb: PB1046/016/0 -> Vend Part:  
+          Part Numb: CON_PB8302/303/0 -> Vend Part:  
+          Part Numb: CON_PB8302/307/0 -> Vend Part:  
+          Part Numb: AD7528_SOL20_50 -> Vend Part:  
+          Part Numb: MAX664_SO8_50 -> Vend Part:  
+          Part Numb: DAC8229_SOL20_50 -> Vend Part:  
+          Part Numb: MAX232_SO16_50 -> Vend Part:  
+          Part Numb: MAX814_SO8_50 -> Vend Part:  
+          Part Numb: XX2016 -> Vend Part:  
+          Part Numb: HC00_SO14_50 -> Vend Part:  
+          Part Numb: 80C517A_QFP100_25.6-3.2 -> Vend Part:  
+          Part Numb: RM9003_R0805 -> Vend Part:  
+          Part Numb: CK9001_C0805 -> Vend Part:  
+          Part Numb: HC138_SO16_50 -> Vend Part:  
+          Part Numb: KM29N32000_TSOP40/44_0.8 -> Vend Part:  
+          Part Numb: HC32_SO14_50 -> Vend Part:  
+          Part Numb: 28C256_SOL28_50 -> Vend Part:  
+
+     Number of Part Names: 0
+
+     Number of Part Labels: 0
+
+
+     Checking for value differences between symbol properties and PDB properties
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP1: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = <NO_DESCRIP>
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP1: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = MAX814
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP1: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = MAX814_SO8_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP157: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = 4 x 2-Input NAND-gate
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP157: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HC00_SO14_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP157: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = HC00
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP156: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = 4 x 2-Input NAND-gate
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP156: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HC00_SO14_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP156: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = HC00
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP155: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = 4 x 2-Input NAND-gate
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP155: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HC00_SO14_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP155: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = HC00
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP137: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = 4 x 2-Input NAND-gate
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP137: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = HC00
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP137: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HC00_SO14_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP7: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = HC00
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP7: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HC00_SO14_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP6: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = HC00
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP6: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HC00_SO14_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP18: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = XX2016
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP18: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = XX2016
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP17: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = XX2016
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP17: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = XX2016
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP16: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = Oscillator
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP16: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = XX2016
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP16: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = XX2016
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP110: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = MAX232
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP110: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = MAX232_SO16_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP21: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = MAX232_SO16_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP21: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = MAX232
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP20: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = MAX232_SO16_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP20: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = MAX232
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP23: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = <NO_DESCRIP>
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP23: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = 80C517A
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP23: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = 80C517A_QFP100_25.6-3.2
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP22: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = <NO_DESCRIP>
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP22: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = 80C517A
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP22: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = 80C517A_QFP100_25.6-3.2
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP312: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP312: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP311: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP311: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP278: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP278: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP274: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP274: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP271: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP271: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP267: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP267: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP253: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP253: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP244: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP244: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP243: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP243: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP242: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP242: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP240: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP240: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP239: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP239: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP196: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP196: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP189: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP189: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP185: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP185: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP74: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP74: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP70: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP70: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP69: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP69: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP68: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP68: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP67: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP67: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP30: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CK9001_C0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP30: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CK9001_0805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP280: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RM9003
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP280: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RM9003_R0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP279: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RM9003
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP279: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RM9003_R0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP277: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RM9003_R0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP277: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RM9003
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP276: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RM9003
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP276: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RM9003_R0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP273: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RM9003
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP273: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RM9003_R0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP41: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RM9003_R0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP41: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RM9003
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP40: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RM9003_R0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP40: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RM9003
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP39: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RM9003_R0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP39: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RM9003
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP38: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RM9003
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP38: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RM9003_R0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP37: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RM9003
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP37: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RM9003_R0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP36: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RM9003_R0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP36: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RM9003
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP35: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RM9003
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP35: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RM9003_R0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP34: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RM9003
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP34: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RM9003_R0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP33: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RM9003
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP33: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RM9003_R0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP32: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RM9003
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP32: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RM9003_R0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP31: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RM9003
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP31: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RM9003_R0805
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP191: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = 28C256
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP191: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = 28C256_SOL28_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP190: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = 28C256
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP190: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = 28C256_SOL28_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP131: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = 28C256
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP131: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = 28C256_SOL28_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP90: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = 28C256_SOL28_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP90: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = 28C256
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP89: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = 28C256_SOL28_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP89: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = 28C256
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP88: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = 28C256_SOL28_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP88: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = 28C256
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP119: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = 4 x 2-Input OR-gate
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP119: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = HC32
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP119: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HC32_SO14_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP118: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = 4 x 2-Input OR-gate
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP118: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = HC32
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP118: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HC32_SO14_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP117: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = 4 x 2-Input OR-gate
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP117: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = HC32
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP117: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HC32_SO14_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP116: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = 4 x 2-Input OR-gate
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP116: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = HC32
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP116: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HC32_SO14_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP96: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HC32_SO14_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP96: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = HC32
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP95: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HC32_SO14_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP95: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = HC32
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP309: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = <NO_DESCRIP>
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP309: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = KM29N32000_TSOP40/44_0.8
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP309: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = KM29N32000
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP308: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = <NO_DESCRIP>
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP308: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = KM29N32000
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP308: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = KM29N32000_TSOP40/44_0.8
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP310: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = <NO_DESCRIP>
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP310: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = KM29N32000
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP310: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = KM29N32000_TSOP40/44_0.8
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP307: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = <NO_DESCRIP>
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP307: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = KM29N32000
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP307: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = KM29N32000_TSOP40/44_0.8
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP193: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = <NO_DESCRIP>
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP193: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = KM29N32000_TSOP40/44_0.8
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP193: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = KM29N32000
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP108: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = <NO_DESCRIP>
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP108: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = KM29N32000_TSOP40/44_0.8
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP108: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = KM29N32000
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP109: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = <NO_DESCRIP>
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP109: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = KM29N32000_TSOP40/44_0.8
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP109: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = KM29N32000
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP107: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = <NO_DESCRIP>
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP107: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = KM29N32000
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP107: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = KM29N32000_TSOP40/44_0.8
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP195: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HC138_SO16_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP195: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = HC138
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP194: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HC138_SO16_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP194: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = HC138
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP120: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = Decoder,BIN to 1 of 8
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP120: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = HC138
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP120: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HC138_SO16_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP225: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/308/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP225: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/308/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP186: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/308/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP186: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/308/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP302: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/304/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP302: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/304/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP283: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/304/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP283: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/304/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP224: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/304/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP224: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/304/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP223: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/304/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP223: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/304/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP188: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/304/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP188: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/304/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP187: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/304/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP187: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/304/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP216: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/116/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP216: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/116/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP215: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/116/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP215: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/116/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP214: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/116/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP214: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/116/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP213: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/116/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP213: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/116/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP212: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/116/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP212: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/116/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP211: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/116/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP211: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/116/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP210: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/116/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP210: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/116/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP209: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/116/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP209: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/116/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP208: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/116/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP208: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/116/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP207: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/116/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP207: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/116/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP206: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/116/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP206: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/116/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP205: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/116/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP205: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/116/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP204: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/116/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP204: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/116/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP203: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/116/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP203: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/116/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP202: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/116/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP202: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/116/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP201: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/116/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP201: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/116/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP220: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/104/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP220: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/104/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP219: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/104/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP219: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/104/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP218: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/104/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP218: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/104/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP217: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/104/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP217: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/104/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP303: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CE9002_CWR11D
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP303: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CE9002_D
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP257: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CE9002_D
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP257: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CE9002_CWR11D
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP256: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CE9002_CWR11D
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP256: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CE9002_D
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP255: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CE9002_CWR11D
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP255: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CE9002_D
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP254: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CE9002_D
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP254: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CE9002_CWR11D
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP246: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CE9002_CWR11D
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP246: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CE9002_D
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP245: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CE9002_CWR11D
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP245: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CE9002_D
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP237: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CE9002_D
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP237: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CE9002_CWR11D
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP233: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CE9002_D
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP233: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CE9002_CWR11D
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP232: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CE9002_CWR11D
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP232: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CE9002_D
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP238: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = Voltage Regulator
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP238: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = 7805
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP238: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = 7805_TO220
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP251: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = 71256_SOLJ28_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP251: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = 71256
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP250: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = 71256_SOLJ28_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP250: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = 71256
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP249: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = Read/Write Memory, 32k x 8-bit
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP249: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = 71256_SOLJ28_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP249: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = 71256
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP269: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = X9241
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP269: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = X9241_SOL20_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP268: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = X9241
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP268: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = X9241_SOL20_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP263: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = Quad Potentiometer
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP263: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = X9241
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP263: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = X9241_SOL20_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP272: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = XX1053
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP272: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = XX1053
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP301: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/303/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP301: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/303/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP281: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/303/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP281: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/303/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP282: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/307/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP282: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/307/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP284: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = PB1046/016/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP284: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = PB1046/016/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP294: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = 54HCT373
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP294: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HCT373_SOL20_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP293: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = 54HCT373
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP293: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HCT373_SOL20_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP292: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = Latch, 8-bit
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP292: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = HCT373_SOL20_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP292: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = 74HCT373
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP300: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/306/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP300: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/306/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP295: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = CON_PB8302/306/0
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP295: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = CON_PB8302/306/0
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP297: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = RV9003_J
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr(SuperCptr(01)) Symbol XCMP297: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = RV9003_J
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr!MAX5061(MAX506(01)) Symbol XCMP9: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = <NO_DESCRIP>
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr!MAX5061(MAX506(01)) Symbol XCMP9: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = DAC8229_SOL20_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr!MAX5061(MAX506(01)) Symbol XCMP9: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = DAC8229
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr!MAX5061(MAX506(01)) Symbol XCMP8: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = <NO_DESCRIP>
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr!MAX5061(MAX506(01)) Symbol XCMP8: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = DAC8229_SOL20_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr!MAX5061(MAX506(01)) Symbol XCMP8: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = DAC8229
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr!MAX680CSA2(MAX680CSA(01)) Symbol XCMP1: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = <NO_DESCRIP>
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr!MAX680CSA2(MAX680CSA(01)) Symbol XCMP1: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = MAX664
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr!MAX680CSA2(MAX680CSA(01)) Symbol XCMP1: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = MAX664_SO8_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr!MT8888C_SO202(MT8888C_SO20(01)) Symbol XCMP2: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = <NO_DESCRIP>
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr!MT8888C_SO202(MT8888C_SO20(01)) Symbol XCMP2: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = AD7528_SOL20_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr!MT8888C_SO202(MT8888C_SO20(01)) Symbol XCMP2: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = AD7528
+     PartsDB Property: Part name = 
+
+WARNING, SuperCptr!MT8888C_SO202(MT8888C_SO20(01)) Symbol XCMP1: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: DESCRIPTION = <NO_DESCRIP>
+     PartsDB Property: DESCRIPTION = 
+
+WARNING, SuperCptr!MT8888C_SO202(MT8888C_SO20(01)) Symbol XCMP1: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part number = AD7528_SOL20_50
+     PartsDB Property: Part number = 
+
+WARNING, SuperCptr!MT8888C_SO202(MT8888C_SO20(01)) Symbol XCMP1: Symbol / PartsDB property mismatch
+      Resolved PartNumber = 
+      Symbol Property: Part name = AD7528
+     PartsDB Property: Part name = 
+
+     Checking the validity of the packaging of prepackaged schematic
+      symbols.  Only the first error in symbols having the same
+      Reference Designator will be reported.
+
+     ERROR:  There is no Part Number: MAX814_SO8_50 in the Parts
+      DataBase for a symbol with Part Name: MAX814 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: HC00_SO14_50 in the Parts
+      DataBase for a symbol with Part Name: HC00 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: XX2016 in the Parts
+      DataBase for a symbol with Part Name: XX2016 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: MAX232_SO16_50 in the Parts
+      DataBase for a symbol with Part Name: MAX232 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: 80C517A_QFP100_25.6-3.2 in the Parts
+      DataBase for a symbol with Part Name: 80C517A and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: CK9001_C0805 in the Parts
+      DataBase for a symbol with Part Name: CK9001_0805 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: RM9003_R0805 in the Parts
+      DataBase for a symbol with Part Name: RM9003 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: 28C256_SOL28_50 in the Parts
+      DataBase for a symbol with Part Name: 28C256 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: HC32_SO14_50 in the Parts
+      DataBase for a symbol with Part Name: HC32 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: KM29N32000_TSOP40/44_0.8 in the Parts
+      DataBase for a symbol with Part Name: KM29N32000 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: HC138_SO16_50 in the Parts
+      DataBase for a symbol with Part Name: HC138 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: CON_PB8302/308/0 in the Parts
+      DataBase for a symbol with Part Name: CON_PB8302/308/0 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: CON_PB8302/304/0 in the Parts
+      DataBase for a symbol with Part Name: CON_PB8302/304/0 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: CON_PB8302/116/0 in the Parts
+      DataBase for a symbol with Part Name: CON_PB8302/116/0 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: CON_PB8302/104/0 in the Parts
+      DataBase for a symbol with Part Name: CON_PB8302/104/0 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: CE9002_CWR11D in the Parts
+      DataBase for a symbol with Part Name: CE9002_D and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: 7805_TO220 in the Parts
+      DataBase for a symbol with Part Name: 7805 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: 71256_SOLJ28_50 in the Parts
+      DataBase for a symbol with Part Name: 71256 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: X9241_SOL20_50 in the Parts
+      DataBase for a symbol with Part Name: X9241 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: XX1053 in the Parts
+      DataBase for a symbol with Part Name: XX1053 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: CON_PB8302/303/0 in the Parts
+      DataBase for a symbol with Part Name: CON_PB8302/303/0 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: CON_PB8302/307/0 in the Parts
+      DataBase for a symbol with Part Name: CON_PB8302/307/0 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: PB1046/016/0 in the Parts
+      DataBase for a symbol with Part Name: PB1046/016/0 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: HCT373_SOL20_50 in the Parts
+      DataBase for a symbol with Part Name: 74HCT373 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: CON_PB8302/306/0 in the Parts
+      DataBase for a symbol with Part Name: CON_PB8302/306/0 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: RV9003_J in the Parts
+      DataBase for a symbol with Part Name: RV9003_J and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: DAC8229_SOL20_50 in the Parts
+      DataBase for a symbol with Part Name: DAC8229 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: MAX664_SO8_50 in the Parts
+      DataBase for a symbol with Part Name: MAX664 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     ERROR:  There is no Part Number: AD7528_SOL20_50 in the Parts
+      DataBase for a symbol with Part Name: AD7528 and Part Label: (null).
+      [Please add the Part Number to the PDB either directly
+       or by having the project file point to a PDB that contains it.]
+
+
+     29 packaging errors have been found.
+      For those errors that only involve the application of wrong
+      pin numbers, either repackage the schematic by hand or
+      simply remove at least one pin number per reference designator
+      to enable automatic packaging when you run this
+      procedure again.
+
+
+     DataBase Load is being terminated with 29 errors and 302 warnings.
+      Logic Data has NOT been Compiled.

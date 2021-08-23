@@ -1,0 +1,2237 @@
+################################################################################
+#                                                                              #
+#      IAR Universal Linker V4.48E/386                                         #
+#                                                                              #
+#           Link time     =  19/Sep/104  17:59:50                              #
+#           Target CPU    =  8051                                              #
+#           List file     =  release\list\telestation8051.map                  #
+#           Output file 1 =  release\exe\telestation8051.a03                   #
+#           Output format =  intel-standard                                    #
+#           Command line  =  -f Tele.xcl (Release\Obj\Calender.r03             #
+#                            Release\Obj\DPot.r03 Release\Obj\DTMF.r03         #
+#                            Release\Obj\FileSystem.r03                        #
+#                            Release\Obj\Keyboard.r03 Release\Obj\LCD.r03      #
+#                            Release\Obj\LogFile.r03 Release\Obj\main.r03      #
+#                            Release\Obj\Phone.r03 Release\Obj\PhoneAns.r03    #
+#                            Release\Obj\rs232.r03 Release\Obj\Timer.r03       #
+#                            Release\Obj\wav.r03 CL517STR.R03 CL8051L.R03      #
+#                            -c8051 -D_R=0 -Z(BIT)C_ARGB,BITVARS=0             #
+#                            -Z(DATA)B_UDATA,B_IDATA,C_ARGD,D_UDATA,D_IDATA=20 #
+#                            -Z(IDATA)C_ARGI,I_UDATA,I_IDATA,CSTACK            #
+#                            -Z(XDATA)P_UDATA,P_IDATA,C_ARGX,X_UDATA,          #
+#                            X_IDATA,ECSTR,RF_XDATA,XSTACK=1-7FFF,F800         #
+#                                                                              #
+#                            -Z(CODE)INTVEC,RCODE,D_CDATA,B_CDATA,I_CDATA,     #
+#                            P_CDATA,X_CDATA,C_ICALL,C_RECFN,CSTR,CCSTR,       #
+#                            CODE,CONST=0-77FF                                 #
+#                            -Z(CODE)HIGHCODE=8000-F7FF                        #
+#                            -e_medium_write=_formatted_write                  #
+#                            -e_medium_read=_formatted_read -FINTEL-STANDARD   #
+#                            -Y0 -z -l Release\List\Telestation8051.map -xms   #
+#                            -I80C517A\LIB -o Release\Exe\Telestation8051.a03) #
+#                            -S                                                #
+#                                                                              #
+#                                               (c) Copyright IAR Systems 1996 #
+################################################################################
+
+
+
+
+
+                ****************************************
+                *                                      *
+                *           CROSS REFERENCE            *
+                *                                      *
+                ****************************************
+
+       Program entry at : 0000  Relocatable, from module : CSTARTUP
+
+
+
+                ****************************************
+                *                                      *
+                *             MODULE MAP               *
+                *                                      *
+                ****************************************
+
+  DEFINED ABSOLUTE ENTRIES
+  PROGRAM MODULE, NAME : ?ABS_ENTRY_MOD
+          ABSOLUTE ENTRIES        ADDRESS          REF BY MODULE
+           ==============         =======          =============
+           _R                      0000            CSTARTUP
+
+
+  SEGMENTS IN THE MODULE
+  ======================
+C_ARGX
+  Relative segment, address : 0001 - 053E
+    -------------------------------------------------------------------------
+C_ARGI
+  Relative segment, address : 0020 - 002B
+
+    *************************************************************************
+
+  FILE NAME : release\obj\calender.r03
+  PROGRAM MODULE, NAME : calender
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 1570 - 1EC9
+           ENTRIES                ADDRESS          REF BY MODULE
+           CalenderWait4           1575            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+               xdata = 000C ( 0001 , 0000 )
+           CreateDateString        19FD            Not referred to
+               stack 1 = 00000002 ( 00000005 )
+               xdata = 0005 ( 0001 , 0006 )
+           CreateDateString2       1AA1            logfile
+                                                   phoneans
+               stack 1 = 00000002 ( 00000005 )
+               xdata = 000C ( 0002 , 0006 )
+           CreateTimeString        1873            logfile
+                                                   phoneans
+               stack 1 = 00000002 ( 00000005 )
+               xdata = 000C ( 0001 , 0006 )
+           GetDateNow              17CE            logfile
+                                                   phoneans
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               xdata = 0018 ( 0003 , 0003 )
+           GetTimeNow              174B            logfile
+                                                   phoneans
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               xdata = 0018 ( 0003 , 0003 )
+           InitializeCalender      1570            main
+               stack 1 = 00000002 ( 00000000 )
+           ROCB                    15E7            Not referred to
+               calls direct
+               xdata = 000D ( 0004 , 0001 )
+           ReadCalenderByte        16B6            main
+                                                   phoneans
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               xdata = 0012 ( 0002 , 0004 )
+           WOCB                    157C            Not referred to
+               calls direct
+               xdata = 000D ( 0004 , 0001 )
+           WriteCalenderByte       1651            main
+                                                   phoneans
+               calls direct
+               xdata = 0012 ( 0002 , 0002 )
+
+    *************************************************************************
+
+  FILE NAME : release\obj\dpot.r03
+  PROGRAM MODULE, NAME : dpot
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 1ECA - 2143
+           ENTRIES                ADDRESS          REF BY MODULE
+           DTMFVolume              2122            dtmf
+               calls direct
+               xdata = 0017 ( 0002 , 0001 )
+           InitializeDPot          1ECA            main
+               stack 1 = 00000002 ( 00000000 )
+           PhoneInVolume           20DE            logfile
+                                                   phoneans
+               calls direct
+               xdata = 0017 ( 0002 , 0001 )
+           PhoneOutVolume          2100            phone
+               calls direct
+               xdata = 0017 ( 0002 , 0001 )
+           ROEPB                   1F5F            Not referred to
+               calls direct
+               xdata = 000E ( 0004 , 0001 )
+           RPWait                  1ED5            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+               xdata = 000C ( 0002 , 0000 )
+           ReadDPWiper             203D            main
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               xdata = 0013 ( 0002 , 0004 )
+           SetDPWiper              1FC9            main
+               calls direct
+               xdata = 0013 ( 0002 , 0002 )
+           SpeakerVolume           20BC            logfile
+                                                   phone
+                                                   phoneans
+               calls direct
+               xdata = 0017 ( 0002 , 0001 )
+           WOEPB                   1EF5            Not referred to
+               calls direct
+               xdata = 000E ( 0004 , 0001 )
+    -------------------------------------------------------------------------
+X_UDATA
+  Relative segment, address : 053F - 053F
+           ENTRIES                ADDRESS          REF BY MODULE
+           speakerVolume           053F            lcd
+                                                   logfile
+                                                   main
+                                                   phone
+                                                   phoneans
+
+    *************************************************************************
+
+  FILE NAME : release\obj\dtmf.r03
+  PROGRAM MODULE, NAME : dtmf
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 2144 - 23FB
+           ENTRIES                ADDRESS          REF BY MODULE
+           DecodeDTMF              2351            Not referred to
+               stack 1 = 00000002 ( 00000005 )
+               xdata = 000C ( 0000 , 0001 )
+           DecodeReceivedDTMF      2324            phoneans
+               calls direct
+               xdata = 000D ( 0003 , 0000 )
+           EX0_int                 23B0            Not referred to
+               interrupt, non_banked function
+               stack 1 = 00000002 ( 0000000A )
+           GetNextDTMF             22CF            phoneans
+               calls direct
+               xdata = 000D ( 0002 , 0000 )
+           InitializeDTMF          2144            main
+               calls direct
+               xdata = 001A ( 0003 , 0000 )
+           MakeDTMFTones           218C            main
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               xdata = 001A ( 0004 , 0003 )
+           ResetDTMFIndex          231A            main
+                                                   phoneans
+               stack 1 = 00000002 ( 00000000 )
+    -------------------------------------------------------------------------
+INTVEC
+  Common segment, address : 0000 - 0005
+    -------------------------------------------------------------------------
+X_UDATA
+  Relative segment, address : 0540 - 0574
+           ENTRIES                ADDRESS          REF BY MODULE
+           DTMFBuffer              0541            Not referred to
+           DTMFGetIndex            0574            Not referred to
+           DTMFSetIndex            0573            Not referred to
+           receivedDTMF            0540            logfile
+                                                   main
+                                                   phone
+                                                   phoneans
+                                                   wav
+
+    *************************************************************************
+
+  FILE NAME : release\obj\filesystem.r03
+  PROGRAM MODULE, NAME : filesystem
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 23FC - 40AD
+           ENTRIES                ADDRESS          REF BY MODULE
+           Dir                     37B5            main
+               calls direct
+               stack 1 = 00000000 ( 00000006 )
+               xdata = 001E ( 0013 , 0000 )
+           EraseAll                3F15            main
+               calls direct
+               stack 1 = 00000000 ( 00000014 )
+               xdata = 000C ( 0002 , 0000 )
+           EraseBlock              2734            Not referred to
+               stack 1 = 00000002 ( 00000002 )
+           EraseDynamic            3E75            main
+                                                   phoneans
+               calls direct
+               stack 1 = 00000000 ( 00000014 )
+               xdata = 0037 ( 0005 , 0000 )
+           FileOpen                2994            Not referred to
+               calls direct
+               xdata = 0014 ( 0003 , 0003 )
+           FindEmptyFileStruct     294E            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+               xdata = 000C ( 0001 , 0000 )
+           GetFileHead             2797            Not referred to
+               calls direct
+               stack 1 = 00000000 ( 00000014 )
+               xdata = 000F ( 0005 , 0003 )
+           InitializeFileSystem    23FC            main
+               stack 1 = 00000002 ( 00000000 )
+               xdata = 000C ( 0001 , 0000 )
+           InitializeFlash         242D            main
+               stack 1 = 00000002 ( 00000000 )
+           MemUsage                4023            lcd
+               calls direct
+               stack 1 = 00000000 ( 00000006 )
+               xdata = 0017 ( 0013 , 0000 )
+           PerformWriteSeq         2712            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+           ReadFLASH               24E0            Not referred to
+               calls direct
+               stack 1 = 00000000 ( 00000014 )
+               xdata = 000C ( 0003 , 0000 )
+           ReleaseCurrFile         3084            Not referred to
+               calls direct
+               stack 1 = 00000000 ( 00000004 )
+               xdata = 000C ( 0002 , 0000 )
+           SetupReadSeq            2434            Not referred to
+               stack 1 = 00000002 ( 00000002 )
+           SetupSpareReadSeq       248C            Not referred to
+               stack 1 = 00000002 ( 00000002 )
+           SetupSpareWriteSeq      25DB            Not referred to
+               stack 1 = 00000002 ( 00000002 )
+           SetupWriteSeq           2530            Not referred to
+               stack 1 = 00000002 ( 00000003 )
+           StartDynamic            3D55            main
+               calls direct
+               stack 1 = 00000000 ( 00000006 )
+               xdata = 0044 ( 0026 , 0000 )
+           TerminateReadSeq        252A            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+           TerminateWriteSeq       26F3            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+           Type                    3867            main
+               calls direct
+               stack 1 = 00000000 ( 00000014 )
+               xdata = 0037 ( 0009 , 0000 )
+           TypeA                   3F63            main
+               calls direct
+               stack 1 = 00000000 ( 00000014 )
+               xdata = 0037 ( 000A , 0000 )
+           WriteFLASH              266E            Not referred to
+               calls direct
+               stack 1 = 00000000 ( 00000014 )
+               xdata = 000C ( 0002 , 0001 )
+           WriteFileHead           3C64            Not referred to
+               calls direct
+               stack 1 = 00000000 ( 00000004 )
+               xdata = 000F ( 0005 , 0007 )
+           fSetPos                 31B3            logfile
+                                                   main
+               calls direct
+               stack 1 = 00000000 ( 00000008 )
+               xdata = 000C ( 0002 , 0007 )
+           fclose                  30CC            lcd
+                                                   logfile
+                                                   main
+                                                   phoneans
+                                                   wav
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               xdata = 001B ( 0002 , 0003 )
+           fdownLoad               34B0            main
+               calls direct
+               stack 1 = 00000000 ( 00000014 )
+               xdata = 0037 ( 0022 , 0000 )
+           fgetLine                2FC8            main
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               xdata = 0014 ( 0005 , 0008 )
+           fgetc                   2EBC            logfile
+                                                   phoneans
+               calls direct
+               stack 1 = 00000000 ( 00000014 )
+               xdata = 000F ( 0002 , 0003 )
+           fopen                   29FE            lcd
+                                                   logfile
+                                                   main
+                                                   phoneans
+                                                   wav
+               calls direct
+               stack 1 = 00000000 ( 00000006 )
+               xdata = 001A ( 0017 , 0006 )
+           fopenA                  38FB            logfile
+               calls direct
+               stack 1 = 00000000 ( 00000006 )
+               xdata = 001B ( 001E , 000B )
+           fputc                   2D5D            logfile
+               calls direct
+               stack 1 = 00000000 ( 00000014 )
+               xdata = 000F ( 0002 , 0004 )
+           ftell                   3182            logfile
+                                                   main
+               stack 1 = 00000002 ( 00000004 )
+               xdata = 000C ( 0000 , 0003 )
+           fupLoad                 3265            main
+               calls direct
+               xdata = 0037 ( 010C , 0000 )
+    -------------------------------------------------------------------------
+CSTR
+  Relative segment, address : 0BAA - 0BF0
+    -------------------------------------------------------------------------
+X_UDATA
+  Relative segment, address : 0575 - 0661
+           ENTRIES                ADDRESS          REF BY MODULE
+           FLASHKey                0656            Not referred to
+           FLASHWriteState         0579            wav
+           dataFieldCounter        0657            Not referred to
+           eraseAddress            065D            Not referred to
+           fs_currFilePtr          0653            Not referred to
+           fs_files                057B            Not referred to
+           readAddress             0659            Not referred to
+           writeAddress            0575            wav
+           writeInProgress         0661            Not referred to
+
+    *************************************************************************
+
+  FILE NAME : release\obj\keyboard.r03
+  PROGRAM MODULE, NAME : keyboard
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 40AE - 417F
+           ENTRIES                ADDRESS          REF BY MODULE
+           CT_int                  4123            Not referred to
+               interrupt, non_banked function
+               stack 1 = 00000002 ( 00000008 )
+           EX2_int                 40D7            Not referred to
+               interrupt, non_banked function
+               stack 1 = 00000002 ( 00000008 )
+               xdata = 0001 ( 0001 , 0000 )
+           InitializeKeyboard      40AE            main
+               stack 1 = 00000002 ( 00000000 )
+           KeyboardOff             40D0            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+           KeyboardOn              40B8            phoneans
+                                                   wav
+               stack 1 = 00000002 ( 00000000 )
+               xdata = 000C ( 0001 , 0000 )
+    -------------------------------------------------------------------------
+INTVEC
+  Common segment, address : 0000 - 009D
+    -------------------------------------------------------------------------
+X_UDATA
+  Relative segment, address : 0662 - 0664
+           ENTRIES                ADDRESS          REF BY MODULE
+           keyboardState           0663            Not referred to
+           lastKey                 0662            phoneans
+                                                   wav
+           timeoutCount            0664            Not referred to
+
+    *************************************************************************
+
+  FILE NAME : release\obj\lcd.r03
+  PROGRAM MODULE, NAME : lcd
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 4180 - 52C9
+           ENTRIES                ADDRESS          REF BY MODULE
+           ClearDisp               4222            phoneans
+               calls direct
+               xdata = 000E ( 0004 , 0000 )
+           DispEraseQuest          51D4            phoneans
+               calls direct
+               xdata = 0017 ( 0004 , 0000 )
+           DispInfoBox             42F2            logfile
+                                                   main
+                                                   phoneans
+               calls direct
+               stack 1 = 00000000 ( 00000004 )
+               xdata = 000E ( 0007 , 0006 )
+           DispMemUsage            4C37            phoneans
+               calls direct
+               xdata = 002A ( 0006 , 0000 )
+           DispMemoScreen          525F            phoneans
+               calls direct
+               xdata = 0015 ( 0004 , 0000 )
+           DispOptionsMenu         4DAA            phoneans
+               calls direct
+               xdata = 001E ( 0009 , 0002 )
+           DispSetTimeDate         4F16            phoneans
+               calls direct
+               stack 1 = 00000000 ( 00000002 )
+               xdata = 001C ( 0036 , 0006 )
+           DispSetTimeDateHead     5169            phoneans
+               calls direct
+               xdata = 0015 ( 0004 , 0000 )
+           DispString              4276            Not referred to
+               calls direct
+               stack 1 = 00000000 ( 00000004 )
+               xdata = 000E ( 0004 , 0003 )
+           DisplayMenu             4B52            main
+                                                   phoneans
+               calls direct
+               stack 1 = 00000000 ( 00000004 )
+               xdata = 000E ( 0006 , 0003 )
+           FillDispBuffer          4812            phoneans
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               xdata = 0037 ( 0052 , 0000 )
+           InitializeLCD           4180            main
+               calls direct
+               xdata = 0012 ( 0002 , 0000 )
+           LogCursorAt             45B1            phoneans
+               calls direct
+               xdata = 0089 ( 000A , 0003 )
+           OptionCursorAt          4D3E            phoneans
+               calls direct
+               xdata = 0015 ( 0002 , 0002 )
+           SetLCDReg               41FA            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+               xdata = 000C ( 0000 , 0002 )
+           WriteClipToMem          452C            Not referred to
+               stack 1 = 00000002 ( 00000005 )
+               xdata = 000C ( 0002 , 0008 )
+    -------------------------------------------------------------------------
+CSTR
+  Relative segment, address : 0BF1 - 0D86
+    -------------------------------------------------------------------------
+X_UDATA
+  Relative segment, address : 0665 - 0F90
+           ENTRIES                ADDRESS          REF BY MODULE
+           cursorPos               07B7            Not referred to
+           dispBuffEnd             07BD            Not referred to
+           dispBuffStart           07BB            Not referred to
+           dispBuffer              07BF            Not referred to
+           dispStart               07B9            Not referred to
+           optionCursorPos         0F8F            Not referred to
+           theScreen               0665            Not referred to
+           xPos                    07B5            Not referred to
+           yPos                    07B6            Not referred to
+
+    *************************************************************************
+
+  FILE NAME : release\obj\logfile.r03
+  PROGRAM MODULE, NAME : logfile
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 52CA - 5D23
+           ENTRIES                ADDRESS          REF BY MODULE
+           BuildCallerList         5574            phoneans
+               calls direct
+               stack 1 = 00000000 ( 00000002 )
+               xdata = 0037 ( 0009 , 0000 )
+           CreateLog               52D7            main
+                                                   phoneans
+               calls direct
+               xdata = 0051 ( 0018 , 0000 )
+           FindCall                5667            lcd
+               calls direct
+               stack 1 = 00000000 ( 00000002 )
+               xdata = 0015 ( 0002 , 0005 )
+           FindNextCall            56E6            Not referred to
+               calls direct
+               xdata = 0014 ( 0005 , 0003 )
+           GetCallInformation      57CB            lcd
+               calls direct
+               stack 1 = 00000000 ( 00000008 )
+               xdata = 001E ( 000D , 000C )
+           InitializeLogFile       52CA            main
+               stack 1 = 00000002 ( 00000000 )
+           LogMessage              53D9            phoneans
+               calls direct
+               stack 1 = 00000000 ( 00000004 )
+               xdata = 0044 ( 0007 , 0006 )
+           PlayNewMessages         5CE1            main
+                                                   phoneans
+               calls direct
+               xdata = 006D ( 0004 , 0000 )
+           PlayThisCall            5A86            phoneans
+               calls direct
+               stack 1 = 00000000 ( 00000008 )
+               xdata = 003F ( 002C , 0002 )
+    -------------------------------------------------------------------------
+CSTR
+  Relative segment, address : 0D87 - 0E5B
+    -------------------------------------------------------------------------
+X_UDATA
+  Relative segment, address : 0F91 - 1794
+           ENTRIES                ADDRESS          REF BY MODULE
+           callIndex               0F95            phoneans
+           logOffset               0F91            phoneans
+
+    *************************************************************************
+
+  FILE NAME : release\obj\main.r03
+  PROGRAM MODULE, NAME : main
+
+  SEGMENTS IN THE MODULE
+  ======================
+HIGHCODE
+  Relative segment, address : 8000 - 9A71
+           ENTRIES                ADDRESS          REF BY MODULE
+           Append                  9A5C            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+           ClearLabelList          8DA4            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+               xdata = 000C ( 0002 , 0000 )
+           DecodeAndPerform        8345            Not referred to
+               calls direct
+               stack 1 = 00000000 ( 00000004 )
+               xdata = 0205 ( 0022 , 0003 )
+           ExecuteBatFile          8DF9            Not referred to
+               calls direct
+               stack 1 = 00000000 ( 00000008 )
+               xdata = 022A ( 0184 , 0003 )
+           FindLabel               90F2            Not referred to
+               calls direct
+               stack 1 = 00000000 ( 00000003 )
+               xdata = 0014 ( 0004 , 0003 )
+           GotoLabel               91D4            phoneans
+               calls direct
+               stack 1 = 00000000 ( 00000008 )
+               xdata = 0032 ( 0185 , 0003 )
+           Hello                   9311            Not referred to
+               calls direct
+               xdata = 001E ( 0002 , 0000 )
+           InitializeComputer1     80BE            Not referred to
+               calls direct
+               xdata = 0020 ( 0002 , 0000 )
+           InitializePhoneAnsApp   8165            Not referred to
+               calls direct
+               xdata = 004C ( 0002 , 0000 )
+           InsertLabel             8F64            Not referred to
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               xdata = 001F ( 000C , 0007 )
+           MainShell               81AC            Not referred to
+               calls direct
+               xdata = 03B1 ( 0188 , 0000 )
+           SetupBatFile            8D5B            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+               xdata = 000C ( 0002 , 0000 )
+           T0_int                  9A5D            Not referred to
+               interrupt, non_banked function
+               stack 1 = 00000002 ( 00000007 )
+           main                    8000            CSTARTUP
+               calls direct
+               xdata = 0539 ( 0003 , 0000 )
+           myInt2DecStr            97EE            lcd
+                                                   logfile
+                                                   phoneans
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               xdata = 0014 ( 0005 , 0005 )
+           myInt2DecStr00          993A            lcd
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               xdata = 0014 ( 0004 , 0004 )
+           myLong2HexStr           94BD            filesystem
+               stack 1 = 00000002 ( 00000005 )
+               xdata = 000C ( 0003 , 0007 )
+           myStr2Int               99DF            phoneans
+               stack 1 = 00000002 ( 00000004 )
+               xdata = 000C ( 0002 , 0003 )
+           myStrCmpNoCase          93F1            filesystem
+                                                   logfile
+                                                   phoneans
+               stack 1 = 00000002 ( 00000004 )
+               xdata = 000C ( 0002 , 0006 )
+           myStrCpy                9331            filesystem
+                                                   phoneans
+               stack 1 = 00000002 ( 00000005 )
+               xdata = 000C ( 0002 , 0006 )
+           myStrLen                93AD            rs232
+               stack 1 = 00000002 ( 00000004 )
+               xdata = 000C ( 0002 , 0003 )
+    -------------------------------------------------------------------------
+CSTR
+  Relative segment, address : 0E5C - 12A7
+    -------------------------------------------------------------------------
+CONST
+  Relative segment, address : 6CF0 - 6CF8
+    -------------------------------------------------------------------------
+INTVEC
+  Common segment, address : 0000 - 000D
+    -------------------------------------------------------------------------
+X_UDATA
+  Relative segment, address : 1795 - 1C80
+           ENTRIES                ADDRESS          REF BY MODULE
+           batFilePtr              197E            Not referred to
+           batLabelName            1981            Not referred to
+           batLabelPos             1B81            Not referred to
+           commandLine             1795            filesystem
+                                                   phoneans
+           error                   1917            filesystem
+                                                   phone
+                                                   phoneans
+           msg                     1919            filesystem
+                                                   logfile
+                                                   phoneans
+           nrCommandParameters     1915            phoneans
+           timeout                 197D            filesystem
+                                                   rs232
+
+    *************************************************************************
+
+  FILE NAME : release\obj\phone.r03
+  PROGRAM MODULE, NAME : phone
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 5D24 - 60E1
+           ENTRIES                ADDRESS          REF BY MODULE
+           ClearPPDRipple          5DC3            Not referred to
+               calls direct
+               xdata = 0014 ( 0004 , 0000 )
+           EX3_int                 6066            Not referred to
+               interrupt, non_banked function
+               stack 1 = 00000002 ( 0000000D )
+               idata = 0020 ( 0003 , 0000 )
+           EX4_int                 6017            Not referred to
+               interrupt, non_banked function
+               stack 1 = 00000002 ( 0000000C )
+               xdata = 0002 ( 0001 , 0000 )
+           HangUp                  5D5A            main
+               calls direct
+               xdata = 001A ( 0002 , 0000 )
+           InitializePhone         5D24            main
+               calls direct
+               xdata = 001E ( 0002 , 0000 )
+           LiftPhone               5D81            main
+               calls direct
+               xdata = 001A ( 0002 , 0000 )
+           WaitForRingSignals      5E7A            phoneans
+               calls direct
+               xdata = 001E ( 0008 , 0002 )
+    -------------------------------------------------------------------------
+CSTR
+  Relative segment, address : 12A8 - 12B6
+    -------------------------------------------------------------------------
+INTVEC
+  Common segment, address : 0000 - 005D
+    -------------------------------------------------------------------------
+X_UDATA
+  Relative segment, address : 1C81 - 1C83
+           ENTRIES                ADDRESS          REF BY MODULE
+           callerHungUp            1C82            wav
+           parallellPhoneDetected
+                                   1C83            wav
+           terminateAnswer         1C81            phoneans
+                                                   wav
+
+    *************************************************************************
+
+  FILE NAME : release\obj\phoneans.r03
+  PROGRAM MODULE, NAME : phoneans
+
+  SEGMENTS IN THE MODULE
+  ======================
+HIGHCODE
+  Relative segment, address : 9A72 - B86B
+           ENTRIES                ADDRESS          REF BY MODULE
+           AskQuestionMsg          A89F            main
+               calls direct
+               xdata = 01BA ( 0007 , 0000 )
+           CategoryHit             B47B            main
+               calls direct
+               stack 1 = 00000000 ( 00000004 )
+               xdata = 0011 ( 0011 , 0004 )
+           CorrectDate             A755            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+               xdata = 000C ( 0001 , 0001 )
+           CreateMemoFileName      B78F            Not referred to
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               xdata = 001E ( 000A , 0005 )
+           CreateUniqueFilename    B046            Not referred to
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               xdata = 0037 ( 000E , 0003 )
+           EnterCode               AB64            main
+               calls direct
+               xdata = 01BA ( 001D , 0000 )
+           InitializePhoneAns      9A72            main
+               calls direct
+               xdata = 0043 ( 0002 , 0000 )
+           IntitializeMemo         B5E0            main
+               calls direct
+               xdata = 0037 ( 0015 , 0000 )
+           LabelCopy               AFD7            Not referred to
+               stack 1 = 00000002 ( 00000005 )
+               xdata = 000C ( 0001 , 0006 )
+           LookUpCaller            B32C            main
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               idata = 0023 ( 0009 , 0000 )
+               xdata = 000C ( 0002 , 0009 )
+           PlayMemo                B705            main
+               calls direct
+               xdata = 003F ( 0011 , 0000 )
+           ReadPhoneBookFile       B1D6            main
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               xdata = 0037 ( 000C , 0000 )
+           RecordCallerMessage     A802            main
+               calls direct
+               xdata = 01BA ( 0011 , 0000 )
+           RecordMemo              B670            main
+               calls direct
+               xdata = 005A ( 0011 , 0000 )
+           SetupUpQLabels          AD01            Not referred to
+               calls direct
+               stack 1 = 00000000 ( 00000004 )
+               xdata = 0013 ( 0006 , 0000 )
+           WaitForCall             9A8C            main
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               xdata = 01BA ( 004B , 0000 )
+    -------------------------------------------------------------------------
+CSTR
+  Relative segment, address : 12B7 - 14E0
+    -------------------------------------------------------------------------
+X_UDATA
+  Relative segment, address : 1C84 - 5D3C
+           ENTRIES                ADDRESS          REF BY MODULE
+           PBSpace                 1D27            Not referred to
+           answerOn                1C84            main
+           callerCategory          1C89            main
+           callerName              5D29            Not referred to
+           cursor                  1D16            Not referred to
+           date                    1D20            Not referred to
+           dateNow                 1D1A            Not referred to
+           hour                    1D24            Not referred to
+           lab0                    1C94            Not referred to
+           lab1                    1C9C            Not referred to
+           lab2                    1CA4            Not referred to
+           lab3                    1CAC            Not referred to
+           lab4                    1CB4            Not referred to
+           lab5                    1CBC            Not referred to
+           lab6                    1CC4            Not referred to
+           lab7                    1CCC            Not referred to
+           lab8                    1CD4            Not referred to
+           lab9                    1CDC            Not referred to
+           labCorrectc             1CF4            Not referred to
+           labDTMF                 1C8C            Not referred to
+           labHungUp               1D0C            Not referred to
+           labIncorrectc           1CFC            Not referred to
+           labPound                1CE4            Not referred to
+           labStar                 1CEC            Not referred to
+           labTimeout              1D04            Not referred to
+           lastPlayed              1C87            lcd
+                                                   logfile
+                                                   main
+           menuSelection           1D18            Not referred to
+           minute                  1D25            Not referred to
+           month                   1D1F            Not referred to
+           nextMemoIndex           1C8A            Not referred to
+           numOfCalls              1C85            lcd
+                                                   logfile
+           numSignals              1D19            main
+           pbNEntries              5D27            Not referred to
+           timCur                  1D26            Not referred to
+           timeNow                 1D21            Not referred to
+           timeoutValue            1D14            Not referred to
+           year                    1D1E            Not referred to
+
+    *************************************************************************
+
+  FILE NAME : release\obj\rs232.r03
+  PROGRAM MODULE, NAME : rs232
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 60E2 - 6392
+           ENTRIES                ADDRESS          REF BY MODULE
+           InitializeRS232         60E2            main
+               stack 1 = 00000002 ( 00000000 )
+           ReceiveLineRS232        625C            main
+               calls direct
+               stack 1 = 00000000 ( 00000005 )
+               xdata = 0015 ( 0004 , 0005 )
+           SendRS232               6246            dtmf
+                                                   filesystem
+                                                   lcd
+                                                   main
+                                                   phoneans
+               stack 1 = 00000002 ( 00000000 )
+               xdata = 0014 ( 0000 , 0001 )
+           SendStringEOLRS232      616F            filesystem
+                                                   lcd
+                                                   logfile
+                                                   main
+                                                   phone
+                                                   phoneans
+                                                   wav
+               calls direct
+               stack 1 = 00000000 ( 00000004 )
+               xdata = 0015 ( 0006 , 0003 )
+           SendStringRS232         60F2            filesystem
+                                                   logfile
+                                                   main
+                                                   wav
+               calls direct
+               stack 1 = 00000000 ( 00000004 )
+               xdata = 0015 ( 0006 , 0003 )
+           WaitAndReceiveRS232     61F6            filesystem
+               stack 1 = 00000002 ( 00000000 )
+               xdata = 000C ( 0001 , 0000 )
+           WaitAndReceiveTimeout   620D            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+               xdata = 053C ( 0001 , 0000 )
+
+    *************************************************************************
+
+  FILE NAME : release\obj\timer.r03
+  PROGRAM MODULE, NAME : timer
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 6393 - 653F
+           ENTRIES                ADDRESS          REF BY MODULE
+           InitializeTimer         6393            main
+               stack 1 = 00000002 ( 00000000 )
+           KillTimer               6420            main
+                                                   phone
+                                                   phoneans
+               stack 1 = 00000002 ( 00000000 )
+               xdata = 000C ( 0000 , 0001 )
+           StartTimer              63B4            main
+                                                   phone
+                                                   phoneans
+               stack 1 = 00000002 ( 00000000 )
+               xdata = 000C ( 0001 , 0002 )
+           T2_int                  64AF            Not referred to
+               interrupt, non_banked function
+               stack 1 = 00000002 ( 0000000C )
+               xdata = 0003 ( 0001 , 0000 )
+           TimedOut                6452            main
+                                                   phone
+                                                   phoneans
+               stack 1 = 00000002 ( 00000000 )
+               xdata = 000C ( 0000 , 0001 )
+           WaitFor                 646F            main
+                                                   phone
+               calls direct
+               xdata = 000F ( 0003 , 0002 )
+    -------------------------------------------------------------------------
+INTVEC
+  Common segment, address : 0000 - 002D
+    -------------------------------------------------------------------------
+X_UDATA
+  Relative segment, address : 5D3D - 5D4E
+           ENTRIES                ADDRESS          REF BY MODULE
+           mainTimer               5D3D            Not referred to
+           nActiveTimers           5D4E            Not referred to
+           timerLimits             5D3F            Not referred to
+           timerStatus             5D49            Not referred to
+
+    *************************************************************************
+
+  FILE NAME : release\obj\wav.r03
+  PROGRAM MODULE, NAME : wav
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 6540 - 6B3A
+           ENTRIES                ADDRESS          REF BY MODULE
+           Echo                    6A18            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+           EchoMic                 69DE            main
+               calls direct
+               xdata = 000C ( 0002 , 0000 )
+           EchoPhone               69FB            main
+               calls direct
+               xdata = 000C ( 0002 , 0000 )
+           InitializeWAV           6540            main
+               stack 1 = 00000002 ( 00000000 )
+               xdata = 000C ( 0001 , 0000 )
+           PlayFile                67DC            logfile
+                                                   main
+                                                   phoneans
+               calls direct
+               stack 1 = 00000000 ( 00000008 )
+               xdata = 0037 ( 0005 , 0003 )
+           RecFile                 65CF            Not referred to
+               calls direct
+               stack 1 = 00000000 ( 00000014 )
+               xdata = 0037 ( 001B , 0003 )
+           RecMicFile              6565            main
+                                                   phoneans
+               calls direct
+               xdata = 0055 ( 0002 , 0003 )
+           RecPhoneFile            659A            main
+                                                   phoneans
+               calls direct
+               xdata = 0055 ( 0002 , 0003 )
+           SetupMic                655D            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+           SetupPhoneIn            6561            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+           T1_int                  6A6C            Not referred to
+               interrupt, non_banked function
+               stack 1 = 00000002 ( 0000000B )
+               xdata = 0004 ( 0001 , 0000 )
+           WavTone                 6A3D            main
+               stack 1 = 00000002 ( 00000000 )
+    -------------------------------------------------------------------------
+CSTR
+  Relative segment, address : 14E1 - 156F
+    -------------------------------------------------------------------------
+INTVEC
+  Common segment, address : 0000 - 001D
+    -------------------------------------------------------------------------
+I_UDATA
+  Relative segment, address : 002C - 003A
+           ENTRIES                ADDRESS          REF BY MODULE
+           daComp0                 0037            Not referred to
+           daComp1                 0038            Not referred to
+           daComp2                 0039            Not referred to
+           daComp3                 003A            Not referred to
+           daCount0                0033            Not referred to
+           daCount1                0034            Not referred to
+           daCount2                0035            Not referred to
+           daCount3                0036            Not referred to
+           nextRead                002F            Not referred to
+           nextWrite               002D            Not referred to
+           sample                  0031            Not referred to
+           wavAbort                0032            Not referred to
+           wavState                002C            Not referred to
+    -------------------------------------------------------------------------
+X_UDATA
+  Relative segment, address : 5D4F - 5F4E
+           ENTRIES                ADDRESS          REF BY MODULE
+           WAVBuffer               5D4F            Not referred to
+
+    *************************************************************************
+
+  FILE NAME : 80c517a\lib\cl517str.r03
+  LIBRARY MODULE, NAME : ?BYTE_COPY_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 009E - 00AB
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?BYTE_COPY_L08          009E            lcd
+                                                   phoneans
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_I_I_S_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 00AC - 00B5
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?SENSIBLE_COPY_L08      00AC            ?BYTE_COPY_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_I_I_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 00B6 - 00C9
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?BYTE_COPY_I_I_L08      00B6            ?BYTE_COPY_I_I_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_I_X_S_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 00CA - 00D0
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?NOT_IDATA1_COPY_L08    00CA            ?BYTE_COPY_I_I_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_I_X_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 00D1 - 00E4
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?BYTE_COPY_I_X_L08      00D1            ?BYTE_COPY_I_X_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_I_P_S_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 00E5 - 00E8
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?NOT_XDATA1_COPY_L08    00E5            ?BYTE_COPY_I_X_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_I_P_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 00E9 - 00FC
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?BYTE_COPY_I_P_L08      00E9            ?BYTE_COPY_I_P_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_X_I_S_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 00FD - 0108
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?NOT_IDATA_COPY_L08     00FD            ?BYTE_COPY_I_I_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_X_I_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0109 - 011C
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?BYTE_COPY_X_I_L08      0109            ?BYTE_COPY_X_I_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_X_X_S_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 011D - 0123
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?NOT_IDATA2_COPY_L08    011D            ?BYTE_COPY_X_I_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_X_X_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0124 - 0151
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?BYTE_COPY_X_X_L08      0124            ?BYTE_COPY_X_X_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_X_P_S_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0152 - 0157
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?NOT_XDATA2_COPY_L08    0152            ?BYTE_COPY_X_X_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_X_P_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0158 - 016B
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?BYTE_COPY_X_P_L08      0158            ?BYTE_COPY_X_P_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_C_I_S_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 016C - 0177
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?NOT_XDATA_COPY_L08     016C            ?BYTE_COPY_X_I_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_C_I_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0178 - 018C
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?BYTE_COPY_C_I_L08      0178            ?BYTE_COPY_C_I_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_C_X_S_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 018D - 0193
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?NOT_IDATA3_COPY_L08    018D            ?BYTE_COPY_C_I_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_C_X_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0194 - 01C2
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?BYTE_COPY_C_X_L08      0194            ?BYTE_COPY_C_X_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_C_P_S_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 01C3 - 01C8
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?NOT_XDATA3_COPY_L08    01C3            ?BYTE_COPY_C_X_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_C_P_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 01C9 - 01DD
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?BYTE_COPY_C_P_L08      01C9            ?BYTE_COPY_C_P_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_P_I_S_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 01DE - 01E4
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?NOT_CODE_COPY_L08      01DE            ?BYTE_COPY_C_I_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_P_I_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 01E5 - 01F8
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?BYTE_COPY_P_I_L08      01E5            ?BYTE_COPY_P_I_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_P_X_S_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 01F9 - 01FF
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?NOT_IDATA4_COPY_L08    01F9            ?BYTE_COPY_P_I_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_P_X_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0200 - 0213
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?BYTE_COPY_P_X_L08      0200            ?BYTE_COPY_P_X_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_P_P_S_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0214 - 0217
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?NOT_XDATA4_COPY_L08    0214            ?BYTE_COPY_P_X_S_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?BYTE_COPY_P_P_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0218 - 022B
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?BYTE_COPY_P_P_L08      0218            ?BYTE_COPY_P_P_S_L08
+
+    -------------------------------------------------------------------------
+    *************************************************************************
+
+  FILE NAME : 80c517a\lib\cl8051l.r03
+  PROGRAM MODULE, NAME : CSTARTUP
+
+  SEGMENTS IN THE MODULE
+  ======================
+CSTACK
+  Relative segment, address : 003B - 0058
+    -------------------------------------------------------------------------
+INTVEC
+  Common segment, address : 0000 - 0002
+    -------------------------------------------------------------------------
+RCODE
+  Relative segment, address : 022C - 0314
+           ENTRIES                ADDRESS          REF BY MODULE
+           init_C                  022C            Not referred to
+    -------------------------------------------------------------------------
+B_UDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+B_CDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+B_IDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+D_UDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+D_CDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+D_IDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+I_UDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+I_CDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+I_IDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+P_UDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+P_CDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+P_IDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+X_UDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+X_CDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+X_IDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+ECSTR
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+CCSTR
+  Relative segment, address : Not in use    
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : exit
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0315 - 0316
+           ENTRIES                ADDRESS          REF BY MODULE
+           exit                    0315            abort
+               xdata = 053D ( 0000 , 0002 )
+           ?C_EXIT                 0315            CSTARTUP
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : lowinit
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 6B3B - 6B3F
+           ENTRIES                ADDRESS          REF BY MODULE
+           __low_level_init        6B3B            CSTARTUP
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : abort
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 6B40 - 6B46
+           ENTRIES                ADDRESS          REF BY MODULE
+           abort                   6B40            phoneans
+               calls direct
+               stack 1 = 00000002 ( 00000000 )
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : strcspn
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 6B47 - 6BBE
+           ENTRIES                ADDRESS          REF BY MODULE
+           strcspn                 6B47            strtok
+               stack 1 = 00000002 ( 00000004 )
+               xdata = 000C ( 0005 , 0006 )
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : strtok
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 6BBF - 6CEF
+           ENTRIES                ADDRESS          REF BY MODULE
+           strtok                  6BBF            main
+               calls direct
+               stack 1 = 00000002 ( 00000005 )
+               xdata = 0017 ( 0002 , 0006 )
+    -------------------------------------------------------------------------
+X_UDATA
+  Relative segment, address : 5F4F - 5F51
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?UI_DIV_L00
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0317 - 0369
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?UI_DIV_L00             031D            Not referred to
+           ?UI_DIV_R_L00           0317            ?UL_DIV_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_MUL_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 036A - 03E6
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_MUL_L01              036A            ?L_OPERATION_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?EXCHANGE_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 03E7 - 03F3
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?EXCHANGE_L01           03E7            ?UL_DIV_L01
+                                                   ?SL_DIV_L01
+                                                   ?L_OPERATION_R567_DISP_L01
+                                                   ?L_OPERATION_DPTR2_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?UL_DIV_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 03F4 - 048A
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?UL_MOD_L01             047E            ?L_OPERATION_L01
+           ?UL_DIV_L01             03F7            ?SL_DIV_L01
+                                                   ?L_OPERATION_L01
+           ?UL_MOD_R_L01           047B            Not referred to
+           ?UL_DIV_R_L01           03F4            Not referred to
+           ?MOVNT_L01              0481            ?SL_DIV_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?SL_DIV_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 048B - 04CC
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?SL_DIV_L01             048E            ?L_OPERATION_L01
+           ?SL_MOD_L01             04C2            ?L_OPERATION_L01
+           ?SL_DIV_R_L01           048B            Not referred to
+           ?SL_MOD_R_L01           04BF            Not referred to
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_NEG_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 04CD - 04DD
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_NEG_L01              04CD            ?SL_DIV_L01
+                                                   ?L_OPERATION_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_NOT_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 04DE - 04ED
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_NOT_L01              04DE            ?L_OPERATION_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_CMP_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 04EE - 0526
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_CMP_L01              04EE            filesystem
+                                                   logfile
+                                                   main
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?SL_SHR_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0527 - 0542
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?SL_SHR_L01             0527            filesystem
+                                                   main
+                                                   wav
+                                                   ?L_OPERATION_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?UL_SHR_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0543 - 055D
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?UL_SHR_L01             0543            ?L_OPERATION_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_SHL_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 055E - 0578
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_SHL_L01              055E            filesystem
+                                                   wav
+                                                   ?L_OPERATION_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_ADD_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0579 - 0588
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_ADD_L01              0579            filesystem
+                                                   logfile
+                                                   wav
+                                                   ?L_POST_L01
+                                                   ?L_OPERATION_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_SUB_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0589 - 0599
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_SUB_L01              0589            filesystem
+                                                   ?L_OPERATION_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_AND_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 059A - 05A9
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_AND_L01              059A            filesystem
+                                                   ?L_OPERATION_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_IOR_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 05AA - 05B9
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_IOR_L01              05AA            ?L_OPERATION_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_XOR_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 05BA - 05C9
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_XOR_L01              05BA            ?L_OPERATION_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_OPERATION_R0_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 05CA - 05FF
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_OPERATION_R0_L01     05CA            ?L_OPERATION_R123_DISP_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_OPERATION_R1_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0600 - 0636
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_OPERATION_R1_L01     0600            ?L_OPERATION_R123_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_ADD_ASG_R123_R4567_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0637 - 063B
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_ADD_ASG_R123_R4567_L01
+                                   0637            filesystem
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_OPERATION_R123_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 063C - 0657
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_OPERATION_R123_L01   063C            ?L_ADD_ASG_R123_R4567_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_OPERATION_R123_DISP_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0658 - 0681
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_OPERATION_R123_DISP_L01
+                                   0658            ?L_OPERATION_R567_DISP_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_ADD_ASG_R567_R0123_DISP_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0682 - 0686
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_ADD_ASG_R567_R0123_DISP_L01
+                                   0682            filesystem
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_OPERATION_R567_DISP_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0687 - 0694
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_OPERATION_R567_DISP_L01
+                                   0687            ?L_ADD_ASG_R567_R0123_DISP_L0
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_POST_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0695 - 069F
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_POST_L01             0695            ?L_OPERATION_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_OPERATION_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 06A0 - 0760
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_OPERATION_L01        06A0            ?L_OPERATION_R0_L01
+                                                   ?L_OPERATION_R1_L01
+                                                   ?L_OPERATION_R123_L01
+                                                   ?L_OPERATION_R123_DISP_L01
+                                                   ?L_OPERATION_PR0_L01
+                                                   ?L_OPERATION_PR1_L01
+                                                   ?L_OPERATION_DPTR_L01
+                                                   ?L_OPERATION_DPTR2_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_OPERATION_PR0_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0761 - 0796
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_OPERATION_PR0_L01    0761            ?L_OPERATION_R123_DISP_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_OPERATION_PR1_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0797 - 07CD
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_OPERATION_PR1_L01    0797            ?L_OPERATION_R123_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_ADD_ASG_DPTR_R4567_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 07CE - 07D2
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_ADD_ASG_DPTR_R4567_L01
+                                   07CE            filesystem
+                                                   wav
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_OPERATION_DPTR_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 07D3 - 080F
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_OPERATION_DPTR_L01   07D3            ?L_OPERATION_R123_L01
+                                                   ?L_OPERATION_R123_DISP_L01
+                                                   ?L_ADD_ASG_DPTR_R4567_L01
+                                                   ?L_OPERATION_DPTR2_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_SUB_ASG_DPTR_R0123_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0810 - 0814
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_SUB_ASG_DPTR_R0123_L01
+                                   0810            wav
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_OPERATION_DPTR2_L01
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0815 - 0822
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?L_OPERATION_DPTR2_L01
+                                   0815            ?L_SUB_ASG_DPTR_R0123_L01
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?C_SWITCH_L05
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0823 - 0858
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?A_S_SWITCH_L05         0823            dtmf
+                                                   phoneans
+           ?C_SWITCH               0833            Not referred to
+           ?C_SWITCH_D             084F            Not referred to
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?VC_SWITCH_L05
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0859 - 0881
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?A_V_SWITCH_L05         0859            calender
+                                                   dtmf
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?LOAD_A_R123_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0882 - 0886
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?LD_A_R123_L17          0882            strcspn
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?LOAD_A_R567_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0887 - 088B
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?LD_A_R567_L17          0887            calender
+                                                   dtmf
+                                                   filesystem
+                                                   main
+                                                   phoneans
+                                                   strcspn
+                                                   strtok
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?LOAD_A_R567_DISP_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 088C - 088E
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?LD_A_R567_DISP_L17     088C            calender
+                                                   dtmf
+                                                   filesystem
+                                                   lcd
+                                                   logfile
+                                                   main
+                                                   phoneans
+                                                   rs232
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?LOAD_A_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 088F - 08AA
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?LOAD_A_L17             088F            ?LOAD_A_R123_L17
+                                                   ?LOAD_A_R567_L17
+                                                   ?LOAD_A_R567_DISP_L17
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?LOAD_R0123_R567_DISP_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 08AB - 08AD
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?LD_R0123_R567_DISP_L17
+                                   08AB            filesystem
+                                                   logfile
+                                                   wav
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?LOAD_R0123_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 08AE - 090A
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?LOAD_R0123_L17         08AE            ?LOAD_R0123_R567_DISP_L17
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?LOAD_R4567_R123_DISP_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 090B - 090D
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?LD_R4567_R123_DISP_L17
+                                   090B            filesystem
+                                                   main
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?LOAD_R4567_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 090E - 096E
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?LOAD_R4567_L17         090E            ?LOAD_R4567_R123_DISP_L17
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?SETUP_R123_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 096F - 098B
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?SETUP_R123_L17         096F            ?LOAD_A_R123_L17
+                                                   ?STORE_A_R123_L17
+                                                   ?STORE_AR5_R123_L17
+                                                   ?STORE_R4567_R123_L17
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?SETUP_R123_DISP_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 098C - 09BC
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?SETUP_R123_DISP_L17    098C            ?LOAD_R4567_R123_DISP_L17
+                                                   ?STORE_A_R123_DISP_L17
+                                                   ?STORE_R4567_R123_DISP_L17
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?SETUP_R567_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 09BD - 09DD
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?SETUP_R567_L17         09BD            ?LOAD_A_R567_L17
+                                                   ?STORE_A_R567_L17
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?SETUP_R567_DISP_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 09DE - 0A0E
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?SETUP_R567_DISP_L17    09DE            ?LOAD_A_R567_DISP_L17
+                                                   ?LOAD_R0123_R567_DISP_L17
+                                                   ?STORE_A_R567_DISP_L17
+                                                   ?STORE_R0123_R567_DISP_L17
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STORE_A_R123_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0A0F - 0A15
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?ST_A_R123_L17          0A0F            calender
+                                                   main
+                                                   phoneans
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STORE_A_R123_DISP_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0A16 - 0A1C
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?ST_A_R123_DISP_L17     0A16            calender
+                                                   filesystem
+                                                   main
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STORE_A_R567_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0A1D - 0A23
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?ST_A_R567_L17          0A1D            calender
+                                                   dpot
+                                                   filesystem
+                                                   lcd
+                                                   phoneans
+                                                   rs232
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STORE_A_R567_DISP_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0A24 - 0A28
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?ST_A_R567_DISP_L17     0A24            calender
+                                                   filesystem
+                                                   logfile
+                                                   main
+                                                   phoneans
+                                                   rs232
+                                                   strtok
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STORE_A_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0A29 - 0A48
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?STORE_A_L17            0A29            ?STORE_A_R123_L17
+                                                   ?STORE_A_R123_DISP_L17
+                                                   ?STORE_A_R567_L17
+                                                   ?STORE_A_R567_DISP_L17
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STORE_AR5_R123_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0A49 - 0A52
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?ST_AR5_R123_L17        0A49            logfile
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STORE_AA_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0A53 - 0A88
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?STORE_AA_L17           0A53            ?STORE_AR5_R123_L17
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STORE_R4567_R123_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0A89 - 0A8D
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?ST_R4567_R123_L17      0A89            filesystem
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STORE_R4567_R123_DISP_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0A8E - 0A90
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?ST_R4567_R123_DISP_L17
+                                   0A8E            filesystem
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STORE_R4567_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0A91 - 0ADE
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?STORE_R4567_L17        0A91            ?STORE_R4567_R123_L17
+                                                   ?STORE_R4567_R123_DISP_L17
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STORE_R0123_R567_DISP_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0ADF - 0AE5
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?ST_R0123_R567_DISP_L17
+                                   0ADF            wav
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STORE_R0123_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0AE6 - 0B1B
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?STORE_R0123_L17        0AE6            ?STORE_R0123_R567_DISP_L17
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?MOVE_LONG_CR12_DPTR_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0B1C - 0B35
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?MOVE_LONG_CR12_DPTR_L17
+                                   0B1C            main
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?VERSION_L17
+          ABSOLUTE ENTRIES        ADDRESS          REF BY MODULE
+           ==============         =======          =============
+           ?CL8051L_5_20_L17       C893            calender
+                                                   dpot
+                                                   dtmf
+                                                   filesystem
+                                                   keyboard
+                                                   lcd
+                                                   logfile
+                                                   main
+                                                   phone
+                                                   phoneans
+                                                   rs232
+                                                   timer
+                                                   wav
+                                                   abort
+                                                   strcspn
+                                                   strtok
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?PINC1_R567_TO_R123_L20
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0B36 - 0B41
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?PINC1_R567_TO_R123_L20
+                                   0B36            phoneans
+                                                   strcspn
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?LD_R0123_CDPTR_L20
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0B42 - 0B51
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?LD_R0123_CDPTR_L20     0B42            main
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STO_R567_DPTR_L20
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0B52 - 0B5A
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?STO_R567_DPTR_L20      0B52            strcspn
+                                                   strtok
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STO_R4567_DPTR_L20
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0B5B - 0B66
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?STO_R4567_DPTR_L20     0B5B            filesystem
+                                                   logfile
+                                                   main
+                                                   wav
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STO_R0123_DPTR_L20
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0B67 - 0B72
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?STO_R0123_DPTR_L20     0B67            filesystem
+                                                   logfile
+                                                   main
+                                                   wav
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?LD_R567_XDPTR_L20
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0B73 - 0B7B
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?LD_R567_XDPTR_L20      0B73            strcspn
+                                                   strtok
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?LD_R4567_XDPTR_L20
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0B7C - 0B87
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?LD_R4567_XDPTR_L20     0B7C            filesystem
+                                                   main
+                                                   wav
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?LD_R0123_XDPTR_L20
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0B88 - 0B93
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?LD_R0123_XDPTR_L20     0B88            filesystem
+                                                   logfile
+                                                   main
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?PINC_R567_DPTR_L20
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0B94 - 0BA9
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?PINC_R567_DPTR_L20     0B94            strtok
+
+    -------------------------------------------------------------------------
+                ****************************************
+                *                                      *
+                *        SEGMENTS IN DUMP ORDER        *
+                *                                      *
+                ****************************************
+
+ SEGMENT               START ADDRESS    END ADDRESS  TYPE  ORG  P/N  ALIGN
+ =======               =============    ===========  ====  ===  ===  =====
+C_ARGB                          Not in use            dse  stc  pos   0     
+BITVARS                         Not in use            dse  flt  pos   0     
+B_UDATA                         Not in use            rel  stc  pos   0     
+B_IDATA                         Not in use            rel  flt  pos   0     
+C_ARGD                          Not in use            dse  flt  pos   0     
+D_UDATA                         Not in use            rel  flt  pos   0     
+D_IDATA                         Not in use            rel  flt  pos   0     
+C_ARGI                      0020     -     002B       rel  flt  pos   0     
+I_UDATA                     002C     -     003A       rel  flt  pos   0     
+I_IDATA                         Not in use            rel  flt  pos   0     
+CSTACK                      003B     -     0058       rel  flt  pos   0     
+P_UDATA                         Not in use            rel  stc  pos   0     
+P_IDATA                         Not in use            rel  flt  pos   0     
+C_ARGX                      0001     -     053E       rel  flt  pos   0     
+X_UDATA                     053F     -     5F51       rel  flt  pos   0     
+X_IDATA                         Not in use            rel  flt  pos   0     
+ECSTR                           Not in use            rel  flt  pos   0     
+RF_XDATA                        Not in use            dse  flt  pos   0     
+XSTACK                          Not in use            dse  flt  pos   0     
+INTVEC                      0000     -     009D       com  stc  pos   0     
+RCODE                       009E     -     0BA9       rel  flt  pos   0     
+D_CDATA                         Not in use            rel  flt  pos   0     
+B_CDATA                         Not in use            rel  flt  pos   0     
+I_CDATA                         Not in use            rel  flt  pos   0     
+P_CDATA                         Not in use            rel  flt  pos   0     
+X_CDATA                         Not in use            rel  flt  pos   0     
+C_ICALL                         Not in use            dse  flt  pos   0     
+C_RECFN                         Not in use            dse  flt  pos   0     
+CSTR                        0BAA     -     156F       rel  flt  pos   0     
+CCSTR                           Not in use            rel  flt  pos   0     
+CODE                        1570     -     6CEF       rel  flt  pos   0     
+CONST                       6CF0     -     6CF8       rel  flt  pos   0     
+HIGHCODE                    8000     -     B86B       rel  stc  pos   0     
+
+                ****************************************
+                *                                      *
+                *        END OF CROSS REFERENCE        *
+                *                                      *
+                ****************************************
+
+Errors: none
+Warnings: none
+

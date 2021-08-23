@@ -1,0 +1,1672 @@
+##############################################################################
+#                                                                            #
+# IAR 8051 C-Compiler V5.20A/386                                             #
+# Front End V4.20N                                       19/Sep/104  17:59:48 #
+# Global Optimizer V1.04E                                                    #
+#                                                                            #
+#       Target option =  8051                                                #
+#       Memory model  =  large                                               #
+#       Source file   =  keyboard.c                                          #
+#       List file     =  release\list\keyboard.lst                           #
+#       Object file   =  release\obj\keyboard.r03                            #
+#       Command line  =  Keyboard.c -S -ml -v0 -e -K -u -s9 -RCODE -gA       #
+#                        -IC:\IAR\EW\8051\inc\ -ORelease\Obj\                #
+#                        -LRelease\List\ -q -i -t8 -x                        #
+#                                                                            #
+#                                             (c) Copyright IAR Systems 1996 #
+##############################################################################
+
+   \   0000                    NAME    keyboard(18)
+   \   0000                    RSEG    CODE(0)
+   \   0000                    COMMON  INTVEC(0)
+   \   0000                    RSEG    X_UDATA(0)
+   \   0000                    PUBLIC  CT_int
+   \   0000                    $DEFFN  CT_int(512,0,0,0,32768,0,0,0)
+   \   0000                    PUBLIC  EX2_int
+   \   0000                    $DEFFN  EX2_int(512,0,1,0,32768,0,0,0)
+   \   0000                    PUBLIC  InitializeKeyboard
+   \   0000                    $DEFFN  InitializeKeyboard(0,0,0,0,32768,0,0,0)
+   \   0000                    PUBLIC  KeyboardOff
+   \   0000                    $DEFFN  KeyboardOff(0,0,0,0,32768,0,0,0)
+   \   0000                    PUBLIC  KeyboardOn
+   \   0000                    $DEFFN  KeyboardOn(0,0,1,0,32768,0,0,0)
+   \   0000                    PUBLIC  keyboardState
+   \   0000                    PUBLIC  lastKey
+   \   0000                    PUBLIC  timeoutCount
+   \   0000                    EXTERN  ?CL8051L_5_20_L17
+   \   0000                    RSEG    CODE
+      1          /*************************************************************
+      2          Fil:            $Id: Keyboard.c,v 1.4 2003/11/20 22:08:53 Gemensam Exp $
+      3          
+      4          Beskrivning:    Sköter gränsnittet mot tangentbordet
+      5          
+      6          Skapad:         00-02-09
+      7          
+      8          Ändrad:         $Date: 2003/11/20 22:08:53 $
+      9          
+     10          Ägare:          Fredrik Hoffman
+     11          
+     12          
+     13          Att göra:
+     14          
+     15          
+     16          Revisionshistoria:
+     17                                          $Log: Keyboard.c,v $
+     18                                          Revision 1.4  2003/11/20 22:08:53  Gemensam
+     19                                          Various declarations changes.
+     20                                          Still version 0200.
+     21                                          
+     22                                          Revision 1.3  2003/11/18 19:17:36  Gemensam
+     23                                          Added menu option of setting speaker volume (untested)
+     24                                          Completely changed header files
+     25                                          Version 0200.
+     26                                          
+     27                                          Revision 1.2  2003/11/10 22:44:45  Gemensam
+     28                                          Added header information
+     29                                          
+     30          
+     31          *************************************************************/
+     32                                  
+     33          //////////////////////
+     34          // Inkluderingar
+     35          
+     36          #include <io517a.h>
+      1          /*                     - IO517A.H -
+      2          
+      3             Special header for the Siemens SAB 80C517A/83C517A-5 processors.
+      4          
+      5             Version 5.20 [IMAF]
+      6          
+      7          */
+      8          
+      9          #pragma language=extended
+     10          
+     11          /* Pre-defined SFR byte addresses: */
+     12          
+     13          /* CPU */
+     14          sfr     ACC    = 0xE0;
+     15          sfr     B      = 0xF0;
+     16          sfr     SP     = 0x81;
+     17          sfr     DPL    = 0x82;
+     18          sfr     DPH    = 0x83;
+     19          sfr     DPSEL  = 0x92;
+     20          sfr     PSW    = 0xD0;
+     21          sfr     XPAGE  = 0x91;
+     22          sfr     SYSCON = 0xB1;
+     23          
+     24          /* Timer 0/Timer 1 */
+     25          sfr     TCON   = 0x88;
+     26          sfr     TMOD   = 0x89;
+     27          sfr     TL0    = 0x8A;
+     28          sfr     TL1    = 0x8B;
+     29          sfr     TH0    = 0x8C;
+     30          sfr     TH1    = 0x8D;
+     31          
+     32          /* CCU */
+     33          sfr     CCEN   = 0xC1;
+     34          sfr     CC4EN  = 0xC9;
+     35          sfr     CCL1   = 0xC2;
+     36          sfr     CCH1   = 0xC3;
+     37          sfr     CCL2   = 0xC4;
+     38          sfr     CCH2   = 0xC5;
+     39          sfr     CCL3   = 0xC6;
+     40          sfr     CCH3   = 0xC7;
+     41          sfr     CCL4   = 0xCE;
+     42          sfr     CCH4   = 0xCF;
+     43          sfr     CMEN   = 0xF6;
+     44          sfr     CML0   = 0xD2;
+     45          sfr     CMH0   = 0xD3;
+     46          sfr     CML1   = 0xD4;
+     47          sfr     CMH1   = 0xD5;
+     48          sfr     CML2   = 0xD6;
+     49          sfr     CMH2   = 0xD7;
+     50          sfr     CML3   = 0xE2;
+     51          sfr     CMH3   = 0xE3;
+     52          sfr     CML4   = 0xE4;
+     53          sfr     CMH4   = 0xE5;
+     54          sfr     CML5   = 0xE6;
+     55          sfr     CMH5   = 0xE7;
+     56          sfr     CML6   = 0xF2;
+     57          sfr     CMH6   = 0xF3;
+     58          sfr     CML7   = 0xF4;
+     59          sfr     CMH7   = 0xF5;
+     60          sfr     CMSEL  = 0xF7;
+     61          sfr     CRCL   = 0xCA;
+     62          sfr     CRCH   = 0xCB;
+     63          sfr     CTCON  = 0xE1;
+     64          sfr     CTRELL = 0xDE;
+     65          sfr     CTRELH = 0xDF;
+     66          sfr     TL2    = 0xCC;
+     67          sfr     TH2    = 0xCD;
+     68          sfr     T2CON  = 0xC8;
+     69          sfr     COMSETL= 0xA1;
+     70          sfr     COMSETH= 0xA2;
+     71          sfr     COMCLRL= 0xA3;
+     72          sfr     COMCLRH= 0xA4;
+     73          sfr     SETMSK = 0xA5;
+     74          sfr     CLRMSK = 0xA6;
+     75          
+     76          /* Ports */
+     77          sfr     P0     = 0x80;
+     78          sfr     P1     = 0x90;
+     79          sfr     P2     = 0xA0;
+     80          sfr     P3     = 0xB0;
+     81          sfr     P4     = 0xE8;
+     82          sfr     P5     = 0xF8;
+     83          sfr     P6     = 0xFA;
+     84          sfr     P7     = 0xDB;        /* Analog/Digital Input */
+     85          sfr     P8     = 0xDD;        /* Analog/Digital Input, 4 Bit */
+     86          
+     87          /* Serial Channels */
+     88          sfr     PCON   = 0x87;
+     89          sfr     S0CON  = 0x98;
+     90          sfr     S0BUF  = 0x99;
+     91          sfr     S1CON  = 0x9B;
+     92          sfr     S1BUF  = 0x9C;
+     93          sfr     S0RELL = 0xAA;
+     94          sfr     S0RELH = 0xBA;
+     95          sfr     S1RELL = 0x9D;
+     96          sfr     S1RELH = 0xBB;
+     97          
+     98          /* A/D Converter */
+     99          sfr     ADCON0 = 0xD8;
+    100          sfr     ADCON1 = 0xDC;
+    101          sfr     ADDATH = 0xD9;
+    102          sfr     ADDATL = 0xDA;
+    103          
+    104          /* MUL/DIV Unit */
+    105          sfr     ARCON  = 0xEF;
+    106          sfr     MD0    = 0xE9;
+    107          sfr     MD1    = 0xEA;
+    108          sfr     MD2    = 0xEB;
+    109          sfr     MD3    = 0xEC;
+    110          sfr     MD4    = 0xED;
+    111          sfr     MD5    = 0xEE;
+    112          
+    113          /* Interrupt System */
+    114          sfr     IEN0   = 0xA8;
+    115          sfr     IP0    = 0xA9;
+    116          sfr     IEN1   = 0xB8;
+    117          sfr     IP1    = 0xB9;
+    118          sfr     IEN2   = 0x9A;
+    119          sfr     IRCON0 = 0xC0;
+    120          sfr     IRCON1 = 0xD1;
+    121          
+    122          
+    123          /* Watchdog */
+    124          sfr     WDTREL = 0x86;
+    125          
+    126          
+    127          /* Pre-defined SFR bit addresses */
+    128          
+    129          /*========ADCON0=======*/
+    130          
+    131          bit     BD     = 0xDF;
+    132          bit     CLK    = 0xDE;
+    133          bit     ADEX   = 0xDD;
+    134          bit     BSY    = 0xDC;
+    135          bit     ADM    = 0xDB;
+    136          bit     MX2    = 0xDA;
+    137          bit     MX1    = 0xD9;
+    138          bit     MX0    = 0xD8;
+    139          
+    140          
+    141          /*========IRCON0=======*/
+    142          
+    143          bit     EXF2   = 0xC7;
+    144          bit     TF2    = 0xC6;
+    145          bit     IEX6   = 0xC5;
+    146          bit     IEX5   = 0xC4;
+    147          bit     IEX4   = 0xC3;
+    148          bit     IEX3   = 0xC2;
+    149          bit     IEX2   = 0xC1;
+    150          bit     IADC   = 0xC0;
+    151          
+    152          /*========T2CON=======*/
+    153          
+    154          bit     T2PS   = 0xCF;
+    155          bit     I3FR   = 0xCE;
+    156          bit     I2FR   = 0xCD;
+    157          bit     T2R1   = 0xCC;
+    158          bit     T2R0   = 0xCB;
+    159          bit     T2CM   = 0xCA;
+    160          bit     T2I1   = 0xC9;
+    161          bit     T2I0   = 0xC8;
+    162          
+    163          /*========PSW=========*/
+    164          
+    165          bit     CY     = 0xD7;
+    166          bit     AC     = 0xD6;
+    167          bit     F0     = 0xD5;
+    168          bit     RS1    = 0xD4;
+    169          bit     RS0    = 0xD3;
+    170          bit     OV     = 0xD2;
+    171          bit     F1     = 0xD1;
+    172          bit     P      = 0xD0;
+    173          
+    174          /*========TCON========*/
+    175          
+    176          bit     TF1    = 0x8F;
+    177          bit     TR1    = 0x8E;
+    178          bit     TF0    = 0x8D;
+    179          bit     TR0    = 0x8C;
+    180          bit     IE1    = 0x8B;
+    181          bit     IT1    = 0x8A;
+    182          bit     IE0    = 0x89;
+    183          bit     IT0    = 0x88;
+    184          
+    185          /*========IEN0========*/
+    186          
+    187          bit     EAL    = 0xAF;
+    188          bit     WDT    = 0xAE;
+    189          bit     ET2    = 0xAD;
+    190          bit     ES0    = 0xAC;
+    191          bit     ET1    = 0xAB;
+    192          bit     EX1    = 0xAA;
+    193          bit     ET0    = 0xA9;
+    194          bit     EX0    = 0xA8;
+    195          
+    196          /*========IEN1========*/
+    197          
+    198          bit     EXEN2  = 0xBF;
+    199          bit     SWDT   = 0xBE;
+    200          bit     EX6    = 0xBD;
+    201          bit     EX5    = 0xBC;
+    202          bit     EX4    = 0xBB;
+    203          bit     EX3    = 0xBA;
+    204          bit     EX2    = 0xB9;
+    205          bit     EADC   = 0xB8;
+    206          
+    207          /*========P3=========*/
+    208          
+    209          bit     RD     = 0xB7;
+    210          bit     WR     = 0xB6;
+    211          bit     T1     = 0xB5;
+    212          bit     T0     = 0xB4;
+    213          bit     INT1   = 0xB3;
+    214          bit     INT0   = 0xB2;
+    215          bit     TXD    = 0xB1;
+    216          bit     RXD    = 0xB0;
+    217          
+    218          /*========S0CON========*/
+    219          
+    220          bit     SM0    = 0x9F;
+    221          bit     SM1    = 0x9E;
+    222          bit     SM20   = 0x9D;
+    223          bit     REN0   = 0x9C;
+    224          bit     TB80   = 0x9B;
+    225          bit     RB80   = 0x9A;
+    226          bit     TI0    = 0x99;
+    227          bit     RI0    = 0x98;
+    228          
+    229          
+    230          /* Interrupt Vector Definitions */
+    231          
+    232          interrupt [0x03] void EX0_int (void);     /* External Interrupt 0 */
+    233          
+    234          interrupt [0x0B] void T0_int (void);      /* Timer 0 Overflow */
+    235          
+    236          interrupt [0x13] void EX1_int (void);     /* External Interrupt 1 */
+    237          
+    238          interrupt [0x1B] void T1_int (void);      /* Timer 1 Overflow */
+    239          
+    240          interrupt [0x23] void SCON0_int (void);   /* Serial Port 0 */
+    241          
+    242          interrupt [0x2B] void T2_int (void);      /* Timer 2 Overflow */
+    243          
+    244          interrupt [0x2B] void T2EX_int (void);    /* Negative Transition on T2EX */
+    245          
+    246          interrupt [0x43] void ADC_int (void);     /* ADC Interrupt */
+    247          
+    248          interrupt [0x4B] void EX2_int (void);     /* External Interrupt 2 */
+    249          
+    250          interrupt [0x53] void EX3_int (void);     /* External Interrupt 3 */
+    251          
+    252          interrupt [0x5B] void EX4_int (void);     /* External Interrupt 4 */
+    253          
+    254          interrupt [0x63] void EX5_int (void);     /* External Interrupt 5 */
+    255          
+    256          interrupt [0x6B] void EX6_int (void);     /* External Interrupt 6 */
+    257          
+    258          interrupt [0x83] void SCON1_int (void);   /* Serial Port 1 */
+    259          
+    260          interrupt [0x93] void ICMP_int (void);    /* Compare match interrupt */
+    261          
+    262          interrupt [0x9B] void CT_int (void);      /* Compare Timer Overflow */
+    263          
+    264          interrupt [0xA3] void ICS_int (void);     /* COMSET interrupt */
+    265          
+    266          interrupt [0xAB] void ICR_int (void);     /* COMCLR interrupt */
+    267          
+    268          
+     37          #include <stdio.h>
+      1          /*                      - STDIO.H -
+      2          
+      3             Subset of ANSI standard I/O function declarations.
+      4          
+      5             Version: 3.30 04/Nov/94 IHAW
+      6          
+      7          
+      8          */
+      9          
+     10          #ifndef _STDIO_INCLUDED
+     11          #define _STDIO_INCLUDED
+     12          
+     13          #ifndef NULL
+     14          #define NULL    (void *) 0
+     15          #endif
+     16          
+     17          #ifndef EOF
+     18          #define EOF     (-1)
+     19          #endif
+     20          
+     21          #ifndef size_t
+     22          #if     sizeof((char*)0 - (char*)0) <= sizeof(int)
+     23          #define size_t  unsigned int
+     24          #else
+     25          #define size_t  unsigned long 
+     26          #endif
+     27          #endif
+     28          
+     29          /* ===
+     30          
+     31          #if __TID__ & 0x8000
+     32          #pragma function=intrinsic(0)
+     33          #endif
+     34          
+     35          === */
+     36          
+     37          #ifndef MEMORY_ATTRIBUTE
+     38          #define MEMORY_ATTRIBUTE
+     39          #endif
+     40          
+     41          MEMORY_ATTRIBUTE int    puts(const char *__s);
+     42          MEMORY_ATTRIBUTE int    putchar(int __value);
+     43          MEMORY_ATTRIBUTE int    getchar(void);
+     44          MEMORY_ATTRIBUTE int    sprintf(char *__s,const char *__format,...);
+     45          MEMORY_ATTRIBUTE int    printf(const char *__format,...);
+     46          MEMORY_ATTRIBUTE int    scanf(const char *__format,...);
+     47          MEMORY_ATTRIBUTE int    sscanf(const char *__s, const char *__format,...);
+     48          MEMORY_ATTRIBUTE char   *gets(char *__s);
+     49          
+     50          #if __TID__ & 0x8000
+     51          #pragma function=default
+     52          #endif
+     53          
+     54          #endif
+     55          
+     56          
+     57          
+     38          #include <stdlib.h>
+      1          /*                      - STDLIB.H -
+      2          
+      3             The ANSI-defined 'standard' functions.
+      4          
+      5             Version: 3.30 04/Nov/94 IHAW
+      6          
+      7          $Name: V3_33B $
+      8          $Log: stdlib.h $
+      9          Revision 1.3  1996/06/07 07:11:26  matsp
+     10          
+     11          Revision 1.2  1996/01/26 16:13:20  matsp
+     12          A lot. Converted to Source Integrity
+     13          Revision 1.2  1996/01/26 17:13:18  MATSP
+     14          Revision 1.4  1996/01/26 16:07:29  MATSP
+     15          Revision 1.3  1995/12/04 09:04:11  MATSP
+     16          RAND_MAX changed from 32768 to 32767.
+     17          */
+     18          
+     19          #ifndef _STDLIB_INCLUDED
+     20          #define _STDLIB_INCLUDED
+     21          
+     22          #ifndef size_t
+     23          #if sizeof((char *)0 - (char *)0) <= sizeof(int)
+     24          #define size_t          unsigned int
+     25          #else
+     26          #define size_t          unsigned long
+     27          #endif
+     28          #endif
+     29          
+     30          #ifndef NULL
+     31          #define NULL    (void*) 0 
+     32          #endif
+     33          
+     34          typedef struct
+     35                  {
+     36                    int   quot;
+     37                    int   rem;
+     38                  } div_t;
+     39          
+     40          typedef struct
+     41                  {
+     42                    long int      quot;
+     43                    long int      rem;
+     44                  } ldiv_t;
+     45          
+     46          
+     47          #define RAND_MAX        32767
+     48          
+     49          #define EXIT_SUCCESS    0
+     50          #define EXIT_FAILURE    1
+     51          
+     52          #define MB_CUR_MAX      1
+     53          
+     54          #if __TID__ & 0x8000
+     55          #pragma function=intrinsic(0)
+     56          #endif
+     57          
+     58          #ifndef MEMORY_ATTRIBUTE
+     59          #define MEMORY_ATTRIBUTE
+     60          #endif
+     61          
+     62          #ifndef PTR_ATTRIBUTE
+     63          #define PTR_ATTRIBUTE
+     64          #endif
+     65          
+     66          MEMORY_ATTRIBUTE void   *malloc(size_t __size);
+     67          
+     68          MEMORY_ATTRIBUTE void   free(void *__ptr);
+     69          
+     70          MEMORY_ATTRIBUTE void   exit(int __status);
+     71          
+     72          MEMORY_ATTRIBUTE void   *calloc(unsigned int __nelem, size_t __elsize);
+     73          
+     74          MEMORY_ATTRIBUTE void   *realloc(void *__ptr, size_t __size);
+     75          
+     76          MEMORY_ATTRIBUTE int atoi (const char *__nptr);
+     77          
+     78          MEMORY_ATTRIBUTE long atol (const char *__nptr);
+     79          
+     80          MEMORY_ATTRIBUTE double atof (const char *__nptr);
+     81          
+     82          MEMORY_ATTRIBUTE double strtod(const char *__nptr, char **__endptr);
+     83          
+     84          MEMORY_ATTRIBUTE long int strtol(const char *__nptr, char **__endptr, int __base);
+     85          
+     86          MEMORY_ATTRIBUTE unsigned long int strtoul(const char *__nptr, char **__endptr, int __base);
+     87          
+     88          MEMORY_ATTRIBUTE int rand(void);
+     89          
+     90          MEMORY_ATTRIBUTE void srand(unsigned int __seed);
+     91          
+     92          MEMORY_ATTRIBUTE void abort(void);
+     93          
+     94          MEMORY_ATTRIBUTE int abs(int __j);
+     95          
+     96          MEMORY_ATTRIBUTE div_t div(int __numer, int __denom);
+     97          
+     98          MEMORY_ATTRIBUTE long int labs(long int __j);
+     99          
+    100          MEMORY_ATTRIBUTE ldiv_t ldiv(long int __numer, long int __denom);
+    101          
+    102          MEMORY_ATTRIBUTE void *bsearch(const void *__key, const void *__base,
+    103                                  size_t __nmemb, size_t __size,
+    104                                  int (*__compar) (const void *, const void *));
+    105          
+    106          MEMORY_ATTRIBUTE void qsort(void *__base, size_t __nmemb, size_t __size,
+    107                                  int (*__compar) (const void *, const void *));
+    108          
+    109          #if __TID__ & 0x8000
+    110          #pragma function=default
+    111          #endif
+    112          
+    113          #endif
+    114          
+     39          #include "Keyboard.h"
+      1          /*************************************************************
+      2          Fil:            $Id: Keyboard.h,v 1.2 2003/11/20 22:08:53 Gemensam Exp $
+      3          
+      4          Beskrivning:    Header fil till Keyboard.c
+      5          
+      6          Skapad:         03-11-18
+      7          
+      8          Ändrad:         $Date: 2003/11/20 22:08:53 $
+      9          
+     10          Ägare:          Fredrik Hoffman
+     11          
+     12          
+     13          Att göra:
+     14          
+     15          Kommentarer:
+     16          
+     17          Revisionshistoria:
+     18                                          $Log: Keyboard.h,v $
+     19                                          Revision 1.2  2003/11/20 22:08:53  Gemensam
+     20                                          Various declarations changes.
+     21                                          Still version 0200.
+     22                                          
+     23                                          Revision 1.1  2003/11/18 19:17:36  Gemensam
+     24                                          Added menu option of setting speaker volume (untested)
+     25                                          Completely changed header files
+     26                                          Version 0200.
+     27                                          
+     28          
+     29          *************************************************************/
+     30          
+     31          #ifndef _KEYBOARD_INCLUDED_
+     32          #define _KEYBOARD_INCLUDED_
+     33          
+     34          ///////////////////////////////////
+     35          // Definitioner
+     36          
+     37          #define KEYBOARD    (*(unsigned char xdata *) 0xC000)
+     38          #define KEY_CLK     P1.6
+     39          #define KEY_IRQ     P1.4
+     40          
+     41          #define KS_IDLE         0x00
+     42          #define KS_WAITFIRST    0x01
+     43          #define KS_WAITMULTI    0x02
+     44          
+     45          #define FIRST_KEY_TIMEOUT   10
+     46          #define MULTI_KEY_TIMEOUT   2
+     47           
+     48          
+     49          ///////////////////////////////////
+     50          // Funktioner och procedurer
+     51          
+     52          extern void    InitializeKeyboard( void );
+     53          extern void    KeyboardOn( void );
+     54          extern void    KeyboardOff( void );
+     55           
+     56          #endif
+     40          #include "commands.h"
+      1          /**************************************************************
+      2          Fil:            $Id: Commands.h,v 1.5 2003/11/24 22:44:35 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/11/24 22:44:35 $
+      5          
+      6          Revisionshistoria:
+      7                                          $Log: Commands.h,v $
+      8                                          Revision 1.5  2003/11/24 22:44:35  Gemensam
+      9                                          Fixed PPD, not working yet,
+     10                                          New command: speaker volume.
+     11                                          Version 0301.
+     12                                          
+     13                                          Revision 1.4  2003/11/20 22:08:52  Gemensam
+     14                                          Various declarations changes.
+     15                                          Still version 0200.
+     16                                          
+     17                                          Revision 1.3  2003/11/13 22:39:01  Gemensam
+     18                                          Added watchdog reset at GotoLabel, FindLabel and InsertLabel.
+     19                                          Added global variable to contain speaker volume, Default volume set to 50.
+     20                                          Version 1.1
+     21                                          
+     22                                          Revision 1.2  2003/11/10 22:44:45  Gemensam
+     23                                          Added header information
+     24                                          
+     25          
+     26          ***************************************************************/
+     27          
+     28          #ifndef _COMMANDS_INCLUDED_
+     29          #define _COMMANDS_INCLUDED_
+     30          
+     31          //Module main
+     32          #define    CM_HELLO     "HELLO"
+     33          #define    CM_TESTHW    "TEST"
+     34          #define    CM_ID        "ID"
+     35          #define    CM_ERASE     "ERASE"
+     36          
+     37          //Module Program
+     38          #define CM_PROGRAM      "PROGRAM"
+     39          
+     40          //Module FileSystem
+     41          #define CM_READSPARE    "READSPARE"
+     42          #define CM_READSPARE2   "RS2"
+     43          #define CM_DIR          "DIR"
+     44          #define CM_WRITEFILE1   "WF1"
+     45          #define CM_WRITEFILE2   "WF2"
+     46          #define CM_WRITEFILE3   "WF3"
+     47          #define CM_READFILE1    "RF1"
+     48          #define CM_READFILE2    "RF2"
+     49          #define CM_READFILE3    "RF3"
+     50          #define CM_CREATELONG   "CL"
+     51          #define CM_DOWNLOAD     "DL" 
+     52          #define CM_UPLOAD       "UL" 
+     53          #define CM_TYPE         "TYPE" 
+     54          #define CM_TYPEA        "TYPEA" 
+     55          #define CM_CREATEDYNAMIC "CREATEDYNAMIC" 
+     56          #define CM_ERASEDYNAMIC "ERASEDYNAMIC" 
+     57           
+     58          
+     59          
+     60          //Module WAV
+     61          #define CM_ECHO_MIC     "ECHOMIC"
+     62          #define CM_ECHO_PHONE   "ECHOPHONE"
+     63          #define CM_REC_MIC      "RECMIC"
+     64          #define CM_REC_PHONE    "RECPHONE"
+     65          #define CM_TONE         "TONE"
+     66          #define CM_PLAY         "PLAY" 
+     67          #define CM_REC_PORT     "RECPORT" 
+     68           
+     69          
+     70          //Module DTMF
+     71          #define CM_DTMF         "DTMF"
+     72          #define CM_WAIT_DTMF    "WAITDTMF"
+     73          
+     74          //Module Phone
+     75          #define CM_HANG_UP      "PD"
+     76          #define CM_LIFT_PHONE   "PU"
+     77          #define CM_WAIT_RING    "WAITRING"
+     78          #define CM_READ_PB      "READPB"
+     79          #define CM_LOOKUP_PB    "LOOKUP"
+     80           
+     81          
+     82          //Module Timer
+     83          #define CM_WAIT_FOR     "WAITFOR"
+     84          
+     85          
+     86          //BAT-file handlning
+     87          #define CM_GOTO_LABEL   "GOTO"
+     88          
+     89          //Calender funktioner
+     90          #define CM_READ_CALENDER_BYTE   "RC"
+     91          #define CM_WRITE_CALENDER_BYTE  "WC"
+     92           
+     93          //PhoneAns funktioner
+     94          #define CM_RECMSG           "RECMSG"
+     95          #define CM_QUESTION         "QUESTION"
+     96          #define CM_WAITCALL         "WAITCALL"
+     97          #define CM_ANS_ON           "ANSON"
+     98          #define CM_ANS_OFF          "ANSOFF"
+     99          #define CM_CRE_LOG          "CREATELOG"
+    100          #define CM_ENTER_CODE       "ENTERCODE"
+    101          #define CM_PLAYNEW          "PLAYNEW"
+    102          #define CM_GOTO_CAT_EQUAL   "BRACATEQU"
+    103          #define CM_CATJMP           "CATJUMP"
+    104          #define CM_TESTCATJMP       "TCJ"
+    105          #define CM_PLAYMEMO         "PLAYMEMO"
+    106          #define CM_RECMEMO          "RECMEMO"
+    107          #define CM_SETSIGNALS       "SETSIGNALS"
+    108          
+    109          //LCD funktioner
+    110          #define CM_LCD_SET      "SETLCD" 
+    111          
+    112          //Dpot funktioner
+    113          #define CM_SETWIPER         "SETWIPER"
+    114          #define CM_SETDPREG         "SETDPREG"
+    115          #define CM_TRFTOWIPER       "TRFTOWIPER"
+    116          #define CM_READWIPER        "READWIPER"
+    117          #define CM_DATAH            "D1"
+    118          #define CM_DATAL            "D0"
+    119          #define CM_CLKH             "C1"
+    120          #define CM_CLKL             "C0"
+    121          #define CM_SPEAKVOL         "SPEAKVOL"
+    122           
+    123          #endif
+     41          #include "ErrorCodes.h"
+      1          /***********************************************
+      2          Fil:            $Id: ErrorCodes.h,v 1.3 2003/11/20 22:08:52 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/11/20 22:08:52 $
+      5          
+      6          Revisionshistoria:
+      7                                          $Log: ErrorCodes.h,v $
+      8                                          Revision 1.3  2003/11/20 22:08:52  Gemensam
+      9                                          Various declarations changes.
+     10                                          Still version 0200.
+     11                                          
+     12                                          Revision 1.2  2003/11/10 22:44:45  Gemensam
+     13                                          Added header information
+     14                                          
+     15          
+     16          
+     17          ***********************************************/
+     18          
+     19          #ifndef _ERRORCODES_INCLUDED_
+     20          #define _ERRORCODES_INCLUDED_
+     21          
+     22          
+     23          //Felkoder
+     24          
+     25          //Generellt
+     26          #define EM_NOERROR          0x00
+     27          
+     28          
+     29          
+     30          //Filsystem
+     31          #define EM_FILEEXISTS       0x10
+     32          #define EM_FILENOTEXISTS    0x11
+     33          #define EM_OUTOFFILEMEMORY  0x12
+     34          #define EM_TOOMANYFILES     0x13
+     35          #define EM_FILEOPEN         0x14
+     36          #define EM_FILENOTOPEN      0x15
+     37          #define EM_FILEREADONLY     0x16
+     38          #define EM_FILEWRITEONLY    0x17
+     39          #define EM_WRITEFILEOPEN    0x18
+     40          
+     41          //Phone
+     42          #define EM_TOOMANYTIMERS    0x19
+     43          
+     44          //BAtfiles
+     45          #define EM_TOOMANYBATFILES  0x20
+     46          #define EM_REDEFLABELATTEMPT    0x21
+     47          #define EM_TOOMANYLABELS    0x22
+     48          #define EM_NOLABEL          0x23
+     49          
+     50          
+     51          //PhoneAns
+     52          #define EM_PARAMETER_SYNTAX    0x24
+     53          
+     54          #endif
+     42          #include "FileSystem.h"
+      1          /**************************************************************************************
+      2          Fil:            $Id: FileSystem.h,v 1.4 2003/11/20 22:08:53 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/11/20 22:08:53 $
+      5          
+      6          Kommentarer:    Filhuvudet befinner sig i "Spare" arean tillhörande filens första sida. Huvudet består 
+      7                                          av 16 bytes enligt följande lista:
+      8                                          0       Huvud       0xAA = Legalt filhuvud, annat tillsvidare odefinierat
+      9                                          1-4     Fillängd    Pos 1 = MSB, pos 4 = LSB
+     10                                          5-12    Filtitel    Enl "Titel.ext". Om titeln är mindre än 8 tecken avslutas det med nollor
+     11                                          13-15   Filext      Enl "Titel.ext". Om ext är mindre än 3 tecken avslutas det med nollor
+     12          
+     13                                          En nolla skriven i fileName[0] indikerar att
+     14                                          filstrukturen är ledig.
+     15                  
+     16          Revisionshistoria:
+     17                                          $Log: FileSystem.h,v $
+     18                                          Revision 1.4  2003/11/20 22:08:53  Gemensam
+     19                                          Various declarations changes.
+     20                                          Still version 0200.
+     21                                          
+     22                                          Revision 1.3  2003/11/18 19:17:36  Gemensam
+     23                                          Added menu option of setting speaker volume (untested)
+     24                                          Completely changed header files
+     25                                          Version 0200.
+     26                                          
+     27                                          Revision 1.2  2003/11/10 22:44:45  Gemensam
+     28                                          Added header information
+     29                                          
+     30          
+     31          **************************************************************************************/
+     32          
+     33          #ifndef _FILESYSTEM_INCLUDED_
+     34          #define _FILESYSTEM_INCLUDED_
+     35          
+     36          ///////////////////////////////////
+     37          // Definitioner
+     38          
+     39          #define FS_MAXFILES         8 
+     40          #define FS_FILENAMELENGTH   13
+     41          #define FS_FLASHSIZE        0x800000
+     42          
+     43          #define OFF            0
+     44          #define READY        1
+     45          #define NEMPTY        2
+     46          #define WRITING        3
+     47          #define OCCUPIED    4
+     48          
+     49          #define CLE     P4.0                                //Command Latch Enable
+     50          #define ALE     P4.1                                //Address Latch Enable
+     51          #define WP      P4.2                                //Write Protect
+     52          #define SE      P4.3                                //Spare Enable
+     53          //#define CE      P4.4                                //Chip Enable
+     54          #define FBUSY   P4.5                                //Busy
+     55          
+     56          #define FREG (*(unsigned char xdata *) 0xE000)
+     57          #define FLASH (*(unsigned char xdata *) 0xB000) 
+     58          
+     59          ///////////////////////////////////
+     60          // Strukturer
+     61          
+     62          struct ST_FILE_HEAD {
+     63              unsigned long   length;
+     64              char            name[FS_FILENAMELENGTH];
+     65          };
+     66          #define FILE_HEAD struct ST_FILE_HEAD
+     67          
+     68          
+     69          struct ST_FILE {
+     70              char            fileName[FS_FILENAMELENGTH];
+     71              unsigned long   startAddress;
+     72              unsigned long   length; 
+     73              unsigned long   offset; 
+     74              char            write;
+     75              char            append;
+     76          };
+     77          #define FILE struct ST_FILE 
+     78          
+     79          
+     80          
+     81          ///////////////////////////////////
+     82          // Funktioner och procedurer
+     83          
+     84          extern void            InitializeFileSystem( void );
+     85          extern void            InitializeFlash( void );
+     86          extern void            SetupReadSeq( void );
+     87          extern unsigned char   ReadFLASH( void );
+     88          extern void            TerminateReadSeq( void );
+     89          extern void            GetDeviceIDRS232(void);
+     90          extern void            SetupWriteSeq( void );
+     91          extern void            WriteFLASH(unsigned char);
+     92          extern void            TerminateWriteSeq( void );
+     93          extern void            PerformWriteSeq( void );
+     94          extern void            EraseBlock( void );
+     95          extern void            WriteFileHead(const char* name, long size);
+     96          extern FILE*           fopen(const char* name, const char* def);
+     97          extern FILE*               fopenA(const char* name, long maxSize, long offset);
+     98          extern void            fputc(FILE* filePtr, char c);
+     99          extern void            fputLine(FILE* filePtr, const char* str);
+    100          extern void            fupLoad( void );
+    101          extern int             fgetc(FILE* filePtr);
+    102          extern void            fgetLine(FILE* filePtr, char* str, int maxLen);
+    103          extern void            fdownLoad( void );
+    104          extern void            fclose(FILE* filePtr);
+    105          extern long            ftell(FILE* filePtr);
+    106          //void            Rewind(FILE* filePtr);
+    107          extern void            fSetPos(FILE* filePtr, long offset);
+    108          extern void            ReleaseCurrFile( void );
+    109          extern void            EraseAll( void );
+    110          extern void            StartDynamic( void );
+    111          extern void            EraseDynamic( void );
+    112          extern char                        MemUsage( void );
+    113          extern void                        Dir( void );
+    114          extern void                        Type( void );
+    115          extern void                        TypeA( void );
+    116          
+    117          #endif
+     43          #include "Main.h"
+      1          /*************************************************************
+      2          Fil:            $Id: Main.h,v 1.10 2003/12/26 16:17:01 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/12/26 16:17:01 $
+      5          
+      6          Revisionshistoria:
+      7                                          $Log: Main.h,v $
+      8                                          Revision 1.10  2003/12/26 16:17:01  Gemensam
+      9                                          Reinstate 500 ms wait for hang up detection to settle (if not PPD is used).
+     10                                          Fixed PPD detection by decreasing phone volume from 63 to 15.
+     11                                          Version 0304.
+     12                                          
+     13                                          Revision 1.9  2003/12/09 20:52:49  Gemensam
+     14                                          Commented out PPD detection since the HW not work yet.
+     15                                          Ver 0302.
+     16                                          
+     17                                          Revision 1.8  2003/11/29 22:35:59  Gemensam
+     18                                          Fixed problem with to short pulse width on PPD.
+     19                                          Ver 0302.
+     20                                          
+     21                                          Revision 1.7  2003/11/24 22:44:36  Gemensam
+     22                                          Fixed PPD, not working yet,
+     23                                          New command: speaker volume.
+     24                                          Version 0301.
+     25                                          
+     26                                          Revision 1.6  2003/11/23 21:40:03  Gemensam
+     27                                          Parallell phone detection included.
+     28                                          Removed obsolete #define's regarding LCD interface.
+     29                                          Ver 0300
+     30                                          
+     31                                          Revision 1.5  2003/11/23 20:29:34  Gemensam
+     32                                          Complete and tested volume setting in options menu.
+     33                                          Ver 0201
+     34                                          
+     35                                          Revision 1.4  2003/11/20 22:08:53  Gemensam
+     36                                          Various declarations changes.
+     37                                          Still version 0200.
+     38                                          
+     39                                          Revision 1.3  2003/11/18 19:17:36  Gemensam
+     40                                          Added menu option of setting speaker volume (untested)
+     41                                          Completely changed header files
+     42                                          Version 0200.
+     43                                          
+     44                                          Revision 1.2  2003/11/10 22:44:45  Gemensam
+     45                                          Added header information
+     46                                          
+     47          *************************************************************/
+     48          
+     49          #ifndef _MAIN_INCLUDED_
+     50          #define _MAIN_INCLUDED_
+     51          
+     52          #include "FileSystem.h"
+      1          /**************************************************************************************
+      2          Fil:            $Id: FileSystem.h,v 1.4 2003/11/20 22:08:53 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/11/20 22:08:53 $
+      5          
+      6          Kommentarer:    Filhuvudet befinner sig i "Spare" arean tillhörande filens första sida. Huvudet består 
+      7                                          av 16 bytes enligt följande lista:
+      8                                          0       Huvud       0xAA = Legalt filhuvud, annat tillsvidare odefinierat
+      9                                          1-4     Fillängd    Pos 1 = MSB, pos 4 = LSB
+     10                                          5-12    Filtitel    Enl "Titel.ext". Om titeln är mindre än 8 tecken avslutas det med nollor
+     11                                          13-15   Filext      Enl "Titel.ext". Om ext är mindre än 3 tecken avslutas det med nollor
+     12          
+     13                                          En nolla skriven i fileName[0] indikerar att
+     14                                          filstrukturen är ledig.
+     15                  
+     16          Revisionshistoria:
+     17                                          $Log: FileSystem.h,v $
+     18                                          Revision 1.4  2003/11/20 22:08:53  Gemensam
+     19                                          Various declarations changes.
+     20                                          Still version 0200.
+     21                                          
+     22                                          Revision 1.3  2003/11/18 19:17:36  Gemensam
+     23                                          Added menu option of setting speaker volume (untested)
+     24                                          Completely changed header files
+     25                                          Version 0200.
+     26                                          
+     27                                          Revision 1.2  2003/11/10 22:44:45  Gemensam
+     28                                          Added header information
+     29                                          
+     30          
+     31          **************************************************************************************/
+     32          
+     33          #ifndef _FILESYSTEM_INCLUDED_
+     34          #define _FILESYSTEM_INCLUDED_
+     35          
+     36          ///////////////////////////////////
+     37          // Definitioner
+     38          
+     39          #define FS_MAXFILES         8 
+     40          #define FS_FILENAMELENGTH   13
+     41          #define FS_FLASHSIZE        0x800000
+     42          
+     43          #define OFF            0
+     44          #define READY        1
+     45          #define NEMPTY        2
+     46          #define WRITING        3
+     47          #define OCCUPIED    4
+     48          
+     49          #define CLE     P4.0                                //Command Latch Enable
+     50          #define ALE     P4.1                                //Address Latch Enable
+     51          #define WP      P4.2                                //Write Protect
+     52          #define SE      P4.3                                //Spare Enable
+     53          //#define CE      P4.4                                //Chip Enable
+     54          #define FBUSY   P4.5                                //Busy
+     55          
+     56          #define FREG (*(unsigned char xdata *) 0xE000)
+     57          #define FLASH (*(unsigned char xdata *) 0xB000) 
+     58          
+     59          ///////////////////////////////////
+     60          // Strukturer
+     61          
+     62          struct ST_FILE_HEAD {
+     63              unsigned long   length;
+     64              char            name[FS_FILENAMELENGTH];
+     65          };
+     66          #define FILE_HEAD struct ST_FILE_HEAD
+     67          
+     68          
+     69          struct ST_FILE {
+     70              char            fileName[FS_FILENAMELENGTH];
+     71              unsigned long   startAddress;
+     72              unsigned long   length; 
+     73              unsigned long   offset; 
+     74              char            write;
+     75              char            append;
+     76          };
+     77          #define FILE struct ST_FILE 
+     78          
+     79          
+     80          
+     81          ///////////////////////////////////
+     82          // Funktioner och procedurer
+     83          
+     84          extern void            InitializeFileSystem( void );
+     85          extern void            InitializeFlash( void );
+     86          extern void            SetupReadSeq( void );
+     87          extern unsigned char   ReadFLASH( void );
+     88          extern void            TerminateReadSeq( void );
+     89          extern void            GetDeviceIDRS232(void);
+     90          extern void            SetupWriteSeq( void );
+     91          extern void            WriteFLASH(unsigned char);
+     92          extern void            TerminateWriteSeq( void );
+     93          extern void            PerformWriteSeq( void );
+     94          extern void            EraseBlock( void );
+     95          extern void            WriteFileHead(const char* name, long size);
+     96          extern FILE*           fopen(const char* name, const char* def);
+     97          extern FILE*               fopenA(const char* name, long maxSize, long offset);
+     98          extern void            fputc(FILE* filePtr, char c);
+     99          extern void            fputLine(FILE* filePtr, const char* str);
+    100          extern void            fupLoad( void );
+    101          extern int             fgetc(FILE* filePtr);
+    102          extern void            fgetLine(FILE* filePtr, char* str, int maxLen);
+    103          extern void            fdownLoad( void );
+    104          extern void            fclose(FILE* filePtr);
+    105          extern long            ftell(FILE* filePtr);
+    106          //void            Rewind(FILE* filePtr);
+    107          extern void            fSetPos(FILE* filePtr, long offset);
+    108          extern void            ReleaseCurrFile( void );
+    109          extern void            EraseAll( void );
+    110          extern void            StartDynamic( void );
+    111          extern void            EraseDynamic( void );
+    112          extern char                        MemUsage( void );
+    113          extern void                        Dir( void );
+    114          extern void                        Type( void );
+    115          extern void                        TypeA( void );
+    116          
+    117          #endif
+     53          
+     54          
+     55          ///////////////////////////////////
+     56          // Definitioner
+     57          
+     58          #define VERSION_MENU_STRING     "Telestation 3.5       (c) 2004-09-19 FRHA"
+     59          
+     60          #define CM_PARSIZE              24
+     61          #define CM_NRPAR                16
+     62          
+     63          #define MAX_LABEL_LEN   8
+     64          #define MAX_LABELS      64
+     65          
+     66          // Nedan var ett försök till multipla bat-filer, kanske införs senare
+     67          /*
+     68          #define MAX_BATFILES    8
+     69          */
+     70          
+     71          ///////////////////////////////////
+     72          // Strukturer
+     73          
+     74          // Nedan var ett försök till multipla bat-filer, kanske införs senare
+     75          /*
+     76          struct ST_Label {
+     77              char    name[MAX_LABEL_LEN];
+     78              long    pos;
+     79          };
+     80          #define Label struct ST_Label
+     81           
+     82          struct ST_BatFileObj {
+     83              FILE*       fp;                 //Filpekare till bat-filen
+     84              Label*      labels;             //Pekare till lista med ingående labels
+     85              char        labelIndex;         //Pekar på nästa lediga label
+     86              BatFileObj* caller;             //Den batfil som kallade på denna. Om användaren gav kommandot 
+     87                                              //skall den inehålla NULL
+     88              char        occupied;           //1 om detta objekt används, 0 annars
+     89          };    
+     90          #define BatFileObj struct ST_BatFileObj
+     91          */
+     92          
+     93          ///////////////////////////////////
+     94          // Funktioner och procedurer
+     95          
+     96          extern void    InitializeComputer1( void );
+     97          extern void    InitializePhoneAnsApp( void );
+     98          extern void    MainShell( void );
+     99          extern char    DecodeAndPerform(const char* cmdStr);
+    100          //int     MainCommandInterper(char c);
+    101          extern void    Hello( void );
+    102          extern void    TestHW( void );
+    103          extern void    FlashID( void );
+    104          extern void    Erase( void );
+    105          extern void    BackRead( void );
+    106          extern void    ReadSpare( void );
+    107          extern void    WF1( void );
+    108          extern void    WF2( void );
+    109          extern void    WF3( void );
+    110          extern void    RF1( void );
+    111          extern void    RF2( void );
+    112          extern void    RF3( void );
+    113          extern void    CreateLong( void );
+    114          extern void    ReadSpare2( void );
+    115          extern void    Append( void );
+    116          
+    117          extern void    SetupBatFile( void );
+    118          extern void    ClearLabelList( void );
+    119          extern void    ExecuteBatFile(const char* batFileName);
+    120          extern char    InsertLabel(const char* name, long pos);
+    121          extern int     FindLabel(const char *name);
+    122          extern char    GotoLabel(const char* name);
+    123          
+    124          extern void    myStrCpy(char* dest, const char* src);
+    125          extern int     myStrLen(char* str);
+    126          extern void    myLong2HexStr(long v, char* str);
+    127          extern void    myInt2DecStr(int v, char* str);
+    128          extern void    myInt2DecStr00(char v, char* str);
+    129          extern int     myStr2Int(const char* str);
+    130          extern char    myStrCmpNoCase(const char* s1, const char* s2);
+    131          
+    132          // Nedan var ett försök till multipla bat-filer, kanske införs senare
+    133          /*
+    134          void    SetupBatFile( void );
+    135          void    ClearLabelList( void );
+    136          void    ClearLabelList(Label* list);
+    137          BatFileObj*    VacantBatFileObj(FILE* fp);
+    138          void    ExecuteBatFile(const char* batFileName);
+    139          char    InsertLabel(const char* name, long pos);
+    140          char    FindLabel(const char *name, Label* l);
+    141          char    GotoLabel(const char* name);
+    142          */
+    143          
+    144          ///////////////////////////
+    145          // Globala variabler
+    146          
+    147          
+    148          ///////////////////////////
+    149          // Lokala variabler
+    150          
+    151          
+    152          #endif
+     44          #include "RS232.h"
+      1          /********************************************************
+      2          Fil:            $Id: RS232.h,v 1.2 2003/11/20 22:08:53 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/11/20 22:08:53 $
+      5          
+      6          Revisionshistoria:
+      7                                          $Log: RS232.h,v $
+      8                                          Revision 1.2  2003/11/20 22:08:53  Gemensam
+      9                                          Various declarations changes.
+     10                                          Still version 0200.
+     11                                          
+     12                                          Revision 1.1  2003/11/18 19:17:36  Gemensam
+     13                                          Added menu option of setting speaker volume (untested)
+     14                                          Completely changed header files
+     15                                          Version 0200.
+     16                                          
+     17                                          
+     18          
+     19          ********************************************************/
+     20          
+     21          #ifndef _RS232_INCLUDED_
+     22          #define _RS232_INCLUDED_
+     23          
+     24          ///////////////////////////////////
+     25          // Definitioner
+     26          
+     27          
+     28          ///////////////////////////////////
+     29          // Strukturer
+     30          
+     31          
+     32          ///////////////////////////////////
+     33          // Funktioner och procedurer
+     34          
+     35          extern void             InitializeRS232( void );
+     36          extern void             SendRS232(char tecken);
+     37          extern void             SendStringRS232(const char *str);
+     38          extern void             SendStringEOLRS232(const char *str);
+     39          extern char             WaitAndReceiveRS232( void );
+     40          extern char             WaitAndReceiveTimeout( void );
+     41          extern int      ReceiveLineRS232(char* str, int maxLen);
+     42          
+     43          #endif
+     45          #include "DTMF.h"
+      1          /*************************************************************
+      2          Fil:            $Id: DTMF.h,v 1.2 2003/11/20 22:08:52 Gemensam Exp $
+      3          
+      4          Beskrivning:    Header fil till DTMF.c
+      5          
+      6          Skapad:         03-11-18
+      7          
+      8          Ändrad:         $Date: 2003/11/20 22:08:52 $
+      9          
+     10          Ägare:          Fredrik Hoffman
+     11          
+     12          
+     13          Att göra:
+     14          
+     15          Revisionshistoria:
+     16                                          $Log: DTMF.h,v $
+     17                                          Revision 1.2  2003/11/20 22:08:52  Gemensam
+     18                                          Various declarations changes.
+     19                                          Still version 0200.
+     20                                          
+     21                                          Revision 1.1  2003/11/18 19:17:36  Gemensam
+     22                                          Added menu option of setting speaker volume (untested)
+     23                                          Completely changed header files
+     24                                          Version 0200.
+     25                                          
+     26          
+     27          *************************************************************/
+     28          
+     29          #ifndef _DTMF_INCLUDED_
+     30          #define _DTMF_INCLUDED_
+     31          
+     32          ///////////////////////////////////
+     33          // Definitioner
+     34          
+     35          #define DTMF_TRANS      (*(unsigned char xdata *) 0x9000)
+     36          #define DTMF_READ       (*(unsigned char xdata *) 0x9000)
+     37          #define DTMF_CONTROL    (*(unsigned char xdata *) 0x9001)
+     38          #define DTMF_STATUS     (*(unsigned char xdata *) 0x9001)
+     39           
+     40          ///////////////////////////////////
+     41          // Funktioner och procedurer
+     42          
+     43          extern void    InitializeDTMF( void );
+     44          extern void    MakeDTMFTones(const char *tones);
+     45          extern char    DecodeDTMF(char c);
+     46          extern char    DecodeReceivedDTMF( void );
+     47          extern void    ResetDTMFIndex( void );
+     48          extern char    GetNextDTMF( void );
+     49           
+     50          #endif
+     46          
+     47          
+     48          //////////////////////
+     49          // Globala variabler
+     50          
+     51          xdata char                      lastKey;
+     52          
+     53          
+     54          //////////////////////
+     55          // Lokala variabler
+     56          
+     57          xdata char                      keyboardState;
+     58          xdata char                      timeoutCount;
+     59          
+     60          
+     61          //////////////////////
+     62          // Kod
+     63          
+     64          void    InitializeKeyboard( void )
+     65          {
+   \   0000            InitializeKeyboard:
+     66              lastKey = 0;
+   \   0000  E4                CLR     A
+   \   0001  900000            MOV     DPTR,#lastKey
+   \   0004  F0                MOVX    @DPTR,A
+     67              keyboardState = KS_IDLE;
+   \   0005  900001            MOV     DPTR,#keyboardState
+   \   0008  F0                MOVX    @DPTR,A
+     68          }
+   \   0009  22                RET
+     69          
+     70          
+     71          
+     72          void    KeyboardOn( void )
+     73          {   
+   \   000A            KeyboardOn:
+     74              xdata char    dummy;
+     75           
+     76              lastKey = 0;
+   \   000A  E4                CLR     A
+   \   000B  900000            MOV     DPTR,#lastKey
+   \   000E  F0                MOVX    @DPTR,A
+     77              KEY_CLK = '1';          //Måste vara ett för att systemklockan skall kunna generers här
+   \   000F  D296              SETB    P1.6
+     78              CLK = '1';              //Startar systemklockan på P1.6
+   \   0011  D2DE              SETB    216.6
+     79              dummy = KEYBOARD;       //Rensar eventuella väntande avbrott
+   \   0013  90C000            MOV     DPTR,#49152
+   \   0016  E0                MOVX    A,@DPTR
+   \   0017  900000            MOV     DPTR,#$LOCBX KeyboardOn
+   \   001A  F0                MOVX    @DPTR,A
+     80              I2FR = 0;               //Avbrott vid negativ flank på P1.4
+   \   001B  C2CD              CLR     T2CON.5
+     81              IEX2 = 0;               //Nollställ avbrottsflagga
+   \   001D  C2C1              CLR     192.1
+     82              EX2 = 1;                //Möjliggör avbrott från extern avbrott 2
+   \   001F  D2B9              SETB    IP.1
+     83          }
+   \   0021  22                RET
+     84          
+     85          
+     86          void    KeyboardOff( void )
+     87          {   
+   \   0022            KeyboardOff:
+     88              KEY_CLK = '1';          //Måste vara ett för att systemklockan skall kunna generers här
+   \   0022  D296              SETB    P1.6
+     89              CLK = '0';              //Startar systemklockan på P1.6
+   \   0024  C2DE              CLR     216.6
+     90              EX2 = 0;                //Stänger av avbrott från extern avbrott 2
+   \   0026  C2B9              CLR     IP.1
+     91          }
+   \   0028  22                RET
+     92          
+     93          
+     94          
+     95          
+     96          interrupt [0x4B] void EX2_int (void)
+     97          {
+   \   0029            EX2_int:
+   \   0029  C0E0              PUSH    ACC
+   \   002B  C082              PUSH    DPL
+   \   002D  C083              PUSH    DPH
+   \   002F  C0D0              PUSH    PSW
+     98              xdata char    key;
+     99              
+    100              key = (~KEYBOARD) & 0x1F;
+   \   0031  90C000            MOV     DPTR,#49152
+   \   0034  E0                MOVX    A,@DPTR
+   \   0035  F4                CPL     A
+   \   0036  541F              ANL     A,#31
+   \   0038  900000            MOV     DPTR,#$LOCBX EX2_int
+   \   003B  F0                MOVX    @DPTR,A
+    101          
+    102              if (key != 0) {
+   \   003C  E0                MOVX    A,@DPTR
+   \   003D  6025              JZ      ?0001
+   \   003F            ?0000:
+    103                  timeoutCount = 0;
+   \   003F  E4                CLR     A
+   \   0040  900002            MOV     DPTR,#timeoutCount
+   \   0043  F0                MOVX    @DPTR,A
+    104                  keyboardState = KS_WAITFIRST;
+   \   0044  04                INC     A
+   \   0045  900001            MOV     DPTR,#keyboardState
+   \   0048  F0                MOVX    @DPTR,A
+    105                  CTCON = (CTCON & 0x80) + 0x03;      //fosc/16, rensa CTF (compare timer overflow)
+   \   0049  E5E1              MOV     A,225
+   \   004B  5480              ANL     A,#128
+   \   004D  2403              ADD     A,#3
+   \   004F  F5E1              MOV     225,A
+    106                  CTRELH = 0x79;                      //Ladda reload register med 30976 = 0x7900, ty (0x10000 - 0x7900)*16/fosc = 50 ms
+   \   0051  75DF79            MOV     223,#121
+    107                  CTRELL = 0x00;                      //Skrivning till CTRELL ger omedelbar reload
+   \   0054  75DE00            MOV     222,#0
+    108                  IEN2 |= (1<<3);                     //Möjliggör avbrott från Compare timer, ECT = 1
+   \   0057  439A08            ORL     154,#8
+    109                  lastKey = key;
+   \   005A  900000            MOV     DPTR,#$LOCBX EX2_int
+   \   005D  E0                MOVX    A,@DPTR
+   \   005E  900000            MOV     DPTR,#lastKey
+   \   0061  F0                MOVX    @DPTR,A
+    110              } else {
+   \   0062  8008              SJMP    ?0002
+   \   0064            ?0001:
+    111                  IEN2 &= ~(1<<3);                    //Stäng av avbrott från compare timer, ECT = 0
+   \   0064  539AF7            ANL     154,#247
+    112                  keyboardState = KS_IDLE;
+   \   0067  E4                CLR     A
+   \   0068  900001            MOV     DPTR,#keyboardState
+   \   006B  F0                MOVX    @DPTR,A
+   \   006C            ?0002:
+    113              }
+    114          }
+   \   006C  D0D0              POP     PSW
+   \   006E  D083              POP     DPH
+   \   0070  D082              POP     DPL
+   \   0072  D0E0              POP     ACC
+   \   0074  32                RETI
+    115          
+    116          
+    117          interrupt [0x9B] void CT_int (void)
+    118          {
+   \   0075            CT_int:
+   \   0075  C0E0              PUSH    ACC
+   \   0077  C082              PUSH    DPL
+   \   0079  C083              PUSH    DPH
+   \   007B  C0D0              PUSH    PSW
+    119              timeoutCount++;
+   \   007D  900002            MOV     DPTR,#timeoutCount
+   \   0080  E0                MOVX    A,@DPTR
+   \   0081  04                INC     A
+   \   0082  F0                MOVX    @DPTR,A
+    120              if  ((keyboardState == KS_WAITFIRST) && (timeoutCount >= FIRST_KEY_TIMEOUT)) {
+   \   0083  900001            MOV     DPTR,#keyboardState
+   \   0086  E0                MOVX    A,@DPTR
+   \   0087  14                DEC     A
+   \   0088  7020              JNZ     ?0004
+   \   008A  900002            MOV     DPTR,#timeoutCount
+   \   008D  E0                MOVX    A,@DPTR
+   \   008E  24F6              ADD     A,#246
+   \   0090  5018              JNC     ?0004
+   \   0092            ?0006:
+   \   0092            ?0005:
+   \   0092            ?0003:
+    121                  lastKey = (~KEYBOARD) & 0x1F;
+   \   0092  90C000            MOV     DPTR,#49152
+   \   0095  E0                MOVX    A,@DPTR
+   \   0096  F4                CPL     A
+   \   0097  541F              ANL     A,#31
+   \   0099  900000            MOV     DPTR,#lastKey
+   \   009C  F0                MOVX    @DPTR,A
+    122                  timeoutCount = 0;
+   \   009D  E4                CLR     A
+   \   009E  900002            MOV     DPTR,#timeoutCount
+   \   00A1  F0                MOVX    @DPTR,A
+    123                  keyboardState = KS_WAITMULTI;
+   \   00A2  7402              MOV     A,#2
+   \   00A4  900001            MOV     DPTR,#keyboardState
+   \   00A7  F0                MOVX    @DPTR,A
+   \   00A8  801F              SJMP    ?0007
+   \   00AA            ?0004:
+    124              } else if ((keyboardState == KS_WAITMULTI) && (timeoutCount >= MULTI_KEY_TIMEOUT)) {
+   \   00AA  900001            MOV     DPTR,#keyboardState
+   \   00AD  E0                MOVX    A,@DPTR
+   \   00AE  B40218            CJNE    A,#2,?0009
+   \   00B1  900002            MOV     DPTR,#timeoutCount
+   \   00B4  E0                MOVX    A,@DPTR
+   \   00B5  24FE              ADD     A,#254
+   \   00B7  5010              JNC     ?0009
+   \   00B9            ?0011:
+   \   00B9            ?0010:
+   \   00B9            ?0008:
+    125                  lastKey = (~KEYBOARD) & 0x1F;
+   \   00B9  90C000            MOV     DPTR,#49152
+   \   00BC  E0                MOVX    A,@DPTR
+   \   00BD  F4                CPL     A
+   \   00BE  541F              ANL     A,#31
+   \   00C0  900000            MOV     DPTR,#lastKey
+   \   00C3  F0                MOVX    @DPTR,A
+    126                  timeoutCount = 0;
+   \   00C4  E4                CLR     A
+   \   00C5  900002            MOV     DPTR,#timeoutCount
+   \   00C8  F0                MOVX    @DPTR,A
+   \   00C9            ?0009:
+   \   00C9            ?0007:
+    127              }    
+    128          }
+   \   00C9  D0D0              POP     PSW
+   \   00CB  D083              POP     DPH
+   \   00CD  D082              POP     DPL
+   \   00CF  D0E0              POP     ACC
+   \   00D1  32                RETI
+    129          
+   \   0000                    COMMON  INTVEC
+   \   004B                    DS      75
+   \   004B  02                DB      2
+   \   004C  0029              DB      HIGH(EX2_int),LOW(EX2_int)
+   \   009B                    DS      77
+   \   009B  02                DB      2
+   \   009C  0075              DB      HIGH(CT_int),LOW(CT_int)
+   \   0000                    RSEG    X_UDATA
+   \   0000            lastKey:
+   \   0001                    DS      1
+   \   0001            keyboardState:
+   \   0002                    DS      1
+   \   0002            timeoutCount:
+   \   0003                    DS      1
+   \   0003                    END
+
+
+                                       S Y M B O L - T A B L E
+                                       =======================
+
+
+            #include file(s):
+
+       [1]       c:\iar\ew\8051\inc\io517a.h
+       [2]       c:\iar\ew\8051\inc\stdio.h
+       [3]       c:\iar\ew\8051\inc\stdlib.h
+       [4]       keyboard.h
+       [5]       commands.h
+       [6]       errorcodes.h
+       [7]       filesystem.h
+       [8]       main.h
+       [9]       filesystem.h
+      [10]       rs232.h
+      [11]       dtmf.h
+
+
+            Symbol                     Type     Mem     Class   Defline   Refline(s)
+            ------                     ----     ---     -----   -------   ----------
+
+AC                                      bit             ---      166:1  
+ACC                                     sfr             ---       14:1  
+ADCON0                                  sfr             ---       99:1  
+ADCON1                                  sfr             ---      100:1  
+ADDATH                                  sfr             ---      101:1  
+ADDATL                                  sfr             ---      102:1  
+ADEX                                    bit             ---      133:1  
+ADM                                     bit             ---      135:1  
+ARCON                                   sfr             ---      105:1  
+B                                       sfr             ---       15:1  
+BD                                      bit             ---      131:1  
+BSY                                     bit             ---      134:1  
+CC4EN                                   sfr             ---       34:1  
+CCEN                                    sfr             ---       33:1  
+CCH1                                    sfr             ---       36:1  
+CCH2                                    sfr             ---       38:1  
+CCH3                                    sfr             ---       40:1  
+CCH4                                    sfr             ---       42:1  
+CCL1                                    sfr             ---       35:1  
+CCL2                                    sfr             ---       37:1  
+CCL3                                    sfr             ---       39:1  
+CCL4                                    sfr             ---       41:1  
+CLK                                     bit             ---      132:1         78       89
+CLRMSK                                  sfr             ---       74:1  
+CMEN                                    sfr             ---       43:1  
+CMH0                                    sfr             ---       45:1  
+CMH1                                    sfr             ---       47:1  
+CMH2                                    sfr             ---       49:1  
+CMH3                                    sfr             ---       51:1  
+CMH4                                    sfr             ---       53:1  
+CMH5                                    sfr             ---       55:1  
+CMH6                                    sfr             ---       57:1  
+CMH7                                    sfr             ---       59:1  
+CML0                                    sfr             ---       44:1  
+CML1                                    sfr             ---       46:1  
+CML2                                    sfr             ---       48:1  
+CML3                                    sfr             ---       50:1  
+CML4                                    sfr             ---       52:1  
+CML5                                    sfr             ---       54:1  
+CML6                                    sfr             ---       56:1  
+CML7                                    sfr             ---       58:1  
+CMSEL                                   sfr             ---       60:1  
+COMCLRH                                 sfr             ---       72:1  
+COMCLRL                                 sfr             ---       71:1  
+COMSETH                                 sfr             ---       70:1  
+COMSETL                                 sfr             ---       69:1  
+CRCH                                    sfr             ---       62:1  
+CRCL                                    sfr             ---       61:1  
+CTCON                                   sfr             ---       63:1        105      105
+CTRELH                                  sfr             ---       65:1        106
+CTRELL                                  sfr             ---       64:1        107
+CT_int                             function    code    public      118      262:1
+CY                                      bit             ---      165:1  
+DPH                                     sfr             ---       18:1  
+DPL                                     sfr             ---       17:1  
+DPSEL                                   sfr             ---       19:1  
+EADC                                    bit             ---      205:1  
+EAL                                     bit             ---      187:1  
+ES0                                     bit             ---      190:1  
+ET0                                     bit             ---      193:1  
+ET1                                     bit             ---      191:1  
+ET2                                     bit             ---      189:1  
+EX0                                     bit             ---      194:1  
+EX1                                     bit             ---      192:1  
+EX2                                     bit             ---      204:1         82       90
+EX2_int                            function    code    public       97      248:1
+EX3                                     bit             ---      203:1  
+EX4                                     bit             ---      202:1  
+EX5                                     bit             ---      201:1  
+EX6                                     bit             ---      200:1  
+EXEN2                                   bit             ---      198:1  
+EXF2                                    bit             ---      143:1  
+F0                                      bit             ---      167:1  
+F1                                      bit             ---      171:1  
+I2FR                                    bit             ---      156:1         80
+I3FR                                    bit             ---      155:1  
+IADC                                    bit             ---      150:1  
+IE0                                     bit             ---      182:1  
+IE1                                     bit             ---      180:1  
+IEN0                                    sfr             ---      114:1  
+IEN1                                    sfr             ---      116:1  
+IEN2                                    sfr             ---      118:1        108      111
+IEX2                                    bit             ---      149:1         81
+IEX3                                    bit             ---      148:1  
+IEX4                                    bit             ---      147:1  
+IEX5                                    bit             ---      146:1  
+IEX6                                    bit             ---      145:1  
+INT0                                    bit             ---      214:1  
+INT1                                    bit             ---      213:1  
+IP0                                     sfr             ---      115:1  
+IP1                                     sfr             ---      117:1  
+IRCON0                                  sfr             ---      119:1  
+IRCON1                                  sfr             ---      120:1  
+IT0                                     bit             ---      183:1  
+IT1                                     bit             ---      181:1  
+InitializeKeyboard                 function    code    public       65       52:4
+KeyboardOff                        function    code    public       87       54:4
+KeyboardOn                         function    code    public       73       53:4
+MD0                                     sfr             ---      106:1  
+MD1                                     sfr             ---      107:1  
+MD2                                     sfr             ---      108:1  
+MD3                                     sfr             ---      109:1  
+MD4                                     sfr             ---      110:1  
+MD5                                     sfr             ---      111:1  
+MX0                                     bit             ---      138:1  
+MX1                                     bit             ---      137:1  
+MX2                                     bit             ---      136:1  
+OV                                      bit             ---      170:1  
+P                                       bit             ---      172:1  
+P0                                      sfr             ---       77:1  
+P1                                      sfr             ---       78:1         77       88
+P2                                      sfr             ---       79:1  
+P3                                      sfr             ---       80:1  
+P4                                      sfr             ---       81:1  
+P5                                      sfr             ---       82:1  
+P6                                      sfr             ---       83:1  
+P7                                      sfr             ---       84:1  
+P8                                      sfr             ---       85:1  
+PCON                                    sfr             ---       88:1  
+PSW                                     sfr             ---       20:1  
+RB80                                    bit             ---      225:1  
+RD                                      bit             ---      209:1  
+REN0                                    bit             ---      223:1  
+RI0                                     bit             ---      227:1  
+RS0                                     bit             ---      169:1  
+RS1                                     bit             ---      168:1  
+RXD                                     bit             ---      216:1  
+S0BUF                                   sfr             ---       90:1  
+S0CON                                   sfr             ---       89:1  
+S0RELH                                  sfr             ---       94:1  
+S0RELL                                  sfr             ---       93:1  
+S1BUF                                   sfr             ---       92:1  
+S1CON                                   sfr             ---       91:1  
+S1RELH                                  sfr             ---       96:1  
+S1RELL                                  sfr             ---       95:1  
+SETMSK                                  sfr             ---       73:1  
+SM0                                     bit             ---      220:1  
+SM1                                     bit             ---      221:1  
+SM20                                    bit             ---      222:1  
+SP                                      sfr             ---       16:1  
+SWDT                                    bit             ---      199:1  
+SYSCON                                  sfr             ---       22:1  
+T0                                      bit             ---      212:1  
+T1                                      bit             ---      211:1  
+T2CM                                    bit             ---      159:1  
+T2CON                                   sfr             ---       68:1  
+T2I0                                    bit             ---      161:1  
+T2I1                                    bit             ---      160:1  
+T2PS                                    bit             ---      154:1  
+T2R0                                    bit             ---      158:1  
+T2R1                                    bit             ---      157:1  
+TB80                                    bit             ---      224:1  
+TCON                                    sfr             ---       25:1  
+TF0                                     bit             ---      178:1  
+TF1                                     bit             ---      176:1  
+TF2                                     bit             ---      144:1  
+TH0                                     sfr             ---       29:1  
+TH1                                     sfr             ---       30:1  
+TH2                                     sfr             ---       67:1  
+TI0                                     bit             ---      226:1  
+TL0                                     sfr             ---       27:1  
+TL1                                     sfr             ---       28:1  
+TL2                                     sfr             ---       66:1  
+TMOD                                    sfr             ---       26:1  
+TR0                                     bit             ---      179:1  
+TR1                                     bit             ---      177:1  
+TXD                                     bit             ---      215:1  
+WDT                                     bit             ---      188:1  
+WDTREL                                  sfr             ---      124:1  
+WR                                      bit             ---      210:1  
+XPAGE                                   sfr             ---       21:1  
+div_t                                struct           typedef     38:3       96:3
+keyboardState                          char   xdata    public       57         67      104      112      120
+                                                                              123      124
+lastKey                                char   xdata    public       51         66       76      109      121
+                                                                              125
+ldiv_t                               struct           typedef     44:3      100:3
+timeoutCount                           char   xdata    public       58        103      119      120      122
+                                                                              124      126
+
+
+Errors: none
+Warnings: none
+Code size: 210
+Constant size: 158
+Static variable size: Data(0) Idata(0) Bit(0) Xdata(3) Pdata(0) Bdata(0)
+

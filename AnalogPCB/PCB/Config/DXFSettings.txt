@@ -1,0 +1,23 @@
+.FILETYPE DXF_EXPORT_SETTINGS
+.VERSION "VB99.1"
+.DATE "02/21/2000 09:09:44"
+
+!  This file contains settings for the most recent DXF export session
+
+.UNITS th
+
+.ITEM "Board Outline"
+ ..LAYER "Board_Outline"
+
+.ITEM "Part Pads Layer 1"
+ ..LAYER "Part_Pads_Layer_Top"
+
+.ITEM "Part Pads SMD Top"
+ ..LAYER "Part_Pads_SMD_Top"
+
+.ITEM "Traces Layer 1"
+ ..LAYER "Traces_Layer_Top"
+
+.ITEM "Via Pads Layer 1"
+ ..LAYER "Via_Pads_Layer_Top"
+

@@ -1,0 +1,258 @@
+Tue Feb 15 12:42:12 2000  *  VBASE 15.00.01 (Tue Nov 16 1999)  *
+
+                   Copyright (c) 1992-1996 Intergraph Corporation.
+                   Copyright (c) 1996-1999 VeriBest, Incorporated.
+                   All Rights Reserved.
+
+                                                                                
+
+****     INPUT LISTING          REFERENCE TEMPERATURE =   27.000 DEG C
+
+*************************************************************
+
+
+* SUBJECT:  
+* ENGINEER: 
+* KEYWORDS: 
+* COMMENTS:
+* ******* END OF SUMMARY INFO *********
+* ******** CIRCUIT INFORMATION ********
+.global vcc vee
+XXCMP1 XSIG010009 XSIG010014 XSIG010005 VCC VEE __OPAMPPNPD VNOISE=30
++ GBW=900000 TN=25 TMIN=0 TMAX=70 SRNN=0.5 SRNMIN=0.5 SRNMAX=0.5
++ SRP=0.45 VCC=5 VIN_CM_MAX=4.1 VEE=0 VIN_CM_MIN=0 IBIAS_N=4.5E-008
++ IBIAS_MIN=4.9E-008 ROUT=400 ROAC=70 AVD=100000 IOSN=5E-009
++ IOSMIN=5.5E-009 IOSMAX=4.5E-009 VOSN=0.002 VOSMIN=0.0022 VOSMAX=0.0017
++ CMRR=85 FCMRR=16000 PSRR=90 FPSRRP=140000 FPSRRN=140000 ISUP=0.00024
++ ISUP0=0.0002 OVERSHOOT=6 PHIM=60 PHIM_OVRSHT=0 ISCP=0.05 ISCN=0.04
++ VOUT_MIN=0.008 VOUT_MAX=3.5
+QXCMP2 VCC XSIG010005 VOUT _MM3904
+RXCMP3 VOUT VEE 8
+RXCMP4 XSIG010009 VOUT 0.001
+RXCMP5 XSIG010009 VEE 100000
+RXCMP6 VIN XSIG010014 100000
+* ******** END OF CIRCUIT INFO ********
+* ******** MODEL INFORMATION **********
+.encrypt
+.endenc
+.model _mm3904 npn af=1 br=0.00667 cje=6.74e-012 cjs=0 eg=1.11 fc=0.5
++ IKF=0.189 IKR=0.0384 IRB=0.001 IS=5.32E-015 ISC=2.65E-013
++ ISE=7.32E-017 ITF=0.874 KF=0 MJC=0.2 MJE=0.291 MJS=0.33 NC=1.15
++ NE=1.14 NF=1 NR=1.04 PTF=0 RB=33.8 RBM=0 RE=0.117 TR=0 VAF=260 VAR=21
++ VJC=0.469 VJE=0.696 VJS=0.75 VTF=46.7 XCJC=1 XTB=0 XTI=3 BF=125
++ CJC=4.12E-012 RC=1.38 TF=3.86E-010 XTF=42.7 PMAX=0.2 ICMAX=0.2
++ VBCMAX=-60 VBEMAX=-6
+* ******** END OF MODEL INFO **********
+* ******** DISTRIBUTION INFORMATION **********
+* ******** END OF DISTRIBUTION INFO **********
+* ******** SOURCE INFORMATION *********
+VVCC VCC 0 DC 5
+VVEE VEE 0 DC 0
+VVIN VIN 0 SIN ( 2.5 0.01 1000 0 0 )
+* ******** END OF SOURCE INFO *********
+* ******** LOAD INFORMATION *********
+* ******** END OF LOAD INFO *********
+* ******** CONTROL INFORMATION ********
+* ******** SETTINGS INFORMATION *******
+.option nosubs acct
+* ******** END OF SETTINGS INFO *******
+* ******** PARAMETER SWEEP INFO ********
+* ******** END OF PARAMETER SWEEP INFO ********
+* ******** ANALYSIS INFORMATION *******
+.tran 5e-006 0.005 0
+* ******** END OF ANALYSIS INFO *******
+* ******** OUTPUT INFORMATION *********
+* ******** END OF OUTPUT INFO *********
+* ******** END OF CONTROL INFO ********
+.end
+
+
+
+* Tue Feb 15 12:42:12 2000  *  VBASE 15.00.01 (Tue Nov 16 1999)  *
+
+                   Copyright (c) 1992-1996 Intergraph Corporation.
+                   Copyright (c) 1996-1999 VeriBest, Incorporated.
+                   All Rights Reserved.
+
+                                                                                
+
+****     BJT MODEL _mm3904                TEMPERATURE =   27.000 DEG C
+
+*************************************************************
+
+		level		1
+		is		5.32e-015
+		bf		125
+		nf		1
+		vaf		260
+		ikf		0.189
+		ise		7.32e-017
+		ne		1.14
+		br		0.00667
+		nr		1.04
+		var		21
+		ikr		0.0384
+		isc		2.65e-013
+		nc		1.15
+		rb		33.8
+		irb		0.001
+		rbm		0
+		re		0.117
+		rc		1.38
+		cje		6.74e-012
+		vje		0.696
+		mje		0.291
+		tf		3.86e-010
+		xtf		42.7
+		vtf		46.7
+		itf		0.874
+		ptf		0
+		cjc		4.12e-012
+		vjc		0.469
+		mjc		0.2
+		xcjc		1
+		tr		0
+		cjs		0
+		vjs		0.75
+		mjs		0.33
+		xtb		0
+		eg		1.11
+		xti		3
+		kf		0
+		af		1
+		fc		0.5
+		type		1
+		iss		0
+		ns		1
+		geom		vertical
+		pmax		0.2
+	B-E junction ideal current parameters
+		is		5.32e-015
+	B-C junction ideal current parameters
+		is		5.32e-015
+	B-E junction leakage current parameters
+		is		7.32e-017
+	B-C junction leakage current parameters
+		is		2.65e-013
+	SUB junction current parameters
+		is		0
+	B-E junction charge parameters
+		cjo		6.74e-012
+		m		0.291
+		fcvj		0.348
+		ovj		1.43678
+	B-C junction charge parameters
+		cjo		4.12e-012
+		m		0.2
+		fcvj		0.2345
+		ovj		2.1322
+	EXT.B-C junction charge parameters
+		cjo		0
+		m		0.2
+		fcvj		0.2345
+		ovj		2.1322
+	SUB junction charge parameters
+		cjo		0
+		m		0.33
+		fcvj		0.375
+		ovj		1.33333
+
+
+
+* Tue Feb 15 12:42:12 2000  *  VBASE 15.00.01 (Tue Nov 16 1999)  *
+
+                   Copyright (c) 1992-1996 Intergraph Corporation.
+                   Copyright (c) 1996-1999 VeriBest, Incorporated.
+                   All Rights Reserved.
+
+                                                                                
+
+****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+*************************************************************
+
+
+
+NODE VOLTAGES
+
+v(vcc)=        5.000e+000  v(vee)=        0.000e+000  
+v(vin)=        2.500e+000  v(vout)=       2.301e+000  
+v(xsig010005)= 3.231e+000  v(xsig010009)= 2.301e+000  
+v(xsig010014)= 2.500e+000  
+
+
+INDEPENDENT SOURCES
+
+
+VOLTAGE SOURCE CURRENTS
+
+vvee        VOLTAGE =  0.000e+000  CURRENT =  2.879e-001
+vvcc        VOLTAGE =  5.000e+000  CURRENT = -2.879e-001
+vvin        VOLTAGE =  2.500e+000  CURRENT =  2.465e-009
+
+
+VOLTAGE ACROSS CURRENT SOURCES
+
+
+
+TOTAL POWER DISSIPATION = 1.439e+000  WATTS
+
+
+
+* Tue Feb 15 12:42:12 2000  *  VBASE 15.00.01 (Tue Nov 16 1999)  *
+
+                   Copyright (c) 1992-1996 Intergraph Corporation.
+                   Copyright (c) 1996-1999 VeriBest, Incorporated.
+                   All Rights Reserved.
+
+                                                                                
+
+****     TRANSIENT ANALYSIS               TEMPERATURE =   27.000 DEG C
+
+*************************************************************
+
+
+
+
+* Tue Feb 15 12:42:12 2000  *  VBASE 15.00.01 (Tue Nov 16 1999)  *
+
+                   Copyright (c) 1992-1996 Intergraph Corporation.
+                   Copyright (c) 1996-1999 VeriBest, Incorporated.
+                   All Rights Reserved.
+
+                                                                                
+
+****     JOB STATISTICS SUMMARY           TEMPERATURE =   27.000 DEG C
+
+*************************************************************
+
+
+	--- DEVICE Statistics 
+
+		CAPACITOR	     6
+		DIODE		     9
+		VCVS		     1
+		VCCS		    11
+		ISOURCE		     2
+		BJT		     3
+		RESISTOR	    25
+		VSOURCE		     3
+	---
+
+	NODES			    27
+	Memory used			      155784 Bytes
+	Peak memory used		      223984 Bytes
+	Highest address needed		    12548928 Bytes
+
+	PHASE			TIME(sec)	# Iters
+
+	READIN			     0.01
+	INPUT-process		     0.01
+	SET-UP			     0.00
+	DC Solution		     0.01	    46
+	Transient Analysis	     0.06	   202
+	OUTPUT			     0.00
+	ELAPSED time		     1    sec
+	USER cpu		     0.00 sec
+	SYSTEM cpu		     0.00 sec
+

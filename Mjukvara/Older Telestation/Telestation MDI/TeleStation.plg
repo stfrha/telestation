@@ -1,0 +1,48 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MDIBitmap - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\TEMP\RSP8.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/MDIBitmap.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\SuperComputer\Mjukvara\Telestation MDI\ScriptSimulatorDlg.cpp"
+]
+Creating command line "cl.exe @D:\TEMP\RSP8.tmp" 
+Creating temporary file "D:\TEMP\RSP9.tmp" with contents
+[
+winmm.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/MDIBitmap.pdb" /debug /machine:I386 /out:"Debug/MDIBitmap.exe" /pdbtype:sept 
+".\Debug\ChildFrm.obj"
+".\Debug\EnterCodeDlg.obj"
+".\Debug\LabelPropDlg.obj"
+".\Debug\MainFrm.obj"
+".\Debug\MDIBitmap.obj"
+".\Debug\MDIBitmapDoc.obj"
+".\Debug\MDIBitmapView.obj"
+".\Debug\NewProjectDlg.obj"
+".\Debug\NoPropDlg.obj"
+".\Debug\PlayFilePropDlg.obj"
+".\Debug\ProjectDoc.obj"
+".\Debug\ProjectView.obj"
+".\Debug\ProjItemPropDlg.obj"
+".\Debug\ScriptSimulatorDlg.obj"
+".\Debug\SelectTransDlg.obj"
+".\Debug\StdAfx.obj"
+".\Debug\MDIBitmap.res"
+]
+Creating command line "link.exe @D:\TEMP\RSP9.tmp"
+<h3>Output Window</h3>
+Compiling...
+ScriptSimulatorDlg.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+MDIBitmap.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

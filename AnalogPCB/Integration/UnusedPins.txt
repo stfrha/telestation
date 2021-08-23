@@ -1,0 +1,19 @@
+
+Schematic unused pins from : Packager  23-Feb-2000  15:17
+
+------------------------------------------------------------------------
+            Part/Reference             |          Unused pins
+                                       |  (G) - Gate, (P) - Partial Gate
+------------------------------------------------------------------------
+ Part AD9696_SO8_50                    |
+ Part CAP0805                          |
+ Part CE9005_4X6                       |
+ Part CON_PB8302/303/0                 |
+ Part CON_PB8302/304/0                 |
+ Part CON_PB8302/311/0                 |
+ Part LMC6084_SO14_50                  |
+ Part LM6142_SO8_50                    |
+ Part MKS2,5                           |
+ Part RES0805                          |
+ Part RV9003_J                         |
+ Part XC9536_PLCC44_50                 |

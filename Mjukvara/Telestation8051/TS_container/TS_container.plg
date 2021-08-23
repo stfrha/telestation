@@ -1,0 +1,90 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: TS_container - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Gemensam\LOKALA~1\Temp\RSP1D.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/TS_container.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\FREDRIK\TELESTATION8051\Calender.c"
+"D:\FREDRIK\TELESTATION8051\DPot.c"
+"D:\FREDRIK\TELESTATION8051\DTMF.c"
+"D:\FREDRIK\TELESTATION8051\FileSystem.c"
+"D:\FREDRIK\TELESTATION8051\Keyboard.c"
+"D:\FREDRIK\TELESTATION8051\LCD.c"
+"D:\FREDRIK\TELESTATION8051\LogFile.c"
+"D:\FREDRIK\TELESTATION8051\main.c"
+"D:\FREDRIK\TELESTATION8051\Phone.c"
+"D:\FREDRIK\TELESTATION8051\PhoneAns.c"
+"D:\FREDRIK\TELESTATION8051\rs232.c"
+"D:\FREDRIK\TELESTATION8051\Timer.c"
+"D:\FREDRIK\TELESTATION8051\wav.c"
+"D:\FREDRIK\TELESTATION8051\TODO.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Gemensam\LOKALA~1\Temp\RSP1D.tmp" 
+Creating temporary file "C:\DOCUME~1\Gemensam\LOKALA~1\Temp\RSP1E.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/TS_container.pdb" /debug /machine:I386 /out:"Debug/TS_container.exe" /pdbtype:sept 
+.\Debug\Calender.obj
+.\Debug\DPot.obj
+.\Debug\DTMF.obj
+.\Debug\FileSystem.obj
+.\Debug\Keyboard.obj
+.\Debug\LCD.obj
+.\Debug\LogFile.obj
+.\Debug\main.obj
+.\Debug\Phone.obj
+.\Debug\PhoneAns.obj
+.\Debug\rs232.obj
+.\Debug\Timer.obj
+.\Debug\wav.obj
+.\Debug\TODO.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\Gemensam\LOKALA~1\Temp\RSP1E.tmp"
+<h3>Output Window</h3>
+Compiling...
+Calender.c
+d:\fredrik\telestation8051\calender.c(37) : fatal error C1083: Cannot open include file: 'io517a.h': No such file or directory
+DPot.c
+d:\fredrik\telestation8051\dpot.c(47) : fatal error C1083: Cannot open include file: 'io517a.h': No such file or directory
+DTMF.c
+d:\fredrik\telestation8051\dtmf.c(38) : fatal error C1083: Cannot open include file: 'io517a.h': No such file or directory
+FileSystem.c
+d:\fredrik\telestation8051\filesystem.c(33) : fatal error C1083: Cannot open include file: 'io517a.h': No such file or directory
+Keyboard.c
+d:\fredrik\telestation8051\keyboard.c(36) : fatal error C1083: Cannot open include file: 'io517a.h': No such file or directory
+LCD.c
+d:\fredrik\telestation8051\lcd.c(40) : fatal error C1083: Cannot open include file: 'io517a.h': No such file or directory
+LogFile.c
+d:\fredrik\telestation8051\logfile.c(40) : fatal error C1083: Cannot open include file: 'io517a.h': No such file or directory
+main.c
+d:\fredrik\telestation8051\main.c(48) : fatal error C1083: Cannot open include file: 'io517a.h': No such file or directory
+Phone.c
+d:\fredrik\telestation8051\phone.c(64) : fatal error C1083: Cannot open include file: 'io517a.h': No such file or directory
+PhoneAns.c
+d:\fredrik\telestation8051\phoneans.c(56) : fatal error C1083: Cannot open include file: 'io517a.h': No such file or directory
+rs232.c
+d:\fredrik\telestation8051\rs232.c(33) : fatal error C1083: Cannot open include file: 'io517a.h': No such file or directory
+Timer.c
+d:\fredrik\telestation8051\timer.c(35) : fatal error C1083: Cannot open include file: 'io517a.h': No such file or directory
+wav.c
+d:\fredrik\telestation8051\wav.c(39) : fatal error C1083: Cannot open include file: 'io517a.h': No such file or directory
+TODO.c
+d:\fredrik\telestation8051\todo.c(1) : error C2061: syntax error : identifier 'g'
+d:\fredrik\telestation8051\todo.c(1) : error C2059: syntax error : ';'
+d:\fredrik\telestation8051\todo.c(1) : error C2018: unknown character '0xf6'
+d:\fredrik\telestation8051\todo.c(1) : error C2143: syntax error : missing '{' before ':'
+d:\fredrik\telestation8051\todo.c(1) : error C2059: syntax error : ':'
+d:\fredrik\telestation8051\todo.c(3) : error C2018: unknown character '0xe4'
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+TS_container.exe - 19 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

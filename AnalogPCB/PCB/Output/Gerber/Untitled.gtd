@@ -1,0 +1,466 @@
+{Program	VeriBest GerbTool(tm)
+	{Version	8.1.2}
+	{Created	Thu Mar 02 07:56:26 2000}
+}
+{Environment
+	{SketchMode	No}
+	{OverlayMode	No}
+	{ShowErrors	No}
+	{ViewComposites	No}
+	{GridSnap	No}
+	{GridSize	0.2500, 0.2500}
+	{GridVisible	No}
+	{OrthoSnap	No}
+	{SnapAngle	45.0000}
+	{ViewMetric	No}
+	{ActiveLayer	1}
+	{CurrentDcode	17}
+	{BkColor	white}
+	{Undo		No}
+	{PreviousView	5.745, 7.151, 14.736, 12.175}
+	{FilmBox	18.000, 14.000, yellow}
+	{NetID		0}
+	{Flags		0}
+}
+{SelectCriteria
+	{Mode		Item}
+	{Boundary	Exclude}
+	{Flashes	Yes}
+	{Draws		Yes}
+	{Arcs		Yes}
+	{Vertex		No}
+	{Dcode		0}
+	{Layer		0}
+}
+{Views
+}
+{Layers
+	{Layer	1
+		{File		Layer3.gdo}
+		{LyrName	Layer3}
+		{ApList		$x3.map}
+		{Visibility	On}
+		{FlashColor	white}
+		{DrawColor	white}
+		{Type		Other}
+		{Polarity	Dark}
+		{Key		0}
+		{Ftype		Gerber}
+		{Extents	7.911, 7.780, 12.570, 11.532}
+		{NetID		0}
+		{Virtual	No}
+		{Format	Gerber
+			{Dialect		RS274X}
+			{m.n			2.4}
+			{Mode			Absolute}
+			{ZeroSuppression	Leading}
+			{Terminator		0x2a, 0xd, 0xa}
+			{Metric			No}
+			{Modal			No}
+			{UserData		Yes}
+			{Nets			No}
+			{Gcmds			Yes}
+			{CharSet		ASCII}
+			{Arcs360		No}
+			{ArcsModal		Yes}
+			{HonorCrLf		No}
+			{Comments		Yes}
+			{Flags			0}
+		}
+	}
+	{Layer	2
+		{File		Layer1.gdo}
+		{LyrName	Layer1}
+		{ApList		$x1.map}
+		{Visibility	On}
+		{FlashColor	black}
+		{DrawColor	black}
+		{Type		Other}
+		{Polarity	Dark}
+		{Key		0}
+		{Ftype		Gerber}
+		{Extents	7.985, 7.780, 12.551, 9.267}
+		{NetID		0}
+		{Virtual	No}
+		{Format	Gerber
+			{Dialect		RS274X}
+			{m.n			2.4}
+			{Mode			Absolute}
+			{ZeroSuppression	Leading}
+			{Terminator		0x2a, 0xd, 0xa}
+			{Metric			No}
+			{Modal			No}
+			{UserData		Yes}
+			{Nets			No}
+			{Gcmds			Yes}
+			{CharSet		ASCII}
+			{Arcs360		No}
+			{ArcsModal		Yes}
+			{HonorCrLf		No}
+			{Comments		Yes}
+			{Flags			0}
+		}
+	}
+	{Layer	3
+		{File		Layer2.gdo}
+		{LyrName	Layer2}
+		{ApList		$x2.map}
+		{Visibility	On}
+		{FlashColor	black}
+		{DrawColor	black}
+		{Type		Other}
+		{Polarity	Dark}
+		{Key		0}
+		{Ftype		Gerber}
+		{Extents	7.923, 10.065, 12.523, 11.556}
+		{NetID		0}
+		{Virtual	No}
+		{Format	Gerber
+			{Dialect		RS274X}
+			{m.n			2.4}
+			{Mode			Absolute}
+			{ZeroSuppression	Leading}
+			{Terminator		0x2a, 0xd, 0xa}
+			{Metric			No}
+			{Modal			No}
+			{UserData		Yes}
+			{Nets			No}
+			{Gcmds			Yes}
+			{CharSet		ASCII}
+			{Arcs360		No}
+			{ArcsModal		Yes}
+			{HonorCrLf		No}
+			{Comments		Yes}
+			{Flags			0}
+		}
+	}
+	{Layer	4
+		{File		Layer4.gdo}
+		{LyrName	Layer4}
+		{ApList		$x4.map}
+		{Visibility	On}
+		{FlashColor	black}
+		{DrawColor	black}
+		{Type		Other}
+		{Polarity	Dark}
+		{Key		0}
+		{Ftype		Gerber}
+		{Extents	7.858, 7.727, 12.623, 11.598}
+		{NetID		0}
+		{Virtual	No}
+		{Format	Gerber
+			{Dialect		RS274X}
+			{m.n			2.4}
+			{Mode			Absolute}
+			{ZeroSuppression	Leading}
+			{Terminator		0x2a, 0xd, 0xa}
+			{Metric			No}
+			{Modal			No}
+			{UserData		Yes}
+			{Nets			No}
+			{Gcmds			Yes}
+			{CharSet		ASCII}
+			{Arcs360		No}
+			{ArcsModal		Yes}
+			{HonorCrLf		No}
+			{Comments		Yes}
+			{Flags			0}
+		}
+	}
+}
+{Format	Gerber
+	{Dialect		RS274D}
+	{m.n			2.3}
+	{Mode			Absolute}
+	{ZeroSuppression	Leading}
+	{Terminator		0x2a, 0xd, 0xa}
+	{Metric			No}
+	{Modal			No}
+	{UserData		Yes}
+	{Nets			No}
+	{Gcmds			Yes}
+	{CharSet		ASCII}
+	{Arcs360		No}
+	{ArcsModal		Yes}
+	{HonorCrLf		No}
+	{Comments		Yes}
+	{Flags			0}
+}
+{Format	Drill
+	{Dialect		Excellon}
+	{m.n			2.3}
+	{Mode			Absolute}
+	{ZeroSuppression	Leading}
+	{Terminator		0xd, 0xa}
+	{Metric			No}
+	{Modal			No}
+	{UserData		No}
+	{Nets			No}
+	{Gcmds			No}
+	{CharSet		ASCII}
+	{Arcs360		No}
+	{ArcsModal		Yes}
+	{HonorCrLf		No}
+	{Comments		No}
+	{Flags			0}
+}
+{Format	Mill
+	{Dialect		Excellon}
+	{m.n			2.3}
+	{Mode			Absolute}
+	{ZeroSuppression	Leading}
+	{Terminator		0xd, 0xa}
+	{Metric			No}
+	{Modal			No}
+	{UserData		No}
+	{Nets			No}
+	{Gcmds			No}
+	{CharSet		ASCII}
+	{Arcs360		No}
+	{ArcsModal		Yes}
+	{HonorCrLf		No}
+	{Comments		No}
+	{Flags			0}
+}
+{Extensions
+	{Gerber		gbr}
+	{ApLists	map}
+	{Drill		drl}
+	{Mill		drl}
+	{Tool		tl}
+	{HPGL		plt}
+	{PostScript	ps}
+	{LaserJet	lj}
+}
+{Plot
+	{HPGL
+		{OutFile	Untitled.plt}
+		{MediaSize	34.000, 22.000}
+		{Offset		0.000, 0.000}
+		{Scale		1.0000}
+		{Border	No 0}
+		{PenWidth	0.010}
+		{PenSpeed	60}
+		{Pens
+			{Layer 1	1	1}
+			{Layer 2	1	1}
+			{Layer 3	1	1}
+			{Layer 4	1	1}
+		}
+		{Spread	No}
+		{SpreadOffset
+		}
+		{PadsOnly	No}
+		{Mode		Sketch}
+		{Rotate		No}
+	}
+	{PostScript
+		{OutFile	Untitled.ps}
+		{MediaSize	8.000, 10.500}
+		{Offset		0.000, 0.000}
+		{Scale		1.0000}
+		{PadsOnly	No}
+		{Mode		Filled}
+		{Rotate		No}
+		{GreyScale	Yes}
+		{Border	No}
+	}
+}
+{Merge
+	{HPGL
+		{PlotSize	Small}
+		{Rotate		No}
+		{Pens
+			{1	D10}
+			{2	D10}
+			{3	D10}
+			{4	D10}
+			{5	D10}
+			{6	D10}
+			{7	D10}
+			{8	D10}
+		}
+	}
+}
+{Text
+	{Filename	Untitled.txt}
+	{Height		0.1000}
+	{Width		0.1000}
+	{LineSpace	1.0000}
+	{CharSpace	1.0000}
+	{Rotate		No}
+	{Slant		0}
+	{Mirror		No}
+}
+{ApReport
+	{RepFile	Untitled.rpt}
+	{Layer		1}
+	{SortBy		DCode}
+}
+{Rotate
+	{Degrees	90.00}
+	{Pivot		Center}
+}
+{Mirror
+	{Direction	Vert}
+	{Pivot		Center}
+}
+{DcodeScale
+	{Fixed		Yes}
+	{Scale		0.1000, 0.1000}
+}
+{Panelize
+	{AutoPanel		Yes}
+	{Virtual		No}
+	{Rows			0}
+	{Cols			0}
+	{TabSize		0.0000, 0.0000}
+	{ImageSpacing		0.0000, 0.0000}
+	{AutoVent		No}
+	{VentSpacing		0.0000, 0.0000}
+	{VentBorder		0.0000}
+	{VentDCode		0}
+	{VentLayer		0}
+}
+{Spread
+	{AutoSpread		No}
+	{Rows			1}
+	{Cols			1}
+	{TabSize		0.0000, 0.0000}
+	{Layer			0}
+	{SortType		Col}
+}
+{DRC
+	{RepFile		Untitled.drc}
+	{Layer			1}
+	{Pad2Pad		0.0060}
+	{Pad2Trace		0.0060}
+	{Trace2Trace		0.0060}
+	{Border		0.0250}
+	{MinFlash		0.0000}
+	{MinTrace		0.0000}
+	{MinRing		0.0000}
+	{DrillLayer		1}
+	{BorderLayer		0}
+	{HiliLayer		0}
+	{IgnoreSelGrp		No}
+	{UseToolSize		No}
+	{WellBehaved		No}
+	{WindowMode		No}
+	{Stubs		No}
+	{ErrorCount		0}
+	{MaxErrors		100}
+}
+{Snoman
+	{RepFile		Untitled.sno}
+	{FromLayer		0}
+	{ToLayer		1}
+	{DCode			0}
+	{Pad2Pad		0.0060}
+	{Pad2Trace		0.0060}
+	{Offset			-0.0050}
+	{MinPercent		0.6000}
+	{MaxPercent		0.8000}
+	{WindowMode		No}
+}
+{Teardrop
+	{RepFile		Untitled.rpt}
+	{Layer		0}
+	{DCode			0}
+	{Pad2Trace		0.0060}
+	{Trace2Trace		0.0060}
+	{HostOffsetPercent			0.1500}
+	{TeeLength		0.5000}
+	{TeeWidth		0.5000}
+	{WindowMode		No}
+	{DeleteExisting		No}
+}
+{TestPoints
+	{FxFile		1 Untitled.fx}
+	{Dist		1 -1.0000}
+	{Thick		1 -1.0000}
+	{FxFile		2 Untitled.ip2}
+	{Dist		2 -1.0000}
+	{Thick		2 -1.0000}
+	{FxFile		3 Untitled.ip3}
+	{Dist		3 -1.0000}
+	{Thick		3 -1.0000}
+	{FxFile		4 Untitled.ip4}
+	{Dist		4 -1.0000}
+	{Thick		4 -1.0000}
+	{FxFile		5 Untitled.ip5}
+	{Dist		5 -1.0000}
+	{Thick		5 -1.0000}
+	{FxFile		6 Untitled.ip6}
+	{Dist		6 -1.0000}
+	{Thick		6 -1.0000}
+	{FxFile		7 Untitled.tp}
+	{Dist		7 -1.0000}
+	{Thick		7 -1.0000}
+	{NetFile	Untitled.nl}
+	{MapFile	Untitled.mp}
+	{ToolFile	Untitled.tl}
+	{TPLayer	0}
+	{ProbeSize	0.0230}
+	{MaxDeflect	0.1300}
+	{GridSize	0.1000}
+	{Points		Ends}
+	{Isolated	Exclude}
+}
+{Stagger
+	{TPLayer	0}
+	{ProbeSpacing	0.0230}
+	{EdgeSpacing	0.0000}
+	{MaxFlash	0.0600}
+	{StaggerDir		L-U}
+	{UseMiddle	No}
+	{WindowMode	Yes}
+}
+{Drill
+	{OutFile	Untitled.drl}
+	{RepFile	Untitled.rpt}
+	{Swath		0.100}
+	{Sort		X}
+	{Layer		1}
+	{PreMergeLayer	0}
+	{PostMergeLayer	0}
+	{PreDrill	0.250}
+	{WindowMode	No}
+}
+{Mill
+	{OutFile	Untitled.drl}
+	{ToolFile	Untitled.tl}
+	{Layer		0}
+	{Tool		0}
+	{Compensate	No}
+	{Mode		Auto}
+	{TabSize	0.1000}
+	{OverShoot	0.0000}
+	{PlungeLine	Yes}
+	{Priority	Normal}
+	{Critical	vga16red}
+	{Int	vga16cyan}
+	{Norm	vga16green}
+	{Low	vga16blue}
+	{Clamp	vga16magenta}
+	{Plunge	red}
+	{Retract	red}
+	{Paths	0
+	}
+}
+{FixSS
+	{PadLayer	1}
+	{SilkLayer	1}
+	{WindowMode	No}
+	{Spacing	0.0100}
+}
+{PadRemoval
+	{WindowMode	No}
+	{Layer		0}
+	{DCode		0}
+}
+{Highlights
+	{Query		white}
+	{Select		white}
+	{DRC		white}
+}

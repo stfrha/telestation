@@ -1,0 +1,40 @@
+Pos |Antal|Värde   |Artikelnummer       |Komponenttyp             |Beskrivning              |KompID
+51  |1    |        |MAX814_SO8_50       |MAX814                   |<NO_DESCRIP>             |UU14
+52  |1    |11.0592MHz|XX2016/.../.        |XX2016                   |Oscillator               |XX2
+53  |1    |        |                    |XX2016                   |                         |XX2
+54  |1    |        |                    |MAX232                   |                         |UU4
+55  |1    |        |ZD6856/../205/0     |80C517A                  |<NO_DESCRIP>             |UU5
+56  |1    |10n     |CK9001/.././0       |CK9001_0805              |                         |CC16
+57  |1    |2.67K   |RM9003/./..../0     |RM9003                   |                         |RR15
+58  |1    |        |631925490           |MAX232                   |                         |UU4
+59  |1    |        |ZC1039/03/3/0       |7805                     |Voltage Regulator        |UU6
+60  |1    |        |ZD6022/../5/.       |71256                    |Read/Write Memory, 32k x 8-bit|UU3
+61  |1    |        |                    |71256                    |                         |UU3
+62  |1    |        |X9241_SOL20_50      |X9241                    |Quad Potentiometer       |RR1
+63  |1    |        |                    |X9241                    |                         |RR1
+64  |1    |3.757MHz|XX1053/../0         |XX1053                   |                         |XX1
+66  |1    |374K    |RM9003/./..../0     |RM9003                   |                         |RR17
+67  |1    |        |HCT373_SOL20_50     |54HCT373                 |Latch, 8-bit             |UU10
+68  |1    |        |                    |54HCT373                 |                         |UU10
+69  |1    |10K     |RV9003/J/.../0      |RV9003_J                 |                         |RR2
+70  |1    |        |PB8302/320/0        |CON_PB8302/320/0         |                         |PP25
+71  |1    |        |PB8302/305/0        |CON_PB8302/305/0         |                         |PP24
+72  |1    |        |PB8302/307/0        |CON_PB8302/307/0         |                         |PP22
+73  |1    |        |ZD1610/02/5/0       |AD7528                   |<NO_DESCRIP>             |UU15
+74  |1    |        |ZC1107/12/0         |MAX664                   |<NO_DESCRIP>             |UU7
+75  |1    |        |ZD1618/../5/0       |DAC8229                  |<NO_DESCRIP>             |UU11
+78  |2    |        |XCHECKER            |XCHECKER                 |<NO_DESCRIP>             |PP16
+85  |2    |        |PB8302/306/0        |CON_PB8302/306/0         |                         |PP7
+88  |2    |        |XC9536_PLCC44_50    |XC9536                   |                         |U20,UU43
+91  |2    |1K      |RM9003/./..../0     |RM9003                   |                         |RR11,RR16
+92  |2    |        |ZD2865/.././0       |28C256                   |                         |UU1,UU2
+93  |2    |        |                    |28C256                   |                         |UU1,UU2
+94  |2    |100K    |RM9003/./..../0     |RM9003                   |                         |RR13,RR14
+99  |3    |        |PB8302/308/0        |CON_PB8302/308/0         |                         |PP2,PP4,PP17
+100 |3    |        |PB8302/304/0        |CON_PB8302/304/0         |                         |PP1,PP3,PP6
+103 |4    |        |PB8302/303/0        |CON_PB8302/303/0         |                         |PP5,PP23
+112 |4    |        |ZD2872/01           |KM29N32000               |<NO_DESCRIP>             |UU8,UU9,UU12,UU13
+118 |6    |4.7u    |CE9002/../..../.    |CE9002_D                 |                         |CC4,CC7,CC8,CC9,CC17,CC21
+120 |8    |10u     |CE9002/../..../.    |CE9002_D                 |                         |CC1,CC2,CC3,CC18
+122 |9    |10K     |RM9003/./..../0     |RM9003                   |                         |RR3,RR4,RR5,RR6,RR7,RR8,RR9,RR10,RR12
+131 |19   |0.1u    |CK9001/.././0       |CK9001_0805              |                         |CC5,CC6,C131,C132,CC10,CC11,CC12,CC13,CC14,CC15,CC19,CC20,CC22,CC23,CC24,CC25,CC26,CC27,CC28

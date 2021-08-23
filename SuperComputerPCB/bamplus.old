@@ -1,0 +1,591 @@
+
+/* Sym: 13127640  Path 1: SuperCptr  Page 1: SuperCptr(01) */
+CHANGE 'SuperCptr(01)' 	INSTANCE
+  SELECT COMP XCMP70                 /* Reference Desig is C8 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP69                 /* Reference Desig is C7 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP68                 /* Reference Desig is C6 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP67                 /* Reference Desig is C5 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP41                 /* Reference Desig is R5 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP40                 /* Reference Desig is R7 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP39                 /* Reference Desig is R1 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP38                 /* Reference Desig is R14 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP37                 /* Reference Desig is R13 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP36                 /* Reference Desig is R12 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP35                 /* Reference Desig is R11 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP34                 /* Reference Desig is R10 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP33                 /* Reference Desig is R9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP32                 /* Reference Desig is R16 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP31                 /* Reference Desig is R15 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP30                 /* Reference Desig is C1 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP23                 /* Reference Desig is U4 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP22                 /* Reference Desig is U4 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP21                 /* Reference Desig is U3 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP20                 /* Reference Desig is U3 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP18                 /* Reference Desig is X1 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP17                 /* Reference Desig is X1 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP16                 /* Reference Desig is X1 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP7                 /* Reference Desig is U2 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP6                 /* Reference Desig is U2 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP1                 /* Reference Desig is U1 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP186                 /* Reference Desig is P1 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP185                 /* Reference Desig is C10 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP157                 /* Reference Desig is U2 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP156                 /* Reference Desig is U2 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP155                 /* Reference Desig is U2 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP137                 /* Reference Desig is U2 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP131                 /* Reference Desig is U6 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP120                 /* Reference Desig is U12 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP119                 /* Reference Desig is U7 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP118                 /* Reference Desig is U7 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP117                 /* Reference Desig is U7 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP116                 /* Reference Desig is U7 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP110                 /* Reference Desig is U3 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP109                 /* Reference Desig is U11 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'U11' VISIB        /* Reference Desig was U9 */
+  SELECT COMP XCMP108                 /* Reference Desig is U9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'U9' VISIB        /* Reference Desig was U11 */
+  SELECT COMP XCMP107                 /* Reference Desig is U11 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP96                 /* Reference Desig is U7 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP95                 /* Reference Desig is U7 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP90                 /* Reference Desig is U5 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP89                 /* Reference Desig is U5 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP88                 /* Reference Desig is U5 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP74                 /* Reference Desig is C9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP249                 /* Reference Desig is U14 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP246                 /* Reference Desig is C24 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP245                 /* Reference Desig is C30 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP244                 /* Reference Desig is C16 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP243                 /* Reference Desig is C15 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP242                 /* Reference Desig is C14 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP240                 /* Reference Desig is C4 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP239                 /* Reference Desig is C13 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP238                 /* Reference Desig is U13 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP237                 /* Reference Desig is C26 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP233                 /* Reference Desig is C25 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP232                 /* Reference Desig is C23 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP225                 /* Reference Desig is P2 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP224                 /* Reference Desig is P8 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP223                 /* Reference Desig is P4 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP220                 /* Reference Desig is P10 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP219                 /* Reference Desig is P10 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP218                 /* Reference Desig is P10 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP217                 /* Reference Desig is P10 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP216                 /* Reference Desig is P9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP215                 /* Reference Desig is P9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP214                 /* Reference Desig is P9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP213                 /* Reference Desig is P9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP212                 /* Reference Desig is P9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP211                 /* Reference Desig is P9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP210                 /* Reference Desig is P9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP209                 /* Reference Desig is P9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP208                 /* Reference Desig is P9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP207                 /* Reference Desig is P9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP206                 /* Reference Desig is P9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP205                 /* Reference Desig is P9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP204                 /* Reference Desig is P9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP203                 /* Reference Desig is P9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP202                 /* Reference Desig is P9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP201                 /* Reference Desig is P9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP196                 /* Reference Desig is C12 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP195                 /* Reference Desig is U12 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP194                 /* Reference Desig is U12 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP193                 /* Reference Desig is U9 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP191                 /* Reference Desig is U6 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP190                 /* Reference Desig is U6 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP189                 /* Reference Desig is C11 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP188                 /* Reference Desig is P3 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP187                 /* Reference Desig is P6 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP295                 /* Reference Desig is P15 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP294                 /* Reference Desig is U15 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP293                 /* Reference Desig is U15 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP292                 /* Reference Desig is U15 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP284                 /* Reference Desig is P14 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP283                 /* Reference Desig is P5 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP282                 /* Reference Desig is P13 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP281                 /* Reference Desig is P11 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP280                 /* Reference Desig is R3 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP279                 /* Reference Desig is R6 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP278                 /* Reference Desig is C2 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP277                 /* Reference Desig is R2 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP276                 /* Reference Desig is R4 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP274                 /* Reference Desig is C3 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP273                 /* Reference Desig is R8 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP272                 /* Reference Desig is X2 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP271                 /* Reference Desig is C19 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP269                 /* Reference Desig is R17 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP268                 /* Reference Desig is R17 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP267                 /* Reference Desig is C18 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP263                 /* Reference Desig is R17 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP257                 /* Reference Desig is C28 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP256                 /* Reference Desig is C29 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP255                 /* Reference Desig is C22 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP254                 /* Reference Desig is C27 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP253                 /* Reference Desig is C17 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP251                 /* Reference Desig is U14 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP250                 /* Reference Desig is U14 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP312                 /* Reference Desig is C21 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP311                 /* Reference Desig is C20 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP310                 /* Reference Desig is U8 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'U8' VISIB        /* Reference Desig was U10 */
+  SELECT COMP XCMP309                 /* Reference Desig is U10 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'U10' VISIB        /* Reference Desig was U8 */
+  SELECT COMP XCMP308                 /* Reference Desig is U10 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'U10' VISIB        /* Reference Desig was U8 */
+  SELECT COMP XCMP307                 /* Reference Desig is U8 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'U8' VISIB        /* Reference Desig was U10 */
+  SELECT COMP XCMP303                 /* Reference Desig is C31 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP302                 /* Reference Desig is P7 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP301                 /* Reference Desig is P12 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP300                 /* Reference Desig is P16 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP297                 /* Reference Desig is R18 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+
+/* Sym: 13212672  Path 2: SuperCptr!MAX5061  Page 4: MAX506(01) */
+CHANGE 'SuperCptr!MAX5061(01)' 	INSTANCE
+  SELECT COMP XCMP9                 /* Reference Desig is U16 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP8                 /* Reference Desig is U16 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+
+/* Sym: 13212392  Path 3: SuperCptr!MAX680CSA2  Page 2: MAX680CSA(01) */
+CHANGE 'SuperCptr!MAX680CSA2(01)' 	INSTANCE
+  SELECT COMP XCMP1                 /* Reference Desig is U17 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+
+/* Sym: 13211192  Path 4: SuperCptr!MT8888C_SO202  Page 3: MT8888C_SO20(01) */
+CHANGE 'SuperCptr!MT8888C_SO202(01)' 	INSTANCE
+  SELECT COMP XCMP2                 /* Reference Desig is U18 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+  SELECT COMP XCMP1                 /* Reference Desig is U18 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+
+/* Flat Signals 1 */
+CHANGE FLAT
+  SELECT SIGNAL 'GND'  /* Flat Net: GND                  */
+    PARAM 'PCB_FLATNETNAME' = 'GND' 
+  SELECT SIGNAL '+5VB'  /* Flat Net: +5VB                 */
+    PARAM 'PCB_FLATNETNAME' = '+5VB' 
+  SELECT SIGNAL 'XSIG010005'  /* Flat Net: XSIG010005           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010005' 
+  SELECT SIGNAL 'XSIG010009'  /* Flat Net: XSIG010009           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010009' 
+  SELECT SIGNAL 'XSIG010011'  /* Flat Net: XSIG010011           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010011' 
+  SELECT SIGNAL 'D(7)'  /* Flat Net: D(7)                 */
+    PARAM 'PCB_FLATNETNAME' = 'D(7)' 
+  SELECT SIGNAL 'D(0)'  /* Flat Net: D(0)                 */
+    PARAM 'PCB_FLATNETNAME' = 'D(0)' 
+  SELECT SIGNAL 'D(1)'  /* Flat Net: D(1)                 */
+    PARAM 'PCB_FLATNETNAME' = 'D(1)' 
+  SELECT SIGNAL 'D(2)'  /* Flat Net: D(2)                 */
+    PARAM 'PCB_FLATNETNAME' = 'D(2)' 
+  SELECT SIGNAL 'D(3)'  /* Flat Net: D(3)                 */
+    PARAM 'PCB_FLATNETNAME' = 'D(3)' 
+  SELECT SIGNAL 'D(4)'  /* Flat Net: D(4)                 */
+    PARAM 'PCB_FLATNETNAME' = 'D(4)' 
+  SELECT SIGNAL 'D(5)'  /* Flat Net: D(5)                 */
+    PARAM 'PCB_FLATNETNAME' = 'D(5)' 
+  SELECT SIGNAL 'D(6)'  /* Flat Net: D(6)                 */
+    PARAM 'PCB_FLATNETNAME' = 'D(6)' 
+  SELECT SIGNAL 'A(15)'  /* Flat Net: A(15)                */
+    PARAM 'PCB_FLATNETNAME' = 'A(15)' 
+  SELECT SIGNAL 'XSIG010043'  /* Flat Net: XSIG010043           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010043' 
+  SELECT SIGNAL 'A(14)'  /* Flat Net: A(14)                */
+    PARAM 'PCB_FLATNETNAME' = 'A(14)' 
+  SELECT SIGNAL 'A(13)'  /* Flat Net: A(13)                */
+    PARAM 'PCB_FLATNETNAME' = 'A(13)' 
+  SELECT SIGNAL 'A(12)'  /* Flat Net: A(12)                */
+    PARAM 'PCB_FLATNETNAME' = 'A(12)' 
+  SELECT SIGNAL 'A(11)'  /* Flat Net: A(11)                */
+    PARAM 'PCB_FLATNETNAME' = 'A(11)' 
+  SELECT SIGNAL 'A(10)'  /* Flat Net: A(10)                */
+    PARAM 'PCB_FLATNETNAME' = 'A(10)' 
+  SELECT SIGNAL 'A(9)'  /* Flat Net: A(9)                 */
+    PARAM 'PCB_FLATNETNAME' = 'A(9)' 
+  SELECT SIGNAL 'A(8)'  /* Flat Net: A(8)                 */
+    PARAM 'PCB_FLATNETNAME' = 'A(8)' 
+  SELECT SIGNAL 'BD'  /* Flat Net: BD                   */
+    PARAM 'PCB_FLATNETNAME' = 'BD' 
+  SELECT SIGNAL 'XSIG010122'  /* Flat Net: XSIG010122           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010122' 
+  SELECT SIGNAL 'XSIG010137'  /* Flat Net: XSIG010137           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010137' 
+  SELECT SIGNAL 'XSIG010143'  /* Flat Net: XSIG010143           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010143' 
+  SELECT SIGNAL 'MR'  /* Flat Net: MR                   */
+    PARAM 'PCB_FLATNETNAME' = 'MR' 
+  SELECT SIGNAL 'XSIG010164'  /* Flat Net: XSIG010164           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010164' 
+  SELECT SIGNAL 'A(7)'  /* Flat Net: A(7)                 */
+    PARAM 'PCB_FLATNETNAME' = 'A(7)' 
+  SELECT SIGNAL 'A(6)'  /* Flat Net: A(6)                 */
+    PARAM 'PCB_FLATNETNAME' = 'A(6)' 
+  SELECT SIGNAL 'A(5)'  /* Flat Net: A(5)                 */
+    PARAM 'PCB_FLATNETNAME' = 'A(5)' 
+  SELECT SIGNAL 'A(4)'  /* Flat Net: A(4)                 */
+    PARAM 'PCB_FLATNETNAME' = 'A(4)' 
+  SELECT SIGNAL 'A(3)'  /* Flat Net: A(3)                 */
+    PARAM 'PCB_FLATNETNAME' = 'A(3)' 
+  SELECT SIGNAL 'A(2)'  /* Flat Net: A(2)                 */
+    PARAM 'PCB_FLATNETNAME' = 'A(2)' 
+  SELECT SIGNAL 'A(1)'  /* Flat Net: A(1)                 */
+    PARAM 'PCB_FLATNETNAME' = 'A(1)' 
+  SELECT SIGNAL 'A(0)'  /* Flat Net: A(0)                 */
+    PARAM 'PCB_FLATNETNAME' = 'A(0)' 
+  SELECT SIGNAL 'XSIG010338'  /* Flat Net: XSIG010338           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010338' 
+  SELECT SIGNAL 'XSIG010339'  /* Flat Net: XSIG010339           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010339' 
+  SELECT SIGNAL 'XSIG010340'  /* Flat Net: XSIG010340           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010340' 
+  SELECT SIGNAL 'XSIG010341'  /* Flat Net: XSIG010341           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010341' 
+  SELECT SIGNAL 'XSIG010342'  /* Flat Net: XSIG010342           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010342' 
+  SELECT SIGNAL 'XSIG010375'  /* Flat Net: XSIG010375           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010375' 
+  SELECT SIGNAL 'XSIG010382'  /* Flat Net: XSIG010382           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010382' 
+  SELECT SIGNAL 'XSIG010383'  /* Flat Net: XSIG010383           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010383' 
+  SELECT SIGNAL 'XSIG010384'  /* Flat Net: XSIG010384           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010384' 
+  SELECT SIGNAL 'XSIG010390'  /* Flat Net: XSIG010390           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010390' 
+  SELECT SIGNAL 'XSIG010403'  /* Flat Net: XSIG010403           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010403' 
+  SELECT SIGNAL 'XSIG010416'  /* Flat Net: XSIG010416           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010416' 
+  SELECT SIGNAL 'XSIG010418'  /* Flat Net: XSIG010418           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010418' 
+  SELECT SIGNAL 'XSIG010422'  /* Flat Net: XSIG010422           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010422' 
+  SELECT SIGNAL 'XSIG010423'  /* Flat Net: XSIG010423           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010423' 
+  SELECT SIGNAL 'XSIG010475'  /* Flat Net: XSIG010475           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010475' 
+  SELECT SIGNAL 'XSIG010479'  /* Flat Net: XSIG010479           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010479' 
+  SELECT SIGNAL 'XSIG010480'  /* Flat Net: XSIG010480           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010480' 
+  SELECT SIGNAL 'XSIG010481'  /* Flat Net: XSIG010481           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010481' 
+  SELECT SIGNAL 'XSIG010482'  /* Flat Net: XSIG010482           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010482' 
+  SELECT SIGNAL 'LCD_D(7)'  /* Flat Net: LCD_D(7)             */
+    PARAM 'PCB_FLATNETNAME' = 'LCD_D(7)' 
+  SELECT SIGNAL 'LCD_D(6)'  /* Flat Net: LCD_D(6)             */
+    PARAM 'PCB_FLATNETNAME' = 'LCD_D(6)' 
+  SELECT SIGNAL 'LCD_D(5)'  /* Flat Net: LCD_D(5)             */
+    PARAM 'PCB_FLATNETNAME' = 'LCD_D(5)' 
+  SELECT SIGNAL 'LCD_D(4)'  /* Flat Net: LCD_D(4)             */
+    PARAM 'PCB_FLATNETNAME' = 'LCD_D(4)' 
+  SELECT SIGNAL 'LCD_D(3)'  /* Flat Net: LCD_D(3)             */
+    PARAM 'PCB_FLATNETNAME' = 'LCD_D(3)' 
+  SELECT SIGNAL 'LCD_D(2)'  /* Flat Net: LCD_D(2)             */
+    PARAM 'PCB_FLATNETNAME' = 'LCD_D(2)' 
+  SELECT SIGNAL 'LCD_D(1)'  /* Flat Net: LCD_D(1)             */
+    PARAM 'PCB_FLATNETNAME' = 'LCD_D(1)' 
+  SELECT SIGNAL 'LCD_D(0)'  /* Flat Net: LCD_D(0)             */
+    PARAM 'PCB_FLATNETNAME' = 'LCD_D(0)' 
+  SELECT SIGNAL 'XSIG010589'  /* Flat Net: XSIG010589           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010589' 
+  SELECT SIGNAL 'XSIG010591'  /* Flat Net: XSIG010591           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010591' 
+  SELECT SIGNAL 'Pone(7)'  /* Flat Net: Pone(7)              */
+    PARAM 'PCB_FLATNETNAME' = 'Pone(7)' 
+  SELECT SIGNAL 'Pone(6)'  /* Flat Net: Pone(6)              */
+    PARAM 'PCB_FLATNETNAME' = 'Pone(6)' 
+  SELECT SIGNAL 'Pone(5)'  /* Flat Net: Pone(5)              */
+    PARAM 'PCB_FLATNETNAME' = 'Pone(5)' 
+  SELECT SIGNAL 'Pone(4)'  /* Flat Net: Pone(4)              */
+    PARAM 'PCB_FLATNETNAME' = 'Pone(4)' 
+  SELECT SIGNAL 'Pone(3)'  /* Flat Net: Pone(3)              */
+    PARAM 'PCB_FLATNETNAME' = 'Pone(3)' 
+  SELECT SIGNAL 'Pone(2)'  /* Flat Net: Pone(2)              */
+    PARAM 'PCB_FLATNETNAME' = 'Pone(2)' 
+  SELECT SIGNAL 'Pone(1)'  /* Flat Net: Pone(1)              */
+    PARAM 'PCB_FLATNETNAME' = 'Pone(1)' 
+  SELECT SIGNAL 'Pone(0)'  /* Flat Net: Pone(0)              */
+    PARAM 'PCB_FLATNETNAME' = 'Pone(0)' 
+  SELECT SIGNAL 'XSIG010672'  /* Flat Net: XSIG010672           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010672' 
+  SELECT SIGNAL 'XSIG010673'  /* Flat Net: XSIG010673           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010673' 
+  SELECT SIGNAL 'XSIG010674'  /* Flat Net: XSIG010674           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010674' 
+  SELECT SIGNAL 'XSIG010675'  /* Flat Net: XSIG010675           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010675' 
+  SELECT SIGNAL 'XSIG010676'  /* Flat Net: XSIG010676           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010676' 
+  SELECT SIGNAL 'XSIG010677'  /* Flat Net: XSIG010677           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010677' 
+  SELECT SIGNAL 'XSIG010678'  /* Flat Net: XSIG010678           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010678' 
+  SELECT SIGNAL 'XSIG010679'  /* Flat Net: XSIG010679           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010679' 
+  SELECT SIGNAL 'XSIG010689'  /* Flat Net: XSIG010689           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010689' 
+  SELECT SIGNAL 'XSIG010690'  /* Flat Net: XSIG010690           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010690' 
+  SELECT SIGNAL 'XSIG010691'  /* Flat Net: XSIG010691           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010691' 
+  SELECT SIGNAL 'XSIG010692'  /* Flat Net: XSIG010692           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010692' 
+  SELECT SIGNAL 'XSIG010694'  /* Flat Net: XSIG010694           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010694' 
+  SELECT SIGNAL 'XSIG010695'  /* Flat Net: XSIG010695           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010695' 
+  SELECT SIGNAL 'XSIG010696'  /* Flat Net: XSIG010696           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010696' 
+  SELECT SIGNAL 'XSIG010697'  /* Flat Net: XSIG010697           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010697' 
+  SELECT SIGNAL 'EMb'  /* Flat Net: EMb                  */
+    PARAM 'PCB_FLATNETNAME' = 'EMb' 
+  SELECT SIGNAL 'EMa'  /* Flat Net: EMa                  */
+    PARAM 'PCB_FLATNETNAME' = 'EMa' 
+  SELECT SIGNAL 'XSIG010742'  /* Flat Net: XSIG010742           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010742' 
+  SELECT SIGNAL 'XSIG010747'  /* Flat Net: XSIG010747           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010747' 
+  SELECT SIGNAL 'XSIG010757'  /* Flat Net: XSIG010757           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010757' 
+  SELECT SIGNAL 'XSIG010772'  /* Flat Net: XSIG010772           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010772' 
+  SELECT SIGNAL 'XSIG010784'  /* Flat Net: XSIG010784           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010784' 
+  SELECT SIGNAL 'XSIG010805'  /* Flat Net: XSIG010805           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010805' 
+  SELECT SIGNAL 'XSIG010806'  /* Flat Net: XSIG010806           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010806' 
+  SELECT SIGNAL 'XSIG010807'  /* Flat Net: XSIG010807           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010807' 
+  SELECT SIGNAL 'XSIG010808'  /* Flat Net: XSIG010808           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010808' 
+  SELECT SIGNAL 'XSIG010844'  /* Flat Net: XSIG010844           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010844' 
+  SELECT SIGNAL 'XSIG010845'  /* Flat Net: XSIG010845           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010845' 
+  SELECT SIGNAL 'XSIG010848'  /* Flat Net: XSIG010848           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010848' 
+  SELECT SIGNAL 'XSIG010862'  /* Flat Net: XSIG010862           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010862' 
+  SELECT SIGNAL 'XSIG010868'  /* Flat Net: XSIG010868           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010868' 
+  SELECT SIGNAL 'XSIG010897'  /* Flat Net: XSIG010897           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010897' 
+  SELECT SIGNAL 'XSIG010898'  /* Flat Net: XSIG010898           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010898' 
+  SELECT SIGNAL 'XSIG010899'  /* Flat Net: XSIG010899           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010899' 
+  SELECT SIGNAL 'XSIG010900'  /* Flat Net: XSIG010900           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010900' 
+  SELECT SIGNAL 'VN'  /* Flat Net: VN                   */
+    PARAM 'PCB_FLATNETNAME' = 'VN' 
+  SELECT SIGNAL 'VP'  /* Flat Net: VP                   */
+    PARAM 'PCB_FLATNETNAME' = 'VP' 
+  SELECT SIGNAL 'XSIG010907'  /* Flat Net: XSIG010907           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010907' 
+  SELECT SIGNAL 'XSIG010908'  /* Flat Net: XSIG010908           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010908' 
+  SELECT SIGNAL 'XSIG010931'  /* Flat Net: XSIG010931           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010931' 
+  SELECT SIGNAL 'XSIG010932'  /* Flat Net: XSIG010932           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010932' 
+  SELECT SIGNAL 'XSIG010941'  /* Flat Net: XSIG010941           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010941' 
+  SELECT SIGNAL 'XSIG010949'  /* Flat Net: XSIG010949           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010949' 
+  SELECT SIGNAL 'XSIG010950'  /* Flat Net: XSIG010950           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010950' 
+  SELECT SIGNAL 'XSIG010951'  /* Flat Net: XSIG010951           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010951' 
+  SELECT SIGNAL 'XSIG010959'  /* Flat Net: XSIG010959           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010959' 
+  SELECT SIGNAL 'XSIG010960'  /* Flat Net: XSIG010960           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010960' 
+  SELECT SIGNAL 'XSIG010962'  /* Flat Net: XSIG010962           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010962' 
+  SELECT SIGNAL 'IRQ'  /* Flat Net: IRQ                  */
+    PARAM 'PCB_FLATNETNAME' = 'IRQ' 
+  SELECT SIGNAL 'XSIG010969'  /* Flat Net: XSIG010969           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010969' 
+  SELECT SIGNAL 'XSIG010970'  /* Flat Net: XSIG010970           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010970' 
+  SELECT SIGNAL 'XSIG010972'  /* Flat Net: XSIG010972           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010972' 
+  SELECT SIGNAL 'XSIG010973'  /* Flat Net: XSIG010973           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010973' 
+  SELECT SIGNAL 'XSIG010977'  /* Flat Net: XSIG010977           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010977' 
+  SELECT SIGNAL 'XSIG010978'  /* Flat Net: XSIG010978           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010978' 
+  SELECT SIGNAL 'XSIG010983'  /* Flat Net: XSIG010983           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010983' 
+  SELECT SIGNAL 'XSIG010986'  /* Flat Net: XSIG010986           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010986' 
+  SELECT SIGNAL 'OWE'  /* Flat Net: OWE                  */
+    PARAM 'PCB_FLATNETNAME' = 'OWE' 
+  SELECT SIGNAL 'XSIG010999'  /* Flat Net: XSIG010999           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG010999' 
+  SELECT SIGNAL 'XSIG011020'  /* Flat Net: XSIG011020           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG011020' 
+  SELECT SIGNAL 'XSIG011021'  /* Flat Net: XSIG011021           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG011021' 
+  SELECT SIGNAL 'XSIG011022'  /* Flat Net: XSIG011022           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG011022' 
+  SELECT SIGNAL 'XSIG011023'  /* Flat Net: XSIG011023           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG011023' 
+  SELECT SIGNAL 'XSIG011024'  /* Flat Net: XSIG011024           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG011024' 
+  SELECT SIGNAL 'XSIG011025'  /* Flat Net: XSIG011025           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG011025' 
+  SELECT SIGNAL 'XSIG011030'  /* Flat Net: XSIG011030           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG011030' 
+  SELECT SIGNAL 'XSIG011031'  /* Flat Net: XSIG011031           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG011031' 
+  SELECT SIGNAL 'XSIG011032'  /* Flat Net: XSIG011032           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG011032' 
+  SELECT SIGNAL 'XSIG011033'  /* Flat Net: XSIG011033           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG011033' 
+  SELECT SIGNAL 'XSIG011034'  /* Flat Net: XSIG011034           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG011034' 
+  SELECT SIGNAL 'XSIG011035'  /* Flat Net: XSIG011035           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG011035' 
+  SELECT SIGNAL 'VREF'  /* Flat Net: VREF                 */
+    PARAM 'PCB_FLATNETNAME' = 'VREF' 
+  SELECT SIGNAL 'XSIG011071'  /* Flat Net: XSIG011071           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG011071' 
+  SELECT SIGNAL 'XSIG011081'  /* Flat Net: XSIG011081           */
+    PARAM 'PCB_FLATNETNAME' = 'XSIG011081' 

@@ -1,0 +1,72 @@
+PROGRAMMERINGSSEKVENS:
+
+PC (hex)			SuperComputer (hex)	
+ HEX 	ASCII			 HEX	ASCII	
+==================================================================================
+Programmeringskommando
+0x27	[Esc]
+0x50	P
+
+				Hoppar till programmeringsrutin i låga minnet
+				Tar bort eventuella interrupter
+				Ställer baud-rate till 38400 bps
+				Sätter höga minnet till dataminne
+				Ack till PC
+				0x50	P
+
+Skickar datapaket:
+0x46	F
+Startaddress (2 bytes)
+Längd (1 bytes) 1-64
+Data ("Längd" antal bytes)
+Checksum (1 byte)
+Datapaketet skall avslutas 
+vid varje 64-bytes page
+
+				Skriver paket till höga minnet
+				Väntar på skrivning av minnet
+				Kollar checksumma
+				Skickar ack till PC
+				0x46	F
+					
+					eller
+
+				Skickar resend till PC
+				0x52	R
+
+Programmera låga minnet:
+0x4C	L
+
+				Sätter höga minnet till programminne
+				Hoppa till 0x8000 (från assemblerrutin)
+				I höga programminnet:
+				Sätt låga minnet till dataminne
+				Skicka ack till PC
+				0x4C	L
+
+Skickar datapaket:
+0x46	F
+Startaddress (2 bytes)
+Längd (1 bytes) 1-64
+Data ("Längd" antal bytes)
+Checksum (1 byte)
+Datapaketet skall avslutas 
+vid varje 64-bytes page
+
+				Skriver paket till låga minnet
+				Väntar på skrivning av minnet
+				Kollar checksumma
+				Skickar ack till PC
+				0x46	F
+					
+					eller
+
+				Skickar resend till PC
+				0x52	R
+
+Skicka slutför-kommando:
+0x44	D
+
+				Sätter låga minnet till programminne
+				Hoppar till 0x0000 (mjukvarureset)
+

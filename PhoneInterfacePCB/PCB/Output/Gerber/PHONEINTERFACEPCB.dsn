@@ -1,0 +1,56 @@
+{Program	VeriBest GerbTool(tm)
+	{Version	8.1.2 X1}
+	{Created	Thu Sep 14 11:39:06 2000}
+}
+{Environment
+	{ViewMetric	No}
+}
+{Layers
+	{Layer  1
+		{File		Placement.gdo}
+		{LyrName	Placement}
+		{Visibility	On}
+		{Type		Other}
+		{Ftype		Gerber}
+	}
+	{Layer  2
+		{File		LayerTop.gdo}
+		{LyrName	LayerTop}
+		{Visibility	Off}
+		{Type		Top}
+		{Ftype		Gerber}
+	}
+	{Layer  3
+		{File		LayerBott.gdo}
+		{LyrName	LayerBott}
+		{Visibility	Off}
+		{Type		Bottom}
+		{Ftype		Gerber}
+	}
+	{Layer  4
+		{File		Holes.gdo}
+		{LyrName	Holes}
+		{Visibility	Off}
+		{Type		Top}
+		{Ftype		Gerber}
+	}
+	{Layer  5
+		{File		Border.gdo}
+		{LyrName	Border}
+		{Visibility	Off}
+		{Type		Other}
+		{Ftype		Gerber}
+	}
+}
+{Format Gerber
+	{Dialect		RS274X}
+	{m.n			2.4}
+	{Mode			Absolute}
+	{ZeroSuppression	Leading}
+	{Terminator		0x2a, 0xd, 0xa}
+	{Metric			No}
+	{Modal			Yes}
+	{CharSet		ASCII}
+	{Arcs360		No}
+	{ArcsModal		Yes}
+}

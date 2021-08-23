@@ -1,0 +1,66 @@
+#
+#
+#
+# Created by Synplify VHDL Compiler version 5.3.0 from Synplicity, Inc.
+# Copyright 1994-1999 Synplicity, Inc. , All rights reserved.
+# Synthesis Netlist written on Tue Sep 12 07:56:39 2000
+#
+#
+#OPTIONS:"|-ram|-autosm|-fid2|-sharing|on|-encrypt|-dfltencoding|sequential|-ui|-lite|-lib|work|-lib|UNISIM|-lib|work"
+#CUR:"W:\\synplcty\\bin\\c_vhdl.exe":944594356l
+#CUR:"W:\\synplcty\\lib\\vhd\\location.map":941569502l
+#CUR:"W:\\synplcty\\lib\\vhd\\std.vhd":927468568l
+#CUR:"w:\\synplcty\\lib\\xilinx\\xc4000.vhd":940874694l
+#CUR:"W:\\synplcty\\lib\\vhd\\std1164.vhd":927468568l
+#CUR:"W:\\synplcty\\lib\\xilinx\\xc4000.vhd":940874694l
+#CUR:"W:\\synplcty\\lib\\vhdl_sim\\synplify.vhd":921687038l
+#CUR:"W:\\synplcty\\lib\\vhd\\unsigned.vhd":927468568l
+#CUR:"W:\\synplcty\\lib\\vhd\\arith.vhd":941655904l
+#CUR:"W:\\synplcty\\lib\\vhd\\synattr.vhd":944248656l
+#CUR:"w:\\xilinx\\vhdl\\src\\unisims\\unisim_vcomp.vhd":958332259l
+#CUR:"f:\\supercomputer\\keyboardpldproj\\keyboardpld\\design_definition\\hdl\\vhdl\\keyboard.vhd":950085090l
+#CUR:"W:\\synplcty\\lib\\vhd\\numeric.vhd":941658316l
+f "W:\synplcty\lib\vhd\std.vhd"; # file 0
+f "w:\synplcty\lib\xilinx\xc4000.vhd"; # file 1
+f "W:\synplcty\lib\vhd\std1164.vhd"; # file 2
+f "W:\synplcty\lib\xilinx\xc4000.vhd"; # file 3
+f "W:\synplcty\lib\vhdl_sim\synplify.vhd"; # file 4
+f "W:\synplcty\lib\vhd\unsigned.vhd"; # file 5
+f "W:\synplcty\lib\vhd\arith.vhd"; # file 6
+f "W:\synplcty\lib\vhd\synattr.vhd"; # file 7
+f "w:\xilinx\vhdl\src\unisims\unisim_vcomp.vhd"; # file 8
+f "f:\supercomputer\keyboardpldproj\keyboardpld\design_definition\hdl\vhdl\keyboard.vhd"; # file 9
+f "W:\synplcty\lib\vhd\numeric.vhd"; # file 10
+@E@MR@6g::6(::R.4I	FsR$iCLsFN8O7CFs8CRELCNFPHk
+s;N3PRHE#P84DR;R
+H@:@g(::6(R:g)  1a R)1; a
+@HR@Ug::U.::BcRpBiRp
+i;H@R@g::g.::gd R)R;) 
+@FR@4g:j::.46j:Ra7qq:rcj79Rqraqc9:j;R
+F@:@g4.4:::44UhRQa _iY:rcjQ9Rhia_ cYr:;j9
+RNH3HFsos8HRFHMk
+0;H@R@g.:4:4.:.R:6i1 Yrjc:9 RiYc1r:;j9
+@FR@4g:d::.4nd:RTQ)_QhR)hT_;R
+b@:@g(::6(R:gHRMPk_M4sCC#0MRk4C_s#RC0)  1ab;
+Rg@@:.g::dg:RPHMR4kM_RsCk_M4s)CR b;
+Rj@@:44::.4:Rk0sCsR0k0CRs;kC
+@bR@4j::44::V.RNCD#RDVN#VCRNCD#;R
+b@:@g.6g:::.gnVR8V	#RC_$#8:rcj	9RC_$#8:rcji9R rY1c9:jRiBpR4kM_#sCC
+0;b@R@gj:c::4jc.j:.MRN8QPRiku_MHn_MH0_sQJRiku_MHn_MH0_sQJR)hT_R;) 
+@bR@cg:(::dcc(:RGlkRuQi_0HM_$	C_cdr:Rj9Q_iuH_M0	_C$d:rcjQ9Rhia_ cYr:Rj9	#C$_c8r:
+j9RRRRkFMDO8	C;R
+b@:@gc4j:jj:c:R..FRsPQ_iuk_M6H_M0HRsJQ_iuk_M6H_M0HRsJk_M4sQCR)hT_;R
+b@:@g.6g:::.gnVR8VQ#Rhia_ cYr:Rj9Q_hair Yc9:jRuQi_0HM_$	C_cdr:Rj9BRpik_M4sCC#0b;
+Rg@@::cj4cj:j.:.RPHMR4kM_6kM_0HM_JHsR4kM_6kM_0HM_JHsRuQi_6kM_0HM_JHs;R
+b@:@g6gn:::6n406Rs8HRNr0Nc9:jRa7qq:rcjQ9Rhia_ cYr:Rj9k_M4s;CR
+@bR@.g:64:.::.6dCnRJJRCkJRCkhRQa _iY:rcj	9RC_$#8:rcj
+9;b@R@g6:.::.4.d6:nMRHPMRk4J_CkMRk4J_CkJRCkb;
+Rg@@::c44c4:4g:4R8NMPMRk4J_CkR_4k_M4C_Jk4JRCkiRQuM_knM_H0s_HJb;
+Rg@@::c(d(:c:NcRMR8PkFMDO8	C_knRMODF	_C8nMRk4J_CkiRQuM_knM_H0s_HJb;
+Rg@@::.g6g:.:8nRVRVskFMDO8	CRDkMFCO	8MRkD	FOCn8_RiBpR4kM_#sCC
+0;b@R@gU:d:dd:UR:cFRsPk_M4k_M4k_M6H_M0HRsJk_M4k_M4k_M6H_M0HRsJk_M4k_M6H_M0H
+sJRRRRk_M4C_Jk4b;
+Rg@@::dUdU:d:bcRlRkGQ_iuH_M0H_sJ6iRQuM_H0s_HJR_60Csk,4kM_RsCV#NDCM,kD	FOCn8_
+RRRRTQ)_kh,Mk4_Mk4_MH6_MH0_s
+J;b@R@gg:.:.6:gR:n8#VVRTQ)_QhR)hT_RuQi_0HM_JHs_B6RpkiRMs4_C0#C;;
+C

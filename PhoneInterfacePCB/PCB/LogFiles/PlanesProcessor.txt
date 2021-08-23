@@ -1,0 +1,128 @@
+
+                                PLANES PROCESSOR
+                                ----------------
+
+                        02:43 PM Tuesday, March 07, 2000
+     Job Name: F:\SuperComputer\PhoneInterfacePCB\PCB\PHONEINTERFACEPCB.PCB
+
+
+
+
+
+    POSITIVE PLANE LAYER : 1
+
+        Plane Shapes Found On This Layer  : 0
+        Plane Holes  Found On This Layer  : 0
+
+        PLANE NET : +5V
+
+            Total Plane Shapes For This Net  : 1
+            Use Route Border As Plane Shape  : YES
+            Plane To Plane Clearance         : 10th
+            Plane To Other Metal Clearance   : 32th
+            Contour Clearance                : 32th
+            Planes Smoothing Factor          : NONE
+            Use TieLeg Bridges If Needed     : NO
+            Use Padstack Thermal Definition  : YES
+            Via Pads
+                Number Tie Legs              : BURIED
+            Thru Non-Via Pads
+                Number Tie Legs              : BURIED
+            Tie SMD Pads                     : NO
+            Eliminate Untied Areas           : YES
+            Eliminate Single Tied Areas      : NO
+            Orthogonal Data Only             : NO
+            Discard Areas By Dimension       : NO
+            Via Pads Of This Net             : 0
+            Thru NonVia Pads Of This Net     : 5
+            SMD Pads Of This Net             : 9
+
+                Hatch Width                      : 16th
+                Hatch Distance                   : 16th
+                Hatch Pattern                    : (|) Vertical
+                Metal Percentage                 : 100.00
+                Via Pads In This Plane           : 0
+                Thru NonVia Pads In This Plane   : 5
+                SMD Pads In This Plane           : 9
+
+                ***  NOTICE - None of the plane tied or had traces crossing.
+                              Since none of the plane tied, the plane created
+                              will be a shielding plane only.
+                     
+                    Pads To Be Buried In Plane       : 5
+                        Unconnected To Plane         : 5
+                            Connected To Trace       : 0
+                    Pads With 0/0 Tie Connections    : 9
+
+                    Total With 0 Tie Connections     : 9
+                        Connected To Trace           : 0
+
+                    No tieleg connections were due to isolation from plane,
+                    or the tielegs would have violated clearance requirements,
+                    or no tielegs were assigned to be created,
+                    or the pad belongs to a Routed Plane Pin,
+                    or the pad was a TestPad on top of another connected pad,
+                    or the pad was contained in a Plane No Connect Area.
+
+                        Total Pads Not Connected : 14
+                            Coordinates (th) :
+                                    1) X=750         Y=1 700         Pin: P2-9
+                                    2) X=1 000       Y=1 050         Pin: R3-2
+                                    3) X=1 212,5     Y=2 175         Pin: U1-8
+                                    4) X=1 238       Y=2 300         Pin: C7-1
+                                    5) X=1 438       Y=3 000         Pin: C5-1
+                                    6) X=1 462       Y=2 600         Pin: R19-2
+                                    7) X=1 612,5     Y=2 875         Pin: U3-8
+                                    8) X=1 700       Y=1 838         Pin: R17-2
+                                    9) X=1 700       Y=1 962         Pin: R20-2
+                                   10) X=1 787,5     Y=2 025         Pin: U2-8
+                                   11) X=1 850       Y=850           Pin: P3-2
+                                   12) X=1 862       Y=1 800         Pin: C6-1
+                                   13) X=1 950       Y=2 700         Pin: P5-1
+                                   14) X=1 950       Y=2 900         Pin: P5-5
+
+
+
+    POSITIVE PLANE LAYER : 2
+
+        Plane Shapes Found On This Layer  : 0
+        Plane Holes  Found On This Layer  : 0
+
+        PLANE NET : GND
+
+            Total Plane Shapes For This Net  : 1
+            Use Route Border As Plane Shape  : YES
+            Plane To Plane Clearance         : 32th
+            Plane To Other Metal Clearance   : 32th
+            Contour Clearance                : 32th
+            Planes Smoothing Factor          : NONE
+            Use TieLeg Bridges If Needed     : NO
+            Use Padstack Thermal Definition  : YES
+            Via Pads
+                Number Tie Legs              : BURIED
+            Thru Non-Via Pads
+                Number Tie Legs              : BURIED
+            Tie SMD Pads                     : NO
+            Eliminate Untied Areas           : YES
+            Eliminate Single Tied Areas      : NO
+            Orthogonal Data Only             : NO
+            Discard Areas By Dimension       : NO
+            Via Pads Of This Net             : 5
+            Thru NonVia Pads Of This Net     : 16
+            SMD Pads Of This Net             : 0
+
+                Hatch Width                      : 16th
+                Hatch Distance                   : 16th
+                Hatch Pattern                    : (x) Cross Hatch
+                Metal Percentage                 : 100.00
+                Via Pads In This Plane           : 5
+                Thru NonVia Pads In This Plane   : 16
+                SMD Pads In This Plane           : 0
+                     
+                    Pads To Be Buried In Plane       : 21
+                        Unconnected To Plane         : 0
+                            Connected To Trace       : 0
+
+
+
+                        02:43 PM Tuesday, March 07, 2000

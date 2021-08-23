@@ -1,0 +1,10 @@
+Att göra:
+
+*	Redigera telefonbokspost hängner programmet
+*	Går ej att ta bort PhoneBook entry									[ok]
+*	Skriver inte inte ut fil extension i ans.bat						[ok]
+*	Kan inte hämta in flera ljudfiler samtidigt
+*	Vid generering skapas filerna på olika ställen
+		- Skapa en Output mapp i vilken alla genererade filer läggs
+		- Fixa bugg med var telefonboksfilen hamnar
+		- Använd relativa adresser

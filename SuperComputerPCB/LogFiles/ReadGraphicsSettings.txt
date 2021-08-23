@@ -1,0 +1,7 @@
+
+Attempting to read Graphics Settings file <Graphics Settings.hkp>
+
+The full pathname is <C:\veribest\VBExpPCB\templates\Central Library\LayoutTemplates\4 Layer Template\Config\Graphics Settings.hkp>
+
+
+Successful completion

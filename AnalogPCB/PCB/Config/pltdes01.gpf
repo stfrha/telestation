@@ -1,0 +1,27 @@
+.FILETYPE GerberPlotSetupFile
+.VERSION "VB99.0"
+.CREATOR "Expedition PCB Gerber Output"
+.DATE "Tuesday, February 22, 2000 09:00 AM"
+
+.DataOffset 0 0
+.DataCopies 1 1
+ ..OriginOffset 0 0
+
+.DCodeToApertureFile "f:\\veribest\\2000\\VBExpPCB\\Config\\VBExpPCB\\GerberD-Codes.dac"
+.GerberMachineFormatFile "H:\\users\\libraries\\CentralLibrary\\LayoutTemplates\\Europa\\Config\\GerberMachineFile1.gmf"
+
+.GerberOutputFile "New.gdo"
+ ..ProcessFile Yes
+ ..GerberOutputPath "F:\\SuperComputer\\AnalogPCB\\PCB\\Output\\Gerber\\New.gdo"
+ ..ConductiveLayer 2
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsTest
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem ResistorAreas
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ProcessUnconnectedPads Yes
+ ..BoardItem DrillDrawingThru

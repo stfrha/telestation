@@ -1,0 +1,42 @@
+
+Schematic unused pins from : Packager  4-Jun-99  11:03
+
+------------------------------------------------------------------------
+            Part/Reference             |          Unused pins
+                                       |  (G) - Gate, (P) - Partial Gate
+------------------------------------------------------------------------
+ Part AD7528_SOL20_50                  |
+ Part CE9002_CWR11D                    |
+ Part CK9001_C0805                     |
+ Part CON_PB8302/104/0                 |
+  P10                                  | (G)  1
+  P10                                  | (G)  2
+  P10                                  | (G)  3
+ Part CON_PB8302/116/0                 |
+ Part CON_PB8302/303/0                 |
+ Part CON_PB8302/304/0                 |
+ Part CON_PB8302/306/0                 |
+ Part CON_PB8302/307/0                 |
+ Part CON_PB8302/308/0                 |
+ Part DAC8229_SOL20_50                 |
+ Part HCT373_SOL20_50                  |
+ Part HC00_SO14_50                     |
+ Part HC32_SO14_50                     |
+ Part HC138_SO16_50                    |
+ Part KM29N32000_TSOP40/44_0.8         |
+ Part MAX232_SO16_50                   |
+ Part MAX664_SO8_50                    |
+ Part MAX814_SO8_50                    |
+  U1                                   | (P)  6 5
+ Part PB1046/016/0                     |
+  P14                                  | (P)  1 4 6 9
+ Part RM9003_R0805                     |
+ Part RV9003_J                         |
+ Part XX1053                           |
+ Part XX2016                           |
+ Part X9241_SOL20_50                   |
+ Part 28C256_SOL28_50                  |
+ Part 80C517A_QFP100_25.6-3.2          |
+  U4                                   | (P)  13 61
+ Part 7805_TO220                       |
+ Part 71256_SOLJ28_50                  |

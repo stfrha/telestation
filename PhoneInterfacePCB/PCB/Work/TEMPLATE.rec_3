@@ -1,0 +1,14 @@
+* Version 1.0: Started on Wednesday, February 23, 2000 10:47:29
+* Current design file is: D:\libraries\CentralLibrary\LayoutTemplates\TEMPLATE\Work\TEMPLATE.rec
+*
+w 0 0 0 2 3 <338,342><1280,1024><-1,-1>
+*
+* Set Mouse Buttons For New Mapping
+c 0 33156
+v 0 2 TEMPLATE:1 <0, 0, 0, 0>, 0
+*
+* Exit
+c 0 57665
+v 0 3 TEMPLATE:1 <0, 0, 363, 776>, 3
+v 0 3 TEMPLATE:1 <0, 0, 363, 776>, 3
+* 

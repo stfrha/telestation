@@ -1,0 +1,48 @@
+$ Start of Compile
+#Tue Sep 12 07:56:35 2000
+
+Synplify VHDL Compiler, version 5.3.0, built Dec  7 1999
+Copyright (C) 1994-1999, Synplicity Inc.  All Rights Reserved
+
+VHDL syntax check successful!
+Synthesizing work.keyboarddecoder.behaviour
+Post processing for work.keyboarddecoder.behaviour
+@END
+Process took 3.846 seconds realtime, 4.035 seconds cputime
+Synplify Xilinx Technology Mapper, version 5.3.0, built Dec  7 1999
+Copyright (C) 1994-1999, Synplicity Inc.  All Rights Reserved
+Setting fanout limit to 100
+List of partitions to map:
+   view:work.KeyboardDecoder(behaviour)
+
+Clock Buffers:
+  Inserting Clock buffer for port CLK,	TNM=CLK
+
+---------------------------------------
+Resource Usage Report 
+
+Mapping to part: 9536pc44-5
+Simple gate primitives:
+VCC             1 use
+GND             1 use
+FDP             11 uses
+FDC             1 use
+BUF             10 uses
+AND2            8 uses
+OR2             10 uses
+AND2B1          5 uses
+XOR2            5 uses
+
+I/O primitives:
+IBUF           7 uses
+OBUFT          5 uses
+OBUF           6 uses
+
+BUFG           1 use
+
+I/O Register bits:                  0
+Register bits not including I/Os:   12
+
+Found clock CLK with period 10ns
+Mapper successful!
+Process took 2.304 seconds realtime, 2.543 seconds cputime

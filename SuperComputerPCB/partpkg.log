@@ -1,0 +1,135 @@
+
+     Packager     Version: VB14.6.0.11
+
+     The PDBs listed in the project file will be searched to satisfy the parts
+      requirements of the CDB and to overwrite any duplicates found in the
+      Target PDB.
+
+     All existing reference designators and frozen properties will be
+      ignored during packaging.  Only the Room and Cluster symbol properties
+      will be read for the purpose of user designated packaging.  Use with
+      the -y option if back annotation to the Common DataBase is not desired.
+
+     The cross mapping of symbol pin names to Vendor Part Number pin
+      numbers will be checked for packaged symbols and mapped correctly
+      for unpackaged symbols.
+
+     Unable to determine the AllowAlphaRefDes status.
+     !Reference designators that do not contain digits will be
+      deleted and the relevant symbols will be repackaged!
+
+     The FLATNETNAMEs status indicates that the present set
+      of schematic netnames should be used to update the
+      FLATNETNAMEs.
+
+     PDB properties found in the PDB_Property_Configuration file will
+      be transferred to unpackaged symbols only.
+     The following PDB properties will be copied to the CDB to update symbols:
+       "IBIS"
+       "Verilog Model"
+       "VHDL Model"
+       "Simulation model"
+       "Value"
+       "Model Suffix"
+
+     WARNING:  The schematic source files have been modified since
+      the present Common DataBase was compiled.  Please have the
+      schematic designer recompile the CDB and rerun this procedure
+      if it is desired to incorporate the latest changes.
+
+     Common Data Base has been read
+
+     Target PDB Name: localjob.pdb
+
+  Warning:  Could not find the 'PDBs' entry in the project file 'H:\users\cce\frha\Privat\SuperComputer\SuperCptr.prj'.
+
+  Notice:  No updates were made to parts database file 'localjob.pdb'
+
+
+     Number of Part Names: 0
+
+     Number of Part Numbers: 29
+          Part Numb: 71256_SOLJ28_50 -> Vend Part: 71256_SOLJ28_50 
+          Part Numb: 7805_TO220 -> Vend Part: 7805_TO220 
+          Part Numb: 80C517A_QFP100_25.6-3.2 -> Vend Part: 80C517A_QFP100_25.6-3.2 
+          Part Numb: 28C256_SOL28_50 -> Vend Part: 28C256_SOL28_50 
+          Part Numb: X9241_SOL20_50 -> Vend Part: X9241_SOL20_50 
+          Part Numb: XX2016 -> Vend Part: XX2016 
+          Part Numb: XX1053 -> Vend Part: XX1053 
+          Part Numb: RV9003_J -> Vend Part: RV9003_J 
+          Part Numb: RM9003_R0805 -> Vend Part: RM9003_R0805 
+          Part Numb: PB1046/016/0 -> Vend Part: PB1046/016/0 
+          Part Numb: MAX814_SO8_50 -> Vend Part: MAX814_SO8_50 
+          Part Numb: MAX664_SO8_50 -> Vend Part: MAX664_SO8_50 
+          Part Numb: MAX232_SO16_50 -> Vend Part: MAX232_SO16_50 
+          Part Numb: KM29N32000_TSOP40/44_0.8 -> Vend Part: KM29N32000_TSOP40/44_0.8 
+          Part Numb: HC138_SO16_50 -> Vend Part: HC138_SO16_50 
+          Part Numb: HC32_SO14_50 -> Vend Part: HC32_SO14_50 
+          Part Numb: HC00_SO14_50 -> Vend Part: HC00_SO14_50 
+          Part Numb: HCT373_SOL20_50 -> Vend Part: HCT373_SOL20_50 
+          Part Numb: DAC8229_SOL20_50 -> Vend Part: DAC8229_SOL20_50 
+          Part Numb: CON_PB8302/308/0 -> Vend Part: CON_PB8302/308/0 
+          Part Numb: CON_PB8302/307/0 -> Vend Part: CON_PB8302/307/0 
+          Part Numb: CON_PB8302/306/0 -> Vend Part: CON_PB8302/306/0 
+          Part Numb: CON_PB8302/304/0 -> Vend Part: CON_PB8302/304/0 
+          Part Numb: CON_PB8302/303/0 -> Vend Part: CON_PB8302/303/0 
+          Part Numb: CON_PB8302/116/0 -> Vend Part: CON_PB8302/116/0 
+          Part Numb: CON_PB8302/104/0 -> Vend Part: CON_PB8302/104/0 
+          Part Numb: CK9001_C0805 -> Vend Part: CK9001_C0805 
+          Part Numb: CE9002_CWR11D -> Vend Part: CE9002_CWR11D 
+          Part Numb: AD7528_SOL20_50 -> Vend Part: AD7528_SOL20_50 
+
+
+     Checking the validity of the packaging of prepackaged schematic
+      symbols.  Only the first error in symbols having the same
+      Reference Designator will be reported.
+
+     The packaging of all prepackaged schematic symbols is consistant
+      with the Parts DataBase data for the cross mapping of
+      symbol pin names to Vendor Part Number pin numbers.
+      Symbols that were not prepackaged will now be packaged correctly.
+      
+      No errors in Existing Schematic Packaging.
+
+
+     The Common DataBase has been read and will be packaged.
+
+     Packager Assignments successfully completed
+
+
+
+     149 nets were found containing 658 pins
+     85 components were found
+
+     Parsed netlist - Augmenting..
+
+     Augmented - Adding phantom pins....
+
+     Numbering Nets....
+
+     Checking Pins....
+
+     Testing of Packaging has been completed with 1 warnings.
+      Erroneous results may occur if not fixed.
+
+     Updating the Common DataBase
+
+     A BAM WasIs List: bamwasis.bam has been created.
+     There have been 6 reference designator changes.
+     WARNING:  If the Net Properties dialog has net ordering
+      data in it, the relevant reference designator/pin
+      number changes will need to be hand edited in the dialog or
+      the net ordering plus any delay formula data will be lost
+      where discrepancies occur upon forward annotation to VBPCB.
+      However, do NOT make these changes unless and until the Common
+      DataBase has been updated.
+     The BAM file will list all of the from-to changes.
+
+     The Common DataBase has been successfully updated.
+
+     Packager finished successfully.
+     !THE CDB IS UP-TO-DATE!
+     
+     An unused pin and gate report has been written to un_pin.txt
+     An unused gate report for gates not in schematic has been written to un_gate.txt
+     An augmented pin report has been written to aug_pin.txt.

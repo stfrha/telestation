@@ -1,0 +1,205 @@
+SECTION ACEPlusProjectFiles
+LIST Types
+VALUE "Schematics(*.sbk)"
+VALUE "StateDiagrams(*.sdg)"
+VALUE "FlowCharts(*.sfc)"
+VALUE "TruthTables(*.tbl)"
+VALUE "HDL(*.v*)"
+VALUE "All(*.*)"
+ENDLIST
+LIST Schematics(*.sbk)
+ENDLIST
+LIST StateDiagrams(*.sdg)
+ENDLIST
+LIST FlowCharts(*.sfc)
+ENDLIST
+LIST TruthTables(*.tbl)
+ENDLIST
+LIST HDL(*.v*)
+ENDLIST
+LIST All(*.*)
+ENDLIST
+ENDSECTION
+SECTION IngrElecLibraries
+LIST Names
+VALUE "Symbols"
+VALUE "PDBs"
+VALUE "2dCellLibraries"
+VALUE "VerilogSimulationLibraries"
+VALUE "VHDLSimulationLibraries"
+ENDLIST
+LIST VerilogSimulationLibraries
+ENDLIST
+LIST VHDLSimulationLibraries
+VALUE "IEEE"
+ENDLIST
+LIST SignalIntegrityLibrary
+ENDLIST
+LIST 2dCellLibraries
+ENDLIST
+LIST 3dCellLibraries
+ENDLIST
+LIST Symbols
+VALUE "H:\users\libraries\vbdc\slb"
+ENDLIST
+LIST PDBs
+VALUE "H:\users\libraries\vbdc\pdb"
+ENDLIST
+KEY CentralLibrary "W:\vb99.0a\VBExpPCB\templates\Central Library\Central Library.lmc"
+KEY SearchPathScheme "(Default)"
+ENDSECTION
+SECTION VBPCBIndicators
+KEY SchematicDesignStatus "0"
+KEY VBPCBForwardAnno "0"
+KEY SchematicDesignBackAnno "0"
+KEY CADBackAnno "0"
+KEY FLATNETNAMEs "1"
+ENDSECTION
+SECTION VBPCBDesignData
+KEY NetClassFile ""
+KEY VBPCBForeignNetlist ""
+KEY VBPCBForeignNetlistFormat ""
+KEY VBPCBDesignPath "SuperCmp2.pcb"
+ENDSECTION
+SECTION IngrElecDesignInfo
+KEY SBKDir ".\"
+KEY UDBDir ".\udb"
+KEY CDBDir "SuperCptr.cdb"
+KEY ACEPlusHDLDir "design_definition\hdl"
+KEY ACEPlusGeneratedHDLDir "Default\genhdl\vhdl"
+KEY ACEPlusDesignRootName "SuperCptr.sbk"
+KEY ASICToolkit ""
+KEY AvoidInstance "1"
+ENDSECTION
+SECTION ACEPlusFilePaths
+LIST Names
+VALUE "BOM_Configuration"
+VALUE "Bus_Contents"
+VALUE "CDB_Discard"
+VALUE "EDIF_Configuration"
+VALUE "Fonts"
+VALUE "Global_Signals"
+VALUE "HDL_String_Map"
+VALUE "HPGL_Plot_Configuration"
+VALUE "HPGL2_Plot_Configuration"
+VALUE "Pin_Types"
+VALUE "PostScript_Plot_Configuration"
+VALUE "Project_Options"
+VALUE "CrossRef_Configuration"
+VALUE "Text_Properties"
+VALUE "Verification_Rules"
+VALUE "VerilogConfig"
+VALUE "VHDLConfig"
+VALUE "Windows_Plot_Configuration"
+ENDLIST
+LIST Fonts
+VALUE "${VBEST14PATH}\config\vbdc\vbdc.fnt"
+VALUE "${VBEST14PATH}\config\vbdc\engineer.fnt"
+VALUE "${VBEST14PATH}\config\vbdc\fancy.fnt"
+VALUE "${VBEST14PATH}\config\vbdc\defnt0.fnt"
+VALUE "${VBEST14PATH}\config\vbdc\defnt1.fnt"
+VALUE "${VBEST14PATH}\config\vbdc\defnt7.fnt"
+VALUE "${VBEST14PATH}\config\vbdc\defnt23.fnt"
+VALUE "${VBEST14PATH}\config\vbdc\defnt26.fnt"
+VALUE "${VBEST14PATH}\config\vbdc\defnt41.fnt"
+VALUE "${VBEST14PATH}\config\vbdc\defnt42.fnt"
+VALUE "${VBEST14PATH}\config\vbdc\defnt50.fnt"
+VALUE "${VBEST14PATH}\config\vbdc\defnt126.fnt"
+VALUE "${VBEST14PATH}\config\vbdc\defnt127.fnt"
+VALUE "${VBEST14PATH}\config\vbdc\sdedbg.fnt"
+VALUE "${VBEST14PATH}\config\vbdc\sbkdbg.fnt"
+ENDLIST
+LIST Text_Properties
+VALUE "${VBEST14PATH}\config\vbdc\vbdc.prp"
+VALUE "${VBEST14PATH}\config\vbdc\smodels.prp"
+ENDLIST
+LIST Nested_Blocks
+VALUE "${VBEST14PATH}\config\vbdc\nested"
+ENDLIST
+LIST VerilogConfig
+ENDLIST
+LIST VHDLConfig
+ENDLIST
+LIST HDL_String_Map
+ENDLIST
+KEY PDB_Property_Configuration "${VBEST14PATH}\config\vbdc\pdbprops.asc"
+KEY Pin_Types "${VBEST14PATH}\config\vbdc\pintypes.asc"
+KEY Project_Options "${VBEST14PATH}\config\vbdc\vbdcsys.asc"
+KEY TAGNETS_Configuration "${VBEST14PATH}\config\vbdc\tagnets.asc"
+KEY CDB_Discard "${VBEST14PATH}\config\vbdc\discard.asc"
+KEY UDBPCBFile "${VBEST14PATH}\config\vbdc\udbpcb.dat"
+KEY Verification_Rules "${VBEST14PATH}\config\vbdc\vbdcver.asc"
+KEY PostScript_Plot_Configuration "${VBEST14PATH}\config\vbdc\dctops.pcf"
+KEY HPGL_Plot_Configuration "${VBEST14PATH}\config\vbdc\dctohpgl.pcf"
+KEY HPGL2_Plot_Configuration "${VBEST14PATH}\config\vbdc\dc2hpgl2.pcf"
+KEY HPGL_Pen_Attr_Table "${VBEST14PATH}\config\vbdc\HPPenAttr.asc"
+KEY Windows_Plot_Configuration "${VBEST14PATH}\config\vbdc\dctowin.pcf"
+KEY BOM_Format "${VBEST14PATH}\config\vbdc\bomfmt.fmt"
+KEY EDIF_Configuration "${VBEST14PATH}\config\edif\edifcnfg.asc"
+KEY Global_Signals "${VBEST14PATH}\config\vbdc\global"
+KEY Bus_Contents "${VBEST14PATH}\config\vbdc\conts"
+KEY PDB_Editor_Properties "${VBEST14PATH}\config\vbdc\pdbedit.asc"
+ENDSECTION
+SECTION IEEE
+LIST Packages
+VALUE "std_logic_1164"
+ENDLIST
+KEY Path "f:\veribest\2000\vbvhdl\lib93\IEEE_SYN"
+KEY USEALL "0"
+ENDSECTION
+SECTION ConfigurationInfo
+LIST Configurations
+VALUE "Default"
+ENDLIST
+KEY ActiveConfiguration "Default"
+ENDSECTION
+SECTION Default
+LIST BlockViewMap
+VALUE "MT8888C_SO20,MT8888C_SO20.sbk,,0"
+VALUE "SUPERCPTR,SuperCptr.sbk,,0"
+VALUE "MAX680CSA,MAX680CSA.sbk,,0"
+VALUE "MAX506,MAX506.sbk,,0"
+ENDLIST
+LIST Types
+VALUE "All(*.*)"
+VALUE "Verilog(*.v)"
+VALUE "VHDL(*.vhd)"
+VALUE "BlockSymbols(*.blk)"
+VALUE "TruthTables(*.tbl)"
+VALUE "FlowCharts(*.sfc)"
+VALUE "StateDiagrams(*.sdg)"
+VALUE "Schematics(*.sbk)"
+ENDLIST
+LIST All(*.*)
+ENDLIST
+LIST Verilog(*.v)
+ENDLIST
+LIST VHDL(*.vhd)
+ENDLIST
+LIST BlockSymbols(*.blk)
+ENDLIST
+LIST TruthTables(*.tbl)
+ENDLIST
+LIST FlowCharts(*.sfc)
+ENDLIST
+LIST StateDiagrams(*.sdg)
+ENDLIST
+LIST Schematics(*.sbk)
+VALUE "SuperCptr.sbk"
+VALUE "MAX506.sbk"
+VALUE "MAX680CSA.sbk"
+VALUE "MT8888C_SO20.sbk"
+ENDLIST
+KEY ActiveRoot "SuperCptr"
+KEY CDBDir "SuperCptr.cdb"
+KEY ConfigType "PCB"
+KEY SimulationType "NONE"
+KEY ConfigDir ".\Default"
+KEY VendorPath ""
+ENDSECTION
+SECTION IngrElecTechnologyInfo
+KEY DesignKit ""
+ENDSECTION
+SECTION Versions
+KEY ProjectVersion "VB2K"
+ENDSECTION

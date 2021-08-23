@@ -1,0 +1,48 @@
+$ Start of Compile
+#Mon Sep 11 14:24:10 2000
+
+Synplify VHDL Compiler, version 5.3.0, built Dec  7 1999
+Copyright (C) 1994-1999, Synplicity Inc.  All Rights Reserved
+
+VHDL syntax check successful!
+File f:\supercomputer\cpupldproj\cpupld\design_definition\hdl\vhdl\xc9536.vhd changed - recompiling
+Synthesizing work.xc9536.behaviour
+Post processing for work.xc9536.behaviour
+@W:"f:\supercomputer\cpupldproj\cpupld\design_definition\hdl\vhdl\xc9536.vhd":18:2:18:4|Input ale is unused
+@END
+Process took 4.026 seconds realtime, 4.176 seconds cputime
+Synplify Xilinx Technology Mapper, version 5.3.0, built Dec  7 1999
+Copyright (C) 1994-1999, Synplicity Inc.  All Rights Reserved
+Setting fanout limit to 100
+List of partitions to map:
+   view:work.XC9536(behaviour)
+
+Clock Buffers:
+  Inserting Clock buffer for port WE,	TNM=WE
+
+---------------------------------------
+Resource Usage Report 
+
+Mapping to part: 9536pc44-5
+Simple gate primitives:
+VCC             1 use
+GND             1 use
+FDC             3 uses
+AND2            30 uses
+OR2             18 uses
+BUF             2 uses
+AND2B1          6 uses
+
+I/O primitives:
+IBUF           12 uses
+OBUFT          10 uses
+OBUF           13 uses
+
+BUFG           1 use
+
+I/O Register bits:                  0
+Register bits not including I/Os:   3
+
+Found clock WE with period 10ns
+Mapper successful!
+Process took 2.524 seconds realtime, 2.743 seconds cputime

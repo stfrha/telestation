@@ -1,0 +1,38 @@
+
+Schematic unused pins from : Packager  2-Mar-2000  12:31
+
+------------------------------------------------------------------------
+            Part/Reference             |          Unused pins
+                                       |  (G) - Gate, (P) - Partial Gate
+------------------------------------------------------------------------
+ Part AD9696_SO8_50                    |
+ Part BAS32L                           |
+ Part BZX85C24_DO41                    |
+ Part CAP0805                          |
+ Part CK1248_CKR05                     |
+ Part CM1026_15_B6.5                   |
+ Part CM1044_5_B4.5                    |
+ Part CON_PB8302/102/0                 |
+ Part CON_PB8302/114/0                 |
+  P1                                   | (G)  6
+  P1                                   | (G)  7
+  P1                                   | (G)  8
+  P1                                   | (G)  9
+  P1                                   | (G)  10
+  P1                                   | (G)  11
+  P1                                   | (G)  12
+  P1                                   | (G)  13
+  P1                                   | (G)  14
+ Part CON_PB8302/303/0                 |
+ Part CON_PB8302/308/0                 |
+ Part LM293_SO8_50                     |
+  U2                                   | (P)  1
+ Part LM358_SO8_50                     |
+ Part OS-CON_F                         |
+ Part RES0805                          |
+ Part RM2032                           |
+ Part TP_RP233308-03                   |
+ Part TR5                              |
+ Part XX1053                           |
+ Part 1.5KE47CA                        |
+ Part 2N2222A_TO18                     |

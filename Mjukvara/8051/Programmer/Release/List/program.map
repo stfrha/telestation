@@ -1,0 +1,344 @@
+################################################################################
+#                                                                              #
+#      IAR Universal Linker V4.48E/386                                         #
+#                                                                              #
+#           Link time     =  11/Sep/100  09:47:58                              #
+#           Target CPU    =  8051                                              #
+#           List file     =  f:\supercomputer\mjukvara\8051\newprogramccode\release\list\program.map#
+#           Output file 1 =  f:\supercomputer\mjukvara\8051\newprogramccode\release\exe\program.a03#
+#           Output format =  intel-standard                                    #
+#           Command line  =  F:                                                #
+#                            \SuperComputer\Mjukvara\8051\NewProgramCCode\Release\Obj\Program.r03 #
+#                                                                              #
+#                            -o                                                #
+#                            F:                                                #
+#                            \SuperComputer\Mjukvara\8051\NewProgramCCode\Release\Exe\Program.a03 #
+#                                                                              #
+#                            -Fintel-standard -Y0 -w -l                        #
+#                            F:                                                #
+#                            \SuperComputer\Mjukvara\8051\NewProgramCCode\Release\List\Program.map #
+#                                                                              #
+#                            -xms -ID:\IAR\80C517A\lib\ -f                     #
+#                            F:                                                #
+#                            \SuperComputer\Mjukvara\8051\NewProgramCCode\Program.xcl #
+#                                                                              #
+#                            (-c8051 -D_R=0 -Z(BIT)C_ARGB,BITVARS=0            #
+#                            -Z(DATA)B_UDATA,B_IDATA,C_ARGD,D_UDATA,D_IDATA=20 #
+#                            -Z(IDATA)C_ARGI,I_UDATA,I_IDATA,CSTACK            #
+#                            -Z(XDATA)P_UDATA,P_IDATA,C_ARGX,X_UDATA,          #
+#                            X_IDATA,ECSTR,RF_XDATA,XSTACK=F800                #
+#                                                                              #
+#                            -Z(CODE)INTVEC,RCODE,D_CDATA,B_CDATA,I_CDATA,     #
+#                            P_CDATA,X_CDATA,C_ICALL,C_RECFN,CSTR,CCSTR,       #
+#                            CODE,CONST=0-7FFF                                 #
+#                            -e_medium_write=_formatted_write                  #
+#                            -e_medium_read=_formatted_read) cl517str.r03      #
+#                            cl517.r03 cl8051t.r03                             #
+#                                                                              #
+#                                               (c) Copyright IAR Systems 1996 #
+################################################################################
+
+
+
+
+
+                ****************************************
+                *                                      *
+                *           CROSS REFERENCE            *
+                *                                      *
+                ****************************************
+
+       Program entry at : 0000  Relocatable, from module : CSTARTUP
+
+
+
+                ****************************************
+                *                                      *
+                *             MODULE MAP               *
+                *                                      *
+                ****************************************
+
+  DEFINED ABSOLUTE ENTRIES
+  PROGRAM MODULE, NAME : ?ABS_ENTRY_MOD
+          ABSOLUTE ENTRIES        ADDRESS          REF BY MODULE
+           ==============         =======          =============
+           _R                      0000            CSTARTUP
+
+
+  SEGMENTS IN THE MODULE
+  ======================
+C_ARGD
+  Relative segment, address : 0020 - 0074
+
+    *************************************************************************
+
+  FILE NAME : f:\supercomputer\mjukvara\8051\newprogramccode\release\obj\program.r03
+  PROGRAM MODULE, NAME : program
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 021F - 0422
+           ENTRIES                ADDRESS          REF BY MODULE
+           InitializeRS232         0280            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+           SendBackAll             0422            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+           SendRS232               0336            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+               data = 0020 ( 0000 , 0001 )
+           SendStringEOLRS232      02D4            Not referred to
+               calls direct
+               stack 1 = 00000002 ( 00000004 )
+               data = 0021 ( 0004 , 0003 )
+           SendStringRS232         028F            Not referred to
+               calls direct
+               stack 1 = 00000002 ( 00000004 )
+               data = 0021 ( 0004 , 0003 )
+           WaitAndReceiveRS232     0322            Not referred to
+               stack 1 = 00000002 ( 00000000 )
+               data = 0020 ( 0001 , 0000 )
+           main                    021F            CSTARTUP
+               calls direct
+               stack 1 = 00000002 ( 00000000 )
+               data = 0074 ( 0001 , 0000 )
+           programmLowMem          0345            Not referred to
+               calls direct
+               stack 1 = 00000002 ( 00000000 )
+               data = 0028 ( 004C , 0000 )
+    -------------------------------------------------------------------------
+CSTR
+  Relative segment, address : 018E - 021E
+
+    *************************************************************************
+
+  FILE NAME : d:\iar\80c517a\lib\cl517str.r03
+  LIBRARY MODULE, NAME : ?STRLEN_R567_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0003 - 0011
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?STRLEN_R567_L08        0003            program
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STRLEN_PDATA_R567_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0012 - 001E
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?STRLEN_PDATA_R567_L08
+                                   0012            ?STRLEN_R567_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STRLEN_IDATA_R567_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 001F - 002B
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?STRLEN_IDATA_R567_L08
+                                   001F            ?STRLEN_R567_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STRLEN_XDATA_R567_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 002C - 003E
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?STRLEN_XDATA_R567_L08
+                                   002C            ?STRLEN_R567_L08
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?STRLEN_CODE_R567_L08
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 003F - 0052
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?STRLEN_CODE_R567_L08   003F            ?STRLEN_R567_L08
+
+    *************************************************************************
+
+  FILE NAME : d:\iar\80c517a\lib\cl8051t.r03
+  PROGRAM MODULE, NAME : CSTARTUP
+
+  SEGMENTS IN THE MODULE
+  ======================
+CSTACK
+  Relative segment, address : 0075 - 0092
+    -------------------------------------------------------------------------
+INTVEC
+  Common segment, address : 0000 - 0002
+    -------------------------------------------------------------------------
+RCODE
+  Relative segment, address : 0053 - 013B
+           ENTRIES                ADDRESS          REF BY MODULE
+           init_C                  0053            Not referred to
+    -------------------------------------------------------------------------
+B_UDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+B_CDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+B_IDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+D_UDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+D_CDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+D_IDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+I_UDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+I_CDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+I_IDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+P_UDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+P_CDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+P_IDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+X_UDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+X_CDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+X_IDATA
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+ECSTR
+  Relative segment, address : Not in use    
+    -------------------------------------------------------------------------
+CCSTR
+  Relative segment, address : Not in use    
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : exit
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 013C - 013D
+           ENTRIES                ADDRESS          REF BY MODULE
+           exit                    013C            Not referred to
+           ?C_EXIT                 013C            CSTARTUP
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : lowinit
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address : 0423 - 0427
+           ENTRIES                ADDRESS          REF BY MODULE
+           __low_level_init        0423            CSTARTUP
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?LOAD_A_R567_DISP_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 013E - 0140
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?LD_A_R567_DISP_L17     013E            program
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?LOAD_A_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 0141 - 015C
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?LOAD_A_L17             0141            ?LOAD_A_R567_DISP_L17
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?SETUP_R567_DISP_L17
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address : 015D - 018D
+           ENTRIES                ADDRESS          REF BY MODULE
+           ?SETUP_R567_DISP_L17    015D            ?LOAD_A_R567_DISP_L17
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?VERSION_L17
+          ABSOLUTE ENTRIES        ADDRESS          REF BY MODULE
+           ==============         =======          =============
+           ?CL8051T_5_20_L17       C893            program
+
+    -------------------------------------------------------------------------
+                ****************************************
+                *                                      *
+                *        SEGMENTS IN DUMP ORDER        *
+                *                                      *
+                ****************************************
+
+ SEGMENT               START ADDRESS    END ADDRESS  TYPE  ORG  P/N  ALIGN
+ =======               =============    ===========  ====  ===  ===  =====
+C_ARGB                          Not in use            dse  stc  pos   0     
+BITVARS                         Not in use            dse  flt  pos   0     
+B_UDATA                         Not in use            rel  stc  pos   0     
+B_IDATA                         Not in use            rel  flt  pos   0     
+C_ARGD                      0020     -     0074       rel  flt  pos   0     
+D_UDATA                         Not in use            rel  flt  pos   0     
+D_IDATA                         Not in use            rel  flt  pos   0     
+C_ARGI                          Not in use            dse  flt  pos   0     
+I_UDATA                         Not in use            rel  flt  pos   0     
+I_IDATA                         Not in use            rel  flt  pos   0     
+CSTACK                      0075     -     0092       rel  flt  pos   0     
+P_UDATA                         Not in use            rel  stc  pos   0     
+P_IDATA                         Not in use            rel  flt  pos   0     
+C_ARGX                          Not in use            dse  flt  pos   0     
+X_UDATA                         Not in use            rel  flt  pos   0     
+X_IDATA                         Not in use            rel  flt  pos   0     
+ECSTR                           Not in use            rel  flt  pos   0     
+RF_XDATA                        Not in use            dse  flt  pos   0     
+XSTACK                          Not in use            dse  flt  pos   0     
+INTVEC                      0000     -     0002       com  stc  pos   0     
+RCODE                       0003     -     018D       rel  flt  pos   0     
+D_CDATA                         Not in use            rel  flt  pos   0     
+B_CDATA                         Not in use            rel  flt  pos   0     
+I_CDATA                         Not in use            rel  flt  pos   0     
+P_CDATA                         Not in use            rel  flt  pos   0     
+X_CDATA                         Not in use            rel  flt  pos   0     
+C_ICALL                         Not in use            dse  flt  pos   0     
+C_RECFN                         Not in use            dse  flt  pos   0     
+CSTR                        018E     -     021E       rel  flt  pos   0     
+CCSTR                           Not in use            rel  flt  pos   0     
+CODE                        021F     -     0427       rel  flt  pos   0     
+CONST                           Not in use            dse  flt  pos   0     
+
+                ****************************************
+                *                                      *
+                *        END OF CROSS REFERENCE        *
+                *                                      *
+                ****************************************
+
+Errors: none
+Warnings: none
+

@@ -1,0 +1,3475 @@
+##############################################################################
+#                                                                            #
+# IAR 8051 C-Compiler V5.20A/386                                             #
+# Front End V4.20N                                       19/Sep/104  17:59:49 #
+# Global Optimizer V1.04E                                                    #
+#                                                                            #
+#       Target option =  8051                                                #
+#       Memory model  =  large                                               #
+#       Source file   =  wav.c                                               #
+#       List file     =  release\list\wav.lst                                #
+#       Object file   =  release\obj\wav.r03                                 #
+#       Command line  =  wav.c -S -ml -v0 -e -K -u -s9 -RCODE -gA            #
+#                        -IC:\IAR\EW\8051\inc\ -ORelease\Obj\                #
+#                        -LRelease\List\ -q -i -t8 -x -D__WAW_DEBUG__=1      #
+#                                                                            #
+#                                             (c) Copyright IAR Systems 1996 #
+##############################################################################
+
+   \   0000                    NAME    wav(18)
+   \   0000                    RSEG    CODE(0)
+   \   0000                    RSEG    CSTR(0)
+   \   0000                    COMMON  INTVEC(0)
+   \   0000                    RSEG    I_UDATA(0)
+   \   0000                    RSEG    X_UDATA(0)
+   \   0000                    PUBLIC  Echo
+   \   0000                    $DEFFN  Echo(0,0,0,0,32768,0,0,0)
+   \   0000                    PUBLIC  EchoMic
+   \   0000                    $DEFFN  EchoMic(0,0,2,0,32768,0,0,0),SetupMic,Echo
+   \   0000                    PUBLIC  EchoPhone
+   \   0000                    $DEFFN  EchoPhone(0,0,2,0,32768,0,0,0),SetupPhoneIn,Echo
+   \   0000                    EXTERN  FLASHWriteState
+   \   0000                    PUBLIC  InitializeWAV
+   \   0000                    $DEFFN  InitializeWAV(0,0,1,0,32768,0,0,0)
+   \   0000                    EXTERN  KeyboardOn
+   \   0000                    $DEFFN  KeyboardOn(32768,0,0,0)
+   \   0000                    PUBLIC  PlayFile
+   \   0000                    $DEFFN  PlayFile(0,0,5,0,32768,0,3,0),fopen,KeyboardOn,fclose,SendStringRS232,
+   \   0000                            SendStringEOLRS232,SendStringEOLRS232,SendStringEOLRS232,SendStringEOLRS232,
+   \   0000                            SendStringEOLRS232,SendStringEOLRS232,SendStringEOLRS232,SendStringEOLRS232
+   \   0000                    PUBLIC  RecFile
+   \   0000                    $DEFFN  RecFile(0,0,27,0,32768,0,3,0),fopen,KeyboardOn,fclose
+   \   0000                    PUBLIC  RecMicFile
+   \   0000                    $DEFFN  RecMicFile(0,0,2,0,32768,0,3,0),SetupMic,RecFile
+   \   0000                    PUBLIC  RecPhoneFile
+   \   0000                    $DEFFN  RecPhoneFile(0,0,2,0,32768,0,3,0),SetupPhoneIn,RecFile
+   \   0000                    EXTERN  SendStringEOLRS232
+   \   0000                    $DEFFN  SendStringEOLRS232(32768,0,3,0)
+   \   0000                    EXTERN  SendStringRS232
+   \   0000                    $DEFFN  SendStringRS232(32768,0,3,0)
+   \   0000                    PUBLIC  SetupMic
+   \   0000                    $DEFFN  SetupMic(0,0,0,0,32768,0,0,0)
+   \   0000                    PUBLIC  SetupPhoneIn
+   \   0000                    $DEFFN  SetupPhoneIn(0,0,0,0,32768,0,0,0)
+   \   0000                    PUBLIC  T1_int
+   \   0000                    $DEFFN  T1_int(512,0,1,0,32768,0,0,0)
+   \   0000                    PUBLIC  WAVBuffer
+   \   0000                    PUBLIC  WavTone
+   \   0000                    $DEFFN  WavTone(0,0,0,0,32768,0,0,0)
+   \   0000                    EXTERN  callerHungUp
+   \   0000                    PUBLIC  daComp0
+   \   0000                    PUBLIC  daComp1
+   \   0000                    PUBLIC  daComp2
+   \   0000                    PUBLIC  daComp3
+   \   0000                    PUBLIC  daCount0
+   \   0000                    PUBLIC  daCount1
+   \   0000                    PUBLIC  daCount2
+   \   0000                    PUBLIC  daCount3
+   \   0000                    EXTERN  fclose
+   \   0000                    $DEFFN  fclose(32768,0,3,0)
+   \   0000                    EXTERN  fopen
+   \   0000                    $DEFFN  fopen(32768,0,6,0)
+   \   0000                    EXTERN  lastKey
+   \   0000                    PUBLIC  nextRead
+   \   0000                    PUBLIC  nextWrite
+   \   0000                    EXTERN  parallellPhoneDetected
+   \   0000                    EXTERN  receivedDTMF
+   \   0000                    PUBLIC  sample
+   \   0000                    EXTERN  terminateAnswer
+   \   0000                    PUBLIC  wavAbort
+   \   0000                    PUBLIC  wavState
+   \   0000                    EXTERN  writeAddress
+   \   0000                    EXTERN  ?L_ADD_L01
+   \   0000                    EXTERN  ?SL_SHR_L01
+   \   0000                    EXTERN  ?L_SHL_L01
+   \   0000                    EXTERN  ?L_ADD_ASG_DPTR_R4567_L01
+   \   0000                    EXTERN  ?L_SUB_ASG_DPTR_R0123_L01
+   \   0000                    EXTERN  ?LD_R0123_R567_DISP_L17
+   \   0000                    EXTERN  ?ST_R0123_R567_DISP_L17
+   \   0000                    EXTERN  ?STO_R0123_DPTR_L20
+   \   0000                    EXTERN  ?STO_R4567_DPTR_L20
+   \   0000                    EXTERN  ?LD_R4567_XDPTR_L20
+   \   0000                    EXTERN  ?CL8051L_5_20_L17
+   \   0000                    RSEG    CODE
+      1          /*************************************************************
+      2          Fil:            $Id: wav.c,v 1.5 2003/12/26 16:17:01 Gemensam Exp $
+      3          
+      4          Beskrivning:    In- och uppspelning av WAV-filer. Tar över hanteringen
+      5                          av filsystemet under in- och uppspelning.
+      6          
+      7          Skapad:         99-10-26
+      8          
+      9          Ändrad:         $Date: 2003/12/26 16:17:01 $
+     10          
+     11          Ägare:          Fredrik Hoffman
+     12          
+     13          
+     14          Att göra:
+     15          
+     16          *   Fel felmeddelande 0x14 om man skriver TYPE (utan filnamn) eftersom nollan 
+     17              i parameter två stämmer med nollan i filnamnet på en ledig  filstruktur, fixa!
+     18          
+     19          Revisionshistoria:
+     20                                          $Log: wav.c,v $
+     21                                          Revision 1.5  2003/12/26 16:17:01  Gemensam
+     22                                          Reinstate 500 ms wait for hang up detection to settle (if not PPD is used).
+     23                                          Fixed PPD detection by decreasing phone volume from 63 to 15.
+     24                                          Version 0304.
+     25                                          
+     26                                          Revision 1.4  2003/11/23 21:40:03  Gemensam
+     27                                          Parallell phone detection included.
+     28                                          Removed obsolete #define's regarding LCD interface.
+     29                                          Ver 0300
+     30                                          
+     31                                          Revision 1.3  2003/11/20 22:08:53  Gemensam
+     32                                          Various declarations changes.
+     33                                          Still version 0200.
+     34                                          
+     35                                          Revision 1.2  2003/11/10 22:44:46  Gemensam
+     36                                          Added header information
+     37                                          
+     38          
+     39          *************************************************************/
+     40                                  
+     41          //////////////////////
+     42          // Inkluderingar
+     43          
+     44          #include <io517a.h>
+      1          /*                     - IO517A.H -
+      2          
+      3             Special header for the Siemens SAB 80C517A/83C517A-5 processors.
+      4          
+      5             Version 5.20 [IMAF]
+      6          
+      7          */
+      8          
+      9          #pragma language=extended
+     10          
+     11          /* Pre-defined SFR byte addresses: */
+     12          
+     13          /* CPU */
+     14          sfr     ACC    = 0xE0;
+     15          sfr     B      = 0xF0;
+     16          sfr     SP     = 0x81;
+     17          sfr     DPL    = 0x82;
+     18          sfr     DPH    = 0x83;
+     19          sfr     DPSEL  = 0x92;
+     20          sfr     PSW    = 0xD0;
+     21          sfr     XPAGE  = 0x91;
+     22          sfr     SYSCON = 0xB1;
+     23          
+     24          /* Timer 0/Timer 1 */
+     25          sfr     TCON   = 0x88;
+     26          sfr     TMOD   = 0x89;
+     27          sfr     TL0    = 0x8A;
+     28          sfr     TL1    = 0x8B;
+     29          sfr     TH0    = 0x8C;
+     30          sfr     TH1    = 0x8D;
+     31          
+     32          /* CCU */
+     33          sfr     CCEN   = 0xC1;
+     34          sfr     CC4EN  = 0xC9;
+     35          sfr     CCL1   = 0xC2;
+     36          sfr     CCH1   = 0xC3;
+     37          sfr     CCL2   = 0xC4;
+     38          sfr     CCH2   = 0xC5;
+     39          sfr     CCL3   = 0xC6;
+     40          sfr     CCH3   = 0xC7;
+     41          sfr     CCL4   = 0xCE;
+     42          sfr     CCH4   = 0xCF;
+     43          sfr     CMEN   = 0xF6;
+     44          sfr     CML0   = 0xD2;
+     45          sfr     CMH0   = 0xD3;
+     46          sfr     CML1   = 0xD4;
+     47          sfr     CMH1   = 0xD5;
+     48          sfr     CML2   = 0xD6;
+     49          sfr     CMH2   = 0xD7;
+     50          sfr     CML3   = 0xE2;
+     51          sfr     CMH3   = 0xE3;
+     52          sfr     CML4   = 0xE4;
+     53          sfr     CMH4   = 0xE5;
+     54          sfr     CML5   = 0xE6;
+     55          sfr     CMH5   = 0xE7;
+     56          sfr     CML6   = 0xF2;
+     57          sfr     CMH6   = 0xF3;
+     58          sfr     CML7   = 0xF4;
+     59          sfr     CMH7   = 0xF5;
+     60          sfr     CMSEL  = 0xF7;
+     61          sfr     CRCL   = 0xCA;
+     62          sfr     CRCH   = 0xCB;
+     63          sfr     CTCON  = 0xE1;
+     64          sfr     CTRELL = 0xDE;
+     65          sfr     CTRELH = 0xDF;
+     66          sfr     TL2    = 0xCC;
+     67          sfr     TH2    = 0xCD;
+     68          sfr     T2CON  = 0xC8;
+     69          sfr     COMSETL= 0xA1;
+     70          sfr     COMSETH= 0xA2;
+     71          sfr     COMCLRL= 0xA3;
+     72          sfr     COMCLRH= 0xA4;
+     73          sfr     SETMSK = 0xA5;
+     74          sfr     CLRMSK = 0xA6;
+     75          
+     76          /* Ports */
+     77          sfr     P0     = 0x80;
+     78          sfr     P1     = 0x90;
+     79          sfr     P2     = 0xA0;
+     80          sfr     P3     = 0xB0;
+     81          sfr     P4     = 0xE8;
+     82          sfr     P5     = 0xF8;
+     83          sfr     P6     = 0xFA;
+     84          sfr     P7     = 0xDB;        /* Analog/Digital Input */
+     85          sfr     P8     = 0xDD;        /* Analog/Digital Input, 4 Bit */
+     86          
+     87          /* Serial Channels */
+     88          sfr     PCON   = 0x87;
+     89          sfr     S0CON  = 0x98;
+     90          sfr     S0BUF  = 0x99;
+     91          sfr     S1CON  = 0x9B;
+     92          sfr     S1BUF  = 0x9C;
+     93          sfr     S0RELL = 0xAA;
+     94          sfr     S0RELH = 0xBA;
+     95          sfr     S1RELL = 0x9D;
+     96          sfr     S1RELH = 0xBB;
+     97          
+     98          /* A/D Converter */
+     99          sfr     ADCON0 = 0xD8;
+    100          sfr     ADCON1 = 0xDC;
+    101          sfr     ADDATH = 0xD9;
+    102          sfr     ADDATL = 0xDA;
+    103          
+    104          /* MUL/DIV Unit */
+    105          sfr     ARCON  = 0xEF;
+    106          sfr     MD0    = 0xE9;
+    107          sfr     MD1    = 0xEA;
+    108          sfr     MD2    = 0xEB;
+    109          sfr     MD3    = 0xEC;
+    110          sfr     MD4    = 0xED;
+    111          sfr     MD5    = 0xEE;
+    112          
+    113          /* Interrupt System */
+    114          sfr     IEN0   = 0xA8;
+    115          sfr     IP0    = 0xA9;
+    116          sfr     IEN1   = 0xB8;
+    117          sfr     IP1    = 0xB9;
+    118          sfr     IEN2   = 0x9A;
+    119          sfr     IRCON0 = 0xC0;
+    120          sfr     IRCON1 = 0xD1;
+    121          
+    122          
+    123          /* Watchdog */
+    124          sfr     WDTREL = 0x86;
+    125          
+    126          
+    127          /* Pre-defined SFR bit addresses */
+    128          
+    129          /*========ADCON0=======*/
+    130          
+    131          bit     BD     = 0xDF;
+    132          bit     CLK    = 0xDE;
+    133          bit     ADEX   = 0xDD;
+    134          bit     BSY    = 0xDC;
+    135          bit     ADM    = 0xDB;
+    136          bit     MX2    = 0xDA;
+    137          bit     MX1    = 0xD9;
+    138          bit     MX0    = 0xD8;
+    139          
+    140          
+    141          /*========IRCON0=======*/
+    142          
+    143          bit     EXF2   = 0xC7;
+    144          bit     TF2    = 0xC6;
+    145          bit     IEX6   = 0xC5;
+    146          bit     IEX5   = 0xC4;
+    147          bit     IEX4   = 0xC3;
+    148          bit     IEX3   = 0xC2;
+    149          bit     IEX2   = 0xC1;
+    150          bit     IADC   = 0xC0;
+    151          
+    152          /*========T2CON=======*/
+    153          
+    154          bit     T2PS   = 0xCF;
+    155          bit     I3FR   = 0xCE;
+    156          bit     I2FR   = 0xCD;
+    157          bit     T2R1   = 0xCC;
+    158          bit     T2R0   = 0xCB;
+    159          bit     T2CM   = 0xCA;
+    160          bit     T2I1   = 0xC9;
+    161          bit     T2I0   = 0xC8;
+    162          
+    163          /*========PSW=========*/
+    164          
+    165          bit     CY     = 0xD7;
+    166          bit     AC     = 0xD6;
+    167          bit     F0     = 0xD5;
+    168          bit     RS1    = 0xD4;
+    169          bit     RS0    = 0xD3;
+    170          bit     OV     = 0xD2;
+    171          bit     F1     = 0xD1;
+    172          bit     P      = 0xD0;
+    173          
+    174          /*========TCON========*/
+    175          
+    176          bit     TF1    = 0x8F;
+    177          bit     TR1    = 0x8E;
+    178          bit     TF0    = 0x8D;
+    179          bit     TR0    = 0x8C;
+    180          bit     IE1    = 0x8B;
+    181          bit     IT1    = 0x8A;
+    182          bit     IE0    = 0x89;
+    183          bit     IT0    = 0x88;
+    184          
+    185          /*========IEN0========*/
+    186          
+    187          bit     EAL    = 0xAF;
+    188          bit     WDT    = 0xAE;
+    189          bit     ET2    = 0xAD;
+    190          bit     ES0    = 0xAC;
+    191          bit     ET1    = 0xAB;
+    192          bit     EX1    = 0xAA;
+    193          bit     ET0    = 0xA9;
+    194          bit     EX0    = 0xA8;
+    195          
+    196          /*========IEN1========*/
+    197          
+    198          bit     EXEN2  = 0xBF;
+    199          bit     SWDT   = 0xBE;
+    200          bit     EX6    = 0xBD;
+    201          bit     EX5    = 0xBC;
+    202          bit     EX4    = 0xBB;
+    203          bit     EX3    = 0xBA;
+    204          bit     EX2    = 0xB9;
+    205          bit     EADC   = 0xB8;
+    206          
+    207          /*========P3=========*/
+    208          
+    209          bit     RD     = 0xB7;
+    210          bit     WR     = 0xB6;
+    211          bit     T1     = 0xB5;
+    212          bit     T0     = 0xB4;
+    213          bit     INT1   = 0xB3;
+    214          bit     INT0   = 0xB2;
+    215          bit     TXD    = 0xB1;
+    216          bit     RXD    = 0xB0;
+    217          
+    218          /*========S0CON========*/
+    219          
+    220          bit     SM0    = 0x9F;
+    221          bit     SM1    = 0x9E;
+    222          bit     SM20   = 0x9D;
+    223          bit     REN0   = 0x9C;
+    224          bit     TB80   = 0x9B;
+    225          bit     RB80   = 0x9A;
+    226          bit     TI0    = 0x99;
+    227          bit     RI0    = 0x98;
+    228          
+    229          
+    230          /* Interrupt Vector Definitions */
+    231          
+    232          interrupt [0x03] void EX0_int (void);     /* External Interrupt 0 */
+    233          
+    234          interrupt [0x0B] void T0_int (void);      /* Timer 0 Overflow */
+    235          
+    236          interrupt [0x13] void EX1_int (void);     /* External Interrupt 1 */
+    237          
+    238          interrupt [0x1B] void T1_int (void);      /* Timer 1 Overflow */
+    239          
+    240          interrupt [0x23] void SCON0_int (void);   /* Serial Port 0 */
+    241          
+    242          interrupt [0x2B] void T2_int (void);      /* Timer 2 Overflow */
+    243          
+    244          interrupt [0x2B] void T2EX_int (void);    /* Negative Transition on T2EX */
+    245          
+    246          interrupt [0x43] void ADC_int (void);     /* ADC Interrupt */
+    247          
+    248          interrupt [0x4B] void EX2_int (void);     /* External Interrupt 2 */
+    249          
+    250          interrupt [0x53] void EX3_int (void);     /* External Interrupt 3 */
+    251          
+    252          interrupt [0x5B] void EX4_int (void);     /* External Interrupt 4 */
+    253          
+    254          interrupt [0x63] void EX5_int (void);     /* External Interrupt 5 */
+    255          
+    256          interrupt [0x6B] void EX6_int (void);     /* External Interrupt 6 */
+    257          
+    258          interrupt [0x83] void SCON1_int (void);   /* Serial Port 1 */
+    259          
+    260          interrupt [0x93] void ICMP_int (void);    /* Compare match interrupt */
+    261          
+    262          interrupt [0x9B] void CT_int (void);      /* Compare Timer Overflow */
+    263          
+    264          interrupt [0xA3] void ICS_int (void);     /* COMSET interrupt */
+    265          
+    266          interrupt [0xAB] void ICR_int (void);     /* COMCLR interrupt */
+    267          
+    268          
+     45          #include <stdio.h>
+      1          /*                      - STDIO.H -
+      2          
+      3             Subset of ANSI standard I/O function declarations.
+      4          
+      5             Version: 3.30 04/Nov/94 IHAW
+      6          
+      7          
+      8          */
+      9          
+     10          #ifndef _STDIO_INCLUDED
+     11          #define _STDIO_INCLUDED
+     12          
+     13          #ifndef NULL
+     14          #define NULL    (void *) 0
+     15          #endif
+     16          
+     17          #ifndef EOF
+     18          #define EOF     (-1)
+     19          #endif
+     20          
+     21          #ifndef size_t
+     22          #if     sizeof((char*)0 - (char*)0) <= sizeof(int)
+     23          #define size_t  unsigned int
+     24          #else
+     25          #define size_t  unsigned long 
+     26          #endif
+     27          #endif
+     28          
+     29          /* ===
+     30          
+     31          #if __TID__ & 0x8000
+     32          #pragma function=intrinsic(0)
+     33          #endif
+     34          
+     35          === */
+     36          
+     37          #ifndef MEMORY_ATTRIBUTE
+     38          #define MEMORY_ATTRIBUTE
+     39          #endif
+     40          
+     41          MEMORY_ATTRIBUTE int    puts(const char *__s);
+     42          MEMORY_ATTRIBUTE int    putchar(int __value);
+     43          MEMORY_ATTRIBUTE int    getchar(void);
+     44          MEMORY_ATTRIBUTE int    sprintf(char *__s,const char *__format,...);
+     45          MEMORY_ATTRIBUTE int    printf(const char *__format,...);
+     46          MEMORY_ATTRIBUTE int    scanf(const char *__format,...);
+     47          MEMORY_ATTRIBUTE int    sscanf(const char *__s, const char *__format,...);
+     48          MEMORY_ATTRIBUTE char   *gets(char *__s);
+     49          
+     50          #if __TID__ & 0x8000
+     51          #pragma function=default
+     52          #endif
+     53          
+     54          #endif
+     55          
+     56          
+     57          
+     46          #include <stdlib.h>
+      1          /*                      - STDLIB.H -
+      2          
+      3             The ANSI-defined 'standard' functions.
+      4          
+      5             Version: 3.30 04/Nov/94 IHAW
+      6          
+      7          $Name: V3_33B $
+      8          $Log: stdlib.h $
+      9          Revision 1.3  1996/06/07 07:11:26  matsp
+     10          
+     11          Revision 1.2  1996/01/26 16:13:20  matsp
+     12          A lot. Converted to Source Integrity
+     13          Revision 1.2  1996/01/26 17:13:18  MATSP
+     14          Revision 1.4  1996/01/26 16:07:29  MATSP
+     15          Revision 1.3  1995/12/04 09:04:11  MATSP
+     16          RAND_MAX changed from 32768 to 32767.
+     17          */
+     18          
+     19          #ifndef _STDLIB_INCLUDED
+     20          #define _STDLIB_INCLUDED
+     21          
+     22          #ifndef size_t
+     23          #if sizeof((char *)0 - (char *)0) <= sizeof(int)
+     24          #define size_t          unsigned int
+     25          #else
+     26          #define size_t          unsigned long
+     27          #endif
+     28          #endif
+     29          
+     30          #ifndef NULL
+     31          #define NULL    (void*) 0 
+     32          #endif
+     33          
+     34          typedef struct
+     35                  {
+     36                    int   quot;
+     37                    int   rem;
+     38                  } div_t;
+     39          
+     40          typedef struct
+     41                  {
+     42                    long int      quot;
+     43                    long int      rem;
+     44                  } ldiv_t;
+     45          
+     46          
+     47          #define RAND_MAX        32767
+     48          
+     49          #define EXIT_SUCCESS    0
+     50          #define EXIT_FAILURE    1
+     51          
+     52          #define MB_CUR_MAX      1
+     53          
+     54          #if __TID__ & 0x8000
+     55          #pragma function=intrinsic(0)
+     56          #endif
+     57          
+     58          #ifndef MEMORY_ATTRIBUTE
+     59          #define MEMORY_ATTRIBUTE
+     60          #endif
+     61          
+     62          #ifndef PTR_ATTRIBUTE
+     63          #define PTR_ATTRIBUTE
+     64          #endif
+     65          
+     66          MEMORY_ATTRIBUTE void   *malloc(size_t __size);
+     67          
+     68          MEMORY_ATTRIBUTE void   free(void *__ptr);
+     69          
+     70          MEMORY_ATTRIBUTE void   exit(int __status);
+     71          
+     72          MEMORY_ATTRIBUTE void   *calloc(unsigned int __nelem, size_t __elsize);
+     73          
+     74          MEMORY_ATTRIBUTE void   *realloc(void *__ptr, size_t __size);
+     75          
+     76          MEMORY_ATTRIBUTE int atoi (const char *__nptr);
+     77          
+     78          MEMORY_ATTRIBUTE long atol (const char *__nptr);
+     79          
+     80          MEMORY_ATTRIBUTE double atof (const char *__nptr);
+     81          
+     82          MEMORY_ATTRIBUTE double strtod(const char *__nptr, char **__endptr);
+     83          
+     84          MEMORY_ATTRIBUTE long int strtol(const char *__nptr, char **__endptr, int __base);
+     85          
+     86          MEMORY_ATTRIBUTE unsigned long int strtoul(const char *__nptr, char **__endptr, int __base);
+     87          
+     88          MEMORY_ATTRIBUTE int rand(void);
+     89          
+     90          MEMORY_ATTRIBUTE void srand(unsigned int __seed);
+     91          
+     92          MEMORY_ATTRIBUTE void abort(void);
+     93          
+     94          MEMORY_ATTRIBUTE int abs(int __j);
+     95          
+     96          MEMORY_ATTRIBUTE div_t div(int __numer, int __denom);
+     97          
+     98          MEMORY_ATTRIBUTE long int labs(long int __j);
+     99          
+    100          MEMORY_ATTRIBUTE ldiv_t ldiv(long int __numer, long int __denom);
+    101          
+    102          MEMORY_ATTRIBUTE void *bsearch(const void *__key, const void *__base,
+    103                                  size_t __nmemb, size_t __size,
+    104                                  int (*__compar) (const void *, const void *));
+    105          
+    106          MEMORY_ATTRIBUTE void qsort(void *__base, size_t __nmemb, size_t __size,
+    107                                  int (*__compar) (const void *, const void *));
+    108          
+    109          #if __TID__ & 0x8000
+    110          #pragma function=default
+    111          #endif
+    112          
+    113          #endif
+    114          
+     47          #include <string.h> 
+      1          /*                       - STRING.H -
+      2          
+      3             The ANSI 'string' function declarations.
+      4                     
+      5             Version: 3.30 04/Nov/94 IHAW
+      6                             
+      7          */
+      8          
+      9          #ifndef _STRING_INCLUDED
+     10          #define _STRING_INCLUDED
+     11          
+     12          #ifndef NULL
+     13          #define NULL    (void*)0     /* changed from char* 93.01.21 ICLM */
+     14          #endif
+     15          
+     16          #ifndef size_t
+     17          #if sizeof((char *)0 - (char *)0) <= sizeof(int)
+     18          #define size_t          unsigned int
+     19          #else
+     20          #define size_t          unsigned long
+     21          #endif
+     22          #endif
+     23          
+     24          #if __TID__ & 0x8000
+     25          #pragma function=intrinsic(0)
+     26          #endif
+     27          
+     28          #ifndef MEMORY_ATTRIBUTE
+     29          #define MEMORY_ATTRIBUTE
+     30          #endif
+     31          
+     32          MEMORY_ATTRIBUTE void *memcpy(void *s1, const void *s2, size_t n);
+     33          
+     34          MEMORY_ATTRIBUTE void *memmove(void *s1, const void *s2, size_t n);
+     35          
+     36          MEMORY_ATTRIBUTE void *memchr(const void *s, int c, size_t n);
+     37          
+     38          MEMORY_ATTRIBUTE void *memset(void *s, int c, size_t n);
+     39          
+     40          MEMORY_ATTRIBUTE int memcmp(const void *s1, const void *s2, size_t n);
+     41          
+     42          MEMORY_ATTRIBUTE char *strchr(const char *s, int c);
+     43          
+     44          MEMORY_ATTRIBUTE int strcmp(const char *s1, const char *s2);
+     45          
+     46          MEMORY_ATTRIBUTE int strncmp(const char *s1, const char *s2, size_t n);
+     47          
+     48          MEMORY_ATTRIBUTE int strcoll(const char *s1, const char *s2);
+     49          
+     50          MEMORY_ATTRIBUTE size_t strlen(const char *s);
+     51          
+     52          MEMORY_ATTRIBUTE size_t strcspn(const char *s1, const char *s2);
+     53          
+     54          MEMORY_ATTRIBUTE size_t strspn(const char *s1, const char *s2);
+     55          
+     56          MEMORY_ATTRIBUTE char *strpbrk(const char *s1, const char *s2);
+     57          
+     58          MEMORY_ATTRIBUTE char *strrchr(const char *s, int c);
+     59          
+     60          MEMORY_ATTRIBUTE char *strstr(const char *s1, const char *s2);
+     61          
+     62          MEMORY_ATTRIBUTE char *strcat(char *s1, const char *s2);
+     63          
+     64          MEMORY_ATTRIBUTE char *strncat(char *s1, const char *s2, size_t n);
+     65          
+     66          MEMORY_ATTRIBUTE char *strcpy(char *s1, const char *s2);
+     67          
+     68          MEMORY_ATTRIBUTE char *strncpy(char *s1, const char *s2, size_t n);
+     69          
+     70          MEMORY_ATTRIBUTE char *strerror(int errnum);
+     71          
+     72          MEMORY_ATTRIBUTE char *strtok(char *s1, const char *s2);
+     73          
+     74          MEMORY_ATTRIBUTE size_t strxfrm(char *s1, const char *s2, size_t n);
+     75          
+     76          #if __TID__ & 0x8000
+     77          #pragma function=default
+     78          #endif
+     79          
+     80          #endif
+     81          
+     82          
+     48          #include "Wav.h"
+      1          /********************************************************
+      2          Fil:            $Id: wav.h,v 1.1 2003/11/23 20:29:34 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/11/23 20:29:34 $
+      5          
+      6          Revisionshistoria:
+      7                                          $Log: wav.h,v $
+      8                                          Revision 1.1  2003/11/23 20:29:34  Gemensam
+      9                                          Complete and tested volume setting in options menu.
+     10                                          Ver 0201
+     11                                          
+     12                                          
+     13          
+     14          ********************************************************/
+     15          
+     16          #ifndef _WAV_INCLUDED_
+     17          #define _WAV_INCLUDED_
+     18          
+     19          ///////////////////////////////////
+     20          // Definitioner
+     21          
+     22          #define WS_NO_OP        0x00
+     23          #define WS_REC          0x01
+     24          #define WS_PLAY         0x02
+     25          #define WS_ECHO         0x03
+     26          #define WS_TONE         0x04
+     27          #define WS_PORT1        0x05
+     28           
+     29          #define DAC0 (*(unsigned char xdata *) 0xA000)
+     30          #define DAC1 (*(unsigned char xdata *) 0xA001)
+     31          #define DAC2 (*(unsigned char xdata *) 0xA002)
+     32          #define DAC3 (*(unsigned char xdata *) 0xA003)
+     33          
+     34          #define WAVBUFSIZE  512
+     35          
+     36          //#define SPEAKER_ON  P1.5 = 1
+     37          //#define SPEAKER_OFF  P1.5 = 0
+     38          
+     39          ///////////////////////////////////
+     40          // Strukturer
+     41          
+     42          
+     43          ///////////////////////////////////
+     44          // Funktioner och procedurer
+     45          
+     46          extern void    InitializeWAV( void );
+     47          extern void    SetupMic( void );
+     48          extern void    SetupPhoneIn( void );
+     49          extern void    RecMicFile(const char* fileName);
+     50          extern void    RecPhoneFile(const char* fileName);
+     51          extern void    RecFile(const char* fileName);
+     52          extern void    PlayFile(const char* fileName);
+     53          extern void    EchoMic( void );
+     54          extern void    EchoPhone( void );
+     55          extern void    Echo( void );
+     56          extern void    WavTone( void );
+     57           
+     58          #endif
+     49          #include "commands.h"
+      1          /**************************************************************
+      2          Fil:            $Id: Commands.h,v 1.5 2003/11/24 22:44:35 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/11/24 22:44:35 $
+      5          
+      6          Revisionshistoria:
+      7                                          $Log: Commands.h,v $
+      8                                          Revision 1.5  2003/11/24 22:44:35  Gemensam
+      9                                          Fixed PPD, not working yet,
+     10                                          New command: speaker volume.
+     11                                          Version 0301.
+     12                                          
+     13                                          Revision 1.4  2003/11/20 22:08:52  Gemensam
+     14                                          Various declarations changes.
+     15                                          Still version 0200.
+     16                                          
+     17                                          Revision 1.3  2003/11/13 22:39:01  Gemensam
+     18                                          Added watchdog reset at GotoLabel, FindLabel and InsertLabel.
+     19                                          Added global variable to contain speaker volume, Default volume set to 50.
+     20                                          Version 1.1
+     21                                          
+     22                                          Revision 1.2  2003/11/10 22:44:45  Gemensam
+     23                                          Added header information
+     24                                          
+     25          
+     26          ***************************************************************/
+     27          
+     28          #ifndef _COMMANDS_INCLUDED_
+     29          #define _COMMANDS_INCLUDED_
+     30          
+     31          //Module main
+     32          #define    CM_HELLO     "HELLO"
+     33          #define    CM_TESTHW    "TEST"
+     34          #define    CM_ID        "ID"
+     35          #define    CM_ERASE     "ERASE"
+     36          
+     37          //Module Program
+     38          #define CM_PROGRAM      "PROGRAM"
+     39          
+     40          //Module FileSystem
+     41          #define CM_READSPARE    "READSPARE"
+     42          #define CM_READSPARE2   "RS2"
+     43          #define CM_DIR          "DIR"
+     44          #define CM_WRITEFILE1   "WF1"
+     45          #define CM_WRITEFILE2   "WF2"
+     46          #define CM_WRITEFILE3   "WF3"
+     47          #define CM_READFILE1    "RF1"
+     48          #define CM_READFILE2    "RF2"
+     49          #define CM_READFILE3    "RF3"
+     50          #define CM_CREATELONG   "CL"
+     51          #define CM_DOWNLOAD     "DL" 
+     52          #define CM_UPLOAD       "UL" 
+     53          #define CM_TYPE         "TYPE" 
+     54          #define CM_TYPEA        "TYPEA" 
+     55          #define CM_CREATEDYNAMIC "CREATEDYNAMIC" 
+     56          #define CM_ERASEDYNAMIC "ERASEDYNAMIC" 
+     57           
+     58          
+     59          
+     60          //Module WAV
+     61          #define CM_ECHO_MIC     "ECHOMIC"
+     62          #define CM_ECHO_PHONE   "ECHOPHONE"
+     63          #define CM_REC_MIC      "RECMIC"
+     64          #define CM_REC_PHONE    "RECPHONE"
+     65          #define CM_TONE         "TONE"
+     66          #define CM_PLAY         "PLAY" 
+     67          #define CM_REC_PORT     "RECPORT" 
+     68           
+     69          
+     70          //Module DTMF
+     71          #define CM_DTMF         "DTMF"
+     72          #define CM_WAIT_DTMF    "WAITDTMF"
+     73          
+     74          //Module Phone
+     75          #define CM_HANG_UP      "PD"
+     76          #define CM_LIFT_PHONE   "PU"
+     77          #define CM_WAIT_RING    "WAITRING"
+     78          #define CM_READ_PB      "READPB"
+     79          #define CM_LOOKUP_PB    "LOOKUP"
+     80           
+     81          
+     82          //Module Timer
+     83          #define CM_WAIT_FOR     "WAITFOR"
+     84          
+     85          
+     86          //BAT-file handlning
+     87          #define CM_GOTO_LABEL   "GOTO"
+     88          
+     89          //Calender funktioner
+     90          #define CM_READ_CALENDER_BYTE   "RC"
+     91          #define CM_WRITE_CALENDER_BYTE  "WC"
+     92           
+     93          //PhoneAns funktioner
+     94          #define CM_RECMSG           "RECMSG"
+     95          #define CM_QUESTION         "QUESTION"
+     96          #define CM_WAITCALL         "WAITCALL"
+     97          #define CM_ANS_ON           "ANSON"
+     98          #define CM_ANS_OFF          "ANSOFF"
+     99          #define CM_CRE_LOG          "CREATELOG"
+    100          #define CM_ENTER_CODE       "ENTERCODE"
+    101          #define CM_PLAYNEW          "PLAYNEW"
+    102          #define CM_GOTO_CAT_EQUAL   "BRACATEQU"
+    103          #define CM_CATJMP           "CATJUMP"
+    104          #define CM_TESTCATJMP       "TCJ"
+    105          #define CM_PLAYMEMO         "PLAYMEMO"
+    106          #define CM_RECMEMO          "RECMEMO"
+    107          #define CM_SETSIGNALS       "SETSIGNALS"
+    108          
+    109          //LCD funktioner
+    110          #define CM_LCD_SET      "SETLCD" 
+    111          
+    112          //Dpot funktioner
+    113          #define CM_SETWIPER         "SETWIPER"
+    114          #define CM_SETDPREG         "SETDPREG"
+    115          #define CM_TRFTOWIPER       "TRFTOWIPER"
+    116          #define CM_READWIPER        "READWIPER"
+    117          #define CM_DATAH            "D1"
+    118          #define CM_DATAL            "D0"
+    119          #define CM_CLKH             "C1"
+    120          #define CM_CLKL             "C0"
+    121          #define CM_SPEAKVOL         "SPEAKVOL"
+    122           
+    123          #endif
+     50          #include "ErrorCodes.h"
+      1          /***********************************************
+      2          Fil:            $Id: ErrorCodes.h,v 1.3 2003/11/20 22:08:52 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/11/20 22:08:52 $
+      5          
+      6          Revisionshistoria:
+      7                                          $Log: ErrorCodes.h,v $
+      8                                          Revision 1.3  2003/11/20 22:08:52  Gemensam
+      9                                          Various declarations changes.
+     10                                          Still version 0200.
+     11                                          
+     12                                          Revision 1.2  2003/11/10 22:44:45  Gemensam
+     13                                          Added header information
+     14                                          
+     15          
+     16          
+     17          ***********************************************/
+     18          
+     19          #ifndef _ERRORCODES_INCLUDED_
+     20          #define _ERRORCODES_INCLUDED_
+     21          
+     22          
+     23          //Felkoder
+     24          
+     25          //Generellt
+     26          #define EM_NOERROR          0x00
+     27          
+     28          
+     29          
+     30          //Filsystem
+     31          #define EM_FILEEXISTS       0x10
+     32          #define EM_FILENOTEXISTS    0x11
+     33          #define EM_OUTOFFILEMEMORY  0x12
+     34          #define EM_TOOMANYFILES     0x13
+     35          #define EM_FILEOPEN         0x14
+     36          #define EM_FILENOTOPEN      0x15
+     37          #define EM_FILEREADONLY     0x16
+     38          #define EM_FILEWRITEONLY    0x17
+     39          #define EM_WRITEFILEOPEN    0x18
+     40          
+     41          //Phone
+     42          #define EM_TOOMANYTIMERS    0x19
+     43          
+     44          //BAtfiles
+     45          #define EM_TOOMANYBATFILES  0x20
+     46          #define EM_REDEFLABELATTEMPT    0x21
+     47          #define EM_TOOMANYLABELS    0x22
+     48          #define EM_NOLABEL          0x23
+     49          
+     50          
+     51          //PhoneAns
+     52          #define EM_PARAMETER_SYNTAX    0x24
+     53          
+     54          #endif
+     51          #include "FileSystem.h"
+      1          /**************************************************************************************
+      2          Fil:            $Id: FileSystem.h,v 1.4 2003/11/20 22:08:53 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/11/20 22:08:53 $
+      5          
+      6          Kommentarer:    Filhuvudet befinner sig i "Spare" arean tillhörande filens första sida. Huvudet består 
+      7                                          av 16 bytes enligt följande lista:
+      8                                          0       Huvud       0xAA = Legalt filhuvud, annat tillsvidare odefinierat
+      9                                          1-4     Fillängd    Pos 1 = MSB, pos 4 = LSB
+     10                                          5-12    Filtitel    Enl "Titel.ext". Om titeln är mindre än 8 tecken avslutas det med nollor
+     11                                          13-15   Filext      Enl "Titel.ext". Om ext är mindre än 3 tecken avslutas det med nollor
+     12          
+     13                                          En nolla skriven i fileName[0] indikerar att
+     14                                          filstrukturen är ledig.
+     15                  
+     16          Revisionshistoria:
+     17                                          $Log: FileSystem.h,v $
+     18                                          Revision 1.4  2003/11/20 22:08:53  Gemensam
+     19                                          Various declarations changes.
+     20                                          Still version 0200.
+     21                                          
+     22                                          Revision 1.3  2003/11/18 19:17:36  Gemensam
+     23                                          Added menu option of setting speaker volume (untested)
+     24                                          Completely changed header files
+     25                                          Version 0200.
+     26                                          
+     27                                          Revision 1.2  2003/11/10 22:44:45  Gemensam
+     28                                          Added header information
+     29                                          
+     30          
+     31          **************************************************************************************/
+     32          
+     33          #ifndef _FILESYSTEM_INCLUDED_
+     34          #define _FILESYSTEM_INCLUDED_
+     35          
+     36          ///////////////////////////////////
+     37          // Definitioner
+     38          
+     39          #define FS_MAXFILES         8 
+     40          #define FS_FILENAMELENGTH   13
+     41          #define FS_FLASHSIZE        0x800000
+     42          
+     43          #define OFF            0
+     44          #define READY        1
+     45          #define NEMPTY        2
+     46          #define WRITING        3
+     47          #define OCCUPIED    4
+     48          
+     49          #define CLE     P4.0                                //Command Latch Enable
+     50          #define ALE     P4.1                                //Address Latch Enable
+     51          #define WP      P4.2                                //Write Protect
+     52          #define SE      P4.3                                //Spare Enable
+     53          //#define CE      P4.4                                //Chip Enable
+     54          #define FBUSY   P4.5                                //Busy
+     55          
+     56          #define FREG (*(unsigned char xdata *) 0xE000)
+     57          #define FLASH (*(unsigned char xdata *) 0xB000) 
+     58          
+     59          ///////////////////////////////////
+     60          // Strukturer
+     61          
+     62          struct ST_FILE_HEAD {
+     63              unsigned long   length;
+     64              char            name[FS_FILENAMELENGTH];
+     65          };
+     66          #define FILE_HEAD struct ST_FILE_HEAD
+     67          
+     68          
+     69          struct ST_FILE {
+     70              char            fileName[FS_FILENAMELENGTH];
+     71              unsigned long   startAddress;
+     72              unsigned long   length; 
+     73              unsigned long   offset; 
+     74              char            write;
+     75              char            append;
+     76          };
+     77          #define FILE struct ST_FILE 
+     78          
+     79          
+     80          
+     81          ///////////////////////////////////
+     82          // Funktioner och procedurer
+     83          
+     84          extern void            InitializeFileSystem( void );
+     85          extern void            InitializeFlash( void );
+     86          extern void            SetupReadSeq( void );
+     87          extern unsigned char   ReadFLASH( void );
+     88          extern void            TerminateReadSeq( void );
+     89          extern void            GetDeviceIDRS232(void);
+     90          extern void            SetupWriteSeq( void );
+     91          extern void            WriteFLASH(unsigned char);
+     92          extern void            TerminateWriteSeq( void );
+     93          extern void            PerformWriteSeq( void );
+     94          extern void            EraseBlock( void );
+     95          extern void            WriteFileHead(const char* name, long size);
+     96          extern FILE*           fopen(const char* name, const char* def);
+     97          extern FILE*               fopenA(const char* name, long maxSize, long offset);
+     98          extern void            fputc(FILE* filePtr, char c);
+     99          extern void            fputLine(FILE* filePtr, const char* str);
+    100          extern void            fupLoad( void );
+    101          extern int             fgetc(FILE* filePtr);
+    102          extern void            fgetLine(FILE* filePtr, char* str, int maxLen);
+    103          extern void            fdownLoad( void );
+    104          extern void            fclose(FILE* filePtr);
+    105          extern long            ftell(FILE* filePtr);
+    106          //void            Rewind(FILE* filePtr);
+    107          extern void            fSetPos(FILE* filePtr, long offset);
+    108          extern void            ReleaseCurrFile( void );
+    109          extern void            EraseAll( void );
+    110          extern void            StartDynamic( void );
+    111          extern void            EraseDynamic( void );
+    112          extern char                        MemUsage( void );
+    113          extern void                        Dir( void );
+    114          extern void                        Type( void );
+    115          extern void                        TypeA( void );
+    116          
+    117          #endif
+     52          #include "RS232.h"
+      1          /********************************************************
+      2          Fil:            $Id: RS232.h,v 1.2 2003/11/20 22:08:53 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/11/20 22:08:53 $
+      5          
+      6          Revisionshistoria:
+      7                                          $Log: RS232.h,v $
+      8                                          Revision 1.2  2003/11/20 22:08:53  Gemensam
+      9                                          Various declarations changes.
+     10                                          Still version 0200.
+     11                                          
+     12                                          Revision 1.1  2003/11/18 19:17:36  Gemensam
+     13                                          Added menu option of setting speaker volume (untested)
+     14                                          Completely changed header files
+     15                                          Version 0200.
+     16                                          
+     17                                          
+     18          
+     19          ********************************************************/
+     20          
+     21          #ifndef _RS232_INCLUDED_
+     22          #define _RS232_INCLUDED_
+     23          
+     24          ///////////////////////////////////
+     25          // Definitioner
+     26          
+     27          
+     28          ///////////////////////////////////
+     29          // Strukturer
+     30          
+     31          
+     32          ///////////////////////////////////
+     33          // Funktioner och procedurer
+     34          
+     35          extern void             InitializeRS232( void );
+     36          extern void             SendRS232(char tecken);
+     37          extern void             SendStringRS232(const char *str);
+     38          extern void             SendStringEOLRS232(const char *str);
+     39          extern char             WaitAndReceiveRS232( void );
+     40          extern char             WaitAndReceiveTimeout( void );
+     41          extern int      ReceiveLineRS232(char* str, int maxLen);
+     42          
+     43          #endif
+     53          #include "Main.h"
+      1          /*************************************************************
+      2          Fil:            $Id: Main.h,v 1.10 2003/12/26 16:17:01 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/12/26 16:17:01 $
+      5          
+      6          Revisionshistoria:
+      7                                          $Log: Main.h,v $
+      8                                          Revision 1.10  2003/12/26 16:17:01  Gemensam
+      9                                          Reinstate 500 ms wait for hang up detection to settle (if not PPD is used).
+     10                                          Fixed PPD detection by decreasing phone volume from 63 to 15.
+     11                                          Version 0304.
+     12                                          
+     13                                          Revision 1.9  2003/12/09 20:52:49  Gemensam
+     14                                          Commented out PPD detection since the HW not work yet.
+     15                                          Ver 0302.
+     16                                          
+     17                                          Revision 1.8  2003/11/29 22:35:59  Gemensam
+     18                                          Fixed problem with to short pulse width on PPD.
+     19                                          Ver 0302.
+     20                                          
+     21                                          Revision 1.7  2003/11/24 22:44:36  Gemensam
+     22                                          Fixed PPD, not working yet,
+     23                                          New command: speaker volume.
+     24                                          Version 0301.
+     25                                          
+     26                                          Revision 1.6  2003/11/23 21:40:03  Gemensam
+     27                                          Parallell phone detection included.
+     28                                          Removed obsolete #define's regarding LCD interface.
+     29                                          Ver 0300
+     30                                          
+     31                                          Revision 1.5  2003/11/23 20:29:34  Gemensam
+     32                                          Complete and tested volume setting in options menu.
+     33                                          Ver 0201
+     34                                          
+     35                                          Revision 1.4  2003/11/20 22:08:53  Gemensam
+     36                                          Various declarations changes.
+     37                                          Still version 0200.
+     38                                          
+     39                                          Revision 1.3  2003/11/18 19:17:36  Gemensam
+     40                                          Added menu option of setting speaker volume (untested)
+     41                                          Completely changed header files
+     42                                          Version 0200.
+     43                                          
+     44                                          Revision 1.2  2003/11/10 22:44:45  Gemensam
+     45                                          Added header information
+     46                                          
+     47          *************************************************************/
+     48          
+     49          #ifndef _MAIN_INCLUDED_
+     50          #define _MAIN_INCLUDED_
+     51          
+     52          #include "FileSystem.h"
+      1          /**************************************************************************************
+      2          Fil:            $Id: FileSystem.h,v 1.4 2003/11/20 22:08:53 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/11/20 22:08:53 $
+      5          
+      6          Kommentarer:    Filhuvudet befinner sig i "Spare" arean tillhörande filens första sida. Huvudet består 
+      7                                          av 16 bytes enligt följande lista:
+      8                                          0       Huvud       0xAA = Legalt filhuvud, annat tillsvidare odefinierat
+      9                                          1-4     Fillängd    Pos 1 = MSB, pos 4 = LSB
+     10                                          5-12    Filtitel    Enl "Titel.ext". Om titeln är mindre än 8 tecken avslutas det med nollor
+     11                                          13-15   Filext      Enl "Titel.ext". Om ext är mindre än 3 tecken avslutas det med nollor
+     12          
+     13                                          En nolla skriven i fileName[0] indikerar att
+     14                                          filstrukturen är ledig.
+     15                  
+     16          Revisionshistoria:
+     17                                          $Log: FileSystem.h,v $
+     18                                          Revision 1.4  2003/11/20 22:08:53  Gemensam
+     19                                          Various declarations changes.
+     20                                          Still version 0200.
+     21                                          
+     22                                          Revision 1.3  2003/11/18 19:17:36  Gemensam
+     23                                          Added menu option of setting speaker volume (untested)
+     24                                          Completely changed header files
+     25                                          Version 0200.
+     26                                          
+     27                                          Revision 1.2  2003/11/10 22:44:45  Gemensam
+     28                                          Added header information
+     29                                          
+     30          
+     31          **************************************************************************************/
+     32          
+     33          #ifndef _FILESYSTEM_INCLUDED_
+     34          #define _FILESYSTEM_INCLUDED_
+     35          
+     36          ///////////////////////////////////
+     37          // Definitioner
+     38          
+     39          #define FS_MAXFILES         8 
+     40          #define FS_FILENAMELENGTH   13
+     41          #define FS_FLASHSIZE        0x800000
+     42          
+     43          #define OFF            0
+     44          #define READY        1
+     45          #define NEMPTY        2
+     46          #define WRITING        3
+     47          #define OCCUPIED    4
+     48          
+     49          #define CLE     P4.0                                //Command Latch Enable
+     50          #define ALE     P4.1                                //Address Latch Enable
+     51          #define WP      P4.2                                //Write Protect
+     52          #define SE      P4.3                                //Spare Enable
+     53          //#define CE      P4.4                                //Chip Enable
+     54          #define FBUSY   P4.5                                //Busy
+     55          
+     56          #define FREG (*(unsigned char xdata *) 0xE000)
+     57          #define FLASH (*(unsigned char xdata *) 0xB000) 
+     58          
+     59          ///////////////////////////////////
+     60          // Strukturer
+     61          
+     62          struct ST_FILE_HEAD {
+     63              unsigned long   length;
+     64              char            name[FS_FILENAMELENGTH];
+     65          };
+     66          #define FILE_HEAD struct ST_FILE_HEAD
+     67          
+     68          
+     69          struct ST_FILE {
+     70              char            fileName[FS_FILENAMELENGTH];
+     71              unsigned long   startAddress;
+     72              unsigned long   length; 
+     73              unsigned long   offset; 
+     74              char            write;
+     75              char            append;
+     76          };
+     77          #define FILE struct ST_FILE 
+     78          
+     79          
+     80          
+     81          ///////////////////////////////////
+     82          // Funktioner och procedurer
+     83          
+     84          extern void            InitializeFileSystem( void );
+     85          extern void            InitializeFlash( void );
+     86          extern void            SetupReadSeq( void );
+     87          extern unsigned char   ReadFLASH( void );
+     88          extern void            TerminateReadSeq( void );
+     89          extern void            GetDeviceIDRS232(void);
+     90          extern void            SetupWriteSeq( void );
+     91          extern void            WriteFLASH(unsigned char);
+     92          extern void            TerminateWriteSeq( void );
+     93          extern void            PerformWriteSeq( void );
+     94          extern void            EraseBlock( void );
+     95          extern void            WriteFileHead(const char* name, long size);
+     96          extern FILE*           fopen(const char* name, const char* def);
+     97          extern FILE*               fopenA(const char* name, long maxSize, long offset);
+     98          extern void            fputc(FILE* filePtr, char c);
+     99          extern void            fputLine(FILE* filePtr, const char* str);
+    100          extern void            fupLoad( void );
+    101          extern int             fgetc(FILE* filePtr);
+    102          extern void            fgetLine(FILE* filePtr, char* str, int maxLen);
+    103          extern void            fdownLoad( void );
+    104          extern void            fclose(FILE* filePtr);
+    105          extern long            ftell(FILE* filePtr);
+    106          //void            Rewind(FILE* filePtr);
+    107          extern void            fSetPos(FILE* filePtr, long offset);
+    108          extern void            ReleaseCurrFile( void );
+    109          extern void            EraseAll( void );
+    110          extern void            StartDynamic( void );
+    111          extern void            EraseDynamic( void );
+    112          extern char                        MemUsage( void );
+    113          extern void                        Dir( void );
+    114          extern void                        Type( void );
+    115          extern void                        TypeA( void );
+    116          
+    117          #endif
+     53          
+     54          
+     55          ///////////////////////////////////
+     56          // Definitioner
+     57          
+     58          #define VERSION_MENU_STRING     "Telestation 3.5       (c) 2004-09-19 FRHA"
+     59          
+     60          #define CM_PARSIZE              24
+     61          #define CM_NRPAR                16
+     62          
+     63          #define MAX_LABEL_LEN   8
+     64          #define MAX_LABELS      64
+     65          
+     66          // Nedan var ett försök till multipla bat-filer, kanske införs senare
+     67          /*
+     68          #define MAX_BATFILES    8
+     69          */
+     70          
+     71          ///////////////////////////////////
+     72          // Strukturer
+     73          
+     74          // Nedan var ett försök till multipla bat-filer, kanske införs senare
+     75          /*
+     76          struct ST_Label {
+     77              char    name[MAX_LABEL_LEN];
+     78              long    pos;
+     79          };
+     80          #define Label struct ST_Label
+     81           
+     82          struct ST_BatFileObj {
+     83              FILE*       fp;                 //Filpekare till bat-filen
+     84              Label*      labels;             //Pekare till lista med ingående labels
+     85              char        labelIndex;         //Pekar på nästa lediga label
+     86              BatFileObj* caller;             //Den batfil som kallade på denna. Om användaren gav kommandot 
+     87                                              //skall den inehålla NULL
+     88              char        occupied;           //1 om detta objekt används, 0 annars
+     89          };    
+     90          #define BatFileObj struct ST_BatFileObj
+     91          */
+     92          
+     93          ///////////////////////////////////
+     94          // Funktioner och procedurer
+     95          
+     96          extern void    InitializeComputer1( void );
+     97          extern void    InitializePhoneAnsApp( void );
+     98          extern void    MainShell( void );
+     99          extern char    DecodeAndPerform(const char* cmdStr);
+    100          //int     MainCommandInterper(char c);
+    101          extern void    Hello( void );
+    102          extern void    TestHW( void );
+    103          extern void    FlashID( void );
+    104          extern void    Erase( void );
+    105          extern void    BackRead( void );
+    106          extern void    ReadSpare( void );
+    107          extern void    WF1( void );
+    108          extern void    WF2( void );
+    109          extern void    WF3( void );
+    110          extern void    RF1( void );
+    111          extern void    RF2( void );
+    112          extern void    RF3( void );
+    113          extern void    CreateLong( void );
+    114          extern void    ReadSpare2( void );
+    115          extern void    Append( void );
+    116          
+    117          extern void    SetupBatFile( void );
+    118          extern void    ClearLabelList( void );
+    119          extern void    ExecuteBatFile(const char* batFileName);
+    120          extern char    InsertLabel(const char* name, long pos);
+    121          extern int     FindLabel(const char *name);
+    122          extern char    GotoLabel(const char* name);
+    123          
+    124          extern void    myStrCpy(char* dest, const char* src);
+    125          extern int     myStrLen(char* str);
+    126          extern void    myLong2HexStr(long v, char* str);
+    127          extern void    myInt2DecStr(int v, char* str);
+    128          extern void    myInt2DecStr00(char v, char* str);
+    129          extern int     myStr2Int(const char* str);
+    130          extern char    myStrCmpNoCase(const char* s1, const char* s2);
+    131          
+    132          // Nedan var ett försök till multipla bat-filer, kanske införs senare
+    133          /*
+    134          void    SetupBatFile( void );
+    135          void    ClearLabelList( void );
+    136          void    ClearLabelList(Label* list);
+    137          BatFileObj*    VacantBatFileObj(FILE* fp);
+    138          void    ExecuteBatFile(const char* batFileName);
+    139          char    InsertLabel(const char* name, long pos);
+    140          char    FindLabel(const char *name, Label* l);
+    141          char    GotoLabel(const char* name);
+    142          */
+    143          
+    144          ///////////////////////////
+    145          // Globala variabler
+    146          
+    147          
+    148          ///////////////////////////
+    149          // Lokala variabler
+    150          
+    151          
+    152          #endif
+     54          #include "Keyboard.h"
+      1          /*************************************************************
+      2          Fil:            $Id: Keyboard.h,v 1.2 2003/11/20 22:08:53 Gemensam Exp $
+      3          
+      4          Beskrivning:    Header fil till Keyboard.c
+      5          
+      6          Skapad:         03-11-18
+      7          
+      8          Ändrad:         $Date: 2003/11/20 22:08:53 $
+      9          
+     10          Ägare:          Fredrik Hoffman
+     11          
+     12          
+     13          Att göra:
+     14          
+     15          Kommentarer:
+     16          
+     17          Revisionshistoria:
+     18                                          $Log: Keyboard.h,v $
+     19                                          Revision 1.2  2003/11/20 22:08:53  Gemensam
+     20                                          Various declarations changes.
+     21                                          Still version 0200.
+     22                                          
+     23                                          Revision 1.1  2003/11/18 19:17:36  Gemensam
+     24                                          Added menu option of setting speaker volume (untested)
+     25                                          Completely changed header files
+     26                                          Version 0200.
+     27                                          
+     28          
+     29          *************************************************************/
+     30          
+     31          #ifndef _KEYBOARD_INCLUDED_
+     32          #define _KEYBOARD_INCLUDED_
+     33          
+     34          ///////////////////////////////////
+     35          // Definitioner
+     36          
+     37          #define KEYBOARD    (*(unsigned char xdata *) 0xC000)
+     38          #define KEY_CLK     P1.6
+     39          #define KEY_IRQ     P1.4
+     40          
+     41          #define KS_IDLE         0x00
+     42          #define KS_WAITFIRST    0x01
+     43          #define KS_WAITMULTI    0x02
+     44          
+     45          #define FIRST_KEY_TIMEOUT   10
+     46          #define MULTI_KEY_TIMEOUT   2
+     47           
+     48          
+     49          ///////////////////////////////////
+     50          // Funktioner och procedurer
+     51          
+     52          extern void    InitializeKeyboard( void );
+     53          extern void    KeyboardOn( void );
+     54          extern void    KeyboardOff( void );
+     55           
+     56          #endif
+     55          #include "Phone.h"
+      1          /********************************************************
+      2          Fil:            $Id: Phone.h,v 1.6 2003/12/26 16:17:01 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/12/26 16:17:01 $
+      5          
+      6          Revisionshistoria:
+      7                                          $Log: Phone.h,v $
+      8                                          Revision 1.6  2003/12/26 16:17:01  Gemensam
+      9                                          Reinstate 500 ms wait for hang up detection to settle (if not PPD is used).
+     10                                          Fixed PPD detection by decreasing phone volume from 63 to 15.
+     11                                          Version 0304.
+     12                                          
+     13                                          Revision 1.5  2003/11/29 22:36:00  Gemensam
+     14                                          Fixed problem with to short pulse width on PPD.
+     15                                          Ver 0302.
+     16                                          
+     17                                          Revision 1.4  2003/11/24 22:44:36  Gemensam
+     18                                          Fixed PPD, not working yet,
+     19                                          New command: speaker volume.
+     20                                          Version 0301.
+     21                                          
+     22                                          Revision 1.3  2003/11/23 21:40:03  Gemensam
+     23                                          Parallell phone detection included.
+     24                                          Removed obsolete #define's regarding LCD interface.
+     25                                          Ver 0300
+     26                                          
+     27                                          Revision 1.2  2003/11/20 22:08:53  Gemensam
+     28                                          Various declarations changes.
+     29                                          Still version 0200.
+     30                                          
+     31                                          Revision 1.1  2003/11/18 19:17:36  Gemensam
+     32                                          Added menu option of setting speaker volume (untested)
+     33                                          Completely changed header files
+     34                                          Version 0200.
+     35                                          
+     36                                          
+     37          
+     38          ********************************************************/
+     39          
+     40          #ifndef _PHONE_INCLUDED_
+     41          #define _PHONE_INCLUDED_
+     42          
+     43          ///////////////////////////////////
+     44          // Definitioner
+     45          
+     46          //PS = Phone Signals
+     47          #define PS_RV                                           P1.2
+     48          #define PS_LC                                           P1.7
+     49          #define PS_LCD                                          P1.1
+     50          #define PS_PPD                                          P1.0
+     51          
+     52          #define WRS_POS_EDGE_TRIGG          10
+     53          #define WRS_NEG_EDGE_TRIGG          10
+     54          #define WRS_POST_SIGNAL_LIMIT       20
+     55          #define WRS_SIGNAL_MIN_INTERVALL    300
+     56          #define WRS_SIGNAL_MAX_INTERVALL    600
+     57          
+     58          /* Examples of timeouts
+     59          Lift phone:             Play:
+     60          1E5                             11
+     61          209                             163
+     62          20C                             11
+     63          200                             4
+     64          216                             E8      
+     65          1F3                             F5
+     66          */
+     67          
+     68          #define P_PPD_PW                                        0x190
+     69          #define P_RIPPLE_FILTER_TIMEOUT         10
+     70          
+     71          #define DEFAULT_PHONE_OUT_VOLUME        15
+     72          
+     73          ///////////////////////////////////
+     74          // Strukturer
+     75          
+     76          
+     77          ///////////////////////////////////
+     78          // Funktioner och procedurer
+     79          
+     80          extern void    InitializePhone( void );
+     81          extern void    HangUp( void );
+     82          extern void    LiftPhone( void );
+     83          
+     84          #ifdef  __PPD_ON__
+     85          extern void        ClearPPDRipple( void );
+     86          #endif
+     87          
+     88          extern void    MonitorRingSignal( void );
+     89          extern int         WaitForRingSignals(int  nSignals);
+     90          
+     91          #endif
+     56          #include "DTMF.h"
+      1          /*************************************************************
+      2          Fil:            $Id: DTMF.h,v 1.2 2003/11/20 22:08:52 Gemensam Exp $
+      3          
+      4          Beskrivning:    Header fil till DTMF.c
+      5          
+      6          Skapad:         03-11-18
+      7          
+      8          Ändrad:         $Date: 2003/11/20 22:08:52 $
+      9          
+     10          Ägare:          Fredrik Hoffman
+     11          
+     12          
+     13          Att göra:
+     14          
+     15          Revisionshistoria:
+     16                                          $Log: DTMF.h,v $
+     17                                          Revision 1.2  2003/11/20 22:08:52  Gemensam
+     18                                          Various declarations changes.
+     19                                          Still version 0200.
+     20                                          
+     21                                          Revision 1.1  2003/11/18 19:17:36  Gemensam
+     22                                          Added menu option of setting speaker volume (untested)
+     23                                          Completely changed header files
+     24                                          Version 0200.
+     25                                          
+     26          
+     27          *************************************************************/
+     28          
+     29          #ifndef _DTMF_INCLUDED_
+     30          #define _DTMF_INCLUDED_
+     31          
+     32          ///////////////////////////////////
+     33          // Definitioner
+     34          
+     35          #define DTMF_TRANS      (*(unsigned char xdata *) 0x9000)
+     36          #define DTMF_READ       (*(unsigned char xdata *) 0x9000)
+     37          #define DTMF_CONTROL    (*(unsigned char xdata *) 0x9001)
+     38          #define DTMF_STATUS     (*(unsigned char xdata *) 0x9001)
+     39           
+     40          ///////////////////////////////////
+     41          // Funktioner och procedurer
+     42          
+     43          extern void    InitializeDTMF( void );
+     44          extern void    MakeDTMFTones(const char *tones);
+     45          extern char    DecodeDTMF(char c);
+     46          extern char    DecodeReceivedDTMF( void );
+     47          extern void    ResetDTMFIndex( void );
+     48          extern char    GetNextDTMF( void );
+     49           
+     50          #endif
+     57          #include "Phone.h"
+      1          /********************************************************
+      2          Fil:            $Id: Phone.h,v 1.6 2003/12/26 16:17:01 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/12/26 16:17:01 $
+      5          
+      6          Revisionshistoria:
+      7                                          $Log: Phone.h,v $
+      8                                          Revision 1.6  2003/12/26 16:17:01  Gemensam
+      9                                          Reinstate 500 ms wait for hang up detection to settle (if not PPD is used).
+     10                                          Fixed PPD detection by decreasing phone volume from 63 to 15.
+     11                                          Version 0304.
+     12                                          
+     13                                          Revision 1.5  2003/11/29 22:36:00  Gemensam
+     14                                          Fixed problem with to short pulse width on PPD.
+     15                                          Ver 0302.
+     16                                          
+     17                                          Revision 1.4  2003/11/24 22:44:36  Gemensam
+     18                                          Fixed PPD, not working yet,
+     19                                          New command: speaker volume.
+     20                                          Version 0301.
+     21                                          
+     22                                          Revision 1.3  2003/11/23 21:40:03  Gemensam
+     23                                          Parallell phone detection included.
+     24                                          Removed obsolete #define's regarding LCD interface.
+     25                                          Ver 0300
+     26                                          
+     27                                          Revision 1.2  2003/11/20 22:08:53  Gemensam
+     28                                          Various declarations changes.
+     29                                          Still version 0200.
+     30                                          
+     31                                          Revision 1.1  2003/11/18 19:17:36  Gemensam
+     32                                          Added menu option of setting speaker volume (untested)
+     33                                          Completely changed header files
+     34                                          Version 0200.
+     35                                          
+     36                                          
+     37          
+     38          ********************************************************/
+     39          
+     40          #ifndef _PHONE_INCLUDED_
+     41          #define _PHONE_INCLUDED_
+     42          
+     43          ///////////////////////////////////
+     44          // Definitioner
+     45          
+     46          //PS = Phone Signals
+     47          #define PS_RV                                           P1.2
+     48          #define PS_LC                                           P1.7
+     49          #define PS_LCD                                          P1.1
+     50          #define PS_PPD                                          P1.0
+     51          
+     52          #define WRS_POS_EDGE_TRIGG          10
+     53          #define WRS_NEG_EDGE_TRIGG          10
+     54          #define WRS_POST_SIGNAL_LIMIT       20
+     55          #define WRS_SIGNAL_MIN_INTERVALL    300
+     56          #define WRS_SIGNAL_MAX_INTERVALL    600
+     57          
+     58          /* Examples of timeouts
+     59          Lift phone:             Play:
+     60          1E5                             11
+     61          209                             163
+     62          20C                             11
+     63          200                             4
+     64          216                             E8      
+     65          1F3                             F5
+     66          */
+     67          
+     68          #define P_PPD_PW                                        0x190
+     69          #define P_RIPPLE_FILTER_TIMEOUT         10
+     70          
+     71          #define DEFAULT_PHONE_OUT_VOLUME        15
+     72          
+     73          ///////////////////////////////////
+     74          // Strukturer
+     75          
+     76          
+     77          ///////////////////////////////////
+     78          // Funktioner och procedurer
+     79          
+     80          extern void    InitializePhone( void );
+     81          extern void    HangUp( void );
+     82          extern void    LiftPhone( void );
+     83          
+     84          #ifdef  __PPD_ON__
+     85          extern void        ClearPPDRipple( void );
+     86          #endif
+     87          
+     88          extern void    MonitorRingSignal( void );
+     89          extern int         WaitForRingSignals(int  nSignals);
+     90          
+     91          #endif
+     58           
+     59          
+     60          //////////////////////
+     61          // Globala variabler
+     62          
+     63          extern xdata long       writeAddress;           //Innehåller den address som en skriv-operation kommer att använda.
+     64          extern xdata int        FLASHWriteState;        //Håller reda på i vilket tillstånd skriv-sekvensen befinner sig enl:
+     65                                                                                          // OFF = SetupWriteSeq ej körd, skrivning ej möjlig.
+     66                                                                                          // READY = SetupWriteSeq har körts, data kan läggas in i registret.
+     67                                                                                          // NEMPTY = Registret innehåller data, skrivning till celler kan göras.
+     68                                                                                          // WRITING = Programmeringen har startats (250 us). Inför nästa 
+     69                                                                                          //           skrivning måste SetupWriteSeq köras.
+     70          extern xdata char       receivedDTMF;           //Innehåller den senaste mottagna DTMF-signalen
+     71                                                                                          //från avbrottsrutinen. Om inget tagits emot sätts
+     72                                                                                          //den till 0. För att få ett användbart värde skall
+     73                                                                                          //funktionen DecodeDTMF() köras.
+     74          extern xdata char       lastKey;
+     75          extern xdata char       terminateAnswer;
+     76          extern xdata char       callerHungUp;
+     77          extern xdata char       parallellPhoneDetected;
+     78          
+     79          
+     80          //////////////////////
+     81          // Lokala variabler
+     82          
+     83          xdata char          WAVBuffer[WAVBUFSIZE];
+     84          idata char          wavState;
+     85          idata char xdata *  nextWrite;
+     86          idata char xdata *  nextRead;
+     87          idata char          sample;
+     88          idata unsigned char wavAbort;
+     89          idata unsigned char daCount0;
+     90          idata unsigned char daCount1;
+     91          idata unsigned char daCount2;
+     92          idata unsigned char daCount3;
+     93          idata unsigned char daComp0;
+     94          idata unsigned char daComp1;
+     95          idata unsigned char daComp2;
+     96          idata unsigned char daComp3;
+     97          
+     98          
+     99          //////////////////////
+    100          // Kod
+    101          
+    102          void    InitializeWAV( void )
+    103          {
+   \   0000            InitializeWAV:
+    104              xdata char    i;
+    105              
+    106              wavState = WS_NO_OP;    
+   \   0000  7800              MOV     R0,#wavState
+   \   0002  7600              MOV     @R0,#0
+    107              TR1 = 0;                                //Stänger av timer 1
+   \   0004  C28E              CLR     TCON.6
+    108          
+    109              ET1 = 0;                                //Omöjliggör avbrott från Timer 1
+   \   0006  C2AB              CLR     IE.3
+    110          
+    111              i = TMOD;
+   \   0008  E589              MOV     A,TMOD
+   \   000A  900000            MOV     DPTR,#$LOCBX InitializeWAV
+   \   000D  F0                MOVX    @DPTR,A
+    112              
+    113              TMOD = (i & 0x0F) + 0x20;                //Sätter TIMER1 = Mode 2, timer operation, no gating
+   \   000E  E0                MOVX    A,@DPTR
+   \   000F  540F              ANL     A,#15
+   \   0011  2420              ADD     A,#32
+   \   0013  F589              MOV     TMOD,A
+    114          
+    115              TH1 =  132;                             //Sätter reload värde på 115
+   \   0015  758D84            MOV     TH1,#132
+    116                                                      //115 / (fosc/12) = 124,8us => fs = 8014 Hz
+    117          
+    118              ADEX = 0;                               //Intern AD-omvandlingstrigger
+   \   0018  C2DD              CLR     216.5
+    119              ADM = 1;                                //Enkel (inte kontinuerlig) AD-omvandling
+   \   001A  D2DB              SETB    216.3
+    120          } 
+   \   001C  22                RET
+    121          
+    122          void    SetupMic( void ) 
+    123          {
+   \   001D            SetupMic:
+    124              ADCON1 = 0x08;                          //Sätter MIC = analog ingång P8.0 samt "/4" prescaler
+   \   001D  75DC08            MOV     220,#8
+    125          }
+   \   0020  22                RET
+    126          
+    127          void    SetupPhoneIn( void ) 
+    128          {
+   \   0021            SetupPhoneIn:
+    129              ADCON1 = 0x09;                          //Sätter PHONE = analog ingång P8.1 samt "/4" prescaler
+   \   0021  75DC09            MOV     220,#9
+    130          }
+   \   0024  22                RET
+    131          
+    132          void    RecMicFile(const char* fileName)
+    133          {
+   \   0025            RecMicFile:
+   \   0025  900000            MOV     DPTR,#$LOCBX RecMicFile
+   \   0028  D0E0              POP     ACC
+   \   002A  F0                MOVX    @DPTR,A
+   \   002B  A3                INC     DPTR
+   \   002C  D0E0              POP     ACC
+   \   002E  F0                MOVX    @DPTR,A
+    134              SetupMic();
+   \   002F  A3                INC     DPTR
+   \   0030  EF                MOV     A,R7
+   \   0031  F0                MOVX    @DPTR,A
+   \   0032  A3                INC     DPTR
+   \   0033  EE                MOV     A,R6
+   \   0034  F0                MOVX    @DPTR,A
+   \   0035  A3                INC     DPTR
+   \   0036  ED                MOV     A,R5
+   \   0037  F0                MOVX    @DPTR,A
+   \   0038  120000            LCALL   $REFFN SetupMic
+    135              wavState = WS_REC;   
+   \   003B  7800              MOV     R0,#wavState
+   \   003D  7601              MOV     @R0,#1
+    136              RecFile(fileName);
+   \   003F  900000            MOV     DPTR,#$LOCBX RecMicFile+2
+   \   0042  E0                MOVX    A,@DPTR
+   \   0043  FF                MOV     R7,A
+   \   0044  A3                INC     DPTR
+   \   0045  E0                MOVX    A,@DPTR
+   \   0046  FE                MOV     R6,A
+   \   0047  A3                INC     DPTR
+   \   0048  E0                MOVX    A,@DPTR
+   \   0049  FD                MOV     R5,A
+   \   004A  120000            LCALL   $REFFN RecFile
+    137          }
+   \   004D  900000            MOV     DPTR,#$LOCBX RecMicFile
+   \   0050  E0                MOVX    A,@DPTR
+   \   0051  F8                MOV     R0,A
+   \   0052  A3                INC     DPTR
+   \   0053  E0                MOVX    A,@DPTR
+   \   0054  C0E0              PUSH    ACC
+   \   0056  E8                MOV     A,R0
+   \   0057  C0E0              PUSH    ACC
+   \   0059  22                RET
+    138          
+    139          void    RecPhoneFile(const char* fileName)
+    140          {
+   \   005A            RecPhoneFile:
+   \   005A  900000            MOV     DPTR,#$LOCBX RecPhoneFile
+   \   005D  D0E0              POP     ACC
+   \   005F  F0                MOVX    @DPTR,A
+   \   0060  A3                INC     DPTR
+   \   0061  D0E0              POP     ACC
+   \   0063  F0                MOVX    @DPTR,A
+    141              SetupPhoneIn();
+   \   0064  A3                INC     DPTR
+   \   0065  EF                MOV     A,R7
+   \   0066  F0                MOVX    @DPTR,A
+   \   0067  A3                INC     DPTR
+   \   0068  EE                MOV     A,R6
+   \   0069  F0                MOVX    @DPTR,A
+   \   006A  A3                INC     DPTR
+   \   006B  ED                MOV     A,R5
+   \   006C  F0                MOVX    @DPTR,A
+   \   006D  120000            LCALL   $REFFN SetupPhoneIn
+    142              wavState = WS_REC;   
+   \   0070  7800              MOV     R0,#wavState
+   \   0072  7601              MOV     @R0,#1
+    143              RecFile(fileName);
+   \   0074  900000            MOV     DPTR,#$LOCBX RecPhoneFile+2
+   \   0077  E0                MOVX    A,@DPTR
+   \   0078  FF                MOV     R7,A
+   \   0079  A3                INC     DPTR
+   \   007A  E0                MOVX    A,@DPTR
+   \   007B  FE                MOV     R6,A
+   \   007C  A3                INC     DPTR
+   \   007D  E0                MOVX    A,@DPTR
+   \   007E  FD                MOV     R5,A
+   \   007F  120000            LCALL   $REFFN RecFile
+    144          }
+   \   0082  900000            MOV     DPTR,#$LOCBX RecPhoneFile
+   \   0085  E0                MOVX    A,@DPTR
+   \   0086  F8                MOV     R0,A
+   \   0087  A3                INC     DPTR
+   \   0088  E0                MOVX    A,@DPTR
+   \   0089  C0E0              PUSH    ACC
+   \   008B  E8                MOV     A,R0
+   \   008C  C0E0              PUSH    ACC
+   \   008E  22                RET
+    145          
+    146          /*
+    147          void    RecPort1(const char* fileName)
+    148          {
+    149              wavState = WS_PORT1;
+    150              RecFile(fileName);
+    151          }
+    152          */
+    153          
+    154          void    RecFile(const char* fileName)
+    155          {
+   \   008F            RecFile:
+   \   008F  900000            MOV     DPTR,#$LOCBX RecFile+25
+   \   0092  D0E0              POP     ACC
+   \   0094  F0                MOVX    @DPTR,A
+   \   0095  A3                INC     DPTR
+   \   0096  D0E0              POP     ACC
+   \   0098  F0                MOVX    @DPTR,A
+    156              FILE*       fptr;
+    157          
+    158          //Nedan var idata....
+    159              xdata unsigned char device;
+    160              xdata unsigned char pageStart0;
+    161              xdata unsigned char pageStart1;
+    162              xdata unsigned int  pageStart;
+    163              xdata unsigned char v;
+    164          //...till hit    
+    165              
+    166              xdata unsigned long tmpLen;
+    167              xdata unsigned long longPage;
+    168              xdata unsigned long l_ps0;
+    169              xdata unsigned long l_ps1;
+    170              
+    171          //    xdata char  msg[100]; 
+    172          //    xdata int  l;
+    173              
+    174              
+    175              fptr = fopen(fileName, "w");
+   \   0099  A3                INC     DPTR
+   \   009A  EF                MOV     A,R7
+   \   009B  F0                MOVX    @DPTR,A
+   \   009C  A3                INC     DPTR
+   \   009D  EE                MOV     A,R6
+   \   009E  F0                MOVX    @DPTR,A
+   \   009F  A3                INC     DPTR
+   \   00A0  ED                MOV     A,R5
+   \   00A1  F0                MOVX    @DPTR,A
+   \   00A2  7402              MOV     A,#2
+   \   00A4  900000            MOV     DPTR,#$PRMBX fopen+3
+   \   00A7  F0                MOVX    @DPTR,A
+   \   00A8  A3                INC     DPTR
+   \   00A9  7400              MOV     A,#HIGH(?0000)
+   \   00AB  F0                MOVX    @DPTR,A
+   \   00AC  A3                INC     DPTR
+   \   00AD  7400              MOV     A,#LOW(?0000)
+   \   00AF  F0                MOVX    @DPTR,A
+   \   00B0  120000            LCALL   $REFFN fopen
+    176              
+    177              if (fptr) {
+   \   00B3  900000            MOV     DPTR,#$LOCBX RecFile
+   \   00B6  EF                MOV     A,R7
+   \   00B7  F0                MOVX    @DPTR,A
+   \   00B8  A3                INC     DPTR
+   \   00B9  EE                MOV     A,R6
+   \   00BA  F0                MOVX    @DPTR,A
+   \   00BB  A3                INC     DPTR
+   \   00BC  ED                MOV     A,R5
+   \   00BD  F0                MOVX    @DPTR,A
+   \   00BE  4E                ORL     A,R6
+   \   00BF  7003              JNZ     $+5
+   \   00C1  02028F            LJMP    ?0002
+   \   00C4            ?0001:
+    178                  nextWrite = WAVBuffer;
+   \   00C4  7801              MOV     R0,#nextWrite
+   \   00C6  7600              MOV     @R0,#HIGH(WAVBuffer)
+   \   00C8  08                INC     R0
+   \   00C9  7600              MOV     @R0,#LOW(WAVBuffer)
+    179                  nextRead = WAVBuffer;
+   \   00CB  7803              MOV     R0,#nextRead
+   \   00CD  7600              MOV     @R0,#HIGH(WAVBuffer)
+   \   00CF  08                INC     R0
+   \   00D0  7600              MOV     @R0,#LOW(WAVBuffer)
+    180                  wavAbort = 0; 
+   \   00D2  7806              MOV     R0,#wavAbort
+   \   00D4  7600              MOV     @R0,#0
+    181                  device = (writeAddress >> 22) & 0x03;
+   \   00D6  900000            MOV     DPTR,#writeAddress
+   \   00D9  120000            LCALL   ?LD_R4567_XDPTR_L20
+   \   00DC  7816              MOV     R0,#22
+   \   00DE  120000            LCALL   ?SL_SHR_L01
+   \   00E1  EC                MOV     A,R4
+   \   00E2  5403              ANL     A,#3
+   \   00E4  900000            MOV     DPTR,#$LOCBX RecFile+3
+   \   00E7  F0                MOVX    @DPTR,A
+    182                  pageStart = (writeAddress >> 9) & 0x01FFF;      //Startaddressen / WAVBUFSIZE
+   \   00E8  900000            MOV     DPTR,#writeAddress
+   \   00EB  120000            LCALL   ?LD_R4567_XDPTR_L20
+   \   00EE  7809              MOV     R0,#9
+   \   00F0  120000            LCALL   ?SL_SHR_L01
+   \   00F3  ED                MOV     A,R5
+   \   00F4  541F              ANL     A,#31
+    183                  pageStart1 = pageStart >> 8;
+   \   00F6  FD                MOV     R5,A
+   \   00F7  900000            MOV     DPTR,#$LOCBX RecFile+5
+   \   00FA  F0                MOVX    @DPTR,A
+    184                  pageStart0 = pageStart;
+   \   00FB  EC                MOV     A,R4
+   \   00FC  FE                MOV     R6,A
+   \   00FD  A3                INC     DPTR
+   \   00FE  CD                XCH     A,R5
+   \   00FF  F0                MOVX    @DPTR,A
+   \   0100  A3                INC     DPTR
+   \   0101  CD                XCH     A,R5
+   \   0102  F0                MOVX    @DPTR,A
+   \   0103  EE                MOV     A,R6
+   \   0104  900000            MOV     DPTR,#$LOCBX RecFile+4
+   \   0107  F0                MOVX    @DPTR,A
+    185                  FLASHWriteState = NEMPTY;
+   \   0108  900000            MOV     DPTR,#FLASHWriteState
+   \   010B  E4                CLR     A
+   \   010C  F0                MOVX    @DPTR,A
+   \   010D  A3                INC     DPTR
+   \   010E  7402              MOV     A,#2
+   \   0110  F0                MOVX    @DPTR,A
+    186                  S1CON &= ~(1);                                  //Nollar RS232 mottagnings-interrupt-flagga          
+   \   0111  539BFE            ANL     155,#254
+    187                  receivedDTMF = 0;
+   \   0114  E4                CLR     A
+   \   0115  900000            MOV     DPTR,#receivedDTMF
+   \   0118  F0                MOVX    @DPTR,A
+    188                  KeyboardOn();
+   \   0119  120000            LCALL   $REFFN KeyboardOn
+    189                  lastKey = 0;
+   \   011C  E4                CLR     A
+   \   011D  900000            MOV     DPTR,#lastKey
+   \   0120  F0                MOVX    @DPTR,A
+    190           
+    191                  ET1 = 1;                                        //Möjliggör avbrott från timer 1
+   \   0121  D2AB              SETB    IE.3
+    192                  ADDATL = 0;                                     //Starta första AD-omvandlingen
+   \   0123  F5DA              MOV     218,A
+    193                  TR1 = 1;                                        //Starta timer 1
+   \   0125  900000            MOV     DPTR,#$LOCBX RecFile+8
+   \   0128  E0                MOVX    A,@DPTR
+   \   0129  FC                MOV     R4,A
+   \   012A  900000            MOV     DPTR,#$LOCBX RecFile+4
+   \   012D  E0                MOVX    A,@DPTR
+   \   012E  FD                MOV     R5,A
+   \   012F  900000            MOV     DPTR,#$LOCBX RecFile+3
+   \   0132  E0                MOVX    A,@DPTR
+   \   0133  FE                MOV     R6,A
+   \   0134  A3                INC     DPTR
+   \   0135  A3                INC     DPTR
+   \   0136  E0                MOVX    A,@DPTR
+   \   0137  FF                MOV     R7,A
+   \   0138  D28E              SETB    TCON.6
+   \   013A            ?0004:
+    194                  while (!wavAbort) {
+   \   013A  7806              MOV     R0,#wavAbort
+   \   013C  E6                MOV     A,@R0
+   \   013D  6003              JZ      $+5
+   \   013F  0201E3            LJMP    ?0003
+   \   0142            ?0005:
+    195                      WDT = 1;
+   \   0142  D2AE              SETB    IE.6
+    196                      SWDT = 1;
+   \   0144  D2BE              SETB    IP.6
+    197                      if (nextRead != nextWrite) {
+   \   0146  7803              MOV     R0,#nextRead
+   \   0148  E6                MOV     A,@R0
+   \   0149  FB                MOV     R3,A
+   \   014A  08                INC     R0
+   \   014B  E6                MOV     A,@R0
+   \   014C  7802              MOV     R0,#nextWrite+1
+   \   014E  66                XRL     A,@R0
+   \   014F  7008              JNZ     ?0118
+   \   0151  EB                MOV     A,R3
+   \   0152  18                DEC     R0
+   \   0153  66                XRL     A,@R0
+   \   0154  7003              JNZ     $+5
+   \   0156  0201E0            LJMP    ?0007
+   \   0159            ?0118:
+   \   0159            ?0006:
+    198                          v = *(nextRead++);                      //= WAVBuffer[dataFieldCounter++];
+   \   0159  7803              MOV     R0,#nextRead
+   \   015B  8683              MOV     DPH,@R0
+   \   015D  08                INC     R0
+   \   015E  8682              MOV     DPL,@R0
+   \   0160  06                INC     @R0
+   \   0161  E6                MOV     A,@R0
+   \   0162  18                DEC     R0
+   \   0163  7001              JNZ     ?0119
+   \   0165  06                INC     @R0
+   \   0166            ?0119:
+   \   0166  E0                MOVX    A,@DPTR
+   \   0167  FC                MOV     R4,A
+    199                          FLASH = v;
+   \   0168  90B000            MOV     DPTR,#45056
+   \   016B  F0                MOVX    @DPTR,A
+    200                          if (nextRead == (WAVBuffer + WAVBUFSIZE)) {
+   \   016C  7400              MOV     A,#LOW(WAVBuffer+512)
+   \   016E  7B02              MOV     R3,#HIGH(WAVBuffer+512)
+   \   0170  08                INC     R0
+   \   0171  66                XRL     A,@R0
+   \   0172  7003              JNZ     ?0120
+   \   0174  EB                MOV     A,R3
+   \   0175  18                DEC     R0
+   \   0176  66                XRL     A,@R0
+   \   0177            ?0120:
+   \   0177  7067              JNZ     ?0009
+   \   0179            ?0008:
+    201                              nextRead = WAVBuffer;
+   \   0179  7803              MOV     R0,#nextRead
+   \   017B  7600              MOV     @R0,#HIGH(WAVBuffer)
+   \   017D  08                INC     R0
+   \   017E  7600              MOV     @R0,#LOW(WAVBuffer)
+    202                              CLE = 1;                                        //Sätter minnet i kommandomod
+   \   0180  D2E8              SETB    232.0
+    203                              FLASH = 0x10;                                   //Startar programmering av FLASH-celler. Tar ca 250 us enl. datablad.
+   \   0182  7410              MOV     A,#16
+   \   0184  F0                MOVX    @DPTR,A
+    204          //Här finns tid att göra mer!!!
+    205                              if (!(++pageStart0)) ++pageStart1;
+   \   0185  ED                MOV     A,R5
+   \   0186  04                INC     A
+   \   0187  FD                MOV     R5,A
+   \   0188  7001              JNZ     ?0011
+   \   018A            ?0010:
+   \   018A  0F                INC     R7
+   \   018B            ?0011:
+    206                              if (pageStart1 == 32) {                         //pageStart == 8192
+   \   018B  EF                MOV     A,R7
+   \   018C  B4200A            CJNE    A,#32,?0013
+   \   018F            ?0012:
+    207                                  pageStart1 = 0;                             //pageStart0 är redan 0-ställd
+    208                                  device++;
+   \   018F  0E                INC     R6
+    209                                  FREG = device + 0x08;                       //Väljer rätt FLASH-chip och sätter dess CE till 0
+   \   0190  EE                MOV     A,R6
+   \   0191  2408              ADD     A,#8
+   \   0193  90E000            MOV     DPTR,#57344
+   \   0196  F0                MOVX    @DPTR,A
+   \   0197  7F00              MOV     R7,#0
+   \   0199            ?0013:
+    210                              }
+    211                              if (device > 2) wavAbort = 1;
+   \   0199  EE                MOV     A,R6
+   \   019A  24FD              ADD     A,#253
+   \   019C  5004              JNC     ?0015
+   \   019E            ?0014:
+   \   019E  7806              MOV     R0,#wavAbort
+   \   01A0  7601              MOV     @R0,#1
+   \   01A2            ?0015:
+    212                              if (S1CON & 0x01) wavAbort = 1;
+   \   01A2  E59B              MOV     A,155
+   \   01A4  30E004            JNB     ACC.0,?0017
+   \   01A7            ?0016:
+   \   01A7  7806              MOV     R0,#wavAbort
+   \   01A9  7601              MOV     @R0,#1
+   \   01AB            ?0017:
+    213                              if (terminateAnswer) wavAbort = 1;
+   \   01AB  900000            MOV     DPTR,#terminateAnswer
+   \   01AE  E0                MOVX    A,@DPTR
+   \   01AF  6004              JZ      ?0019
+   \   01B1            ?0018:
+   \   01B1  7806              MOV     R0,#wavAbort
+   \   01B3  7601              MOV     @R0,#1
+   \   01B5            ?0019:
+    214                              if (receivedDTMF) wavAbort = 1;
+   \   01B5  900000            MOV     DPTR,#receivedDTMF
+   \   01B8  E0                MOVX    A,@DPTR
+   \   01B9  6004              JZ      ?0021
+   \   01BB            ?0020:
+   \   01BB  7806              MOV     R0,#wavAbort
+   \   01BD  7601              MOV     @R0,#1
+   \   01BF            ?0021:
+    215                              if (lastKey) wavAbort = 1;
+   \   01BF  900000            MOV     DPTR,#lastKey
+   \   01C2  E0                MOVX    A,@DPTR
+   \   01C3  6004              JZ      ?0023
+   \   01C5            ?0022:
+   \   01C5  7806              MOV     R0,#wavAbort
+   \   01C7  7601              MOV     @R0,#1
+   \   01C9            ?0023:
+   \   01C9            ?0025:
+    216          //Till hit!!!!!!
+    217                              while (!FBUSY);
+   \   01C9  20ED02            JB      232.5,?0024
+   \   01CC            ?0026:
+   \   01CC  80FB              SJMP    ?0025
+   \   01CE            ?0024:
+    218           
+    219                              FLASH = 0x80;                                       //Sätter minnet i programmeringsmod
+   \   01CE  7480              MOV     A,#128
+   \   01D0  90B000            MOV     DPTR,#45056
+   \   01D3  F0                MOVX    @DPTR,A
+    220          
+    221                              CLE = 0;                                            //Sätter minnet i adresseringsmod
+   \   01D4  C2E8              CLR     232.0
+    222                              ALE = 1;
+   \   01D6  D2E9              SETB    232.1
+    223              
+    224                              FLASH = 0x00;                                       //Börjar alltid i början på en page
+   \   01D8  E4                CLR     A
+   \   01D9  F0                MOVX    @DPTR,A
+    225                              FLASH = pageStart0;                                 // A9 - A16
+   \   01DA  ED                MOV     A,R5
+   \   01DB  F0                MOVX    @DPTR,A
+    226                              FLASH = pageStart1;                                 //A17 - A21
+   \   01DC  EF                MOV     A,R7
+   \   01DD  F0                MOVX    @DPTR,A
+    227                      
+    228                              ALE = 0;                                            //Sätter minnet i datamod
+   \   01DE  C2E9              CLR     232.1
+   \   01E0            ?0009:
+   \   01E0            ?0007:
+   \   01E0  02013A            LJMP    ?0004
+   \   01E3            ?0003:
+   \   01E3  EC                MOV     A,R4
+   \   01E4  900000            MOV     DPTR,#$LOCBX RecFile+8
+   \   01E7  F0                MOVX    @DPTR,A
+   \   01E8  ED                MOV     A,R5
+   \   01E9  900000            MOV     DPTR,#$LOCBX RecFile+4
+   \   01EC  F0                MOVX    @DPTR,A
+   \   01ED  EE                MOV     A,R6
+   \   01EE  900000            MOV     DPTR,#$LOCBX RecFile+3
+   \   01F1  F0                MOVX    @DPTR,A
+   \   01F2  EF                MOV     A,R7
+   \   01F3  A3                INC     DPTR
+   \   01F4  A3                INC     DPTR
+   \   01F5  F0                MOVX    @DPTR,A
+    229                          }
+    230                      }
+    231                  }
+    232                  TR1 = 0;
+   \   01F6  C28E              CLR     TCON.6
+    233                  ET1 = 0;
+   \   01F8  C2AB              CLR     IE.3
+    234                  wavState = WS_NO_OP;
+   \   01FA  7800              MOV     R0,#wavState
+   \   01FC  7600              MOV     @R0,#0
+    235                  pageStart = (pageStart1 * 256) +  pageStart0;
+   \   01FE  FC                MOV     R4,A
+   \   01FF  FE                MOV     R6,A
+   \   0200  ED                MOV     A,R5
+   \   0201  CE                XCH     A,R6
+   \   0202  FB                MOV     R3,A
+   \   0203  CE                XCH     A,R6
+   \   0204  A3                INC     DPTR
+   \   0205  CB                XCH     A,R3
+   \   0206  F0                MOVX    @DPTR,A
+   \   0207  A3                INC     DPTR
+   \   0208  CB                XCH     A,R3
+   \   0209  F0                MOVX    @DPTR,A
+    236          
+    237                  l_ps0 = pageStart0;
+   \   020A  ED                MOV     A,R5
+   \   020B  F8                MOV     R0,A
+   \   020C  E4                CLR     A
+   \   020D  F9                MOV     R1,A
+   \   020E  FA                MOV     R2,A
+   \   020F  FB                MOV     R3,A
+    238                  l_ps1 = pageStart1;
+   \   0210  FD                MOV     R5,A
+   \   0211  FE                MOV     R6,A
+   \   0212  FF                MOV     R7,A
+    239          
+    240          //        longPage = (pageStart * 0x200) & 0x1FFFE00;
+    241                  longPage = (l_ps1 * 0x20000);// & 0x1FE0000;
+   \   0213  900000            MOV     DPTR,#$LOCBX RecFile+17
+   \   0216  120000            LCALL   ?STO_R0123_DPTR_L20
+   \   0219  A3                INC     DPTR
+   \   021A  120000            LCALL   ?STO_R4567_DPTR_L20
+   \   021D  7811              MOV     R0,#17
+   \   021F  120000            LCALL   ?L_SHL_L01
+   \   0222  900000            MOV     DPTR,#$LOCBX RecFile+13
+   \   0225  120000            LCALL   ?STO_R4567_DPTR_L20
+    242                  longPage += (l_ps0 * 0x200);// & 0x1FE00;                    //= pageStart * 512
+   \   0228  A3                INC     DPTR
+   \   0229  120000            LCALL   ?LD_R4567_XDPTR_L20
+   \   022C  7809              MOV     R0,#9
+   \   022E  120000            LCALL   ?L_SHL_L01
+   \   0231  900000            MOV     DPTR,#$LOCBX RecFile+13
+   \   0234  120000            LCALL   ?L_ADD_ASG_DPTR_R4567_L01
+    243          
+    244          /* 
+    245          ////////////////////////////////////////////////////////
+    246          //Debug area
+    247                  l = (fptr->startAddress >> 16) & 0xFFFF;
+    248                  sprintf(msg, "Start: 0x%04X", l);
+    249                  SendStringRS232(msg);
+    250                  l = fptr->startAddress & 0xFFFF;
+    251                  sprintf(msg, "%04X", l);
+    252                  SendStringEOLRS232(msg);
+    253                  
+    254                  l = device;
+    255                  sprintf(msg, "device: %02X", l);
+    256                  SendStringEOLRS232(msg);
+    257                  
+    258                  l = pageStart0;
+    259                  sprintf(msg, "pageStart0: %02X", l);
+    260                  SendStringEOLRS232(msg);
+    261          
+    262                  l = pageStart1;
+    263                  sprintf(msg, "pageStart1: %02X", l);
+    264                  SendStringEOLRS232(msg);
+    265          
+    266                  l = pageStart;
+    267                  sprintf(msg, "pageStart: %04X", l);
+    268                  SendStringEOLRS232(msg);
+    269          
+    270                  l = (l_ps0 >> 16) & 0xFFFF;
+    271                  sprintf(msg, "l_ps0: 0x%04X", l);
+    272                  SendStringRS232(msg);
+    273                  l = l_ps0 & 0xFFFF;
+    274                  sprintf(msg, "%04X", l);
+    275                  SendStringEOLRS232(msg);
+    276                  
+    277                  l = (l_ps1 >> 16) & 0xFFFF;
+    278                  sprintf(msg, "longPage: 0x%04X", l);
+    279                  SendStringRS232(msg);
+    280                  l = l_ps1 & 0xFFFF;
+    281                  sprintf(msg, "%04X", l);
+    282                  SendStringEOLRS232(msg);
+    283                  
+    284                  l = (longPage >> 16) & 0xFFFF;
+    285                  sprintf(msg, "longPage: 0x%04X", l);
+    286                  SendStringRS232(msg);
+    287                  l = longPage & 0xFFFF;
+    288                  sprintf(msg, "%04X", l);
+    289                  SendStringEOLRS232(msg);
+    290                  
+    291                  l = ((int)(nextRead - WAVBuffer)) & 0xFFFF;
+    292                  sprintf(msg, "nextRead-WAVBuf: %04X", l);
+    293                  SendStringEOLRS232(msg);
+    294                  
+    295          */         
+    296                  tmpLen = device * 0x400000;
+   \   0237  900000            MOV     DPTR,#$LOCBX RecFile+3
+   \   023A  E0                MOVX    A,@DPTR
+   \   023B  FC                MOV     R4,A
+   \   023C  E4                CLR     A
+   \   023D  FD                MOV     R5,A
+   \   023E  FE                MOV     R6,A
+   \   023F  FF                MOV     R7,A
+   \   0240  7816              MOV     R0,#22
+   \   0242  120000            LCALL   ?L_SHL_L01
+   \   0245  900000            MOV     DPTR,#$LOCBX RecFile+9
+   \   0248  120000            LCALL   ?STO_R4567_DPTR_L20
+    297          /*        
+    298                  l = (tmpLen >> 16) & 0xFFFF;
+    299                  sprintf(msg, "tmpLen0: 0x%04X", l);
+    300                  SendStringRS232(msg);
+    301                  l = tmpLen & 0xFFFF;
+    302                  sprintf(msg, "%04X", l);
+    303                  SendStringEOLRS232(msg);
+    304          */        
+    305                  tmpLen += longPage;
+   \   024B  A3                INC     DPTR
+   \   024C  120000            LCALL   ?LD_R4567_XDPTR_L20
+   \   024F  900000            MOV     DPTR,#$LOCBX RecFile+9
+   \   0252  120000            LCALL   ?L_ADD_ASG_DPTR_R4567_L01
+    306          /*        
+    307                  l = (tmpLen >> 16) & 0xFFFF;
+    308                  sprintf(msg, "tmpLen1: 0x%04X", l);
+    309                  SendStringRS232(msg);
+    310                  l = tmpLen & 0xFFFF;
+    311                  sprintf(msg, "%04X", l);
+    312                  SendStringEOLRS232(msg);
+    313          */        
+    314                  tmpLen += ((int)(nextRead - WAVBuffer));
+   \   0255  C3                CLR     C
+   \   0256  7804              MOV     R0,#nextRead+1
+   \   0258  E6                MOV     A,@R0
+   \   0259  9400              SUBB    A,#LOW(WAVBuffer)
+   \   025B  FC                MOV     R4,A
+   \   025C  18                DEC     R0
+   \   025D  E6                MOV     A,@R0
+   \   025E  9400              SUBB    A,#HIGH(WAVBuffer)
+   \   0260  FD                MOV     R5,A
+   \   0261  33                RLC     A
+   \   0262  95E0              SUBB    A,ACC
+   \   0264  FE                MOV     R6,A
+   \   0265  FF                MOV     R7,A
+   \   0266  900000            MOV     DPTR,#$LOCBX RecFile+9
+   \   0269  120000            LCALL   ?L_ADD_ASG_DPTR_R4567_L01
+    315          /*        
+    316                  l = (tmpLen >> 16) & 0xFFFF;
+    317                  sprintf(msg, "tmpLen2: 0x%04X", l);
+    318                  SendStringRS232(msg);
+    319                  l = tmpLen & 0xFFFF;
+    320                  sprintf(msg, "%04X", l);
+    321                  SendStringEOLRS232(msg);
+    322          */        
+    323                  tmpLen -= fptr->startAddress;
+   \   026C  900000            MOV     DPTR,#$LOCBX RecFile
+   \   026F  E0                MOVX    A,@DPTR
+   \   0270  FF                MOV     R7,A
+   \   0271  A3                INC     DPTR
+   \   0272  E0                MOVX    A,@DPTR
+   \   0273  FE                MOV     R6,A
+   \   0274  A3                INC     DPTR
+   \   0275  E0                MOVX    A,@DPTR
+   \   0276  FD                MOV     R5,A
+   \   0277  90000D            MOV     DPTR,#13
+   \   027A  120000            LCALL   ?LD_R0123_R567_DISP_L17
+   \   027D  900000            MOV     DPTR,#$LOCBX RecFile+9
+   \   0280  120000            LCALL   ?L_SUB_ASG_DPTR_R0123_L01
+    324          /*
+    325                  l = (tmpLen >> 16) & 0xFFFF;
+    326                  sprintf(msg, "tmpLen3: 0x%04X", l);
+    327                  SendStringRS232(msg);
+    328                  l = tmpLen & 0xFFFF;
+    329                  sprintf(msg, "%04X", l);
+    330                  SendStringEOLRS232(msg);
+    331          */
+    332                  fptr->length = tmpLen;
+   \   0283  900011            MOV     DPTR,#17
+   \   0286  120000            LCALL   ?ST_R0123_R567_DISP_L17
+    333          
+    334          /*
+    335                  l = (fptr->length >> 16) & 0xFFFF;
+    336                  sprintf(msg, "Length: 0x%04X", l);
+    337                  SendStringRS232(msg);
+    338                  l = fptr->length & 0xFFFF;
+    339                  sprintf(msg, "%04X", l);
+    340                  SendStringEOLRS232(msg);
+    341          */
+    342          ////////////////////////////////////////////////////////
+    343           
+    344                  fclose(fptr);
+   \   0289  120000            LCALL   $REFFN fclose
+    345                  S1CON &= ~(1);                                   //Nollar mottagnings-interrupt-flagga          
+   \   028C  539BFE            ANL     155,#254
+   \   028F            ?0002:
+    346          //        KeyboardOff();
+    347              }
+    348          }
+   \   028F  900000            MOV     DPTR,#$LOCBX RecFile+25
+   \   0292  E0                MOVX    A,@DPTR
+   \   0293  F8                MOV     R0,A
+   \   0294  A3                INC     DPTR
+   \   0295  E0                MOVX    A,@DPTR
+   \   0296  C0E0              PUSH    ACC
+   \   0298  E8                MOV     A,R0
+   \   0299  C0E0              PUSH    ACC
+   \   029B  22                RET
+    349          
+    350          
+    351          
+    352          void    PlayFile(const char* fileName)
+    353          {
+   \   029C            PlayFile:
+   \   029C  900000            MOV     DPTR,#$LOCBX PlayFile+3
+   \   029F  D0E0              POP     ACC
+   \   02A1  F0                MOVX    @DPTR,A
+   \   02A2  A3                INC     DPTR
+   \   02A3  D0E0              POP     ACC
+   \   02A5  F0                MOVX    @DPTR,A
+    354              xdata FILE*       fptr;
+    355          
+    356              fptr = fopen(fileName, "r");
+   \   02A6  A3                INC     DPTR
+   \   02A7  EF                MOV     A,R7
+   \   02A8  F0                MOVX    @DPTR,A
+   \   02A9  A3                INC     DPTR
+   \   02AA  EE                MOV     A,R6
+   \   02AB  F0                MOVX    @DPTR,A
+   \   02AC  A3                INC     DPTR
+   \   02AD  ED                MOV     A,R5
+   \   02AE  F0                MOVX    @DPTR,A
+   \   02AF  7402              MOV     A,#2
+   \   02B1  900000            MOV     DPTR,#$PRMBX fopen+3
+   \   02B4  F0                MOVX    @DPTR,A
+   \   02B5  A3                INC     DPTR
+   \   02B6  7400              MOV     A,#HIGH(?0027)
+   \   02B8  F0                MOVX    @DPTR,A
+   \   02B9  A3                INC     DPTR
+   \   02BA  7402              MOV     A,#LOW(?0027)
+   \   02BC  F0                MOVX    @DPTR,A
+   \   02BD  120000            LCALL   $REFFN fopen
+    357              
+    358          //    SendStringRS232("Playing file: ");
+    359           
+    360              
+    361              if (fptr) {
+   \   02C0  900000            MOV     DPTR,#$LOCBX PlayFile
+   \   02C3  EF                MOV     A,R7
+   \   02C4  F0                MOVX    @DPTR,A
+   \   02C5  A3                INC     DPTR
+   \   02C6  EE                MOV     A,R6
+   \   02C7  F0                MOVX    @DPTR,A
+   \   02C8  A3                INC     DPTR
+   \   02C9  ED                MOV     A,R5
+   \   02CA  F0                MOVX    @DPTR,A
+   \   02CB  4E                ORL     A,R6
+   \   02CC  7003              JNZ     $+5
+   \   02CE  020491            LJMP    ?0029
+   \   02D1            ?0028:
+    362          
+    363          //        SendStringEOLRS232(fileName);
+    364          
+    365                  wavState = WS_PLAY;
+   \   02D1  7800              MOV     R0,#wavState
+   \   02D3  7602              MOV     @R0,#2
+    366                  wavAbort = 0; 
+   \   02D5  7806              MOV     R0,#wavAbort
+   \   02D7  7600              MOV     @R0,#0
+    367                  daComp0 = (fptr->length + fptr->startAddress) & 0xFF;
+   \   02D9  90000D            MOV     DPTR,#13
+   \   02DC  120000            LCALL   ?LD_R0123_R567_DISP_L17
+   \   02DF  E8                MOV     A,R0
+   \   02E0  C0E0              PUSH    ACC
+   \   02E2  900011            MOV     DPTR,#17
+   \   02E5  120000            LCALL   ?LD_R0123_R567_DISP_L17
+   \   02E8  D0E0              POP     ACC
+   \   02EA  28                ADD     A,R0
+   \   02EB  780B              MOV     R0,#daComp0
+   \   02ED  F6                MOV     @R0,A
+    368                  daComp1 = ((fptr->length + fptr->startAddress) >> 8) & 0xFF;
+   \   02EE  90000D            MOV     DPTR,#13
+   \   02F1  120000            LCALL   ?LD_R0123_R567_DISP_L17
+   \   02F4  EB                MOV     A,R3
+   \   02F5  C0E0              PUSH    ACC
+   \   02F7  EA                MOV     A,R2
+   \   02F8  C0E0              PUSH    ACC
+   \   02FA  E9                MOV     A,R1
+   \   02FB  C0E0              PUSH    ACC
+   \   02FD  E8                MOV     A,R0
+   \   02FE  C0E0              PUSH    ACC
+   \   0300  900011            MOV     DPTR,#17
+   \   0303  120000            LCALL   ?LD_R0123_R567_DISP_L17
+   \   0306  D0E0              POP     ACC
+   \   0308  FC                MOV     R4,A
+   \   0309  D0E0              POP     ACC
+   \   030B  FD                MOV     R5,A
+   \   030C  D0E0              POP     ACC
+   \   030E  FE                MOV     R6,A
+   \   030F  D0E0              POP     ACC
+   \   0311  FF                MOV     R7,A
+   \   0312  120000            LCALL   ?L_ADD_L01
+   \   0315  ED                MOV     A,R5
+   \   0316  780C              MOV     R0,#daComp1
+   \   0318  F6                MOV     @R0,A
+    369                  daComp2 = ((fptr->length + fptr->startAddress) >> 16) & 0xFF;
+   \   0319  900000            MOV     DPTR,#$LOCBX PlayFile
+   \   031C  E0                MOVX    A,@DPTR
+   \   031D  FF                MOV     R7,A
+   \   031E  A3                INC     DPTR
+   \   031F  E0                MOVX    A,@DPTR
+   \   0320  FE                MOV     R6,A
+   \   0321  A3                INC     DPTR
+   \   0322  E0                MOVX    A,@DPTR
+   \   0323  FD                MOV     R5,A
+   \   0324  90000D            MOV     DPTR,#13
+   \   0327  120000            LCALL   ?LD_R0123_R567_DISP_L17
+   \   032A  EB                MOV     A,R3
+   \   032B  C0E0              PUSH    ACC
+   \   032D  EA                MOV     A,R2
+   \   032E  C0E0              PUSH    ACC
+   \   0330  E9                MOV     A,R1
+   \   0331  C0E0              PUSH    ACC
+   \   0333  E8                MOV     A,R0
+   \   0334  C0E0              PUSH    ACC
+   \   0336  900011            MOV     DPTR,#17
+   \   0339  120000            LCALL   ?LD_R0123_R567_DISP_L17
+   \   033C  D0E0              POP     ACC
+   \   033E  FC                MOV     R4,A
+   \   033F  D0E0              POP     ACC
+   \   0341  FD                MOV     R5,A
+   \   0342  D0E0              POP     ACC
+   \   0344  FE                MOV     R6,A
+   \   0345  D0E0              POP     ACC
+   \   0347  FF                MOV     R7,A
+   \   0348  120000            LCALL   ?L_ADD_L01
+   \   034B  EE                MOV     A,R6
+   \   034C  780D              MOV     R0,#daComp2
+   \   034E  F6                MOV     @R0,A
+    370                  daCount0 = fptr->startAddress & 0xFF;
+   \   034F  900000            MOV     DPTR,#$LOCBX PlayFile
+   \   0352  E0                MOVX    A,@DPTR
+   \   0353  FF                MOV     R7,A
+   \   0354  A3                INC     DPTR
+   \   0355  E0                MOVX    A,@DPTR
+   \   0356  FE                MOV     R6,A
+   \   0357  A3                INC     DPTR
+   \   0358  E0                MOVX    A,@DPTR
+   \   0359  FD                MOV     R5,A
+   \   035A  90000D            MOV     DPTR,#13
+   \   035D  120000            LCALL   ?LD_R0123_R567_DISP_L17
+   \   0360  7907              MOV     R1,#daCount0
+   \   0362  E8                MOV     A,R0
+   \   0363  F7                MOV     @R1,A
+    371                  daCount1 = (fptr->startAddress >> 8) & 0xFF;
+   \   0364  90000D            MOV     DPTR,#13
+   \   0367  120000            LCALL   ?LD_R0123_R567_DISP_L17
+   \   036A  E9                MOV     A,R1
+   \   036B  7808              MOV     R0,#daCount1
+   \   036D  F6                MOV     @R0,A
+    372                  daCount2 = (fptr->startAddress >> 16) & 0xFF;
+   \   036E  90000D            MOV     DPTR,#13
+   \   0371  120000            LCALL   ?LD_R0123_R567_DISP_L17
+   \   0374  EA                MOV     A,R2
+   \   0375  7809              MOV     R0,#daCount2
+   \   0377  F6                MOV     @R0,A
+    373                  sample = 128;
+   \   0378  7805              MOV     R0,#sample
+   \   037A  7680              MOV     @R0,#128
+    374                  S1CON &= ~(1);                                  //Nollar RS232 mottagnings-interrupt-flagga
+   \   037C  539BFE            ANL     155,#254
+    375          //        receivedDTMF = 0;
+    376                  KeyboardOn();
+   \   037F  120000            LCALL   $REFFN KeyboardOn
+    377                  lastKey = 0;
+   \   0382  E4                CLR     A
+   \   0383  900000            MOV     DPTR,#lastKey
+   \   0386  F0                MOVX    @DPTR,A
+    378                  ET1 = 1;                                        //Möjliggör avbrott från timer 1
+   \   0387  D2AB              SETB    IE.3
+    379                  ADDATL = 0;                                     //Starta första AD-omvandlingen
+   \   0389  F5DA              MOV     218,A
+    380                  TR1 = 1;                                        //Starta timer 1
+   \   038B  D28E              SETB    TCON.6
+   \   038D            ?0031:
+    381                  while (!wavAbort) {
+   \   038D  7806              MOV     R0,#wavAbort
+   \   038F  E6                MOV     A,@R0
+   \   0390  7056              JNZ     ?0030
+   \   0392            ?0032:
+    382                      WDT = 1;
+   \   0392  D2AE              SETB    IE.6
+    383                      SWDT = 1;
+   \   0394  D2BE              SETB    IP.6
+    384                      if (daCount2 == 128) wavAbort = 1;             //Slutet på FLASH-minnet
+   \   0396  7809              MOV     R0,#daCount2
+   \   0398  E6                MOV     A,@R0
+   \   0399  B48004            CJNE    A,#128,?0034
+   \   039C            ?0033:
+   \   039C  7806              MOV     R0,#wavAbort
+   \   039E  7601              MOV     @R0,#1
+   \   03A0            ?0034:
+    385                      if (S1CON & 0x01) wavAbort = 1;
+   \   03A0  E59B              MOV     A,155
+   \   03A2  30E004            JNB     ACC.0,?0036
+   \   03A5            ?0035:
+   \   03A5  7806              MOV     R0,#wavAbort
+   \   03A7  7601              MOV     @R0,#1
+   \   03A9            ?0036:
+    386                      if (terminateAnswer) wavAbort = 1;
+   \   03A9  900000            MOV     DPTR,#terminateAnswer
+   \   03AC  E0                MOVX    A,@DPTR
+   \   03AD  6004              JZ      ?0038
+   \   03AF            ?0037:
+   \   03AF  7806              MOV     R0,#wavAbort
+   \   03B1  7601              MOV     @R0,#1
+   \   03B3            ?0038:
+    387                      if (receivedDTMF) wavAbort = 1;
+   \   03B3  900000            MOV     DPTR,#receivedDTMF
+   \   03B6  E0                MOVX    A,@DPTR
+   \   03B7  6004              JZ      ?0040
+   \   03B9            ?0039:
+   \   03B9  7806              MOV     R0,#wavAbort
+   \   03BB  7601              MOV     @R0,#1
+   \   03BD            ?0040:
+    388                      if (lastKey) wavAbort = 1;
+   \   03BD  900000            MOV     DPTR,#lastKey
+   \   03C0  E0                MOVX    A,@DPTR
+   \   03C1  6004              JZ      ?0042
+   \   03C3            ?0041:
+   \   03C3  7806              MOV     R0,#wavAbort
+   \   03C5  7601              MOV     @R0,#1
+   \   03C7            ?0042:
+    389                      if ((daComp2 <= daCount2) && (daComp1 <= daCount1) && (daComp0 <= daCount0)) wavAbort = 1;
+   \   03C7  780D              MOV     R0,#daComp2
+   \   03C9  E6                MOV     A,@R0
+   \   03CA  D3                SETB    C
+   \   03CB  7809              MOV     R0,#daCount2
+   \   03CD  96                SUBB    A,@R0
+   \   03CE  5016              JNC     ?0044
+   \   03D0  780C              MOV     R0,#daComp1
+   \   03D2  E6                MOV     A,@R0
+   \   03D3  D3                SETB    C
+   \   03D4  7808              MOV     R0,#daCount1
+   \   03D6  96                SUBB    A,@R0
+   \   03D7  500D              JNC     ?0044
+   \   03D9  780B              MOV     R0,#daComp0
+   \   03DB  E6                MOV     A,@R0
+   \   03DC  D3                SETB    C
+   \   03DD  7807              MOV     R0,#daCount0
+   \   03DF  96                SUBB    A,@R0
+   \   03E0  5004              JNC     ?0044
+   \   03E2            ?0046:
+   \   03E2            ?0045:
+   \   03E2            ?0043:
+   \   03E2  7806              MOV     R0,#wavAbort
+   \   03E4  7601              MOV     @R0,#1
+   \   03E6            ?0044:
+   \   03E6  80A5              SJMP    ?0031
+   \   03E8            ?0030:
+    390                  }
+    391                  TR1 = 0;
+   \   03E8  C28E              CLR     TCON.6
+    392                  ET1 = 0;
+   \   03EA  C2AB              CLR     IE.3
+    393                  wavState = WS_NO_OP;
+   \   03EC  7800              MOV     R0,#wavState
+   \   03EE  7600              MOV     @R0,#0
+    394          
+    395                  fclose(fptr);
+   \   03F0  900000            MOV     DPTR,#$LOCBX PlayFile
+   \   03F3  E0                MOVX    A,@DPTR
+   \   03F4  FF                MOV     R7,A
+   \   03F5  A3                INC     DPTR
+   \   03F6  E0                MOVX    A,@DPTR
+   \   03F7  FE                MOV     R6,A
+   \   03F8  A3                INC     DPTR
+   \   03F9  E0                MOVX    A,@DPTR
+   \   03FA  FD                MOV     R5,A
+   \   03FB  120000            LCALL   $REFFN fclose
+    396                  S1CON &= ~(1);                                   //Nollar mottagnings-interrupt-flagga          
+   \   03FE  539BFE            ANL     155,#254
+    397          
+    398          //        KeyboardOff();
+    399          
+    400          #ifdef __WAW_DEBUG__
+    401                          if (wavAbort) {
+   \   0401  7806              MOV     R0,#wavAbort
+   \   0403  E6                MOV     A,@R0
+   \   0404  7003              JNZ     $+5
+   \   0406  020491            LJMP    ?0048
+   \   0409            ?0047:
+    402                                  SendStringRS232("Aborted because: ");
+   \   0409  7D04              MOV     R5,#LOW(?0049)
+   \   040B  7E00              MOV     R6,#HIGH(?0049)
+   \   040D  7F02              MOV     R7,#2
+   \   040F  120000            LCALL   $REFFN SendStringRS232
+    403                                  if (receivedDTMF) SendStringEOLRS232("DTMF");
+   \   0412  900000            MOV     DPTR,#receivedDTMF
+   \   0415  E0                MOVX    A,@DPTR
+   \   0416  600B              JZ      ?0051
+   \   0418            ?0050:
+   \   0418  7D16              MOV     R5,#LOW(?0052)
+   \   041A  7E00              MOV     R6,#HIGH(?0052)
+   \   041C  7F02              MOV     R7,#2
+   \   041E  120000            LCALL   $REFFN SendStringEOLRS232
+   \   0421  806E              SJMP    ?0053
+   \   0423            ?0051:
+    404                                  else if (lastKey) SendStringEOLRS232("Key pressed");
+   \   0423  900000            MOV     DPTR,#lastKey
+   \   0426  E0                MOVX    A,@DPTR
+   \   0427  600B              JZ      ?0055
+   \   0429            ?0054:
+   \   0429  7D1B              MOV     R5,#LOW(?0056)
+   \   042B  7E00              MOV     R6,#HIGH(?0056)
+   \   042D  7F02              MOV     R7,#2
+   \   042F  120000            LCALL   $REFFN SendStringEOLRS232
+   \   0432  805D              SJMP    ?0057
+   \   0434            ?0055:
+    405                                  else if (daCount2 == 128) SendStringEOLRS232("Out of memory");
+   \   0434  7809              MOV     R0,#daCount2
+   \   0436  E6                MOV     A,@R0
+   \   0437  B4800B            CJNE    A,#128,?0059
+   \   043A            ?0058:
+   \   043A  7D27              MOV     R5,#LOW(?0060)
+   \   043C  7E00              MOV     R6,#HIGH(?0060)
+   \   043E  7F02              MOV     R7,#2
+   \   0440  120000            LCALL   $REFFN SendStringEOLRS232
+   \   0443  804C              SJMP    ?0061
+   \   0445            ?0059:
+    406                                  else if (S1CON & 0x01) SendStringEOLRS232("Received RS232");
+   \   0445  E59B              MOV     A,155
+   \   0447  30E00B            JNB     ACC.0,?0063
+   \   044A            ?0062:
+   \   044A  7D35              MOV     R5,#LOW(?0064)
+   \   044C  7E00              MOV     R6,#HIGH(?0064)
+   \   044E  7F02              MOV     R7,#2
+   \   0450  120000            LCALL   $REFFN SendStringEOLRS232
+   \   0453  803C              SJMP    ?0065
+   \   0455            ?0063:
+    407                                  else if (terminateAnswer) {
+   \   0455  900000            MOV     DPTR,#terminateAnswer
+   \   0458  E0                MOVX    A,@DPTR
+   \   0459  602D              JZ      ?0067
+   \   045B            ?0066:
+    408                                          if (callerHungUp) SendStringEOLRS232("Caller hung up");
+   \   045B  900000            MOV     DPTR,#callerHungUp
+   \   045E  E0                MOVX    A,@DPTR
+   \   045F  600B              JZ      ?0069
+   \   0461            ?0068:
+   \   0461  7D44              MOV     R5,#LOW(?0070)
+   \   0463  7E00              MOV     R6,#HIGH(?0070)
+   \   0465  7F02              MOV     R7,#2
+   \   0467  120000            LCALL   $REFFN SendStringEOLRS232
+   \   046A  801A              SJMP    ?0071
+   \   046C            ?0069:
+    409                                          else if (parallellPhoneDetected) SendStringEOLRS232("Parallell phone detected");
+   \   046C  900000            MOV     DPTR,#parallellPhoneDetected
+   \   046F  E0                MOVX    A,@DPTR
+   \   0470  600B              JZ      ?0073
+   \   0472            ?0072:
+   \   0472  7D53              MOV     R5,#LOW(?0074)
+   \   0474  7E00              MOV     R6,#HIGH(?0074)
+   \   0476  7F02              MOV     R7,#2
+   \   0478  120000            LCALL   $REFFN SendStringEOLRS232
+   \   047B  8009              SJMP    ?0075
+   \   047D            ?0073:
+    410                                          else SendStringEOLRS232("Terminated by unknown causes");
+   \   047D  7D6C              MOV     R5,#LOW(?0076)
+   \   047F  7E00              MOV     R6,#HIGH(?0076)
+   \   0481  7F02              MOV     R7,#2
+   \   0483  120000            LCALL   $REFFN SendStringEOLRS232
+   \   0486            ?0075:
+   \   0486            ?0071:
+   \   0486  8009              SJMP    ?0077
+   \   0488            ?0067:
+    411                                  } 
+    412                                  else SendStringEOLRS232("Other");
+   \   0488  7D89              MOV     R5,#LOW(?0078)
+   \   048A  7E00              MOV     R6,#HIGH(?0078)
+   \   048C  7F02              MOV     R7,#2
+   \   048E  120000            LCALL   $REFFN SendStringEOLRS232
+   \   0491            ?0077:
+   \   0491            ?0065:
+   \   0491            ?0061:
+   \   0491            ?0057:
+   \   0491            ?0053:
+   \   0491            ?0048:
+   \   0491            ?0029:
+    413                          }
+    414          #endif
+    415              }
+    416          }        
+   \   0491  900000            MOV     DPTR,#$LOCBX PlayFile+3
+   \   0494  E0                MOVX    A,@DPTR
+   \   0495  F8                MOV     R0,A
+   \   0496  A3                INC     DPTR
+   \   0497  E0                MOVX    A,@DPTR
+   \   0498  C0E0              PUSH    ACC
+   \   049A  E8                MOV     A,R0
+   \   049B  C0E0              PUSH    ACC
+   \   049D  22                RET
+    417          
+    418          
+    419          
+    420          void    EchoMic( void )
+    421          {
+   \   049E            EchoMic:
+   \   049E  900000            MOV     DPTR,#$LOCBX EchoMic
+   \   04A1  D0E0              POP     ACC
+   \   04A3  F0                MOVX    @DPTR,A
+   \   04A4  A3                INC     DPTR
+   \   04A5  D0E0              POP     ACC
+   \   04A7  F0                MOVX    @DPTR,A
+    422              SetupMic();
+   \   04A8  120000            LCALL   $REFFN SetupMic
+    423              Echo();
+    424          }
+   \   04AB  120000            LCALL   $REFFN Echo
+   \   04AE  900000            MOV     DPTR,#$LOCBX EchoMic
+   \   04B1  E0                MOVX    A,@DPTR
+   \   04B2  F8                MOV     R0,A
+   \   04B3  A3                INC     DPTR
+   \   04B4  E0                MOVX    A,@DPTR
+   \   04B5  C0E0              PUSH    ACC
+   \   04B7  E8                MOV     A,R0
+   \   04B8  C0E0              PUSH    ACC
+   \   04BA  22                RET
+    425          
+    426           
+    427          void    EchoPhone( void )
+    428          {
+   \   04BB            EchoPhone:
+   \   04BB  900000            MOV     DPTR,#$LOCBX EchoPhone
+   \   04BE  D0E0              POP     ACC
+   \   04C0  F0                MOVX    @DPTR,A
+   \   04C1  A3                INC     DPTR
+   \   04C2  D0E0              POP     ACC
+   \   04C4  F0                MOVX    @DPTR,A
+    429              SetupPhoneIn();
+   \   04C5  120000            LCALL   $REFFN SetupPhoneIn
+    430              Echo();
+    431          }
+   \   04C8  120000            LCALL   $REFFN Echo
+   \   04CB  900000            MOV     DPTR,#$LOCBX EchoPhone
+   \   04CE  E0                MOVX    A,@DPTR
+   \   04CF  F8                MOV     R0,A
+   \   04D0  A3                INC     DPTR
+   \   04D1  E0                MOVX    A,@DPTR
+   \   04D2  C0E0              PUSH    ACC
+   \   04D4  E8                MOV     A,R0
+   \   04D5  C0E0              PUSH    ACC
+   \   04D7  22                RET
+    432          
+    433          void    Echo( void )
+    434          {
+   \   04D8            Echo:
+    435              wavState = WS_ECHO;
+   \   04D8  7800              MOV     R0,#wavState
+   \   04DA  7603              MOV     @R0,#3
+    436              S1CON &= ~(1);                      //Nollar RS232 mottagnings-interrupt-flagga          
+   \   04DC  539BFE            ANL     155,#254
+    437              ET1 = 1;                            //Möjliggör avbrott från timer 1
+   \   04DF  D2AB              SETB    IE.3
+    438              ADDATL = 0;                         //Starta första AD-omvandlingen
+   \   04E1  75DA00            MOV     218,#0
+    439              TR1 = 1;                            //Starta timer 1
+   \   04E4  D28E              SETB    TCON.6
+   \   04E6            ?0080:
+    440              while (!(S1CON & 0x01)) {
+   \   04E6  E59B              MOV     A,155
+   \   04E8  20E006            JB      ACC.0,?0079
+   \   04EB            ?0081:
+    441                  WDT = 1;
+   \   04EB  D2AE              SETB    IE.6
+    442                  SWDT = 1;
+   \   04ED  D2BE              SETB    IP.6
+   \   04EF  80F5              SJMP    ?0080
+   \   04F1            ?0079:
+    443              }
+    444              TR1 = 0;
+   \   04F1  C28E              CLR     TCON.6
+    445              ET1 = 0;
+   \   04F3  C2AB              CLR     IE.3
+    446              wavState = WS_NO_OP;
+   \   04F5  7800              MOV     R0,#wavState
+   \   04F7  7600              MOV     @R0,#0
+    447              S1CON &= ~(1);                                   //Nollar mottagnings-interrupt-flagga          
+   \   04F9  539BFE            ANL     155,#254
+    448          }
+   \   04FC  22                RET
+    449          
+    450           
+    451          void    WavTone( void )
+    452          {
+   \   04FD            WavTone:
+    453              wavState = WS_TONE;
+   \   04FD  7800              MOV     R0,#wavState
+   \   04FF  7604              MOV     @R0,#4
+    454              sample = 128;
+   \   0501  7805              MOV     R0,#sample
+   \   0503  7680              MOV     @R0,#128
+    455              S1CON &= ~(1);                      //Nollar RS232 mottagnings-interrupt-flagga          
+   \   0505  539BFE            ANL     155,#254
+    456              ET1 = 1;                            //Möjliggör avbrott från timer 1
+   \   0508  D2AB              SETB    IE.3
+    457              ADDATL = 0;                         //Starta första AD-omvandlingen
+   \   050A  75DA00            MOV     218,#0
+    458              TR1 = 1;                            //Starta timer 1
+   \   050D  D28E              SETB    TCON.6
+   \   050F            ?0083:
+    459              while (!(S1CON & 0x01)) {
+   \   050F  E59B              MOV     A,155
+   \   0511  20E006            JB      ACC.0,?0082
+   \   0514            ?0084:
+    460                  WDT = 1;
+   \   0514  D2AE              SETB    IE.6
+    461                  SWDT = 1;
+   \   0516  D2BE              SETB    IP.6
+   \   0518  80F5              SJMP    ?0083
+   \   051A            ?0082:
+    462              }
+    463              TR1 = 0;
+   \   051A  C28E              CLR     TCON.6
+    464              ET1 = 0;
+   \   051C  C2AB              CLR     IE.3
+    465              wavState = WS_NO_OP;
+   \   051E  7800              MOV     R0,#wavState
+   \   0520  7600              MOV     @R0,#0
+    466              DAC0 = 128;
+   \   0522  7480              MOV     A,#128
+   \   0524  90A000            MOV     DPTR,#40960
+   \   0527  F0                MOVX    @DPTR,A
+    467              S1CON &= ~(1);                                   //Nollar mottagnings-interrupt-flagga          
+   \   0528  539BFE            ANL     155,#254
+    468          }
+   \   052B  22                RET
+    469          
+    470          
+    471          
+    472          
+    473          
+    474          interrupt [0x1B] void T1_int (void)
+    475          {
+   \   052C            T1_int:
+   \   052C  C0E0              PUSH    ACC
+   \   052E  C082              PUSH    DPL
+   \   0530  C083              PUSH    DPH
+   \   0532  C0D0              PUSH    PSW
+   \   0534  E8                MOV     A,R0
+   \   0535  C0E0              PUSH    ACC
+   \   0537  EC                MOV     A,R4
+   \   0538  C0E0              PUSH    ACC
+   \   053A  ED                MOV     A,R5
+   \   053B  C0E0              PUSH    ACC
+    476              char    v;
+    477          
+    478              if (wavState == WS_REC) {
+   \   053D  7800              MOV     R0,#wavState
+   \   053F  E6                MOV     A,@R0
+   \   0540  14                DEC     A
+   \   0541  7030              JNZ     ?0086
+   \   0543            ?0085:
+    479                  v = ADDATH;
+   \   0543  E5D9              MOV     A,217
+   \   0545  900000            MOV     DPTR,#$LOCBX T1_int
+   \   0548  F0                MOVX    @DPTR,A
+    480                  *(nextWrite++) = v;                         //WAVBuffer[nextWrite++] = v;
+   \   0549  E0                MOVX    A,@DPTR
+   \   054A  FC                MOV     R4,A
+   \   054B  7801              MOV     R0,#nextWrite
+   \   054D  8683              MOV     DPH,@R0
+   \   054F  08                INC     R0
+   \   0550  8682              MOV     DPL,@R0
+   \   0552  06                INC     @R0
+   \   0553  E6                MOV     A,@R0
+   \   0554  18                DEC     R0
+   \   0555  7001              JNZ     ?0121
+   \   0557  06                INC     @R0
+   \   0558            ?0121:
+   \   0558  EC                MOV     A,R4
+   \   0559  F0                MOVX    @DPTR,A
+    481                  if (nextWrite == (WAVBuffer + WAVBUFSIZE)) {
+   \   055A  7400              MOV     A,#LOW(WAVBuffer+512)
+   \   055C  7D02              MOV     R5,#HIGH(WAVBuffer+512)
+   \   055E  08                INC     R0
+   \   055F  66                XRL     A,@R0
+   \   0560  7003              JNZ     ?0122
+   \   0562  ED                MOV     A,R5
+   \   0563  18                DEC     R0
+   \   0564  66                XRL     A,@R0
+   \   0565            ?0122:
+   \   0565  7007              JNZ     ?0088
+   \   0567            ?0087:
+    482                      nextWrite = WAVBuffer;
+   \   0567  7801              MOV     R0,#nextWrite
+   \   0569  7600              MOV     @R0,#HIGH(WAVBuffer)
+   \   056B  08                INC     R0
+   \   056C  7600              MOV     @R0,#LOW(WAVBuffer)
+   \   056E            ?0088:
+    483                  }
+    484                  ADDATL = 0;                                 //Startar ny AD-omvandling
+   \   056E  75DA00            MOV     218,#0
+   \   0571  8076              SJMP    ?0089
+   \   0573            ?0086:
+    485              } else if (wavState == WS_PLAY) {
+   \   0573  E6                MOV     A,@R0
+   \   0574  B4023E            CJNE    A,#2,?0091
+   \   0577            ?0090:
+    486                  DAC0 = sample;
+   \   0577  7805              MOV     R0,#sample
+   \   0579  E6                MOV     A,@R0
+   \   057A  90A000            MOV     DPTR,#40960
+   \   057D  F0                MOVX    @DPTR,A
+    487                  sample = FLASH;
+   \   057E  90B000            MOV     DPTR,#45056
+   \   0581  E0                MOVX    A,@DPTR
+   \   0582  F6                MOV     @R0,A
+    488                  if (!++daCount0)
+   \   0583  7807              MOV     R0,#daCount0
+   \   0585  06                INC     @R0
+   \   0586  B60025            CJNE    @R0,#0,?0093
+   \   0589            ?0092:
+    489                      if (!++daCount1) {
+   \   0589  7808              MOV     R0,#daCount1
+   \   058B  06                INC     @R0
+   \   058C  B6001F            CJNE    @R0,#0,?0095
+   \   058F            ?0094:
+    490                          ++daCount2;
+   \   058F  7809              MOV     R0,#daCount2
+   \   0591  06                INC     @R0
+    491                          if (daCount2 == 64) {
+   \   0592  E6                MOV     A,@R0
+   \   0593  B44018            CJNE    A,#64,?0097
+   \   0596            ?0096:
+    492                              FREG = 0x01 + 0x08;            //Väljer rätt FLASH-chip och sätter dess CE till 0
+   \   0596  7409              MOV     A,#9
+   \   0598  90E000            MOV     DPTR,#57344
+   \   059B  F0                MOVX    @DPTR,A
+    493                              ALE = 0;                        //Sätter minnet i Kommandomod
+   \   059C  C2E9              CLR     232.1
+    494                              CLE = 1;
+   \   059E  D2E8              SETB    232.0
+    495              
+    496                              FLASH = 0;                     //Adresserar första sidhälften med 
+   \   05A0  E4                CLR     A
+   \   05A1  90B000            MOV     DPTR,#45056
+   \   05A4  F0                MOVX    @DPTR,A
+    497                                                     //kommandokod 0x00
+    498              
+    499                              CLE = 0;                       //Sätter minnet i adresseringsmod
+   \   05A5  C2E8              CLR     232.0
+    500                              ALE = 1;
+   \   05A7  D2E9              SETB    232.1
+    501              
+    502                              FLASH = 0;                      // A0 - A7 OBS: A8 skriven i kommandot ovan
+   \   05A9  F0                MOVX    @DPTR,A
+    503                              FLASH = 0;                      // A9 - A16
+   \   05AA  F0                MOVX    @DPTR,A
+    504                              FLASH = 0;                      //A17 - A21
+   \   05AB  F0                MOVX    @DPTR,A
+    505          
+    506                              ALE = 0;                        //Sätter minnet i datamod
+   \   05AC  C2E9              CLR     232.1
+   \   05AE            ?0097:
+   \   05AE            ?0095:
+   \   05AE            ?0093:
+   \   05AE            ?0099:
+    507              
+    508           
+    509          //OBS: Väntan på att FLASH-minnet skall föra över data från FLASH-arean till registerarean görs
+    510          //inte här! Endast väntan tills BUSY aktiveras (går låg) görs här. Processorn kan sedan jobba 
+    511          //under tiden som FLASH-minnet jobbar. Detta gör att innan varje läsning måste BUSY-flaggan kollas.
+    512          
+    513          //            while (FBUSY);                   //Väntar tills busy går låg (max 100 ns enligt datablad)
+    514           
+    515                          }
+    516                      }
+    517                  while(!FBUSY);
+   \   05AE  20ED02            JB      232.5,?0098
+   \   05B1            ?0100:
+   \   05B1  80FB              SJMP    ?0099
+   \   05B3            ?0098:
+   \   05B3  8034              SJMP    ?0101
+   \   05B5            ?0091:
+    518          /*
+    519              } else if (wavState == WS_PORT1) {
+    520                  v = P1;
+    521                  *(nextWrite++) = v;                         //WAVBuffer[nextWrite++] = v;
+    522                  if (nextWrite == (WAVBuffer + WAVBUFSIZE)) {
+    523                      nextWrite = WAVBuffer;
+    524                  }
+    525          */
+    526              } else if (wavState == WS_TONE) {
+   \   05B5  B40425            CJNE    A,#4,?0103
+   \   05B8            ?0102:
+    527                  if (sample == 127) sample = 0;
+   \   05B8  7805              MOV     R0,#sample
+   \   05BA  E6                MOV     A,@R0
+   \   05BB  B47F04            CJNE    A,#127,?0105
+   \   05BE            ?0104:
+   \   05BE  E4                CLR     A
+   \   05BF  F6                MOV     @R0,A
+   \   05C0  8014              SJMP    ?0106
+   \   05C2            ?0105:
+    528                  else if (sample == 0) sample = 128;
+   \   05C2  7005              JNZ     ?0108
+   \   05C4            ?0107:
+   \   05C4  7480              MOV     A,#128
+   \   05C6  F6                MOV     @R0,A
+   \   05C7  800D              SJMP    ?0109
+   \   05C9            ?0108:
+    529                  else if (sample == 128) sample = 255;
+   \   05C9  B48005            CJNE    A,#128,?0111
+   \   05CC            ?0110:
+   \   05CC  74FF              MOV     A,#255
+   \   05CE  F6                MOV     @R0,A
+   \   05CF  8005              SJMP    ?0112
+   \   05D1            ?0111:
+    530                  else if (sample == 255) sample = 127;
+   \   05D1  04                INC     A
+   \   05D2  7002              JNZ     ?0114
+   \   05D4            ?0113:
+   \   05D4  767F              MOV     @R0,#127
+   \   05D6            ?0114:
+   \   05D6            ?0112:
+   \   05D6            ?0109:
+   \   05D6            ?0106:
+    531                  DAC0 = sample;
+   \   05D6  E6                MOV     A,@R0
+   \   05D7  90A000            MOV     DPTR,#40960
+   \   05DA  F0                MOVX    @DPTR,A
+   \   05DB  800C              SJMP    ?0115
+   \   05DD            ?0103:
+    532              } else if (wavState == WS_ECHO) {
+   \   05DD  B40309            CJNE    A,#3,?0117
+   \   05E0            ?0116:
+    533                  DAC0 = ADDATH;
+   \   05E0  E5D9              MOV     A,217
+   \   05E2  90A000            MOV     DPTR,#40960
+   \   05E5  F0                MOVX    @DPTR,A
+    534                  ADDATL = 0;
+   \   05E6  75DA00            MOV     218,#0
+   \   05E9            ?0117:
+   \   05E9            ?0115:
+   \   05E9            ?0101:
+   \   05E9            ?0089:
+    535          
+    536              }
+    537          }
+   \   05E9  D0E0              POP     ACC
+   \   05EB  FD                MOV     R5,A
+   \   05EC  D0E0              POP     ACC
+   \   05EE  FC                MOV     R4,A
+   \   05EF  D0E0              POP     ACC
+   \   05F1  F8                MOV     R0,A
+   \   05F2  D0D0              POP     PSW
+   \   05F4  D083              POP     DPH
+   \   05F6  D082              POP     DPL
+   \   05F8  D0E0              POP     ACC
+   \   05FA  32                RETI
+    538          
+   \   0000                    RSEG    CSTR
+   \   0000            ?0000:
+   \   0000  7700              DB      'w',0
+   \   0002            ?0027:
+   \   0002  7200              DB      'r',0
+   \   0004            ?0049:
+   \   0004  41626F72          DB      'Aborted because: ',0
+   \   0008  74656420
+   \   000C  62656361
+   \   0010  7573653A
+   \   0014  2000
+   \   0016            ?0052:
+   \   0016  44544D46          DB      'DTMF',0
+   \   001A  00
+   \   001B            ?0056:
+   \   001B  4B657920          DB      'Key pressed',0
+   \   001F  70726573
+   \   0023  73656400
+   \   0027            ?0060:
+   \   0027  4F757420          DB      'Out of memory',0
+   \   002B  6F66206D
+   \   002F  656D6F72
+   \   0033  7900
+   \   0035            ?0064:
+   \   0035  52656365          DB      'Received RS232',0
+   \   0039  69766564
+   \   003D  20525332
+   \   0041  333200
+   \   0044            ?0070:
+   \   0044  43616C6C          DB      'Caller hung up',0
+   \   0048  65722068
+   \   004C  756E6720
+   \   0050  757000
+   \   0053            ?0074:
+   \   0053  50617261          DB      'Parallell phone detected',0
+   \   0057  6C6C656C
+   \   005B  6C207068
+   \   005F  6F6E6520
+   \   0063  64657465
+   \   0067  63746564
+   \   006B  00
+   \   006C            ?0076:
+   \   006C  5465726D          DB      'Terminated by unknown causes',0
+   \   0070  696E6174
+   \   0074  65642062
+   \   0078  7920756E
+   \   007C  6B6E6F77
+   \   0080  6E206361
+   \   0084  75736573
+   \   0088  00
+   \   0089            ?0078:
+   \   0089  4F746865          DB      'Other',0
+   \   008D  7200
+   \   0000                    COMMON  INTVEC
+   \   001B                    DS      27
+   \   001B  02                DB      2
+   \   001C  052C              DB      HIGH(T1_int),LOW(T1_int)
+   \   0000                    RSEG    I_UDATA
+   \   0000            wavState:
+   \   0001                    DS      1
+   \   0001            nextWrite:
+   \   0003                    DS      2
+   \   0003            nextRead:
+   \   0005                    DS      2
+   \   0005            sample:
+   \   0006                    DS      1
+   \   0006            wavAbort:
+   \   0007                    DS      1
+   \   0007            daCount0:
+   \   0008                    DS      1
+   \   0008            daCount1:
+   \   0009                    DS      1
+   \   0009            daCount2:
+   \   000A                    DS      1
+   \   000A            daCount3:
+   \   000B                    DS      1
+   \   000B            daComp0:
+   \   000C                    DS      1
+   \   000C            daComp1:
+   \   000D                    DS      1
+   \   000D            daComp2:
+   \   000E                    DS      1
+   \   000E            daComp3:
+   \   000F                    DS      1
+   \   0000                    RSEG    X_UDATA
+   \   0000            WAVBuffer:
+   \   0200                    DS      512
+   \   0200                    END
+
+
+                                       S Y M B O L - T A B L E
+                                       =======================
+
+
+            #include file(s):
+
+       [1]       c:\iar\ew\8051\inc\io517a.h
+       [2]       c:\iar\ew\8051\inc\stdio.h
+       [3]       c:\iar\ew\8051\inc\stdlib.h
+       [4]       c:\iar\ew\8051\inc\string.h
+       [5]       wav.h
+       [6]       commands.h
+       [7]       errorcodes.h
+       [8]       filesystem.h
+       [9]       rs232.h
+      [10]       main.h
+      [11]       filesystem.h
+      [12]       keyboard.h
+      [13]       phone.h
+      [14]       dtmf.h
+      [15]       phone.h
+
+
+            Symbol                     Type     Mem     Class   Defline   Refline(s)
+            ------                     ----     ---     -----   -------   ----------
+
+?0000                                 array    code    static      175        175
+?0027                                 array    code    static      356        356
+?0049                                 array    code    static      402        402
+?0052                                 array    code    static      403        403
+?0056                                 array    code    static      404        404
+?0060                                 array    code    static      405        405
+?0064                                 array    code    static      406        406
+?0070                                 array    code    static      408        408
+?0074                                 array    code    static      409        409
+?0076                                 array    code    static      410        410
+?0078                                 array    code    static      412        412
+AC                                      bit             ---      166:1  
+ACC                                     sfr             ---       14:1  
+ADCON0                                  sfr             ---       99:1  
+ADCON1                                  sfr             ---      100:1        124      129
+ADDATH                                  sfr             ---      101:1        479      533
+ADDATL                                  sfr             ---      102:1        192      379      438      457
+                                                                              484      534
+ADEX                                    bit             ---      133:1        118
+ADM                                     bit             ---      135:1        119
+ARCON                                   sfr             ---      105:1  
+B                                       sfr             ---       15:1  
+BD                                      bit             ---      131:1  
+BSY                                     bit             ---      134:1  
+CC4EN                                   sfr             ---       34:1  
+CCEN                                    sfr             ---       33:1  
+CCH1                                    sfr             ---       36:1  
+CCH2                                    sfr             ---       38:1  
+CCH3                                    sfr             ---       40:1  
+CCH4                                    sfr             ---       42:1  
+CCL1                                    sfr             ---       35:1  
+CCL2                                    sfr             ---       37:1  
+CCL3                                    sfr             ---       39:1  
+CCL4                                    sfr             ---       41:1  
+CLK                                     bit             ---      132:1  
+CLRMSK                                  sfr             ---       74:1  
+CMEN                                    sfr             ---       43:1  
+CMH0                                    sfr             ---       45:1  
+CMH1                                    sfr             ---       47:1  
+CMH2                                    sfr             ---       49:1  
+CMH3                                    sfr             ---       51:1  
+CMH4                                    sfr             ---       53:1  
+CMH5                                    sfr             ---       55:1  
+CMH6                                    sfr             ---       57:1  
+CMH7                                    sfr             ---       59:1  
+CML0                                    sfr             ---       44:1  
+CML1                                    sfr             ---       46:1  
+CML2                                    sfr             ---       48:1  
+CML3                                    sfr             ---       50:1  
+CML4                                    sfr             ---       52:1  
+CML5                                    sfr             ---       54:1  
+CML6                                    sfr             ---       56:1  
+CML7                                    sfr             ---       58:1  
+CMSEL                                   sfr             ---       60:1  
+COMCLRH                                 sfr             ---       72:1  
+COMCLRL                                 sfr             ---       71:1  
+COMSETH                                 sfr             ---       70:1  
+COMSETL                                 sfr             ---       69:1  
+CRCH                                    sfr             ---       62:1  
+CRCL                                    sfr             ---       61:1  
+CTCON                                   sfr             ---       63:1  
+CTRELH                                  sfr             ---       65:1  
+CTRELL                                  sfr             ---       64:1  
+CY                                      bit             ---      165:1  
+DPH                                     sfr             ---       18:1  
+DPL                                     sfr             ---       17:1  
+DPSEL                                   sfr             ---       19:1  
+EADC                                    bit             ---      205:1  
+EAL                                     bit             ---      187:1  
+ES0                                     bit             ---      190:1  
+ET0                                     bit             ---      193:1  
+ET1                                     bit             ---      191:1        109      191      233      378
+                                                                              392      437      445      456
+                                                                              464
+ET2                                     bit             ---      189:1  
+EX0                                     bit             ---      194:1  
+EX1                                     bit             ---      192:1  
+EX2                                     bit             ---      204:1  
+EX3                                     bit             ---      203:1  
+EX4                                     bit             ---      202:1  
+EX5                                     bit             ---      201:1  
+EX6                                     bit             ---      200:1  
+EXEN2                                   bit             ---      198:1  
+EXF2                                    bit             ---      143:1  
+Echo                               function    code    public      434        423      430     55:5
+EchoMic                            function    code    public      421       53:5
+EchoPhone                          function    code    public      428       54:5
+F0                                      bit             ---      167:1  
+F1                                      bit             ---      171:1  
+FLASHWriteState                         int   xdata    extern       64        185
+I2FR                                    bit             ---      156:1  
+I3FR                                    bit             ---      155:1  
+IADC                                    bit             ---      150:1  
+IE0                                     bit             ---      182:1  
+IE1                                     bit             ---      180:1  
+IEN0                                    sfr             ---      114:1  
+IEN1                                    sfr             ---      116:1  
+IEN2                                    sfr             ---      118:1  
+IEX2                                    bit             ---      149:1  
+IEX3                                    bit             ---      148:1  
+IEX4                                    bit             ---      147:1  
+IEX5                                    bit             ---      146:1  
+IEX6                                    bit             ---      145:1  
+INT0                                    bit             ---      214:1  
+INT1                                    bit             ---      213:1  
+IP0                                     sfr             ---      115:1  
+IP1                                     sfr             ---      117:1  
+IRCON0                                  sfr             ---      119:1  
+IRCON1                                  sfr             ---      120:1  
+IT0                                     bit             ---      183:1  
+IT1                                     bit             ---      181:1  
+InitializeWAV                      function    code    public      103       46:5
+KeyboardOn                         function    code    extern    53:12        188      376
+MD0                                     sfr             ---      106:1  
+MD1                                     sfr             ---      107:1  
+MD2                                     sfr             ---      108:1  
+MD3                                     sfr             ---      109:1  
+MD4                                     sfr             ---      110:1  
+MD5                                     sfr             ---      111:1  
+MX0                                     bit             ---      138:1  
+MX1                                     bit             ---      137:1  
+MX2                                     bit             ---      136:1  
+OV                                      bit             ---      170:1  
+P                                       bit             ---      172:1  
+P0                                      sfr             ---       77:1  
+P1                                      sfr             ---       78:1  
+P2                                      sfr             ---       79:1  
+P3                                      sfr             ---       80:1  
+P4                                      sfr             ---       81:1        202      217      221      222
+                                                                              228      493      494      499
+                                                                              500      506      517
+P5                                      sfr             ---       82:1  
+P6                                      sfr             ---       83:1  
+P7                                      sfr             ---       84:1  
+P8                                      sfr             ---       85:1  
+PCON                                    sfr             ---       88:1  
+PSW                                     sfr             ---       20:1  
+PlayFile                           function    code    public      353       52:5
+RB80                                    bit             ---      225:1  
+RD                                      bit             ---      209:1  
+REN0                                    bit             ---      223:1  
+RI0                                     bit             ---      227:1  
+RS0                                     bit             ---      169:1  
+RS1                                     bit             ---      168:1  
+RXD                                     bit             ---      216:1  
+RecFile                            function    code    public      155        136      143     51:5
+RecMicFile                         function    code    public      133       49:5
+RecPhoneFile                       function    code    public      140       50:5
+S0BUF                                   sfr             ---       90:1  
+S0CON                                   sfr             ---       89:1  
+S0RELH                                  sfr             ---       94:1  
+S0RELL                                  sfr             ---       93:1  
+S1BUF                                   sfr             ---       92:1  
+S1CON                                   sfr             ---       91:1        186      212      345      374
+                                                                              385      396      406      436
+                                                                              440      447      455      459
+                                                                              467
+S1RELH                                  sfr             ---       96:1  
+S1RELL                                  sfr             ---       95:1  
+SETMSK                                  sfr             ---       73:1  
+SM0                                     bit             ---      220:1  
+SM1                                     bit             ---      221:1  
+SM20                                    bit             ---      222:1  
+SP                                      sfr             ---       16:1  
+SWDT                                    bit             ---      199:1        196      383      442      461
+SYSCON                                  sfr             ---       22:1  
+SendStringEOLRS232                 function    code    extern     38:9        403      404      405      406
+                                                                              408      409      410      412
+SendStringRS232                    function    code    extern     37:9        402
+SetupMic                           function    code    public      123       47:5      134      422
+SetupPhoneIn                       function    code    public      128       48:5      141      429
+T0                                      bit             ---      212:1  
+T1                                      bit             ---      211:1  
+T1_int                             function    code    public      475      238:1
+T2CM                                    bit             ---      159:1  
+T2CON                                   sfr             ---       68:1  
+T2I0                                    bit             ---      161:1  
+T2I1                                    bit             ---      160:1  
+T2PS                                    bit             ---      154:1  
+T2R0                                    bit             ---      158:1  
+T2R1                                    bit             ---      157:1  
+TB80                                    bit             ---      224:1  
+TCON                                    sfr             ---       25:1  
+TF0                                     bit             ---      178:1  
+TF1                                     bit             ---      176:1  
+TF2                                     bit             ---      144:1  
+TH0                                     sfr             ---       29:1  
+TH1                                     sfr             ---       30:1        115
+TH2                                     sfr             ---       67:1  
+TI0                                     bit             ---      226:1  
+TL0                                     sfr             ---       27:1  
+TL1                                     sfr             ---       28:1  
+TL2                                     sfr             ---       66:1  
+TMOD                                    sfr             ---       26:1        111      113
+TR0                                     bit             ---      179:1  
+TR1                                     bit             ---      177:1        107      193      232      380
+                                                                              391      439      444      458
+                                                                              463
+TXD                                     bit             ---      215:1  
+WAVBuffer                             array   xdata    public       83        178      179      200      201
+                                                                              314      481      482
+WDT                                     bit             ---      188:1        195      382      441      460
+WDTREL                                  sfr             ---      124:1  
+WR                                      bit             ---      210:1  
+WavTone                            function    code    public      452       56:5
+XPAGE                                   sfr             ---       21:1  
+callerHungUp                           char   xdata    extern       76        408
+daComp0                                char   idata    public       93        367      389
+daComp1                                char   idata    public       94        368      389
+daComp2                                char   idata    public       95        369      389
+daComp3                                char   idata    public       96  
+daCount0                               char   idata    public       89        370      389      488
+daCount1                               char   idata    public       90        371      389      489
+daCount2                               char   idata    public       91        372      384      389      405
+                                                                              490      491
+daCount3                               char   idata    public       92  
+div_t                                struct           typedef     38:3       96:3
+fclose                             function    code    extern    104:8        344      395
+fopen                              function    code    extern     96:8        175      356
+lastKey                                char   xdata    extern       74        189      215      377      388
+                                                                              404
+ldiv_t                               struct           typedef     44:3      100:3
+nextRead                            pointer   idata    public       86        179      197      198      200
+                                                                              201      314
+nextWrite                           pointer   idata    public       85        178      197      480      481
+                                                                              482
+parallellPhoneDetected                 char   xdata    extern       77        409
+receivedDTMF                           char   xdata    extern       70        187      214      387      403
+sample                                 char   idata    public       87        373      454      486      487
+                                                                              527      527      528      528
+                                                                              529      529      530      530
+                                                                              531
+terminateAnswer                        char   xdata    extern       75        213      386      407
+wavAbort                               char   idata    public       88        180      194      211      212
+                                                                              213      214      215      366
+                                                                              381      384      385      386
+                                                                              387      388      389      401
+wavState                               char   idata    public       84        106      135      142      234
+                                                                              365      393      435      446
+                                                                              453      465      478      485
+                                                                              526      532
+writeAddress                           long   xdata    extern       63        181      182
+
+
+Errors: none
+Warnings: none
+Code size: 1531
+Constant size: 173
+Static variable size: Data(0) Idata(15) Bit(0) Xdata(512) Pdata(0) Bdata(0)
+

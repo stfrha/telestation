@@ -1,0 +1,369 @@
+
+/* Sym: 17736888  Path 1: PhoneInterface  Page 1: PhoneInterface(01) */
+CHANGE 'PhoneInterface(01)' 	INSTANCE
+  SELECT COMP XCMP58                 /* Reference Desig is R11 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R11'         /* Reference Desig was (null) */
+  SELECT COMP XCMP57                 /* Reference Desig is C3 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'C3'         /* Reference Desig was (null) */
+  SELECT COMP XCMP56                 /* Reference Desig is C8 */
+    PARAM 'Description' = 'Capacitor MKT' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'C8'         /* Reference Desig was (null) */
+  SELECT COMP XCMP54                 /* Reference Desig is D4 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'D4'         /* Reference Desig was (null) */
+  SELECT COMP XCMP53                 /* Reference Desig is C6 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'C6'         /* Reference Desig was (null) */
+  SELECT COMP XCMP52                 /* Reference Desig is R10 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R10'         /* Reference Desig was (null) */
+  SELECT COMP XCMP51                 /* Reference Desig is U2 */
+    PARAM 'Description' = '2 x Comparator' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'U2'         /* Reference Desig was (null) */
+  SELECT COMP XCMP50                 /* Reference Desig is U2 */
+    PARAM 'Description' = '2 x Comparator' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'U2'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '7'                /* was: 1 */
+    PIN_PARAM 'AAC' 4 = '5'                /* was: 3 */
+    PIN_PARAM 'AAB' 4 = '6'                /* was: 2 */
+  SELECT COMP XCMP49                 /* Reference Desig is U1 */
+    PARAM 'Description' = 'Amplifier x 2' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'U1'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '1'                /* was:  */
+    PIN_PARAM 'AAC' 4 = '3'                /* was:  */
+    PIN_PARAM 'AAB' 4 = '2'                /* was:  */
+  SELECT COMP XCMP48                 /* Reference Desig is U1 */
+    PARAM 'Description' = 'Amplifier x 2' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'U1'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '7'                /* was:  */
+    PIN_PARAM 'AAC' 4 = '5'                /* was:  */
+    PIN_PARAM 'AAB' 4 = '6'                /* was:  */
+  SELECT COMP XCMP47                 /* Reference Desig is Q1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'Q1'         /* Reference Desig was (null) */
+  SELECT COMP XCMP46                 /* Reference Desig is C4 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'C4'         /* Reference Desig was (null) */
+  SELECT COMP XCMP45                 /* Reference Desig is P2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P2'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '8'                /* was:  */
+  SELECT COMP XCMP44                 /* Reference Desig is P2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P2'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '9'                /* was:  */
+  SELECT COMP XCMP43                 /* Reference Desig is P1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P1'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '14'                /* was:  */
+  SELECT COMP XCMP42                 /* Reference Desig is P1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P1'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '13'                /* was:  */
+  SELECT COMP XCMP41                 /* Reference Desig is P1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P1'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '12'                /* was:  */
+  SELECT COMP XCMP40                 /* Reference Desig is P1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P1'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '11'                /* was:  */
+  SELECT COMP XCMP39                 /* Reference Desig is P1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P1'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '1'                /* was:  */
+  SELECT COMP XCMP38                 /* Reference Desig is P2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P2'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '6'                /* was:  */
+  SELECT COMP XCMP37                 /* Reference Desig is P1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P1'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '10'                /* was:  */
+  SELECT COMP XCMP36                 /* Reference Desig is P1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P1'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '5'                /* was:  */
+  SELECT COMP XCMP35                 /* Reference Desig is P1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P1'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '4'                /* was:  */
+  SELECT COMP XCMP34                 /* Reference Desig is P1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P1'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '9'                /* was:  */
+  SELECT COMP XCMP33                 /* Reference Desig is P2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P2'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '2'                /* was:  */
+  SELECT COMP XCMP32                 /* Reference Desig is P2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P2'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '1'                /* was:  */
+  SELECT COMP XCMP31                 /* Reference Desig is C2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'C2'         /* Reference Desig was (null) */
+  SELECT COMP XCMP83                 /* Reference Desig is TP3 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'TP3'         /* Reference Desig was (null) */
+  SELECT COMP XCMP82                 /* Reference Desig is TP1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'TP1'         /* Reference Desig was (null) */
+  SELECT COMP XCMP81                 /* Reference Desig is R9 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R9'         /* Reference Desig was (null) */
+  SELECT COMP XCMP80                 /* Reference Desig is P5 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P5'         /* Reference Desig was (null) */
+  SELECT COMP XCMP79                 /* Reference Desig is R19 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R19'         /* Reference Desig was (null) */
+  SELECT COMP XCMP78                 /* Reference Desig is X1 */
+    PARAM 'Description' = 'Crystal' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'X1'         /* Reference Desig was (null) */
+  SELECT COMP XCMP77                 /* Reference Desig is R17 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R17'         /* Reference Desig was (null) */
+  SELECT COMP XCMP76                 /* Reference Desig is C7 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'C7'         /* Reference Desig was (null) */
+  SELECT COMP XCMP75                 /* Reference Desig is P4 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P4'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '2'                /* was:  */
+  SELECT COMP XCMP74                 /* Reference Desig is P4 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P4'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '1'                /* was:  */
+  SELECT COMP XCMP73                 /* Reference Desig is P3 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P3'         /* Reference Desig was (null) */
+  SELECT COMP XCMP72                 /* Reference Desig is C5 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'C5'         /* Reference Desig was (null) */
+  SELECT COMP XCMP71                 /* Reference Desig is U2 */
+    PARAM 'Description' = '2 x Comparator' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'U2'         /* Reference Desig was (null) */
+  SELECT COMP XCMP70                 /* Reference Desig is U2 */
+    PARAM 'Description' = '2 x Comparator' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'U2'         /* Reference Desig was (null) */
+  SELECT COMP XCMP69                 /* Reference Desig is U1 */
+    PARAM 'Description' = 'Amplifier x 2' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'U1'         /* Reference Desig was (null) */
+  SELECT COMP XCMP68                 /* Reference Desig is U1 */
+    PARAM 'Description' = 'Amplifier x 2' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'U1'         /* Reference Desig was (null) */
+  SELECT COMP XCMP67                 /* Reference Desig is R20 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R20'         /* Reference Desig was (null) */
+  SELECT COMP XCMP66                 /* Reference Desig is R14 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R14'         /* Reference Desig was (null) */
+  SELECT COMP XCMP65                 /* Reference Desig is R16 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R16'         /* Reference Desig was (null) */
+  SELECT COMP XCMP64                 /* Reference Desig is R15 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R15'         /* Reference Desig was (null) */
+  SELECT COMP XCMP63                 /* Reference Desig is R13 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R13'         /* Reference Desig was (null) */
+  SELECT COMP XCMP62                 /* Reference Desig is R18 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R18'         /* Reference Desig was (null) */
+  SELECT COMP XCMP61                 /* Reference Desig is R8 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R8'         /* Reference Desig was (null) */
+  SELECT COMP XCMP60                 /* Reference Desig is R12 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R12'         /* Reference Desig was (null) */
+  SELECT COMP XCMP59                 /* Reference Desig is D3 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'D3'         /* Reference Desig was (null) */
+  SELECT COMP XCMP30                 /* Reference Desig is C1 */
+    PARAM 'Description' = 'Capacitor MKT1820' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'C1'         /* Reference Desig was (null) */
+  SELECT COMP XCMP29                 /* Reference Desig is D2 */
+    PARAM 'Description' = 'Zener diode DO41' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'D2'         /* Reference Desig was (null) */
+  SELECT COMP XCMP28                 /* Reference Desig is D1 */
+    PARAM 'Description' = 'Bi-dir transient suppressor' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'D1'         /* Reference Desig was (null) */
+  SELECT COMP XCMP27                 /* Reference Desig is F1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'F1'         /* Reference Desig was (null) */
+  SELECT COMP XCMP26                 /* Reference Desig is F2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'F2'         /* Reference Desig was (null) */
+  SELECT COMP XCMP25                 /* Reference Desig is R5 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R5'         /* Reference Desig was (null) */
+  SELECT COMP XCMP24                 /* Reference Desig is R4 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R4'         /* Reference Desig was (null) */
+  SELECT COMP XCMP23                 /* Reference Desig is R6 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R6'         /* Reference Desig was (null) */
+  SELECT COMP XCMP22                 /* Reference Desig is R3 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R3'         /* Reference Desig was (null) */
+  SELECT COMP XCMP21                 /* Reference Desig is R7 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R7'         /* Reference Desig was (null) */
+  SELECT COMP XCMP20                 /* Reference Desig is R2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R2'         /* Reference Desig was (null) */
+  SELECT COMP XCMP19                 /* Reference Desig is R1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'R1'         /* Reference Desig was (null) */
+  SELECT COMP XCMP17                 /* Reference Desig is P1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P1'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '8'                /* was:  */
+  SELECT COMP XCMP16                 /* Reference Desig is P2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P2'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '13'                /* was:  */
+  SELECT COMP XCMP15                 /* Reference Desig is P1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P1'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '7'                /* was:  */
+  SELECT COMP XCMP14                 /* Reference Desig is P2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P2'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '14'                /* was:  */
+  SELECT COMP XCMP13                 /* Reference Desig is P2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P2'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '12'                /* was:  */
+  SELECT COMP XCMP12                 /* Reference Desig is P2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P2'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '4'                /* was:  */
+  SELECT COMP XCMP11                 /* Reference Desig is P2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P2'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '3'                /* was:  */
+  SELECT COMP XCMP10                 /* Reference Desig is P2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P2'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '5'                /* was:  */
+  SELECT COMP XCMP9                 /* Reference Desig is P2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P2'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '11'                /* was:  */
+  SELECT COMP XCMP8                 /* Reference Desig is P2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P2'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '7'                /* was:  */
+  SELECT COMP XCMP7                 /* Reference Desig is P2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P2'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '10'                /* was:  */
+  SELECT COMP XCMP6                 /* Reference Desig is P1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P1'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '6'                /* was:  */
+  SELECT COMP XCMP5                 /* Reference Desig is P1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P1'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '3'                /* was:  */
+  SELECT COMP XCMP4                 /* Reference Desig is P1 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'P1'         /* Reference Desig was (null) */
+    PIN_PARAM 'AAA' 4 = '2'                /* was:  */
+  SELECT COMP XCMP84                 /* Reference Desig is TP2 */
+    PARAM 'Description' = ' ' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'TP2'         /* Reference Desig was (null) */
+
+/* Sym: 17820504  Path 2: PhoneInterface!DS13074  Page 2: DS1307(01) */
+CHANGE 'PhoneInterface!DS13074(01)' 	INSTANCE
+  SELECT COMP XCMP2                 /* Reference Desig is U3 */
+    PARAM 'Description' = 'Voltage Comparator' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'U3'         /* Reference Desig was (null) */
+  SELECT COMP XCMP1                 /* Reference Desig is U3 */
+    PARAM 'Description' = 'Voltage Comparator' 
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'U3'         /* Reference Desig was (null) */

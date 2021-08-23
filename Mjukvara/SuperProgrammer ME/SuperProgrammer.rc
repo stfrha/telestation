@@ -1,0 +1,326 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About SuperProgrammer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "SuperProgrammer Version 1.0",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 1999",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_SUPERPROGRAMMER_DIALOG DIALOGEX 0, 0, 486, 199
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Super Computer Programmer WIN9x Edition"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_COMPORT,187,17,46,71,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "Browse",IDC_BROWSE,203,55,30,12
+    PUSHBUTTON      "2 WAV",IDC_TO_WAV,7,154,32,14
+    PUSHBUTTON      "2 WAW",IDC_TO_WAW,57,154,32,14
+    DEFPUSHBUTTON   "Program",IDC_PROGRAM,7,178,32,14
+    PUSHBUTTON      "Upload",IDC_UPLOAD,57,178,32,14
+    PUSHBUTTON      "Old Downld",IDC_DOWNLOAD,189,154,50,14
+    PUSHBUTTON      "Conn",IDC_CONNTEST,157,178,32,14
+    PUSHBUTTON      "Quit",IDCANCEL,207,178,32,14
+    CONTROL         "Active",IDC_ACTIVETERM,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,259,19,36,10
+    EDITTEXT        IDC_CHARSEND,353,34,21,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_HEXSEND,379,34,21,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_DECSEND,405,34,21,12,ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "Send",IDC_SEND,431,34,27,12
+    PUSHBUTTON      "0",IDC_SNDZER,432,16,18,10
+    PUSHBUTTON      "ESC",IDC_SNDESC,453,16,18,10
+    EDITTEXT        IDC_TERMINAL,259,52,213,133,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    CONTROL         129,IDC_STATIC,"Static",SS_BITMAP,21,20,36,84
+    CONTROL         "",IDC_MEMMAP,"Static",SS_GRAYRECT,22,22,17,79
+    GROUPBOX        "Memory usage",IDC_STATIC,7,7,64,104
+    EDITTEXT        IDC_FILENAME,127,55,67,12,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "COM-port",IDC_STATIC,113,7,127,29
+    GROUPBOX        "Object file",IDC_STATIC,113,41,127,34
+    CONTROL         "Progress1",IDC_PROGRESS,"msctls_progress32",WS_BORDER,7,
+                    119,233,8
+    GROUPBOX        "Status",IDC_STATIC,81,82,159,29
+    LTEXT           "",IDC_STATUS,89,95,145,8
+    CONTROL         131,IDC_STATIC,"Static",SS_BITMAP,74,7,35,15
+    GROUPBOX        "Terminal",IDC_STATIC,248,7,231,186
+    LTEXT           "Char",IDC_STATIC,353,24,16,8
+    LTEXT           "Hex",IDC_STATIC,383,24,14,8
+    LTEXT           "Dec",IDC_STATIC,405,24,14,8
+    PUSHBUTTON      "Clear",IDC_CLEAR_TERM,318,34,27,12
+    CONTROL         "Hex monitor",IDC_HEX_MONITOR,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,259,35,53,10
+    PUSHBUTTON      "Port to Text",IDC_PORT2TEXT,107,154,50,14
+    PUSHBUTTON      "Downld",IDC_DOWNLOAD2,107,178,32,14
+    CONTROL         "Progress1",IDC_MAIN_PROGRESS,"msctls_progress32",
+                    WS_BORDER,7,135,233,8
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "SuperProgrammer MFC Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "SuperProgrammer\0"
+            VALUE "LegalCopyright", "Copyright (C) 1999\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "SuperProgrammer.EXE\0"
+            VALUE "ProductName", "SuperProgrammer Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_SUPERPROGRAMMER_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 479
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 192
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_SUPERPROGRAMMER_DIALOG DLGINIT
+BEGIN
+    IDC_COMPORT, 0x403, 6, 0
+0x4f43, 0x204d, 0x0031, 
+    IDC_COMPORT, 0x403, 6, 0
+0x4f43, 0x204d, 0x0032, 
+    IDC_COMPORT, 0x403, 6, 0
+0x4f43, 0x204d, 0x0033, 
+    IDC_COMPORT, 0x403, 6, 0
+0x4f43, 0x204d, 0x0034, 
+    IDC_COMPORT, 0x403, 6, 0
+0x4f43, 0x204d, 0x0035, 
+    IDC_COMPORT, 0x403, 6, 0
+0x4f43, 0x204d, 0x0036, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "&About SuperProgrammer..."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Swedish resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_SVE)
+#ifdef _WIN32
+LANGUAGE LANG_SWEDISH, SUBLANG_DEFAULT
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_FILESEL DIALOG DISCARDABLE  0, 0, 126, 134
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "File selection"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Ok",IDOK,7,113,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,69,113,50,14
+    GROUPBOX        "Select file",IDC_STATIC,7,7,112,92
+    LISTBOX         IDC_FILESEL,15,19,96,74,LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_FILESEL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 119
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 127
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\SuperProgrammer.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\SuperProgrammer.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_MEMMAP              BITMAP  DISCARDABLE     "res\\bitmap1.bmp"
+IDB_FRHA                BITMAP  DISCARDABLE     "res\\bmp00001.bmp"
+#endif    // Swedish resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\SuperProgrammer.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

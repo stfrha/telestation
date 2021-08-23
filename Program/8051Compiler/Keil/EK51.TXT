@@ -1,0 +1,260 @@
+                        Keil Software Presents
+
+                 8051 Development Tools Eval Version
+
+This file contains release notes and last minute changes relating to the
+PK51 - Eval Version for 8051 microcontrollers.  Information in this file, the 
+accompanying manual, and software is Copyright (c) 1995 Keil Software and
+Keil Elektronik.  All rights reserved.
+
+
+Contents
+========
+
+1. uVision Integrated Development Environment for Windows
+
+2. dScope Debugger/Simulator for Windows
+
+3. Example Programs
+
+4. Restrictions of the Eval Version
+
+5. PK51 Eval Version - C51 Library Functions
+
+6. Sales and Technical Support
+
+
+---------------------------------------------------------------------------
+
+1. uVision Integrated Development Environment for Windows
+
+This release includes uVision for Windows.  uVision is an integrated
+development environment that encapsulates a project manager, integrated
+make facility, dialog box tool configuration, and full-function editor. 
+You use uVision to write and compile your programs using our tools.  The
+example programs provided on this demo disk are designed to work with
+uVision.
+
+---------------------------------------------------------------------------
+
+2. dScope Debugger/Simulator for Windows
+
+This release includes the dScope debugger/simulator for Windows. 
+dScope lets you simulate all aspects of your target hardware using your
+computer.  In addition, dScope integrates with uVision to make a complete
+embedded software development solution for all your 8051 needs.
+
+---------------------------------------------------------------------------
+
+3. Example Programs
+
+Several example programs have been included in the EXAMPLES directory.
+These files demonstrate how to use the project manager as well as how to
+use uVision and dScope to locate and correct errors and bugs in your
+source code.  Refer to the 8051/251 Evaluation Kit User's Guide for
+complete descriptions of these programs.
+
+Please note:
+
+Many of these examples are documented in the Keil '8051/251 Evaluation Guide'.
+Please refer to this text for further information.
+
+These examples are complete and will compile and link properly and a hex file
+can be created.  However, some of these examples use floating point arithmetic
+and/or can generate more than 2K of code. 
+
+These programs have been specially prepared to demonstrate the facilities
+available in the full compiler version.  The 'PK51 Eval' software DOES NOT
+include floating point libraries and can generate a maximum of 2K of code. 
+
+---------------------------------------------------------------------------
+
+4. PK51 Eval Restrictions
+
+The PK51 Eval has the following restrictions, which are not present in the
+PK51 Full Version:
+
+a) the total size of a project is limited to 2KB binary code.
+b) a single project cannot have more than 5 source files.
+c) the uVision Eval editor cannot edit files with more than 16KByte.
+d) no hardware support for multiple DPTR registers.
+e) no floating point library.
+f) you cannot place relocatable segments below address 0x4000.
+g) you cannot write in-line assembly code with #pragma asm/endasm.
+
+The following components which are present in the PK51 Full Version are not
+included in the PK51 Eval Version:
+
+a) Linker for Code Banking and Library Manager.
+b) RTX-51 Tiny Real-time Operating System.
+c) DOS Versions of dScope development environment.
+
+You can get more information about the PK51 Full Version and other 8051
+development tools from the following addresses:
+
+In the USA...                           In Europe...
+
+KEIL Software, Inc.                     KEIL Elektronik GmbH
+16990 Dallas Parkway, Suite 120         Bretonischer Ring 15
+Dallas, Texas  75248-1903               D-85630 Grasbrunn, Germany
+
+Sales/Support (800) 348-8051            Sales   +49 89 456040-0
+                                        Support +49 89 456040-24
+BBS           (972) 713-9883            BBS     +49 89 4606286 
+Fax           (972) 735-8055            Fax     +49 89 468162
+Email         sales.us@keil.com         Email   sales.intl@keil.com
+              support.us@keil.com               support.intl@keil.com
+
+                    INTERNET:   http://www.keil.com/
+
+
+
+5. PK51 Eval - C51 Library Functions
+
+----------------------------------------------------------------------------
+
+The PK51 Eval package includes the C51 Run-Time Library for the SMALL and
+LARGE Memory Model.  The Library functions are listed below.  However,
+floating point library functions are not present in PK51 Eval.  These
+functions are clearly marked.
+
+ABSACC.H - 8051 Absolute Memory Accesses
+#define CBYTE ((unsigned char volatile code  *) 0)
+#define DBYTE ((unsigned char volatile data  *) 0)
+#define PBYTE ((unsigned char volatile pdata *) 0)
+#define XBYTE ((unsigned char volatile xdata *) 0)
+#define CWORD ((unsigned int volatile  code  *) 0)
+#define DWORD ((unsigned int volatile  data  *) 0)
+#define PWORD ((unsigned int volatile  pdata *) 0)
+#define XWORD ((unsigned int volatile  xdata *) 0)
+
+CTYPE.H - ANSI Standard Functions
+bit isalnum (char);
+bit isalpha (char);
+bit iscntrl (char);
+bit isdigit (char);
+bit isgraph (char);
+bit islower (char);
+bit isprint (char);
+bit ispunct (char);
+bit isspace (char);
+bit isupper (char);
+bit isxdigit (char);
+char toint (char);
+char tolower (char);
+char toupper (char);
+
+INTRINS.H - 8051 Specific Functions
+unsigned char _crol_ (unsigned char, unsigned char);   /* Rotate char left  */
+unsigned char _cror_ (unsigned char, unsigned char);   /* Rotate char right */
+unsigned int _irol_ (unsigned int, unsigned char);     /* Rotate int  left  */
+unsigned int _iror_ (unsigned int, unsigned char);     /* Rotate int  right */
+unsigned long _lrol_ (unsigned long, unsigned char);   /* Rotate long left  */
+unsigned long _lror_ (unsigned long, unsigned char);   /* Rotate long right */
+void _nop_ (void);                                     /* NOP instruction   */
+bit _testbit_ (bit);                                   /* JBC instruction   */
+
+MATH.H - ANSI Standard Functions
+int abs (int);
+float acos (float);                 (not present in PK51 Eval)
+float asin (float);                 (not present in PK51 Eval)
+float atan (float);                 (not present in PK51 Eval)
+float atan2 (float, float);         (not present in PK51 Eval)
+char cabs (char);
+float ceil (float);                 (not present in PK51 Eval)
+float cos (float);                  (not present in PK51 Eval)
+float cosh (float);                 (not present in PK51 Eval)
+float exp (float);                  (not present in PK51 Eval)
+float fabs (float);                 (not present in PK51 Eval)
+float floor (float);                (not present in PK51 Eval)
+long labs (long);
+float log (float);                  (not present in PK51 Eval)
+float log10 (float);                (not present in PK51 Eval)
+float modf (float, float *);        (not present in PK51 Eval)
+float pow (float, float);           (not present in PK51 Eval)
+float sin (float);                  (not present in PK51 Eval)
+float sinh (float);                 (not present in PK51 Eval)
+float sqrt (float);                 (not present in PK51 Eval)
+float tan (float);                  (not present in PK51 Eval)
+float tanh (float);                 (not present in PK51 Eval)
+
+SETJMP.H - ANSI Standard Functions
+void longjmp (jmp_buf, int);
+int setjmp (jmp_buf);
+
+STDIO.H - ANSI Standard Functions
+extern char _getkey (void);
+extern char getchar (void);
+extern char *gets (char *, int);
+extern int printf (const char *, ...);
+extern char putchar (char);
+extern int puts (const char *);
+extern int scanf (const char *, ...);
+extern int sprintf (char *, const char *, ...);
+extern int sscanf (char *, const char *, ...);
+extern char ungetchar (char);
+
+STDLIB.H - ANSI Standard Functions
+extern float atof (void *);                 (not present in PK51 Eval)
+extern int atoi (void *);
+extern long atol (void *);
+extern void *calloc (unsigned int, unsigned int);
+extern void free (void xdata *);
+extern void init_mempool (void xdata *, unsigned int);
+extern void *malloc (unsigned int);
+extern int rand (void);
+extern void *realloc (void xdata *, unsigned int);
+extern void srand (int);
+
+STRING.H - ANSI Standard Function
+extern void *memchr (void *s, char c, int len);
+extern void *memccpy (void *dest, void *src, char, int len);
+extern char memcmp (void *s1, void *s2, int len);
+extern void *memcpy (void *dest, void *src, int len);
+extern void *memmove (void *dest, void *src, int len);
+extern void *memset (void *s, char c, int len);
+extern char *strcat (char *dest, char *src);
+extern char *strchr (const char *s, char c);
+extern char strcmp (char *s1, char *s2);
+extern char *strcpy (char *dest, char *src);
+extern int strcspn (char *s, char *set);
+extern int strlen (char *s);
+extern char *strncat (char *dest, char *src, int len);
+extern char strncmp (char *s1, char *s2, int len);
+extern char *strncpy (char *dest, char *src, int len);
+extern char *strpbrk (char *s, char *set);
+extern int strpos (const char *s, char c);
+extern char *strrchr (const char *s, char c);
+extern char *strrpbrk (char *s, char *set);
+extern int strrpos (const char *s, char c);
+extern int strspn (char *s, char *set);
+
+
+---------------------------------------------------------------------------
+
+
+6. Sales and Technical Support
+
+
+We at Keil Software are dedicated to providing you with the best
+development tools and the best sales and technical support.  If you
+experience any problems or have any questions about this product,
+contact one of our offices for assistance.
+
+In the USA...                           In Europe...
+
+KEIL Software, Inc.                     KEIL Elektronik GmbH
+16990 Dallas Parkway, Suite 120         Bretonischer Ring 15
+Dallas, Texas  75248-1903               D-85630 Grasbrunn, Germany
+
+Sales/Support (800) 348-8051            Sales   +49 89 456040-0
+                                        Support +49 89 456040-24
+BBS           (972) 713-9883            BBS     +49 89 4606286 
+Fax           (972) 735-8055            Fax     +49 89 468162
+Email         sales.us@keil.com         Email   sales.intl@keil.com
+              support.us@keil.com               support.intl@keil.com
+
+                    INTERNET:   http://www.keil.com/
+
+
+                                   -O-

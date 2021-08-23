@@ -1,0 +1,144 @@
+
+                                    Packager
+                                    --------
+
+                      03:16 PM Wednesday, February 23, 2000
+               Job Name: F:\SuperComputer\AnalogPCB\AnalogPCB.prj
+
+
+     Packager     Version: 15.8
+
+     The root of this design is at "F:\SuperComputer\AnalogPCB\design_definition\graphics\AnalogPCB.sbk".
+
+     The FLATNETNAMEs status indicates that the present set
+      of schematic netnames should be used to update the
+      FLATNETNAMEs.
+
+     The FLATNETNAMEs status indicates that the present set
+      of schematic netnames should be used to update the
+      FLATNETNAMEs.
+
+     The Disable Repackage status indicates that 
+      Repackaging should be allowed.
+
+     The VBPCB Design Path this design is at "F:\SuperComputer\AnalogPCB\PCB\ANALOGPCB.PCB".
+
+     The Central Library is at "H:\users\libraries\CentralLibrary\CentralLibrary.LMC".
+
+     The PDBs listed in the project file will be searched to satisfy the parts
+      requirements of the CDB only for parts not already found in the
+      Target PDB.
+
+     The AllowAlphaRefDes status indicates that reference
+      designators containing all alpha characters should be deleted
+      and the relevant symbols repackaged.
+
+     The cross mapping of symbol pin names to Part Number pin
+      numbers will be checked for packaged symbols and mapped correctly
+      for unpackaged symbols.
+
+     Properties that have been checked off in the Property Definition Editor
+      found at Library Manager/Common Properties will be checked for value
+      differences between the PartsDB and the non-null properties on symbols.
+     Those properties checked off will only be transferred from the PartsDB
+      to symbols that have not been packaged.  However, the property values
+      transferred will be limited to the precision specified in the Notation
+      Settings dialog.
+     The following properties were checked off in the Property Definition Editor:
+       "Value2"
+       "IBIS"
+       "Model Suffix"
+       "VHDL Model"
+       "Verilog Model"
+       "Description"
+       "Simulation Model"
+       "Rating"
+       "Tolerance"
+       "Value"
+
+     Flattening the CDB design F:\SuperComputer\AnalogPCB\default\default.cdb.
+      Note that CDBPI warning messages will not be included in the 
+      warning count summary.
+**** CDBPI - WARNING block design_definition\graphics\AnalogPCB.sbk page 1, Pin Vcc on Block TDA70504: 
+	Global net +5V and global net VCC are shorted through pin Vcc on TDA70504
+	Moving all connections from net VCC to net +5V.
+
+     The CDB design F:\SuperComputer\AnalogPCB\default\default.cdb has been flattened successfully.
+
+     The present Common DataBase is up to date with the schematic
+      source files.
+
+     Common Data Base has been read
+
+     Target PDB Name: Integration\LocalPartsDB.pdb
+
+     Number of Part Numbers: 12
+          Part Numb: LMC6084_SO14_50 -> Vend Part: LMC6084_SO14_50 
+          Part Numb: LM6142_SO8_50 -> Vend Part: LM6142_SO8_50 
+          Part Numb: RES0805 -> Vend Part: RES0805 
+          Part Numb: CAP0805 -> Vend Part: CAP0805 
+          Part Numb: MKS2,5 -> Vend Part: MKS2,5 
+          Part Numb: CE9005_4X6 -> Vend Part: CE9005_4X6 
+          Part Numb: RV9003_J -> Vend Part: RV9003_J 
+          Part Numb: CON_PB8302/303/0 -> Vend Part: CON_PB8302/303/0 
+          Part Numb: XC9536_PLCC44_50 -> Vend Part: XC9536_PLCC44_50 
+          Part Numb: CON_PB8302/304/0 -> Vend Part: CON_PB8302/304/0 
+          Part Numb: CON_PB8302/311/0 -> Vend Part: CON_PB8302/311/0 
+          Part Numb: AD9696_SO8_50 -> Vend Part: AD9696_SO8_50 
+
+     Number of Part Names: 0
+
+     Number of Part Labels: 0
+
+
+     Checking for value differences between non-null symbol properties and PartsDB properties,
+      but only for those properties checked off in the Property Definition Editor
+
+     Checking the validity of the packaging of prepackaged schematic
+      symbols.  Only the first error in symbols having the same
+      Reference Designator will be reported.
+
+     The packaging of all prepackaged schematic symbols is consistent
+      with the Parts DataBase data for the cross mapping of
+      symbol pin names to Part Number pin numbers.
+      Symbols that were not prepackaged will now be packaged correctly.
+      
+     No errors in Existing Schematic Packaging.
+
+     The Common DataBase has been read and will be packaged.
+     Clustering 82 Symbols:
+              82  *******************************
+              50  **************************************************
+     Clustering is Complete
+
+     Packager Assignments successfully completed
+
+
+
+     73 nets were found containing 255 pins
+     72 components were found
+
+     Parsed netlist - Augmenting..
+
+     Augmented - Adding phantom pins....
+
+     Numbering Nets....
+     After augmentation of supply pins, there are 73 nets where 0 nets have only one pin.
+
+
+     Checking Pins....
+
+     Packaging has been successfully tested with no errors or warnings.
+
+     Updating the Common DataBase
+
+     A BAM WasIs List: Integration\CDBBackAnno.bam has been created.
+
+     The Common DataBase has been successfully updated.
+
+     Packager finished successfully.
+     !THE CDB IS UP-TO-DATE!
+     
+     An unused pin and gate report has been written to Integration\UnusedPins.txt
+     An unused gate report for gates not in schematic has been written to Integration\UnusedGates.txt
+     An augmented pin report has been written to Integration\AugmentedPins.txt.

@@ -1,0 +1,160 @@
+
+                                    Packager
+                                    --------
+
+                        12:31 PM Thursday, March 02, 2000
+       Job Name: F:\SuperComputer\PhoneInterfacePCB\PhoneInterfacePCB.prj
+
+
+     Packager     Version: 15.8
+
+     The root of this design is at "F:\SuperComputer\PhoneInterfacePCB\design_definition\graphics\PhoneInterface.sbk".
+
+     The FLATNETNAMEs status indicates that the present set
+      of schematic netnames should be used to update the
+      FLATNETNAMEs.
+
+     The FLATNETNAMEs status indicates that the present set
+      of schematic netnames should be used to update the
+      FLATNETNAMEs.
+
+     Unable to determine the Disable Repackage status.
+     !Repackaging will be allowed!
+
+     The Central Library is at "H:\users\libraries\CentralLibrary\CentralLibrary.LMC".
+
+     The PDBs listed in the project file will be searched to satisfy the parts
+      requirements of the CDB only for parts not already found in the
+      Target PDB.
+
+     The AllowAlphaRefDes status indicates that reference
+      designators containing all alpha characters should be deleted
+      and the relevant symbols repackaged.
+
+     The cross mapping of symbol pin names to Part Number pin
+      numbers will be checked for packaged symbols and mapped correctly
+      for unpackaged symbols.
+
+     Properties that have been checked off in the Property Definition Editor
+      found at Library Manager/Common Properties will be checked for value
+      differences between the PartsDB and the non-null properties on symbols.
+     Those properties checked off will only be transferred from the PartsDB
+      to symbols that have not been packaged.  However, the property values
+      transferred will be limited to the precision specified in the Notation
+      Settings dialog.
+     The following properties were checked off in the Property Definition Editor:
+       "Value2"
+       "IBIS"
+       "Model Suffix"
+       "VHDL Model"
+       "Verilog Model"
+       "Description"
+       "Simulation Model"
+       "Rating"
+       "Tolerance"
+       "Value"
+
+     The present Common DataBase is up to date with the schematic
+      source files.
+
+     Common Data Base has been read
+
+     Target PDB Name: Integration\LocalPartsDB.pdb
+
+     Number of Part Numbers: 21
+          Part Numb: 1.5KE47CA -> Vend Part: 1.5KE47CA 
+          Part Numb: BZX85C24_DO41 -> Vend Part: BZX85C24_DO41 
+          Part Numb: CM1026_15_B6.5 -> Vend Part: CM1026_15_B6.5 
+          Part Numb: OS-CON_F -> Vend Part: OS-CON_F 
+          Part Numb: CK1248_CKR05 -> Vend Part: CK1248_CKR05 
+          Part Numb: 2N2222A_TO18 -> Vend Part: 2N2222A_TO18 
+          Part Numb: LM358_SO8_50 -> Vend Part: LM358_SO8_50 
+          Part Numb: LM293_SO8_50 -> Vend Part: LM293_SO8_50 
+          Part Numb: RES0805 -> Vend Part: RES0805 
+          Part Numb: CAP0805 -> Vend Part: CAP0805 
+          Part Numb: BAS32L -> Vend Part: BAS32L 
+          Part Numb: CM1044_5_B4.5 -> Vend Part: CM1044_5_B4.5 
+          Part Numb: CON_PB8302/308/0 -> Vend Part: CON_PB8302/308/0 
+          Part Numb: CON_PB8302/102/0 -> Vend Part: CON_PB8302/102/0 
+          Part Numb: XX1053 -> Vend Part: XX1053 
+          Part Numb: CON_PB8302/303/0 -> Vend Part: CON_PB8302/303/0 
+          Part Numb: TP_RP233308-03 -> Vend Part: TP_RP233308-03 
+          Part Numb: AD9696_SO8_50 -> Vend Part: AD9696_SO8_50 
+          Part Numb: CON_PB8302/114/0 -> Vend Part: CON_PB8302/114/0 
+          Part Numb: RM2032 -> Vend Part: RM2032 
+          Part Numb: TR5 -> Vend Part: TR5 
+
+     Number of Part Names: 0
+
+     Number of Part Labels: 0
+
+
+     Checking for value differences between non-null symbol properties and PartsDB properties,
+      but only for those properties checked off in the Property Definition Editor
+
+WARNING Block PhoneInterface Page 1, Symbol XCMP49: Symbol property changed
+     to limited precision PartsDB value.
+                        Resolved PartNumber = LM358_SO8_50
+                        Symbol Property: Description = Amplifier, 2 x
+     Limited Precision PartsDB Property: Description = Amplifier x 2
+
+WARNING Block PhoneInterface Page 1, Symbol XCMP48: Symbol property changed
+     to limited precision PartsDB value.
+                        Resolved PartNumber = LM358_SO8_50
+                        Symbol Property: Description = Amplifier, 2 x
+     Limited Precision PartsDB Property: Description = Amplifier x 2
+
+     Checking the validity of the packaging of prepackaged schematic
+      symbols.  Only the first error in symbols having the same
+      Reference Designator will be reported.
+
+     The packaging of all prepackaged schematic symbols is consistent
+      with the Parts DataBase data for the cross mapping of
+      symbol pin names to Part Number pin numbers.
+      Symbols that were not prepackaged will now be packaged correctly.
+      
+     No errors in Existing Schematic Packaging.
+
+     The Common DataBase has been read and will be packaged.
+     Clustering 81 Symbols:
+              81  ******************************
+              50  **************************************************
+     Clustering is Complete
+
+     Packager Assignments successfully completed
+
+
+
+     41 nets were found containing 142 pins
+     47 components were found
+
+     Parsed netlist - Augmenting..
+
+     Augmented - Adding phantom pins....
+
+     Numbering Nets....
+     After augmentation of supply pins, there are 41 nets where 0 nets have only one pin.
+
+
+     Checking Pins....
+
+     Testing of Packaging has been completed with 2 warnings.
+      Erroneous results may occur if not fixed.
+
+     Updating the Common DataBase
+
+     A BAM WasIs List: Integration\CDBBackAnno.bam has been created.
+     There have been 81 reference designator changes and 39 pin
+      number changes.
+     The BAM file will list all of the from-to changes.
+
+     The Common DataBase has been successfully updated.
+
+     Packager finished successfully.
+     !THE CDB IS UP-TO-DATE!
+     
+     An unused pin and gate report has been written to Integration\UnusedPins.txt
+     An unused gate report for gates not in schematic has been written to Integration\UnusedGates.txt
+     An augmented pin report has been written to Integration\AugmentedPins.txt.
+
+     There have been 2 warnings.

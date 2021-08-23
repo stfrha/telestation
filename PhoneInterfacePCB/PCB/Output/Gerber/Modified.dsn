@@ -1,0 +1,10299 @@
+$Header
+$Program	VeriBest GerbTool(tm) 9.0.2
+	Version	9.0
+	Created	Tue Jun 06 17:14:54 2000
+$End
+$Environment
+	SketchMode	No
+	OverlayMode	No
+	ShowErrors	No
+	ViewComposites	No
+	OrthoSnap	No
+	SnapAngle	45.0000
+	ActiveLayer	1
+	CurrentDcode	10
+	PreviousView	5.253, 1.807, 9.933, 5.161
+	FilmBox	18.000, 14.000, yellow
+	NetID		0
+	Flags		0
+$End
+$SelectCriteria
+	Mode		Window
+	Boundary	Include
+	Flashes	Yes
+	Draws		Yes
+	Arcs		Yes
+	Vertex		No
+	Dcode		0
+	Layer		0
+$End
+$Views
+$End
+$Layer	1
+	File		Holes.gdo
+	LyrName	Holes
+	Visibility	On
+	FlashColor	0xffffff
+	DrawColor	0xffffff
+	Type		Top
+	Polarity	Dark
+	Key		0
+	Ftype		Gerber
+	Extents	0.081, 0.082, 8.347, 8.155
+	NetID		0
+	Virtual	No
+$End
+$Layer	2
+	File		LayerTop.gdo
+	LyrName	LayerTop
+	Visibility	On
+	FlashColor	0xff
+	DrawColor	0xff
+	Type		Top
+	Polarity	Dark
+	Key		0
+	Ftype		Gerber
+	Extents	0.069, 0.070, 8.364, 8.093
+	NetID		0
+	Virtual	No
+$End
+$Layer	3
+	File		LayerBott.gdo
+	LyrName	LayerBott
+	Visibility	On
+	FlashColor	0xff0000
+	DrawColor	0xff0000
+	Type		Bottom
+	Polarity	Dark
+	Key		0
+	Ftype		Gerber
+	Extents	0.050, 0.050, 8.390, 8.322
+	NetID		0
+	Virtual	No
+$End
+$Layer	4
+	File		Border.gdo
+	LyrName	Border
+	Visibility	On
+	FlashColor	0x80ff00
+	DrawColor	0x80ff00
+	Type		Other
+	Polarity	Dark
+	Key		0
+	Ftype		Gerber
+	Extents	-0.004, -0.004, 8.463, 8.401
+	NetID		0
+	Virtual	No
+$End
+$ExportHPGL
+	OutFile	Modified.plt
+	MediaSize	34.000, 22.000
+	Offset		0.000, 0.000
+	Scale		1.0000
+	Border	No 0
+	PenWidth	0.010
+	PenSpeed	60
+	$Pens
+		Layer 1	1	1
+		Layer 2	1	1
+		Layer 3	1	1
+		Layer 4	1	1
+	$End
+	Spread	No
+	$SpreadOffset
+	$End
+	PadsOnly	No
+	Mode		Sketch
+	Rotate		No
+$End
+$ExportPostScript
+	OutFile	Modified.ps
+	MediaSize	8.000, 10.500
+	Offset		0.000, 0.000
+	Scale		1.0000
+	PadsOnly	No
+	Mode		Sketch
+	Rotate		No
+	GreyScale	No
+	Border	No
+$End
+$ImportHPGL
+	PlotSize	Small
+	Rotate		No
+	$Pens
+		1	D10
+		2	D10
+		3	D10
+		4	D10
+		5	D10
+		6	D10
+		7	D10
+		8	D10
+	$End
+$End
+$Text
+	Filename	Modified.txt
+	Height		0.1000
+	Width		0.1000
+	LineSpace	1.0000
+	CharSpace	1.0000
+	Rotate		No
+	Slant		0
+	Mirror		No
+$End
+$ApReport
+	RepFile	Modified.rpt
+	Layer		1
+$End
+$Rotate
+	Degrees	90.00
+	Pivot		Center
+$End
+$Mirror
+	Direction	Vert
+	Pivot		Center
+$End
+$DcodeScale
+	Fixed		No
+	Scale		0.1000, 0.1000
+$End
+$Panelize
+	AutoPanel		Yes
+	Virtual		No
+	Rows			0
+	Cols			0
+	TabSize		0.0000, 0.0000
+	ImageSpacing		0.0000, 0.0000
+	AutoVent		No
+	VentSpacing		0.0000, 0.0000
+	VentBorder		0.0000
+	VentDCode		0
+	VentLayer		0
+$End
+$Spread
+	AutoSpread		No
+	Rows			1
+	Cols			1
+	TabSize		0.0000, 0.0000
+	Layer			0
+	SortType		Col
+$End
+$DRC
+	RepFile		Modified.drc
+	Layer			1
+	Pad2Pad		0.0060
+	Pad2Trace		0.0060
+	Trace2Trace		0.0060
+	Border		0.0250
+	MinFlash		0.0200
+	MinTrace		0.0040
+	MinRing		0.0020
+	DrillLayer		1
+	BorderLayer		0
+	HiliLayer		0
+	IgnoreSelGrp		Yes
+	UseToolSize		No
+	WellBehaved		Yes
+	WindowMode		Yes
+	Stubs		Yes
+	ErrorCount		0
+	MaxErrors		100
+$End
+$Snoman
+	RepFile		Modified.sno
+	FromLayer		0
+	ToLayer		1
+	DCode			0
+	Pad2Pad		0.0060
+	Pad2Trace		0.0060
+	Offset			-0.0050
+	MinPercent		0.6000
+	MaxPercent		0.8000
+	WindowMode		No
+$End
+$Teardrop
+	RepFile		Modified.rpt
+	Layer		0
+	DCode			0
+	Pad2Trace		0.0060
+	Trace2Trace		0.0060
+	HostOffsetPercent			0.1500
+	TeeLength		0.5000
+	TeeWidth		0.5000
+	WindowMode		No
+	DeleteExisting		No
+$End
+$TestPoints
+	FxFile		1 Modified.fx
+	Dist		1 -1.0000
+	Thick		1 -1.0000
+	FxFile		2 Modified.ip2
+	Dist		2 -1.0000
+	Thick		2 -1.0000
+	FxFile		3 Modified.ip3
+	Dist		3 -1.0000
+	Thick		3 -1.0000
+	FxFile		4 Modified.ip4
+	Dist		4 -1.0000
+	Thick		4 -1.0000
+	FxFile		5 Modified.ip5
+	Dist		5 -1.0000
+	Thick		5 -1.0000
+	FxFile		6 Modified.ip6
+	Dist		6 -1.0000
+	Thick		6 -1.0000
+	FxFile		7 Modified.tp
+	Dist		7 -1.0000
+	Thick		7 -1.0000
+	NetFile	Modified.nl
+	MapFile	Modified.mp
+	TPLayer	0
+	ProbeSize	0.0230
+	MaxDeflect	0.1300
+	GridSize	0.1000
+	Points		Ends
+	Isolated	Exclude
+$End
+$Stagger
+	TPLayer	0
+	ProbeSpacing	0.0230
+	EdgeSpacing	0.0000
+	MaxFlash	0.0600
+	StaggerDir		L-U
+	UseMiddle	No
+	WindowMode	Yes
+$End
+$Drill
+	OutFile	Modified.drl
+	RepFile	Modified.rpt
+	Layer		1
+	PreDrill	0.250
+	WindowMode	No
+	NextFirstDrillSequence	998
+	NextLastDrillSequence	1000
+$End
+$Mill
+	OutFile	Modified.nc
+	Layer		0
+	Tool		0
+	Compensate	No
+	Mode		Auto
+	TabSize	0.1000
+	OverShoot	0.0000
+	PlungeLine	Yes
+	Priority	Normal
+	Critical	vga16red
+	Int	vga16cyan
+	Norm	vga16green
+	Low	vga16blue
+	Clamp	vga16magenta
+	Plunge	red
+	Retract	red
+	$Paths	0
+	$End
+$End
+$FixSS
+	PadLayer	0
+	SilkLayer	0
+	WindowMode	No
+	Spacing	0.0100
+$End
+$PadRemoval
+	WindowMode	No
+	Layer		0
+	DCode		0
+$End
+$Highlights
+	Query		white
+	Select		white
+	DRC		white
+$End
+$EndHeader
+$DrillToolData
+$End
+$MillToolData
+$End
+$TestPointToolData
+$End
+$CustomApertureData
+$End
+$ApertureData
+9999
+#    Shape     Width   Height    Type  R90
+#
+D10  Round     221b4 221b4   ThruHole     0
+D11  Round     2e824 2e824   ThruHole     0
+D12  Round     27114 27114   ThruHole     0
+D13  Rect      284ec 1c868   ThruHole     0
+D14  Rect      25350 f80c   ThruHole     0
+D15  Rect      1c868 284ec   ThruHole     0
+D16  Rect      1f018 2e824   ThruHole     0
+D17  Rect      2e824 1f018   ThruHole     0
+D18  Round     4e228 4e228   ThruHole     0
+D19  Round     25350 25350   ThruHole     0
+D20  Round     13d80 13d80   ThruHole     0
+D21  Round     115d0 115d0   ThruHole     0
+D22  Round     15b44 15b44   ThruHole     0
+D23  Round     182f4 182f4   ThruHole     0
+D24  Round     1aaa4 1aaa4   ThruHole     0
+D25  Round     1d254 1d254   ThruHole     0
+D26  Round     1fa04 1fa04   ThruHole     0
+D27  Round     3f408 3f408   ThruHole     0
+D28  Round     4f60 4f60   ThruHole     0
+D70  Round     6338 6338   ThruHole     0
+D71  Round     9ec0 9ec0   ThruHole     0
+$End
+$LayerData
+L1
+I0
+C" Job   : F:\SuperComputer\PhoneInterfacePCB\PCB\PhoneInterfacePCB.pcb"
+C" User  : PC-FRHA:frha"
+C" Layer : Holes.gdo"
+C" Date  : Tue Jun 06 17:10:25 2000"
+A21
+T0
+N0
+S999
+D5
+fcb442 f75d97
+10064d2 fae775
+1077d84 1192e6d
+10b5db4 f26c8d
+11053b4 1273625
+111ef76 111ce4b
+11433e4 11e5707
+116fe44 124ca07
+116fe44 1306f8d
+117121c 10e93cd
+119e668 10aa5b9
+11bd680 108b5a1
+11dc698 10aa5b9
+11e9bea 11fc22b
+1226d38 11a3a51
+1267a0e 1382fed
+1267f04 1316799
+1267f04 1344fbd
+1275652 12957d9
+12feb06 1389c13
+131a290 10f4f53
+1333564 139a8f5
+135453c 12b2537
+1362b6c f8618b
+136faca f5260f
+1378da2 fb6081
+137e6ee 1288385
+138ca24 13658a3
+139dff4 124cefd
+13bc12a 10ece57
+13d4c0e 11b1f83
+13dd7f4 1058ff9
+A25
+1229ed4 cca2b9
+1229ed4 da3361
+12a8dd6 d74b3d
+12b5740 cf8add
+138e7e8 cf8add
+14171b2 d74b3d
+A23
+f7fcc4 d55b25
+f7fcc4 d93b55
+fdcd0c df0b9d
+fdcd0c 105cd7d
+101ad3c df0b9d
+101ad3c 105cd7d
+1058d6c df0b9d
+1058d6c 105cd7d
+1077d84 cbaaad
+1096d9c df0b9d
+1096d9c 105cd7d
+10d4dcc df0b9d
+10d4dcc 105cd7d
+10f3de4 cbaaad
+1112dfc df0b9d
+1112dfc 105cd7d
+1131e14 d36b0d
+1150e2c df0b9d
+1150e2c 105cd7d
+118ee5c df0b9d
+118ee5c 105cd7d
+11ade74 d36b0d
+11cce8c df0b9d
+11cce8c 105cd7d
+120aebc df0b9d
+120aebc 105cd7d
+1229ed4 1325fa5
+1229ed4 1363fd5
+1248eec df0b9d
+1248eec 105cd7d
+1286f1c df0b9d
+1286f1c 105cd7d
+12a5f34 120eecd
+12c4f4c df0b9d
+12c4f4c 105cd7d
+1302f7c df0b9d
+1302f7c 105cd7d
+1321f94 120eecd
+135ffc4 e6cbfd
+135ffc4 ee8c5d
+13bd00c e4dbe5
+13bd00c e8bc15
+13bd00c ec9c45
+13bd00c f07c75
+13bd00c f45ca5
+13bd00c f83cd5
+13bd00c fc1d05
+13bd00c fffd35
+13bd00c 12c8f5d
+13bd00c 1306f8d
+13bd00c 1344fbd
+13fb03c e4dbe5
+13fb03c e8bc15
+13fb03c ec9c45
+13fb03c f07c75
+13fb03c f45ca5
+13fb03c f83cd5
+13fb03c fc1d05
+13fb03c fffd35
+13fb03c 12c8f5d
+13fb03c 1306f8d
+13fb03c 1344fbd
+A24
+1039d54 10d8ddd
+10b5db4 10d8ddd
+139dff4 120eecd
+141a054 120eecd
+A26
+1039d54 1344fbd
+10b5db4 1154e3d
+1131e14 1344fbd
+A22
+1077d84 ec9c45
+1077d84 fffd35
+1112dfc e2ebcd
+116fe44 ec9c45
+116fe44 fffd35
+11ade74 ec9c45
+11ade74 fffd35
+120aebc c7ca7d
+1248eec e2ebcd
+1267f04 ec9c45
+1267f04 fffd35
+12e3f64 ec9c45
+12e3f64 fffd35
+1340fac c7ca7d
+A27
+fbdcf4 cbaaad
+fbdcf4 13c101d
+141a054 cbaaad
+141a054 13c101d
+A21
+13ecd85 6d0921
+13b1cf5 7092ff
+1340443 8ed9f7
+1302413 681817
+12b2e13 9ce1af
+1299251 8779d5
+1274de3 940291
+1248383 9a7591
+1248383 a61b17
+1246fab 843f57
+1219b5f 805143
+11fab47 7e612b
+11dbb2f 805143
+11ce5dd 956db5
+119148f 8fe5db
+11507b9 addb77
+11502c3 a71323
+11502c3 a9fb47
+1142b75 9f0363
+10b96c1 ae479d
+109df37 84fadd
+1084c63 af547f
+1063c8b a0d0c1
+105565b 6e0d15
+10486fd 6ad199
+103f425 710c0b
+1039ad9 9e2f0f
+102b7a3 ac042d
+101a1d3 9a7a87
+ffc09d 8479e1
+fe35b9 90cb0d
+fda9d3 7b3b83
+A25
+118e2f3 424e43
+118e2f3 4fdeeb
+110f3f1 4cf6c7
+1102a87 453667
+10299df 453667
+fa1015 4cf6c7
+A23
+1438503 4b06af
+1438503 4ee6df
+13db4bb 54b727
+13db4bb 7b7907
+139d48b 54b727
+139d48b 7b7907
+135f45b 54b727
+135f45b 7b7907
+1340443 415637
+132142b 54b727
+132142b 7b7907
+12e33fb 54b727
+12e33fb 7b7907
+12c43e3 415637
+12a53cb 54b727
+12a53cb 7b7907
+12863b3 491697
+126739b 54b727
+126739b 7b7907
+122936b 54b727
+122936b 7b7907
+120a353 491697
+11eb33b 54b727
+11eb33b 7b7907
+11ad30b 54b727
+11ad30b 7b7907
+118e2f3 a80b2f
+118e2f3 abeb5f
+116f2db 54b727
+116f2db 7b7907
+11312ab 54b727
+11312ab 7b7907
+1112293 969a57
+10f327b 54b727
+10f327b 7b7907
+10b524b 54b727
+10b524b 7b7907
+1096233 969a57
+1058203 5c7787
+1058203 6437e7
+ffb1bb 5a876f
+ffb1bb 5e679f
+ffb1bb 6247cf
+ffb1bb 6627ff
+ffb1bb 6a082f
+ffb1bb 6de85f
+ffb1bb 71c88f
+ffb1bb 75a8bf
+ffb1bb a23ae7
+ffb1bb a61b17
+ffb1bb a9fb47
+fbd18b 5a876f
+fbd18b 5e679f
+fbd18b 6247cf
+fbd18b 6627ff
+fbd18b 6a082f
+fbd18b 6de85f
+fbd18b 71c88f
+fbd18b 75a8bf
+fbd18b a23ae7
+fbd18b a61b17
+fbd18b a9fb47
+A24
+137e473 833967
+1302413 833967
+101a1d3 969a57
+f9e173 969a57
+A26
+137e473 a9fb47
+1302413 8af9c7
+12863b3 a9fb47
+A22
+1340443 6247cf
+1340443 75a8bf
+12a53cb 589757
+1248383 6247cf
+1248383 75a8bf
+120a353 6247cf
+120a353 75a8bf
+11ad30b 3d7607
+116f2db 589757
+11502c3 6247cf
+11502c3 75a8bf
+10d4263 6247cf
+10d4263 75a8bf
+107721b 3d7607
+A27
+13fa4d3 415637
+13fa4d3 b1bba7
+f9e173 415637
+f9e173 b1bba7
+L2
+I0
+C" Job   : F:\SuperComputer\PhoneInterfacePCB\PCB\PhoneInterfacePCB.pcb"
+C" User  : PC-FRHA:frha"
+C" Layer : LayerTop.gdo"
+C" Date  : Tue Jun 06 17:10:25 2000"
+A10
+T0
+N0
+S999
+D5
+13ecd85 6d0921
+13b1cf5 7092ff
+1340443 8ed9f7
+1302413 681817
+12b2e13 9ce1af
+1299251 8779d5
+1274de3 940291
+1248383 9a7591
+1248383 a61b17
+1246fab 843f57
+1219b5f 805143
+11fab47 7e612b
+11dbb2f 805143
+11ce5dd 956db5
+119148f 8fe5db
+11507b9 addb77
+11502c3 a71323
+11502c3 a9fb47
+1142b75 9f0363
+10b96c1 ae479d
+109df37 84fadd
+1084c63 af547f
+1063c8b a0d0c1
+105565b 6e0d15
+10486fd 6ad199
+103f425 710c0b
+1039ad9 9e2f0f
+102b7a3 ac042d
+101a1d3 9a7a87
+ffc09d 8479e1
+fe35b9 90cb0d
+fda9d3 7b3b83
+A11
+137e473 833967
+1302413 833967
+118e2f3 424e43
+118e2f3 4fdeeb
+110f3f1 4cf6c7
+1102a87 453667
+10299df 453667
+101a1d3 969a57
+fa1015 4cf6c7
+f9e173 969a57
+A12
+1438503 4b06af
+1438503 4ee6df
+13db4bb 54b727
+13db4bb 7b7907
+139d48b 54b727
+139d48b 7b7907
+135f45b 54b727
+135f45b 7b7907
+1340443 415637
+132142b 54b727
+132142b 7b7907
+12e33fb 54b727
+12e33fb 7b7907
+12c43e3 415637
+12a53cb 54b727
+12a53cb 7b7907
+12863b3 491697
+126739b 54b727
+126739b 7b7907
+122936b 54b727
+122936b 7b7907
+120a353 491697
+11eb33b 54b727
+11eb33b 7b7907
+11ad30b 54b727
+11ad30b 7b7907
+118e2f3 a80b2f
+118e2f3 abeb5f
+116f2db 54b727
+116f2db 7b7907
+11312ab 54b727
+11312ab 7b7907
+1112293 969a57
+10f327b 54b727
+10f327b 7b7907
+10b524b 54b727
+10b524b 7b7907
+1096233 969a57
+1058203 5c7787
+1058203 6437e7
+ffb1bb 5a876f
+ffb1bb 5e679f
+ffb1bb 6247cf
+ffb1bb 6627ff
+ffb1bb 6a082f
+ffb1bb 6de85f
+ffb1bb 71c88f
+ffb1bb 75a8bf
+ffb1bb a23ae7
+ffb1bb a61b17
+ffb1bb a9fb47
+fbd18b 5a876f
+fbd18b 5e679f
+fbd18b 6247cf
+fbd18b 6627ff
+fbd18b 6a082f
+fbd18b 6de85f
+fbd18b 71c88f
+fbd18b 75a8bf
+fbd18b a23ae7
+fbd18b a61b17
+fbd18b a9fb47
+A13
+12863b3 8d60ef
+12863b3 9052ff
+12863b3 9ce1af
+12863b3 9fd3bf
+1248383 8d60ef
+1248383 9052ff
+1248383 9ce1af
+1248383 9fd3bf
+120a353 9ce1af
+120a353 9fd3bf
+118e2f3 99017f
+118e2f3 9bf38f
+1112293 8980bf
+1112293 8c72cf
+1096233 8d60ef
+1096233 9052ff
+1058203 7de02f
+1058203 80d23f
+1058203 85a08f
+1058203 88929f
+1058203 ac626f
+1058203 af547f
+A14
+1211f59 8811a3
+1211f59 8a01bb
+1211f59 8bf1d3
+1211f59 8de1eb
+11866ed 8811a3
+11866ed 8a01bb
+11866ed 8bf1d3
+11866ed 8de1eb
+1119e99 a332f3
+1119e99 a5230b
+1119e99 a71323
+1119e99 a9033b
+108e62d a332f3
+108e62d a5230b
+108e62d a71323
+108e62d a9033b
+1021dd9 8811a3
+1021dd9 8a01bb
+1021dd9 8bf1d3
+1021dd9 8de1eb
+f9656d 8811a3
+f9656d 8a01bb
+f9656d 8bf1d3
+f9656d 8de1eb
+A15
+12dbceb 969a57
+12acadb 969a57
+11a5bfb 92ba27
+11769eb 92ba27
+1129b9b addb77
+10fa98b addb77
+10ebb6b 9e5ab7
+10bc95b 9e5ab7
+ff3aab 7f5937
+fc489b 7f5937
+A16
+11389bb 92ba27
+10ebb6b 92ba27
+A17
+11502c3 88929f
+11502c3 8d60ef
+A18
+137e473 a9fb47
+1302413 8af9c7
+12863b3 a9fb47
+A19
+1340443 6247cf
+1340443 75a8bf
+12a53cb 589757
+1248383 6247cf
+1248383 75a8bf
+120a353 6247cf
+120a353 75a8bf
+11ad30b 3d7607
+116f2db 589757
+11502c3 6247cf
+11502c3 75a8bf
+10d4263 6247cf
+10d4263 75a8bf
+107721b 3d7607
+A70
+D4
+1442bb3 8290bb
+D6
+1442bb3 805a31
+1442bb3 8290bb
+D4
+1442bb3 8374ef
+D6
+1442bb3 851e95
+1442bb3 8374ef
+D4
+1442bb3 8ac03b
+D6
+1442bb3 8ad315
+1442bb3 8ac03b
+D4
+1442bb3 9c6c9b
+D6
+1442bb3 9c8073
+1442bb3 9c6c9b
+D4
+1442bb3 9e7581
+D6
+1442bb3 a01f27
+1442bb3 9e7581
+D4
+1442bb3 a2201d
+D6
+1442bb3 a33ae3
+1442bb3 a2201d
+D4
+1442bb3 a33ae3
+D6
+143d561 a3a50d
+1442bb3 a33ae3
+D4
+1442bb3 a77263
+D6
+1442bb3 a88c2b
+1442bb3 a77263
+D4
+1442bb3 a88c2b
+D6
+143ba97 a91a0d
+1442bb3 a88c2b
+D4
+1442bb3 aa8d21
+D6
+1442bb3 aba7e7
+1442bb3 aa8d21
+D4
+1442bb3 aba7e7
+D6
+143ba97 ac34cb
+1442bb3 aba7e7
+D4
+143ba97 85ad75
+D6
+1442bb3 851e95
+143ba97 85ad75
+D4
+143ba97 a0ae07
+D6
+1442bb3 a01f27
+143ba97 a0ae07
+D4
+143ba97 a1913d
+D6
+1442bb3 a2201d
+143ba97 a1913d
+D4
+143ba97 a6e383
+D6
+1442bb3 a77263
+143ba97 a6e383
+D4
+143ba97 a9fe41
+D6
+1442bb3 aa8d21
+143ba97 a9fe41
+D4
+143b89b 85ad75
+D6
+1430ef1 85ad75
+143b89b 85ad75
+D4
+143b89b a0ae07
+D6
+1430ef1 a0ae07
+143b89b a0ae07
+D4
+143b89b a91a0d
+D6
+1418211 a91a0d
+143b89b a91a0d
+D4
+143b89b ac34cb
+D6
+1418211 ac34cb
+143b89b ac34cb
+D4
+1430ef1 85ad75
+D6
+1429ed3 851e95
+1430ef1 85ad75
+D4
+1430ef1 a0ae07
+D6
+1429ed3 a01f27
+1430ef1 a0ae07
+D4
+1430ef1 a1913d
+D6
+143b89b a1913d
+1430ef1 a1913d
+D4
+142c28b 81e80f
+D6
+142c28b 805a31
+142c28b 81e80f
+D4
+1429ed3 8374ef
+D6
+1429ed3 851e95
+1429ed3 8374ef
+D4
+1429ed3 851e95
+D6
+14111f3 85ac77
+1429ed3 851e95
+D4
+1429ed3 88c735
+D6
+1429ed3 8690ab
+1429ed3 88c735
+D4
+1429ed3 9e7581
+D6
+1429ed3 a01f27
+1429ed3 9e7581
+D4
+1429ed3 a01f27
+D6
+14111f3 a0ac0b
+1429ed3 a01f27
+D4
+1429ed3 a2201d
+D6
+1430ef1 a1913d
+1429ed3 a2201d
+1429ed3 a33ae3
+1429ed3 a2201d
+D4
+1429ed3 a33ae3
+D6
+1422bbb a3c7c7
+1429ed3 a33ae3
+D4
+1426743 89ac67
+D6
+1442bb3 8ac03b
+1426743 89ac67
+D4
+1426743 8be2f1
+D6
+1442bb3 8ad315
+1426743 8be2f1
+D4
+1426743 9b58c7
+D6
+1442bb3 9c6c9b
+1426743 9b58c7
+D4
+1426743 9d8f51
+D6
+1442bb3 9c8073
+1426743 9d8f51
+D4
+1426547 9959cd
+D6
+1442bb3 9a7493
+1426547 9959cd
+1442bb3 983d0b
+1426547 9959cd
+D4
+141f42b 8be2f1
+D6
+141f42b 89ac67
+141f42b 8be2f1
+D4
+141f42b 9d8f51
+D6
+141f42b 9b58c7
+141f42b 9d8f51
+D4
+1418211 a1913d
+D6
+14111f3 a2201d
+1418211 a1913d
+D4
+1418211 a3c7c7
+D6
+1422db7 a3c7c7
+1418211 a3c7c7
+D4
+1418211 a6e383
+D6
+143b89b a6e383
+1418211 a6e383
+D4
+1418211 a91a0d
+D6
+14111f3 a88c2b
+1418211 a91a0d
+D4
+1418211 a9fe41
+D6
+143b89b a9fe41
+1418211 a9fe41
+D4
+1418211 ac34cb
+D6
+14111f3 aba7e7
+1418211 ac34cb
+D4
+1414a81 a72bf1
+D6
+143f227 a8d39b
+1414a81 a72bf1
+D4
+1414a81 aa47ad
+D6
+143f227 abef57
+1414a81 aa47ad
+D4
+14111f3 805a31
+D6
+1442bb3 805a31
+14111f3 805a31
+D4
+14111f3 8374ef
+D6
+1442bb3 8374ef
+14111f3 8374ef
+D4
+14111f3 8690ab
+D6
+1442bb3 8690ab
+14111f3 8690ab
+D4
+14111f3 88c735
+D6
+1442bb3 88c735
+14111f3 88c735
+D4
+14111f3 89ac67
+D6
+1426547 89ac67
+14111f3 89ac67
+D4
+14111f3 8be2f1
+D6
+1426547 8be2f1
+14111f3 8be2f1
+D4
+14111f3 983d0b
+D6
+1442bb3 983d0b
+14111f3 983d0b
+D4
+14111f3 9a7493
+D6
+1442bb3 9a7493
+14111f3 9a7493
+D4
+14111f3 9b58c7
+D6
+1426547 9b58c7
+14111f3 9b58c7
+D4
+14111f3 9d8f51
+D6
+1426547 9d8f51
+14111f3 9d8f51
+D4
+14111f3 9e7581
+D6
+1442bb3 9e7581
+14111f3 9e7581
+D4
+14111f3 a2201d
+D6
+14111f3 a33ae3
+14111f3 a2201d
+D4
+14111f3 a33ae3
+D6
+1418211 a3c7c7
+14111f3 a33ae3
+D4
+14111f3 a77263
+D6
+1418211 a6e383
+14111f3 a77263
+14111f3 a88c2b
+14111f3 a77263
+D4
+14111f3 aa8d21
+D6
+1418211 a9fe41
+14111f3 aa8d21
+14111f3 aba7e7
+14111f3 aa8d21
+A71
+D4
+1340443 8ed9f7
+D6
+12fa01d 8ed9f7
+D4
+1302413 681817
+D6
+11bb249 681817
+118f8c7 6ad199
+10486fd 6ad199
+D4
+12fa01d 8ed9f7
+D6
+12cc4df 91b535
+12c1e2f 91b535
+D4
+12dbceb 949171
+D6
+12c1e2f 92f2b5
+12c1e2f 91b535
+D4
+12dbceb 969a57
+D6
+12dbceb 949171
+D4
+12c1e2f 91b535
+D6
+12a242b 91b535
+128c1f5 9052ff
+12863b3 9052ff
+D4
+12b2e13 9ce1af
+D6
+12863b3 9ce1af
+D4
+1299251 8779d5
+D6
+126d8cf 8779d5
+12450e9 8a01bb
+1211f59 8a01bb
+D4
+12863b3 9fd3bf
+D6
+1248383 9fd3bf
+D4
+1274de3 940291
+D6
+1257699 922b47
+1257699 9052ff
+1248383 9052ff
+D4
+1257699 8d60ef
+D6
+12863b3 8d60ef
+D4
+1248383 8d60ef
+D6
+1257699 8d60ef
+D4
+1248383 9a7591
+D6
+1248383 9ce1af
+D4
+1248383 a61b17
+D6
+11e3931 a61b17
+11d4125 a5230b
+1119e99 a5230b
+D4
+1211f59 8811a3
+D6
+1211f59 86e305
+121d1f1 86306d
+1227e95 86306d
+1246fab 843f57
+D4
+1211f59 8a01bb
+D6
+11dbb2f 8a01bb
+11bcb17 8811a3
+11866ed 8811a3
+D4
+1211f59 8bf1d3
+D6
+1230f71 8bf1d3
+1232b39 8c0d9b
+1232b39 8c9e77
+123edb1 8d60ef
+1248383 8d60ef
+D4
+1211f59 8de1eb
+D6
+1211f59 8f2461
+1224df7 9052ff
+1248383 9052ff
+D4
+120a353 9ce1af
+D6
+11dd201 9ce1af
+11ce3e1 9dcfcf
+11ce3e1 9e9345
+11c9481 9ee2a5
+11c9481 9f0363
+D4
+120a353 9fd3bf
+D6
+1248383 9fd3bf
+D4
+11a5bfb 92ba27
+D6
+11a5bfb 931869
+11cb147 956db5
+11ce5dd 956db5
+D4
+118e2f3 99017f
+D6
+11e1181 99017f
+11f8593 9a7591
+1248383 9a7591
+D4
+118e2f3 9bf38f
+D6
+114fbd1 9bf38f
+1143169 9b2927
+101a1d3 9b2927
+101a1d3 9a7a87
+D4
+11866ed 8a01bb
+D6
+11a5705 8a01bb
+11e819f 8e2c55
+11e819f 8f57f9
+125c3fd 969a57
+12acadb 969a57
+D4
+11866ed 8a01bb
+D6
+117bf3f 8a01bb
+117aa69 8a1691
+11702bb 8a1691
+1157ec9 88929f
+11502c3 88929f
+D4
+118305b 8fe5db
+D6
+119148f 8fe5db
+D4
+118305b 8fe5db
+D6
+118305b 8f6ccf
+11866ed 8f363d
+11866ed 8de1eb
+D4
+11769eb 92ba27
+D6
+11769eb 90ac4b
+118305b 8fe5db
+D4
+11507b9 addb77
+D6
+114a77b addb77
+114a67d addb77
+1129b9b addb77
+D4
+11502c3 88929f
+D6
+113de11 88929f
+113de11 8a511b
+111bc5d 8c72cf
+1112293 8c72cf
+D4
+11502c3 8d60ef
+D6
+1157ec9 8d60ef
+11702bb 8bdcfd
+117aa69 8bdcfd
+117bf3f 8bf1d3
+11866ed 8bf1d3
+D4
+11502c3 a9fb47
+D6
+114c441 a9fb47
+113cc35 a9033b
+1119e99 a9033b
+D4
+1142b75 9f0363
+D6
+11c9481 9f0363
+D4
+11389bb 92ba27
+D6
+11389bb 923435
+11502c3 90bb2d
+11502c3 8d60ef
+D4
+1129b9b addb77
+D6
+1129b9b abd291
+111d52b ab0c21
+10eeb0b ab0c21
+10e7aed aa9c03
+10e7aed a3a311
+10eeb0b a332f3
+1119e99 a332f3
+D4
+1119e99 a71323
+D6
+11502c3 a71323
+D4
+10ebb6b 92ba27
+D6
+10ebb6b 89df01
+10f19ad 8980bf
+1112293 8980bf
+D4
+10ebb6b 9e5ab7
+D6
+10ebb6b a0e695
+10c1db1 a3844f
+10c1db1 a7bbcf
+10ad645 a9033b
+D4
+10bc95b 9e5ab7
+D6
+108b295 9e5ab7
+1063c8b a0d0c1
+D4
+10ad645 a9033b
+D6
+10c6a17 aa980b
+10c6a17 ab21f5
+10e12bf acc99f
+10fa98b acc99f
+10fa98b addb77
+D4
+1096233 8d60ef
+D6
+1096233 8a9e7f
+10e75f7 858abb
+11fb337 858abb
+124ae2d 808ec7
+128a72b 808ec7
+12c0b55 83f3ef
+12c0b55 897bc9
+12b0e53 8a79c9
+126b31b 8a79c9
+1257699 8bb64b
+1257699 8d60ef
+D4
+1096233 9052ff
+D6
+109c075 9052ff
+10cc167 9353f1
+10e21a1 9353f1
+10ebb6b 92ba27
+D4
+108e62d a332f3
+D6
+108e62d a19c27
+10bc95b 9eb8f9
+10bc95b 9e5ab7
+D4
+108e62d a5230b
+D6
+10709ed a5230b
+1039ad9 a1b3f7
+1039ad9 9e2f0f
+D4
+108e62d a9033b
+D6
+108e62d ab9709
+10b96c1 ae479d
+D4
+108e62d a9033b
+D6
+10ad645 a9033b
+D4
+1084c63 af547f
+D6
+1058203 af547f
+D4
+1058203 7de02f
+D6
+1078ae9 7de02f
+109df37 80347d
+109df37 84fadd
+D4
+1058203 80d23f
+D6
+102eb3b 80d23f
+1017233 7f5937
+ff3aab 7f5937
+D4
+1058203 85a08f
+D6
+1034c77 85a08f
+1021dd9 86cf2d
+1021dd9 8811a3
+D4
+1058203 85a08f
+D6
+1058203 80d23f
+D4
+1058203 ac626f
+D6
+1058203 a88735
+106f615 a71323
+108e62d a71323
+D4
+105565b 6e0d15
+D6
+1219075 6e0d15
+122936b 6d0921
+13ecd85 6d0921
+D4
+103f425 710c0b
+D6
+11f4b09 710c0b
+11fc513 7092ff
+13b1cf5 7092ff
+D4
+102b7a3 ac042d
+D6
+102e93f ac042d
+1034781 ac626f
+1058203 ac626f
+D4
+1021dd9 8a01bb
+D6
+1040fed 8a01bb
+1057f09 88929f
+1058203 88929f
+D4
+1021dd9 8a01bb
+D6
+1002dc1 8a01bb
+ffc09d 899497
+ffc09d 8479e1
+D4
+1021dd9 8bf1d3
+D6
+1040df1 8bf1d3
+1063697 8e1a79
+1063697 971859
+108ba85 999b49
+112fed3 999b49
+1154341 9756db
+124f799 9756db
+126eda5 994ce7
+12b718b 994ce7
+12e2a0f 9c046d
+12e2a0f a06e87
+12b64a5 a333f1
+11ef9ad a333f1
+11c9481 a0cdc7
+11c9481 9f0363
+D4
+101a1d3 9a7a87
+D6
+102ef33 992d27
+10497db 992d27
+10508f7 98bd09
+10508f7 95b02f
+1021dd9 92c60f
+1021dd9 8de1eb
+D4
+fe35b9 90cb0d
+D6
+fb5585 8dead9
+fb5585 8de1eb
+D4
+fda9d3 7b3b83
+D6
+ff3aab 7ccb5d
+ff3aab 7f5937
+D4
+fc489b 7f5937
+D6
+fc489b 83ad7d
+fb9fef 845629
+fb9fef 89b751
+fb5585 8a01bb
+fb5585 8bf1d3
+fb5585 8de1eb
+D4
+f9656d 8a01bb
+D6
+fb5585 8a01bb
+D4
+f9656d 8bf1d3
+D6
+fb5585 8bf1d3
+D4
+f9656d 8de1eb
+D6
+fb5585 8de1eb
+L3
+I0
+C" Job   : F:\SuperComputer\PhoneInterfacePCB\PCB\PhoneInterfacePCB.pcb"
+C" User  : PC-FRHA:frha"
+C" Layer : LayerBott.gdo"
+C" Date  : Tue Jun 06 17:10:25 2000"
+A10
+T0
+N0
+S999
+D5
+fcb442 f75d97
+10064d2 fae775
+1077d84 1192e6d
+10b5db4 f26c8d
+11053b4 1273625
+111ef76 111ce4b
+11433e4 11e5707
+116fe44 124ca07
+116fe44 1306f8d
+117121c 10e93cd
+119e668 10aa5b9
+11bd680 108b5a1
+11dc698 10aa5b9
+11e9bea 11fc22b
+1226d38 11a3a51
+1267a0e 1382fed
+1267f04 1316799
+1267f04 1344fbd
+1275652 12957d9
+12feb06 1389c13
+131a290 10f4f53
+1333564 139a8f5
+135453c 12b2537
+1362b6c f8618b
+136faca f5260f
+1378da2 fb6081
+137e6ee 1288385
+138ca24 13658a3
+139dff4 124cefd
+13bc12a 10ece57
+13d4c0e 11b1f83
+13dd7f4 1058ff9
+A11
+1039d54 10d8ddd
+10b5db4 10d8ddd
+1229ed4 cca2b9
+1229ed4 da3361
+12a8dd6 d74b3d
+12b5740 cf8add
+138e7e8 cf8add
+139dff4 120eecd
+14171b2 d74b3d
+141a054 120eecd
+A12
+f7fcc4 d55b25
+f7fcc4 d93b55
+fdcd0c df0b9d
+fdcd0c 105cd7d
+101ad3c df0b9d
+101ad3c 105cd7d
+1058d6c df0b9d
+1058d6c 105cd7d
+1077d84 cbaaad
+1096d9c df0b9d
+1096d9c 105cd7d
+10d4dcc df0b9d
+10d4dcc 105cd7d
+10f3de4 cbaaad
+1112dfc df0b9d
+1112dfc 105cd7d
+1131e14 d36b0d
+1150e2c df0b9d
+1150e2c 105cd7d
+118ee5c df0b9d
+118ee5c 105cd7d
+11ade74 d36b0d
+11cce8c df0b9d
+11cce8c 105cd7d
+120aebc df0b9d
+120aebc 105cd7d
+1229ed4 1325fa5
+1229ed4 1363fd5
+1248eec df0b9d
+1248eec 105cd7d
+1286f1c df0b9d
+1286f1c 105cd7d
+12a5f34 120eecd
+12c4f4c df0b9d
+12c4f4c 105cd7d
+1302f7c df0b9d
+1302f7c 105cd7d
+1321f94 120eecd
+135ffc4 e6cbfd
+135ffc4 ee8c5d
+13bd00c e4dbe5
+13bd00c e8bc15
+13bd00c ec9c45
+13bd00c f07c75
+13bd00c f45ca5
+13bd00c f83cd5
+13bd00c fc1d05
+13bd00c fffd35
+13bd00c 12c8f5d
+13bd00c 1306f8d
+13bd00c 1344fbd
+13fb03c e4dbe5
+13fb03c e8bc15
+13fb03c ec9c45
+13fb03c f07c75
+13fb03c f45ca5
+13fb03c f83cd5
+13fb03c fc1d05
+13fb03c fffd35
+13fb03c 12c8f5d
+13fb03c 1306f8d
+13fb03c 1344fbd
+A18
+1039d54 1344fbd
+10b5db4 1154e3d
+1131e14 1344fbd
+A19
+1077d84 ec9c45
+1077d84 fffd35
+1112dfc e2ebcd
+116fe44 ec9c45
+116fe44 fffd35
+11ade74 ec9c45
+11ade74 fffd35
+120aebc c7ca7d
+1248eec e2ebcd
+1267f04 ec9c45
+1267f04 fffd35
+12e3f64 ec9c45
+12e3f64 fffd35
+1340fac c7ca7d
+A71
+D4
+f65c0c c629c5
+D6
+f95efa c92cb3
+D4
+f65c0c c6ee39
+D6
+f72080 c629c5
+D4
+f65c0c c7eb3b
+D6
+f8a66e ca359d
+D4
+f65c0c c8aeb1
+D6
+f8e0f8 c629c5
+D4
+f65c0c c9abb3
+D6
+f85610 cba5b7
+D4
+f65c0c ca7027
+D6
+faa26e c629c5
+D4
+f65c0c cb6d29
+D6
+fe1e68 d32f85
+D4
+f65c0c cc309f
+D6
+f93a44 c95267
+D4
+f65c0c cd2da1
+D6
+fc5df0 d32f85
+D4
+f65c0c cdf215
+D6
+f8590a cbf517
+D4
+f65c0c ceef17
+D6
+fa9c7a d32f85
+D4
+f65c0c cfb28d
+D6
+f8be3e cd505b
+D4
+f65c0c d0af8f
+D6
+f84630 d299b3
+D4
+f65c0c d17403
+D6
+f983b0 ce4c5f
+D4
+f65c0c d27105
+D6
+f6c832 d2dc2d
+D4
+f65c0c dbf9cd
+D6
+f6ab6c dbab6b
+D4
+f65c0c dcf6cf
+D6
+fbf0cc e28b8f
+D4
+f65c0c ddbb43
+D6
+f81690 dc00bf
+D4
+f65c0c deb845
+D6
+fbf0cc e44d05
+D4
+f65c0c df7bbb
+D6
+fa70d2 db66f5
+D4
+f65c0c e078bd
+D6
+fbf0cc e60d7d
+D4
+f65c0c e13d31
+D6
+fc3248 db66f5
+D4
+f65c0c e23a33
+D6
+fbf0cc e7cef3
+D4
+f65c0c e2fda9
+D6
+fb2a5c de2f59
+D4
+f65c0c e3faab
+D6
+fbf0cc e98f6b
+D4
+f65c0c e4bf1f
+D6
+fb2c58 dfedd5
+D4
+f65c0c e5bc21
+D6
+fb4526 eaa53b
+D4
+f65c0c e68095
+D6
+fbd8fc e102a7
+D4
+f65c0c e77c99
+D6
+fad802 ebf98d
+D4
+f65c0c e8410d
+D6
+fbf0cc e2ac4d
+D4
+f65c0c e93e0f
+D6
+fad802 edba05
+D4
+f65c0c ea0283
+D6
+fbf0cc e46dc3
+D4
+f65c0c eaff85
+D6
+fad802 ef7b7b
+D4
+f65c0c ebc2fb
+D6
+fbf0cc e62e3b
+D4
+f65c0c ecbffd
+D6
+fad802 f13bf3
+D4
+f65c0c ed8471
+D6
+fbf0cc e7efb1
+D4
+f65c0c ee8173
+D6
+fad802 f2fd69
+D4
+f65c0c ef44e9
+D6
+fbf0cc e9b029
+D4
+f65c0c f041eb
+D6
+fad802 f4bde1
+D4
+f65c0c f1065f
+D6
+fad802 ec8a69
+D4
+f65c0c f20361
+D6
+fa6cda f6142f
+D4
+f65c0c f2c6d7
+D6
+fad802 ee4ae1
+D4
+f65c0c f3c3d9
+D6
+fa1786 f77f53
+D4
+f65c0c f4884d
+D6
+fad802 f00c57
+D4
+f65c0c f5854f
+D6
+100b62e ffdf71
+D4
+f65c0c f648c5
+D6
+fad802 f1cccf
+D4
+f65c0c f745c7
+D6
+fff1ba 100db75
+D4
+f65c0c f80a3b
+D6
+fad802 f38e45
+D4
+f65c0c f9073d
+D6
+ffd0fc 1027c2d
+D4
+f65c0c f9cbb1
+D6
+fad802 f54ebd
+D4
+f65c0c fac7b5
+D6
+fecb0c 10336b5
+D4
+f65c0c fb8c29
+D6
+fa1f76 f7c8bf
+D4
+f65c0c fc892b
+D6
+fcfab4 10327d3
+D4
+f65c0c fd4d9f
+D6
+faa960 f9004b
+D4
+f65c0c fe4aa1
+D6
+fbe0ec 103ce83
+D4
+f65c0c ff0e17
+D6
+fba760 f9c2c3
+D4
+f65c0c 1000b19
+D6
+fb3050 104df5d
+D4
+f65c0c 100cf8d
+D6
+fd3e2c f9ed6d
+D4
+f65c0c 101cc8f
+D6
+fb2468 10693ed
+D4
+f65c0c 1029005
+D6
+fdca12 fb21ff
+D4
+f65c0c 1038d07
+D6
+105a144 112d23f
+D4
+f65c0c 104517b
+D6
+fe431e fc6a69
+D4
+f65c0c 1054e7d
+D6
+105a144 11493b5
+D4
+f65c0c 10611f3
+D6
+ff333a fd3ac5
+D4
+f65c0c 1070ef5
+D6
+105a144 116542d
+D4
+f65c0c 107d369
+D6
+100ae3e fd8137
+D4
+f65c0c 108d06b
+D6
+1054cee 117c04f
+D4
+f65c0c 10993e1
+D6
+fb4624 104a9c9
+D4
+f65c0c 10a90e3
+D6
+104dfca 119159f
+D4
+f65c0c 10b5557
+D6
+fb226c 1068ef7
+D4
+f65c0c 10c5259
+D6
+1181b06 12e1153
+D4
+f65c0c 10d16cd
+D6
+fbc426 107aeb3
+D4
+f65c0c 10e12d1
+D6
+11638d2 12def97
+D4
+f65c0c 10ed745
+D6
+fccf0c 1086445
+D4
+f65c0c 10fd447
+D6
+1152106 12e9941
+D4
+f65c0c 11098bb
+D6
+fe75b8 1087e11
+D4
+f65c0c 11195bd
+D6
+1147b54 12fb407
+D4
+f65c0c 1125933
+D6
+1006ebe 108477f
+D4
+f65c0c 1135635
+D6
+113599c 13053c5
+D4
+f65c0c 1141aa9
+D6
+101e5ca 10890eb
+D4
+f65c0c 11517ab
+D6
+111ceb8 1308a57
+D4
+f65c0c 115db21
+D6
+1041268 10824c5
+D4
+f65c0c 116d823
+D6
+110ac02 1312819
+D4
+f65c0c 1179c97
+D6
+10566ba 10891e9
+D4
+f65c0c 1189999
+D6
+10fd1ba 1320f47
+D4
+f65c0c 1195d0f
+D6
+107915c 10827bf
+D4
+f65c0c 11a5a11
+D6
+10e7578 132737d
+D4
+f65c0c 11b1e85
+D6
+105a340 10bd751
+D4
+f65c0c 11c1b87
+D6
+10cb402 132737d
+D4
+f65c0c 11cdefd
+D6
+105a144 10d99c5
+D4
+f65c0c 11ddbff
+D6
+10af38a 132737d
+D4
+f65c0c 11ea073
+D6
+105a144 10f5b3b
+D4
+f65c0c 11f9d75
+D6
+1093214 132737d
+D4
+f65c0c 12061e9
+D6
+105a144 1111cb1
+D4
+f65c0c 1215ded
+D6
+107719c 132737d
+D4
+f65c0c 1222261
+D6
+105a144 112dd29
+D4
+f65c0c 1231f63
+D6
+1038e72 13051c9
+D4
+f65c0c 123e3d7
+D6
+105a144 1149e9f
+D4
+f65c0c 124e0d9
+D6
+1021962 1309e2f
+D4
+f65c0c 125a44f
+D6
+105a144 1165f17
+D4
+f65c0c 126a151
+D6
+1010392 13148d7
+D4
+f65c0c 12765c5
+D6
+104e4c0 118dd11
+D4
+f65c0c 12862c7
+D6
+1003532 1323aef
+D4
+f65c0c 129263d
+D6
+105273a 11a5b0f
+D4
+f65c0c 12a233f
+D6
+ffb534 1337c67
+D4
+f65c0c 12ae7b3
+D6
+105f59a 11b4e25
+D4
+f65c0c 12be4b5
+D6
+ffbd24 13545cd
+D4
+f65c0c 12ca82b
+D6
+1073c08 11bc92d
+D4
+f65c0c 12da52d
+D6
+10b3ff0 1428911
+D4
+f65c0c 12e69a1
+D6
+110ad00 11418ad
+D4
+f65c0c 12f66a3
+D6
+1097e7a 1428911
+D4
+f65c0c 1302b17
+D6
+1121c1c 1146b07
+D4
+f65c0c 131271b
+D6
+107be02 1428911
+D4
+f65c0c 131eb8f
+D6
+114b0e8 11396b3
+D4
+f65c0c 132e891
+D6
+fbfdb2 1388a37
+D4
+f65c0c 133ad05
+D6
+1159222 11476ef
+D4
+f65c0c 134aa07
+D6
+fa81b0 138cead
+D4
+f65c0c 1356d7d
+D6
+116725e 115572b
+D4
+f65c0c 1366a7f
+D6
+f970d6 1397f49
+D4
+f65c0c 1372ef3
+D6
+117529a 1163865
+D4
+f65c0c 1382bf5
+D6
+f8b256 13a823f
+D4
+f65c0c 138ef6b
+D6
+111b0f4 11d9a83
+D4
+f65c0c 139ec6d
+D6
+f8570e 13be76f
+D4
+f65c0c 13ab0e1
+D6
+111c3ce 11f491f
+D4
+f65c0c 13bade3
+D6
+fd373a 1428911
+D4
+f65c0c 13c7159
+D6
+ffdde2 132ef83
+D4
+f65c0c 13d6e5b
+D6
+fb76c2 1428911
+D4
+f65c0c 13e32cf
+D6
+f8570e 13c37cd
+D4
+f65c0c 13f2fd1
+D6
+f9b54c 1428911
+D4
+f65c0c 13ff347
+D6
+f8b256 13d9dfb
+D4
+f65c0c 140f049
+D6
+f7f4d4 1428911
+D4
+f65c0c 141b4bd
+D6
+f970d6 13e9ff3
+D4
+f69f84 d2f201
+D6
+fa9a7e cef609
+D4
+f6f2dc dbcd27
+D6
+fb3b3a e01585
+D4
+f7139a 1428911
+D6
+f65c0c 141d183
+D4
+f7492e 1428911
+D6
+fa80b2 13f518d
+D4
+f74c28 dbe9ed
+D6
+f65c0c dcda09
+D4
+f76fe0 d2a39f
+D6
+f65c0c d190c9
+D4
+f800bc c629c5
+D6
+f65c0c c7ce75
+D4
+f81d82 c629c5
+D6
+fa67e4 c87427
+D4
+f864f2 cb08f3
+D6
+f65c0c cd11d9
+D4
+f86de0 cadd4b
+D6
+f65c0c c8cb77
+D4
+f86de0 13cdf7b
+D6
+f65c0c 13acca9
+D4
+f86ede 13b3fc1
+D6
+f65c0c 13d5293
+D4
+f874d2 13cfa45
+D6
+f65c0c 13f130b
+D4
+f874d2 13b24f7
+D6
+f65c0c 1390c31
+D4
+f87bc4 ccaba7
+D6
+f65c0c ca8bef
+D4
+f87cc2 ccb19b
+D6
+f65c0c ced251
+D4
+f8a76c d2aa91
+D6
+fc2366 cf2e97
+D4
+f8ca26 dbe2fb
+D6
+fb2566 de3e3b
+D4
+f8d510 1428911
+D6
+f65c0c 140100d
+D4
+f8f7ca c9a6bd
+D6
+f65c0c c70a01
+D4
+f906ac 13e28e3
+D6
+f65c0c 140d481
+D4
+f907aa 139f659
+D6
+f65c0c 1374abb
+D4
+f909a6 1428911
+D6
+fbfcb4 13f9603
+D4
+f9168c cdd849
+D6
+f65c0c d093c7
+D4
+f94a24 dbad67
+D6
+f65c0c de9b7f
+D4
+f984ae c907fd
+D6
+fc62e6 c629c5
+D4
+f9bc3e d32f85
+D6
+f65c0c cfcf53
+D4
+f9c134 c629c5
+D6
+f65c0c c98eed
+D4
+f9d904 c8c583
+D6
+f73c48 c629c5
+D4
+f9ddfa c629c5
+D6
+fbd7fe c823c9
+D4
+f9e3ee d32f85
+D6
+106e9ae c629c5
+D4
+f9edda 13f032b
+D6
+f667f4 1428911
+D4
+f9eed8 1391d0f
+D6
+f65c0c 1358a43
+D4
+fa04ac ceab9f
+D6
+f65c0c d2543f
+D4
+fa0f96 db66f5
+D6
+fbcb18 dd2277
+D4
+fa2172 f6e687
+D6
+f65c0c faabed
+D4
+fa2c5c f6b3ed
+D6
+f65c0c f2e39d
+D4
+fa540c f87563
+D6
+f65c0c fc6c65
+D4
+fa83ac f8ccb3
+D6
+f65c0c f4a513
+D4
+fa9588 1428911
+D6
+f65c0c 13e4f95
+D4
+facb1c 1428911
+D6
+1057e8a 137d5a3
+D4
+facc1a f59333
+D6
+f65c0c f12227
+D4
+fad802 ecd9c9
+D6
+f65c0c e85dd3
+D4
+fad802 ed6aa5
+D6
+f65c0c f1e69b
+D4
+fad802 ee9a41
+D6
+f65c0c ea1e4b
+D4
+fad802 ef2c1b
+D6
+f65c0c f3a811
+D4
+fad802 f05bb7
+D6
+f65c0c ebdfc1
+D4
+fad802 f0ec93
+D6
+f65c0c f56889
+D4
+fad802 f21c2f
+D6
+f65c0c eda039
+D4
+fad802 f2ae09
+D6
+f65c0c f729ff
+D4
+fad802 f3dda5
+D6
+f65c0c ef61af
+D4
+fad802 f46e81
+D6
+f65c0c f8ea77
+D4
+fad9fe eba733
+D6
+f65c0c f02623
+D4
+faf3ca eb341b
+D6
+f65c0c e69c5d
+D4
+fb07a2 105c985
+D6
+f65c0c 10a751b
+D4
+fb07a2 df00b3
+D6
+f807ae dc00bf
+D4
+fb08a0 df324f
+D6
+f65c0c e3dee3
+D4
+fb099e 10598e7
+D6
+f65c0c 100eb55
+D4
+fb0f92 c83b99
+D6
+f8fdbe c629c5
+D4
+fb1a7c f96f6b
+D6
+f65c0c fe2ddb
+D4
+fb2c58 13f8525
+D6
+f8296a 1428911
+D4
+fb2d56 1389a17
+D6
+f65c0c 133c8cd
+D4
+fb4c18 cf25a9
+D6
+f7db08 d296b9
+D4
+fb520c db66f5
+D6
+f65c0c e05cf5
+D4
+fb64e6 1072cb9
+D6
+f65c0c 10c3593
+D4
+fb69dc dda275
+D6
+f965ec db9e85
+D4
+fb74c6 e086a1
+D6
+f65c0c e59f5b
+D4
+fb7aba 104498b
+D6
+f65c0c ff2add
+D4
+fb7db4 d32f85
+D6
+f65c0c ce0ddd
+D4
+fb82aa c629c5
+D6
+f65c0c cb5063
+D4
+fb9f70 c629c5
+D6
+103be12 ce4965
+D4
+fba466 d32f85
+D6
+108aa26 c629c5
+D4
+fbb446 ea3321
+D6
+f65c0c e4dbe5
+D4
+fbd00e db66f5
+D6
+fcd9f6 dc70dd
+D4
+fbe1ea cf3191
+D6
+ff76b2 d2c659
+D4
+fbf0cc e1ab53
+D6
+f65c0c dc1693
+D4
+fbf0cc e1cc11
+D6
+f65c0c e760d1
+D4
+fbf0cc e36bcb
+D6
+f65c0c ddd70b
+D4
+fbf0cc e38c89
+D6
+f65c0c e92149
+D4
+fbf0cc e52d41
+D6
+f65c0c df9881
+D4
+fbf0cc e54dff
+D6
+f65c0c eae2bf
+D4
+fbf0cc e6edb9
+D6
+f65c0c e158f9
+D4
+fbf0cc e70e77
+D6
+f65c0c eca337
+D4
+fbf0cc e8af2f
+D6
+f65c0c e31a6f
+D4
+fbf0cc e8cfed
+D6
+f65c0c ee64ad
+D4
+fc04a4 1388a37
+D6
+ffaa4a 134e491
+D4
+fc05a2 13f9603
+D6
+fef8b0 1428911
+D4
+fc275e c826c3
+D6
+fe245c c629c5
+D4
+fc3c34 10816e1
+D6
+f65c0c 10df709
+D4
+fc4522 dcbc45
+D6
+faefd2 db66f5
+D4
+fc5600 f9f55d
+D6
+f65c0c ffee53
+D4
+fc56fe 1428911
+D6
+f65c0c 13c8e1f
+D4
+fc5fec 1036d47
+D6
+f65c0c fd6967
+D4
+fc8b94 1428911
+D6
+108e8a8 1362bfd
+D4
+fc9286 f9fa53
+D6
+fdcc0e fb33db
+D4
+fca958 1034695
+D6
+105a144 fa4ea9
+D4
+fcddee c8497d
+D6
+fabe36 c629c5
+D4
+fcf0c8 dc68ed
+D6
+fdf2c0 db66f5
+D4
+fd069c 1087621
+D6
+105a144 11111c7
+D4
+fd1284 db66f5
+D6
+f65c0c e21d6d
+D4
+fd1382 13f606f
+D6
+f9e9e2 1428911
+D4
+fd1480 138c0c9
+D6
+f65c0c 1320855
+D4
+fd3e2c d32f85
+D6
+f65c0c cc4d65
+D4
+fd4420 c629c5
+D6
+fb3b3a c832ab
+D4
+fd5106 cee133
+D6
+f94a24 d2e913
+D4
+fd5204 cee133
+D6
+10056ee d1e51f
+D4
+fd5fe8 c629c5
+D6
+103d5e2 cc9fbf
+D4
+fd65dc d32f85
+D6
+103caf8 ccca69
+D4
+fd6ad2 138e57f
+D6
+1001a68 13635e9
+D4
+fd6ad2 13f3abb
+D6
+100b928 1428911
+D4
+fd82a2 c88bf7
+D6
+ffe4d4 c629c5
+D4
+fd849e 1088eef
+D6
+f65c0c 10fb781
+D4
+fd9184 db66f5
+D6
+fe8990 dc5fff
+D4
+fd9282 dc482f
+D6
+fcb04a db66f5
+D4
+fdbb30 1030813
+D6
+f65c0c fba8ef
+D4
+fdcd0c df0b9d
+D6
+fdcd0c eabc0d
+fcb442 ebd4d7
+fcb442 f75d97
+D4
+fdd5fa fa5d8b
+D6
+fd5dec f9e57d
+D4
+fde2e0 fa28f5
+D6
+f65c0c 101afc9
+D4
+fdf4bc fbd88f
+D6
+f65c0c 103713f
+D4
+fe1874 1428911
+D6
+fb0d96 13f7f31
+D4
+fe4d0a 1428911
+D6
+10aaa1e 1362bfd
+D4
+fe5aee ce28a7
+D6
+101372a d104e3
+D4
+fe6cca 139a3ff
+D6
+100dce0 13733e9
+D4
+fe6dc8 13e7c3b
+D6
+1027a9e 1428911
+D4
+fe7ea6 c95169
+D6
+101a64a c629c5
+D4
+fe8e86 10322dd
+D6
+ffd0fc 101e067
+D4
+fead48 fce07b
+D6
+f65c0c 10531b7
+D4
+feaf44 dc6ae9
+D6
+ffb436 db66f5
+D4
+febb2c 1086a39
+D6
+105a144 10f5051
+D4
+fed3fa db66f5
+D6
+fdf3be dc4731
+D4
+feffa2 d32f85
+D6
+fadbfa cf0bdd
+D4
+ff0498 c629c5
+D6
+fce3e2 c84a7b
+D4
+ff137a cd1fbd
+D6
+1021766 d024a7
+D4
+ff1e64 13ab3db
+D6
+101e6c8 137ea79
+D4
+ff1e64 13d6b61
+D6
+1043b16 1428911
+D4
+ff215e c629c5
+D6
+104867e cb8fe3
+D4
+ff2850 ca6837
+D6
+10366c2 c629c5
+D4
+ff51fc db66f5
+D6
+10078aa dc8ca5
+D4
+ff60de cbf11f
+D6
+1052838 c629c5
+D4
+ff62da 13bef5f
+D6
+105fc8c 1428911
+D4
+ff62da 13c2fdd
+D6
+10348fe 13849b9
+D4
+ff63d8 cbafa3
+D6
+102f8a0 cf446b
+D4
+ff63d8 cbaaad
+D2
+fbdcf4 cf3191
+fbdcf4 cbaaad 386e4 0 386e4 0 384
+f85610 cbaaad
+fbdcf4 cbaaad 0 386e4 386e4 384 384
+fbdcf4 c823c9
+fbdcf4 cbaaad 386e4 0 386e4 708 384
+ff63d8 cbaaad
+fbdcf4 cbaaad 0 386e4 386e4 a8c 384
+D4
+ff63d8 13c101d
+D2
+fbdcf4 13f9701
+fbdcf4 13c101d 386e4 0 386e4 0 384
+f85610 13c101d
+fbdcf4 13c101d 0 386e4 386e4 384 384
+fbdcf4 1388939
+fbdcf4 13c101d 386e4 0 386e4 708 384
+ff63d8 13c101d
+fbdcf4 13c101d 0 386e4 386e4 a8c 384
+D4
+ff9f60 13447cd
+D6
+f65c0c 12b0479
+D4
+ffa15c 1340c45
+D6
+fb0c98 138a207
+D4
+ffd0fc 1019bf1
+D6
+f65c0c f82701
+D4
+ffd0fc 102c0a3
+D6
+ff2c48 1036557
+D4
+ffd0fc 1035c69
+D6
+f65c0c f9e779
+D4
+ffd5f2 1359925
+D6
+fcc71c 138a7fb
+D4
+ffd8ec fd764d
+D6
+f65c0c 106f32d
+D4
+ffd8ec 1428911
+D6
+fcc81a 13f783f
+D4
+ffe6d0 d2563b
+D6
+fcaa56 cf19c1
+D4
+ffe6d0 107ee33
+D6
+f65c0c 11178f7
+D4
+ffe9ca 132d0c1
+D6
+f65c0c 1294303
+D4
+ffeec0 dce3f5
+D6
+fe71c0 db66f5
+D4
+ffefbe 100e169
+D6
+fdc914 1030813
+D4
+1000d82 1428911
+D6
+10c6a96 1362bfd
+D4
+1001474 dcc82d
+D6
+10175ac db66f5
+D4
+100186c fd8137
+D6
+101966a fefe37
+D4
+1003f1e 1082cb5
+D6
+105a144 10d8fd9
+D4
+100470e 100508d
+D6
+f65c0c f6658b
+D4
+10072b6 136bdd7
+D6
+fdf5ba 13939d5
+D4
+1009374 131b8f5
+D6
+f65c0c 127818d
+D4
+1009472 db66f5
+D6
+ff4810 dcb357
+D4
+100c60e c629c5
+D6
+fe0a90 c8e445
+D4
+100c70c d17501
+D6
+fde0e4 ce8fd7
+D4
+100e1d6 c629c5
+D6
+1050f6a ca565b
+D4
+1011372 db66f5
+D6
+101f6a8 dc4a2b
+D4
+1011372 1088209
+D6
+f65c0c 113396f
+D4
+1012058 dc5417
+D6
+1003238 db66f5
+D4
+101264c ff6f53
+D6
+fb4624 f98e2d
+D4
+10158e6 137991d
+D6
+fed002 13a2103
+D4
+101848e 130e997
+D6
+f65c0c 125c115
+D4
+101956c fd3bc3
+D6
+10276a6 fe1dfb
+D4
+1019a62 1428911
+D6
+fdf6b8 13ee567
+D4
+101a748 d094c5
+D6
+fec21e cdae9d
+D4
+101ad3c df0b9d
+D6
+101ad3c ec69ab
+10064d2 edb117
+10064d2 fae775
+D4
+101ad3c 105cd7d
+D6
+101ad3c 1018917
+1077d84 fbb8cf
+1077d84 ec9c45
+D4
+101cef8 1428911
+D6
+10e2c0c 1362bfd
+D4
+1020688 fe8e19
+D6
+100efba fd774b
+D4
+1023d1a 130904b
+D6
+1127d58 120510b
+D4
+1024112 efa723
+D6
+104d1e6 ed164f
+D4
+1024112 efe0af
+D6
+105a144 f33fe3
+D4
+1024112 f1679b
+D6
+1055dcc ee4bdf
+D4
+1024112 f1a127
+D6
+105a144 f50159
+D4
+1024112 f32911
+D6
+105a144 efc8df
+D4
+1024112 f3629d
+D6
+105a144 f6c1d1
+D4
+1024112 f4e989
+D6
+105a144 f18a55
+D4
+1024112 f52315
+D6
+105a144 f88347
+D4
+1024112 f6aaff
+D6
+105a144 f34acd
+D4
+1024112 f6e48b
+D6
+105a144 fa44bd
+D4
+1024112 f86b77
+D6
+105a144 f50c43
+D4
+1024112 f8a503
+D6
+1051858 fb7c49
+D4
+1024608 dc5711
+D6
+10351ec db4b2d
+D4
+10251f0 1087f0f
+D6
+105a43e 10bd15d
+D4
+10255e8 db66f5
+D6
+10173b0 dc482f
+D4
+1026cba ee4ae1
+D6
+105a144 f17f6b
+D4
+1028686 fc6c65
+D6
+10357e0 fd3dbf
+D4
+1028686 c629c5
+D6
+fedde6 c9d265
+D4
+1028882 cfb489
+D6
+ff4c08 cc780f
+D4
+1028a7e 13827fd
+D6
+ff51fc 13b5f81
+D4
+102a34c c629c5
+D6
+105e1c2 c96939
+D4
+102a744 1382fed
+D6
+10d0068 1428911
+D4
+102b920 f9b5dd
+D6
+105a144 f6ccbb
+D4
+102c508 130689b
+D6
+f65c0c 123ff9f
+D4
+102d1ee db64f9
+D6
+1041b56 dcae61
+D4
+102e7c2 fdaddd
+D6
+1021b5e fce179
+D4
+102fe94 fb2fe3
+D6
+105a144 f88e31
+D4
+1030090 fb24f9
+D6
+104381c fc5d83
+D4
+1034408 ed60b9
+D6
+105a144 efbdf5
+D4
+1034506 10811eb
+D6
+f65c0c 114fae5
+D4
+1035ada 1428911
+D6
+fed002 13dfe39
+D4
+10368be ced34f
+D6
+ff3e24 caa9b3
+D4
+10373a8 dceae7
+D6
+10ac7e2 d596ad
+D4
+1037b98 107e741
+D6
+1063912 10aa4bb
+D4
+1038682 eca13b
+D6
+10ebbea e16ad5
+D4
+103897c e15eed
+D6
+113824a f158b9
+D4
+103897c e21779
+D6
+1042d32 e173c3
+D4
+103897c e32063
+D6
+112a20e f238f5
+D4
+103897c e3d8ef
+D6
+1059164 e1d107
+D4
+103897c e4e0db
+D6
+1090a64 ea62c1
+D4
+103897c e59967
+D6
+107d3d6 e14f0d
+D4
+103897c e6a251
+D6
+106dec4 e9f799
+D4
+103897c e75add
+D6
+1091848 e1cc11
+D4
+103897c e863c7
+D6
+105b61a ea9065
+D4
+103897c e91b55
+D6
+10b7f70 e12561
+D4
+103897c ea243f
+D6
+104fa94 eb9557
+D4
+103897c eadccb
+D6
+10ca918 e1bd2f
+D4
+103897c ebe5b5
+D6
+104d7da ed3315
+D4
+1038f70 1428911
+D6
+10fb4f4 136638d
+D4
+103995c dd0ca3
+D6
+101f3ae db66f5
+D4
+1039d54 1344fbd
+D6
+1131e14 1344fbd
+D4
+103be12 cd682b
+D6
+fc7fac c629c5
+D4
+103be12 cdb78b
+D6
+fe4618 d32f85
+D4
+103c7fe fccda1
+D6
+102d4e8 fbda8b
+D4
+1040f6e dae103
+D6
+105749e dc4633
+D4
+1041d52 cc06f3
+D6
+fe4024 c629c5
+D4
+104302c 13842c7
+D6
+ff2d46 13d46ab
+D4
+1043228 1305cb3
+D6
+113a8fc 120e5df
+D4
+10447fc c629c5
+D6
+ff57f0 cb19d1
+D4
+10463c4 c629c5
+D6
+1072536 c8eb37
+D4
+10470aa 13837dd
+D6
+10ec1de 1428911
+D4
+1048a76 1306d91
+D6
+f65c0c 1223f27
+D4
+104a83a fbec67
+D6
+102e8c0 fa2ced
+D4
+104aa36 1086d33
+D6
+f65c0c 116bc5b
+D4
+104b520 dc67ef
+D6
+1038584 db3755
+D4
+104cbf2 e1b63d
+D6
+103897c e2f8b3
+D4
+104cbf2 ec47ef
+D6
+103897c eb047b
+D4
+104cdee ec3a0b
+D6
+1024112 eec5e9
+D4
+104ceec caf717
+D6
+100019a c629c5
+D4
+104d5de cade49
+D6
+fc84a2 d32f85
+D4
+104edae 119b45f
+D6
+f65c0c 1284601
+D4
+104f0a8 da01c5
+D6
+107c3f6 dcd415
+D4
+1050382 118581d
+D6
+f65c0c 109b0a7
+D4
+105077a edc0f7
+D6
+1024112 f0875f
+D4
+1050e6c 11a247d
+D6
+f65c0c 10b721d
+D4
+1051c50 1428911
+D6
+ff52fa 13cbfbb
+D4
+1054af2 eb0579
+D6
+103897c e94403
+D4
+10550e6 1428911
+D6
+1108354 13756a3
+D4
+1056bb0 c9d265
+D6
+101c310 c629c5
+D4
+1058086 11ae1ff
+D6
+f65c0c 12a0777
+D4
+1058380 130ccd1
+D6
+114c5be 1218a93
+D4
+1058876 fb0c2b
+D6
+1024112 f7c4c7
+D4
+105a144 eeddb9
+D6
+103818c ecbe01
+D4
+105a144 eee8a3
+D6
+1024112 f247d7
+D4
+105a144 f09e31
+D6
+102ddd6 eddac3
+D4
+105a144 f0a91b
+D6
+1024112 f4094d
+D4
+105a144 f25fa7
+D6
+1024112 eeff75
+D4
+105a144 f26a91
+D6
+1024112 f5cac3
+D4
+105a144 f4211d
+D6
+1024112 f0c0eb
+D4
+105a144 f42c07
+D6
+1024112 f78b3b
+D4
+105a144 f5e195
+D6
+1024112 f28261
+D4
+105a144 f5ec7f
+D6
+1025dd8 f92feb
+D4
+105a144 f7a30b
+D6
+1024112 f442d9
+D4
+105a144 f7adf5
+D6
+102f3aa fa5a91
+D4
+105a144 f96383
+D6
+1024112 f6044f
+D4
+105a144 f96e6d
+D6
+f65c0c 108b3a5
+D4
+105a144 10cae9f
+D6
+101848e 10891e9
+D4
+105a144 10cb989
+D6
+f65c0c 11bfec1
+D4
+105a144 10e7015
+D6
+ff50fe 1081fcf
+D4
+105a144 10e7aff
+D6
+f65c0c 11dc037
+D4
+105a144 110308d
+D6
+fe01a2 10890eb
+D4
+105a144 1103b77
+D6
+f65c0c 11f80af
+D4
+105a144 111f203
+D6
+f65c0c 102accb
+D4
+105a144 111fced
+D6
+f65c0c 1214225
+D4
+105a144 113b27b
+D6
+f65c0c 1046d43
+D4
+105a144 113bd65
+D6
+f65c0c 123029d
+D4
+105a144 11573f1
+D6
+f65c0c 1062eb9
+D4
+105a144 1157edb
+D6
+f65c0c 124c413
+D4
+105a144 1173567
+D6
+f65c0c 107f02f
+D4
+105a144 1174051
+D6
+f65c0c 1268589
+D4
+105b222 137b7df
+D6
+1108256 1428911
+D4
+105bb10 e1d009
+D6
+1146384 f0787d
+D4
+105d0e4 d92189
+D6
+108ff7a dc4f21
+D4
+105d4dc dc4a2b
+D6
+10c885a d596ad
+D4
+105d7d6 10b24b9
+D6
+102f5a6 1084289
+D4
+105e2c0 1088df1
+D6
+107194e 109c47f
+D4
+1060874 c629c5
+D6
+ff137a cd1ebf
+D4
+106253a c629c5
+D6
+10caa16 ccaea1
+D4
+1063b0e ea351d
+D6
+103897c e7828d
+D4
+10668b2 108702d
+D6
+f65c0c 1187cd3
+D4
+106729e c918db
+D6
+1038388 c629c5
+D4
+1067f84 dc70dd
+D6
+104808a da71e3
+D4
+1068180 1318f49
+D6
+1152204 122eec5
+D4
+1068774 11b9d85
+D6
+f65c0c 12bc7ef
+D4
+106a43a 136e97f
+D6
+11243cc 1428911
+D4
+106a930 10a349d
+D6
+104f79a 1088307
+D4
+106b022 e19285
+D6
+103897c e4b92b
+D4
+106b21e d8404f
+D6
+10b708e dcfebf
+D4
+106dcc8 1428911
+D6
+ff2c48 13ad891
+D4
+106eaac d17501
+D6
+1072634 d1b089
+D4
+1070c68 e160e9
+D6
+11543c0 ef9743
+D4
+107115e 1428911
+D6
+1119a22 138014b
+D4
+1071e44 dcc239
+D6
+10e49d0 d596ad
+D4
+1072732 10810ed
+D6
+107915c 1087b17
+D4
+1075ec2 132737d
+D6
+1147168 1255fd9
+D4
+1077d84 1192e6d
+D6
+1077d84 10c01fb
+1096d9c 10a11e3
+1096d9c 105cd7d
+D4
+107896c 1095461
+D6
+1069558 108604d
+D4
+107915c 10908f9
+D6
+f65c0c 11a3e49
+D4
+107925a d76013
+D6
+10c9246 dc5fff
+D4
+1079652 11bcc27
+D6
+1206452 1349a27
+D4
+107a730 1362bfd
+D6
+1140444 1428911
+D4
+107ae22 c8e73f
+D6
+10a6b9c c629c5
+D4
+107af20 e9e7b9
+D6
+103897c e5c215
+D4
+107b710 d16129
+D6
+1075aca d104e3
+D4
+107c0fc d08ad9
+D6
+1087590 d13f6d
+D4
+107c9ea c629c5
+D6
+fac42a d32f85
+D4
+107e5b2 c629c5
+D6
+10c973c cadb4f
+D4
+107f78e e9f0a7
+D6
+10e825e e365d7
+D4
+108086c 1362bfd
+D6
+fbab58 1428911
+D4
+1080f5e c8f425
+D6
+10544fe c629c5
+D4
+108115a d1485b
+D6
+10caa16 ccaf9f
+D4
+1081454 cf83eb
+D6
+10c8958 cb0fe5
+D4
+1081552 cf1eb7
+D6
+10a3706 d13f6d
+D4
+1083218 11bb359
+D6
+f65c0c 12d8965
+D4
+10851d8 dc81bb
+D6
+10560c6 d991a7
+D4
+10851d8 132737d
+D6
+f65c0c 1207db1
+D4
+10865b0 e19e6d
+D6
+103897c e67aa1
+D4
+1087296 d67fd7
+D6
+10e7e66 dc8aa9
+D4
+1087590 ce4371
+D6
+1081552 cea2b1
+D4
+1089e3e 1428911
+D6
+f65c0c 13046df
+D4
+108d1d6 ce18c7
+D6
+10bf77e d13f6d
+D4
+108d2d4 1428911
+D6
+1130e34 1384db1
+D4
+108eba2 11b5f03
+D6
+11fd96a 1324dc9
+D4
+108fe7c c9575d
+D6
+10c2c14 c629c5
+D4
+1091f3a 132737d
+D6
+1150b32 1268883
+D4
+1092d1e ea7c8d
+D6
+10f0e44 e49b67
+D4
+1093cfe e1cf0b
+D6
+11623fc eeb707
+D4
+10953d0 d59e9d
+D6
+1102b06 dc76d1
+D4
+10955cc d13f6d
+D6
+1080474 cfed17
+D4
+10959c4 ef924d
+D6
+1142404 e4c80d
+D4
+10959c4 eff487
+D6
+109c1f2 f05cb5
+D4
+10959c4 110e61f
+D6
+10a036e 1103c75
+D4
+10959c4 1114859
+D6
+113d2a8 11bc03f
+D4
+10959c4 112a697
+D6
+10b728a 1108ecf
+D4
+10959c4 11308d1
+D6
+1129822 11c472f
+D4
+10959c4 114680d
+D6
+10da124 11020ad
+D4
+10959c4 114ca47
+D6
+111d1b2 11d4235
+D4
+10959c4 1162885
+D6
+10e8160 11100e9
+D4
+10959c4 1168abf
+D6
+111a212 11ed30d
+D4
+1095ac2 dc4633
+D6
+1100a48 d596ad
+D4
+10968a6 1362bfd
+D6
+115c5ba 1428911
+D4
+1096d9c 105cd7d
+D6
+1096d9c 101ed4d
+1077d84 fffd35
+D4
+1098964 ee63af
+D6
+10afc78 efd5c5
+D4
+1098a62 c629c5
+D6
+106b120 c90307
+D4
+1099d3c 117a683
+D6
+10f52ba 111f105
+D4
+109a728 c629c5
+D6
+10d3dec c9c089
+D4
+109b708 eb0f65
+D6
+111c1d2 f31931
+D4
+109bef8 cd466f
+D6
+10db8f4 d13f6d
+D4
+109c4ec 11a77d5
+D6
+1146580 1251869
+D4
+109c8e4 1362bfd
+D6
+fd6bd0 1428911
+D4
+109dbbe d13f6d
+D6
+10d62a2 cdb889
+D4
+109dbbe ca3a93
+D6
+10ded8a c629c5
+D4
+109e0b4 dc4f21
+D6
+1064200 d8b06d
+D4
+109e6a8 d596ad
+D6
+102ebba dc919b
+D4
+109f38e eb7793
+D6
+110094a e561d7
+D4
+10a036e e1c127
+D6
+103897c e83b19
+D4
+10a1250 132737d
+D6
+f65c0c 11ebd39
+D4
+10a1844 118ecf1
+D6
+10fc2d8 113425d
+D4
+10a1a40 1190cb1
+D6
+114a8f8 1239b69
+D4
+10a1a40 110475f
+D6
+12090f8 126be17
+D4
+10a2230 ed3b05
+D6
+110e196 f3fa6b
+D4
+10a2d1a ecfe7f
+D6
+1119036 e59b63
+D4
+10a3cfa cc02fb
+D6
+10f796c d13f6d
+D4
+10a42ee cb95d7
+D6
+10fae02 c629c5
+D4
+10a4bdc 10029db
+D6
+10f51bc fb24f9
+D4
+10a4dd8 f0085f
+D6
+10959c4 ef144b
+D4
+10a5eb6 1428911
+D6
+f65c0c 12e8667
+D4
+10a944a 1428911
+D6
+1226052 12abd09
+D4
+10aa724 11078fb
+D6
+10959c4 111c65b
+D4
+10ab110 e182a5
+D6
+1170536 edd6cb
+D4
+10ac1ee ff6469
+D6
+10ee694 1038a0d
+D4
+10ac3ea dc9e81
+D6
+111a114 d5c157
+D4
+10aced4 efddb5
+D6
+115e57a e4c80d
+D4
+10ae0b0 132737d
+D6
+1161618 1273e15
+D4
+10b0c58 d596ad
+D6
+111cdba dc580f
+D4
+10b1742 d13f6d
+D6
+108311a ce5945
+D4
+10b1a3c 1011cf1
+D6
+10f51bc fce571
+D4
+10b2a1c 1362bfd
+D6
+1178730 1428911
+D4
+10b44e6 101a8d7
+D6
+10cb500 10318f1
+D4
+10b49dc 102aec7
+D6
+10f51bc fea6e7
+D4
+10b49dc 1036f43
+D6
+10b8760 103acc7
+D4
+10b4bd8 c629c5
+D6
+10868aa c90cf3
+D4
+10b5db4 f26c8d
+D6
+10b5db4 fc26f1
+108d8c8 feacdb
+108cdde feacdb
+1077d84 fffd35
+D4
+10b5db4 10d8ddd
+D6
+10daf08 10d8ddd
+111ef76 111ce4b
+D4
+10b689e c629c5
+D6
+10e4dc8 c90eef
+D4
+10b8a5a 1362bfd
+D6
+ff2d46 1428911
+D4
+10b9d34 d13f6d
+D6
+10e845a ce5749
+D4
+10ba22a fe842d
+D6
+10f51bc 10233bf
+D4
+10ba81e d596ad
+D6
+104e3c2 dc5b09
+D4
+10bd3c6 132737d
+D6
+f65c0c 11cfbc3
+D4
+10be2a8 efdbb9
+D6
+109e4ac eddebb
+D4
+10bf288 dca07d
+D6
+107223c d7d031
+D4
+10c0562 e180a9
+D6
+103897c e9fc8f
+D4
+10c0e50 11079f9
+D6
+12090f8 124fca1
+D4
+10c0f4e 103537b
+D6
+10b49dc 1028e09
+D4
+10c202c 1428911
+D6
+f65c0c 12cc4f1
+D4
+10c54c2 1428911
+D6
+123408e 12b9d45
+D4
+10c689a f00663
+D6
+117a5f2 e4c80d
+D4
+10c787a cb9cc9
+D6
+1070576 c629c5
+D4
+10c7d70 cbfc09
+D6
+10169c4 d70fb5
+D4
+10c8266 fda3f1
+D6
+10f51bc 1007249
+D4
+10c9344 1104d53
+D6
+10959c4 11387d1
+D4
+10c9a36 1031ee5
+D6
+10f51bc 100675f
+D4
+10ca128 132737d
+D6
+117cea0 1274703
+D4
+10cae0e e1bf2b
+D6
+10e8f44 e3a061
+D4
+10cccd0 d596ad
+D6
+113cab8 dc9495
+D4
+10cd1c6 dc511d
+D6
+112f468 d62f79
+D4
+10cd8b8 d13f6d
+D6
+10955cc cdbc81
+D4
+10cdcb0 ca3f89
+D6
+108c6ec c629c5
+D4
+10cea94 1362bfd
+D6
+11947a8 1428911
+D4
+10cf878 cd4179
+D6
+108fb82 d13f6d
+D4
+10d0c50 c629c5
+D6
+1097a82 c9bc91
+D4
+10d2916 c629c5
+D6
+10fff5e c9000d
+D4
+10d2f0a fc8e21
+D6
+10f51bc feb1d1
+D4
+10d39f4 f4776f
+D6
+11cea54 e4c70f
+D4
+10d39f4 f5962d
+D6
+10f51bc f7adf5
+D4
+10d39f4 f638e5
+D6
+121ec3c e1859f
+D4
+10d39f4 f756a5
+D6
+10f51bc f96e6d
+D4
+10d39f4 f7f95d
+D6
+10f629a f5d0b7
+D4
+10d39f4 f9181b
+D6
+10f51bc fb2fe3
+D4
+10d39f4 f9bad3
+D6
+10f51bc f7a30b
+D4
+10d39f4 fad893
+D6
+10f51bc fcf05b
+D4
+10d39f4 fb7b4b
+D6
+10f51bc f96383
+D4
+10d3cee 10fe721
+D6
+10f53b8 111fee9
+D4
+10d4bd0 1362bfd
+D6
+100eebc 1428911
+D4
+10d4dcc 105cd7d
+D6
+10d4dcc 10897dd
+10b5db4 10a87f5
+10b5db4 10d8ddd
+D4
+10d58b6 dc4633
+D6
+1080278 d6eff5
+D4
+10d5dac d13f6d
+D6
+1107472 ce28a7
+D4
+10d6798 f0c7dd
+D6
+1196768 e4c80d
+D4
+10d6896 d596ad
+D6
+1068a6e dc74d5
+D4
+10d6d8c f4084f
+D6
+10f5aaa f5f56d
+D4
+10d767a e1d009
+D6
+103897c ebbd07
+D4
+10d8758 1030a0f
+D6
+10a51d0 ffd585
+D4
+10d943e 132737d
+D6
+f65c0c 11b3b4b
+D4
+10db7f6 c95a57
+D6
+10a8764 c629c5
+D4
+10de0a4 1428911
+D6
+103a544 1384db1
+D4
+10de49c ce16cb
+D6
+10abbfa d13f6d
+D4
+10df280 f1fe6b
+D6
+11b27e0 e4c80d
+D4
+10df47c f2cdc9
+D6
+110005c f4daa7
+D4
+10e1142 11090cb
+D6
+10959c4 1154849
+D4
+10e1638 1428911
+D6
+12420ca 12c7d81
+D4
+10e39f0 ce3e7b
+D6
+1113ae2 d13f6d
+D4
+10e45d8 10334b9
+D6
+10f51bc 10228d5
+D4
+10e50c2 e1a069
+D6
+10ea518 e1f4bf
+D4
+10e629e 132737d
+D6
+12090f8 1204523
+D4
+10e649a dc7fbf
+D6
+11831d8 d2b281
+D4
+10e7a6e e2aa51
+D6
+10d9c2e e1cd0f
+D4
+10e7e66 e28993
+D6
+1071b4a e9ecaf
+D4
+10e8e46 d596ad
+D6
+1153eca dc482f
+D4
+10e9930 d13f6d
+D6
+10a0f56 ccb593
+D4
+10ea31c c8f621
+D6
+1116f78 c629c5
+D4
+10eac0a 1362bfd
+D6
+11b091e 1428911
+D4
+10eb7f2 e4107f
+D6
+108a236 ea263b
+D4
+10ecdc6 c629c5
+D6
+10a2230 cad55b
+D4
+10eea8c c629c5
+D6
+1123fd4 c97f0d
+D4
+10ef17e 1117205
+D6
+10959c4 11709bf
+D4
+10f0654 c8e73f
+D6
+10c48da c629c5
+D4
+10f0c48 1362bfd
+D6
+102af34 1428911
+D4
+10f1f22 d13f6d
+D6
+1128842 cdd64d
+D4
+10f2a0c d596ad
+D6
+1082f1e dc919b
+D4
+10f4cc6 ce7017
+D6
+10c7d70 d13f6d
+D4
+10f51bc f6c1d1
+D6
+10d39f4 f8d999
+D4
+10f51bc f6ccbb
+D6
+10d39f4 f4b4f3
+D4
+10f51bc f88347
+D6
+10d39f4 fa9b0f
+D4
+10f51bc f88e31
+D6
+10d39f4 f67669
+D4
+10f51bc fa43bf
+D6
+10d36fa fc5f7f
+D4
+10f51bc fa4ea9
+D6
+10d39f4 f836e1
+D4
+10f51bc fc0535
+D6
+10abbfa 1009af7
+D4
+10f51bc fc101f
+D6
+10d39f4 f9f857
+D4
+10f51bc fdc6ab
+D6
+10b48de 101cf89
+D4
+10f51bc fdd195
+D6
+10d39f4 fbb9cd
+D4
+10f51bc ff8723
+D6
+10b49dc 1038f03
+D4
+10f51bc ff920d
+D6
+10ceb92 fd2ce1
+D4
+10f51bc 1014899
+D6
+10d8f48 1030b0d
+D4
+10f51bc 1015383
+D6
+10c1248 fe140f
+D4
+10f51bc 1030911
+D6
+10ed9ae 103811f
+D4
+10f51bc 10313fb
+D6
+10b320c fef44b
+D4
+10f55b4 132737d
+D6
+f65c0c 11979d5
+D4
+10f7770 112ac8b
+D6
+109ec9c 118385d
+D4
+10f7e62 e50b85
+D6
+1099d3c eaecab
+D4
+10f992c dcc533
+D6
+108e2b4 d60fb9
+D4
+10f992c f553b3
+D6
+10dc1e2 f37c69
+D4
+10fa21a 1428911
+D6
+1051c50 1380347
+D4
+10fd6b0 1428911
+D6
+11fda68 1328559
+D4
+10fe396 1136f03
+D6
+10cb304 1103e71
+D4
+1100d42 ce5155
+D6
+1127666 d0b97b
+D4
+1101336 136e587
+D6
+10470aa 1428911
+D4
+1102a08 113bb69
+D6
+10a0270 119e301
+D4
+1102ffc dc74d5
+D6
+11844b2 d4601f
+D4
+11035f0 1319341
+D6
+f65c0c 117b85f
+D4
+11042d6 c916df
+D6
+1132ff0 c629c5
+D4
+1104ebe d596ad
+D6
+1176f60 dcb651
+D4
+1105aa6 d13f6d
+D6
+10a340c cb18d3
+D4
+110707a f46a89
+D6
+10dee88 f1e799
+D4
+1107968 e58a85
+D6
+117e572 ecf591
+D4
+1108f3c c629c5
+D6
+10a1648 cca2b9
+D4
+110ab04 c629c5
+D6
+114004c c97f0d
+D4
+110b2f4 e5976b
+D6
+10a2922 ec213d
+D4
+110df9a dc4a2b
+D6
+10a2b1e d596ad
+D4
+110df9a d13f6d
+D6
+11448ba cdd64d
+D4
+110eb82 d596ad
+D6
+10a242c dc5e03
+D4
+111054e 137b4e5
+D6
+1063122 1428911
+D4
+1112dfc e2ebcd
+D6
+11cce8c e2ebcd
+120aebc df0b9d
+D4
+11133f0 130cecd
+D6
+f65c0c 115f7e7
+D4
+1114dbc 114582d
+D6
+f65c0c 12f49dd
+D4
+11151b4 f38a4d
+D6
+10a3210 ec6aa9
+D4
+11153b0 cdd64d
+D6
+1148442 d106df
+D4
+1115e9a c97f0d
+D6
+10e0952 c629c5
+D4
+1116390 1428911
+D6
+106341c 137599d
+D4
+1119826 1428911
+D6
+120468e 133d9ab
+D4
+1119924 11e938d
+D6
+f65c0c 139d0a5
+D4
+1119c1e c97f0d
+D6
+114f166 c629c5
+D4
+1119e1a 11deed9
+D6
+10959c4 115aa83
+D4
+111a708 cdd64d
+D6
+10e3de8 d13f6d
+D4
+111bed8 1146a09
+D6
+12090f8 1233c29
+D4
+111d3ae d0f6ff
+D6
+10f4bc8 ce7017
+D4
+1120054 dc65f3
+D6
+118f74a d56efd
+D4
+1121230 11fdaf9
+D6
+f65c0c 13b911d
+D4
+112250a e574b1
+D6
+1185590 eba537
+D4
+1122706 130708b
+D6
+12090f8 122059b
+D4
+1122706 11cb64f
+D6
+10959c4 113e90d
+D4
+11231f0 f2a913
+D6
+103897c e4009f
+D4
+11238e2 d60ac3
+D6
+10b46e2 dcfbc5
+D4
+11244ca 13836df
+D6
+107f298 1428911
+D4
+1124fb4 c629c5
+D6
+10f8f40 c8ea39
+D4
+1126c7a c629c5
+D6
+115745e c931a9
+D4
+112824e 13841c9
+D6
+11cc996 1428911
+D4
+112834c 1305db1
+D6
+f65c0c 1143671
+D4
+1129e16 d6248f
+D6
+118c0b8 dc4731
+D4
+113034a 120ab55
+D6
+10359dc 13053c5
+D4
+1130a3c f76c79
+D6
+11b27e0 ef4ed5
+D4
+1130a3c f7e487
+D6
+119170a fdf155
+D4
+1130a3c f92cf1
+D6
+12ad448 e162e5
+D4
+1130a3c f9a4ff
+D6
+116afe2 fd4aa5
+D4
+1130a3c faee67
+D6
+11ed27c ef2627
+D4
+1130a3c fb6675
+D6
+1156b70 fdc7a9
+D4
+1130a3c fcaedf
+D6
+11ed27c f0e69f
+D4
+1130a3c fd26ed
+D6
+1149918 feb6c7
+D4
+1130a3c fe7055
+D6
+11ed27c f2a815
+D4
+1130a3c fee863
+D6
+11448ba 10026e1
+D4
+1130a3c 10030cd
+D6
+114b5de fe852b
+D4
+1130a3c 100a8db
+D6
+116a1fe 104409d
+D4
+1130a3c 101f243
+D6
+1145b94 100a0eb
+D4
+1130a3c 1026a51
+D6
+1162bec 1058c01
+D4
+1130a3c 103b3b9
+D6
+114f55e 101c897
+D4
+1130a3c 108f61f
+D6
+11628f2 105d769
+D4
+1130a3c 1096e2d
+D6
+1216c3e 117d02f
+D4
+1130a3c 10ab795
+D6
+1168b2c 10735a7
+D4
+1130a3c 10b2fa3
+D6
+12038aa 1185e11
+D4
+1130a3c 10c780d
+D6
+1176672 1081cd5
+D4
+113122c f1c8d7
+D6
+103897c e24027
+D4
+1131526 cdd64d
+D6
+11824f2 d2e717
+D4
+1131a1c dd0ca3
+D6
+11a140c d612b3
+D4
+1131e14 1344fbd
+D6
+116fe44 1306f8d
+D4
+1132010 c97f0d
+D6
+10fcac8 c629c5
+D4
+113220c 107c487
+D6
+1230cf6 117af71
+D4
+1132408 11bf2d9
+D6
+10959c4 1122895
+D4
+1132408 1428911
+D6
+107037a 1366883
+D4
+1132ff0 1141aa9
+D6
+12090f8 1217ab3
+D4
+11338de e4c80d
+D6
+1190b22 ea9a51
+D4
+11339dc d0a6a1
+D6
+1160a30 cdd64d
+D4
+11343c8 d0a6a1
+D6
+110a908 ce0be1
+D4
+11343c8 e4c80d
+D6
+10959c4 eeb211
+D4
+11343c8 dcede1
+D6
+10bec94 d596ad
+D4
+113589e 1428911
+D6
+11fdb66 1360649
+D4
+1135d94 c97f0d
+D6
+116b2dc c629c5
+D4
+113687e cdd64d
+D6
+10fff5e d13f6d
+D4
+1137760 11bd417
+D6
+11832d6 11718a1
+D4
+1137f50 113e80f
+D6
+f65c0c 1310b53
+D4
+113824a f69b1f
+D6
+11a3fb4 fd5889
+D4
+113b7de 120e8d9
+D6
+1152204 12252ff
+D4
+113bed0 104c09b
+D6
+115fc4c 1028221
+D4
+113ceb0 106afb5
+D6
+119fa40 10cdc43
+D4
+113d0ac 104f139
+D6
+119fa40 10b1acd
+D4
+113d0ac 10d7313
+D6
+118b2d4 10890eb
+D4
+113e582 1065a61
+D6
+117121c 1032dc7
+D4
+113f06c 130679d
+D6
+1146e6e 12fe99b
+D4
+113f366 f0e89b
+D6
+104bc12 e1b147
+D4
+113f464 d60fb9
+D6
+10db5fa dc4e23
+D4
+1140a38 13831e9
+D6
+109b310 1428911
+D4
+114112a c629c5
+D6
+110d4b0 c96541
+D4
+1141b16 1134459
+D6
+12090f8 11fba3b
+D4
+1142af6 13829f9
+D6
+11e8b0c 1428911
+D4
+1142cf2 c629c5
+D6
+116549a c8516d
+D4
+11432e6 d5f7e9
+D6
+11b1800 dcde01
+D4
+11448ba ffd28b
+D6
+1130a3c 1011207
+D4
+11455a0 1211977
+D6
+104e6bc 130885b
+D4
+1145998 1307385
+D6
+f65c0c 11275f9
+D4
+1145b94 ff5881
+D6
+1130a3c fe0729
+D4
+114608a 1306b95
+D2
+116fe44 12dd1d3
+116fe44 1306f8d 29dba 3f8 29dbd 70b 381
+1199bfe 1306f8d
+116fe44 1306f8d 0 29dba 29dba a8c 384
+117023c 1330d47
+116fe44 1306f8d 29dba 0 29dba 0 381
+D6
+116ee64 133211f
+D2
+1171c08 1344fbd
+1131e14 1344fbd 3d050 12e9e 3fe23 d64 ac
+1131e14 1384db1
+1131e14 1344fbd 3fdf4 0 3fdf4 0 384
+10f9632 1362bfd
+1131e14 1344fbd 0 3fdf4 3fdf4 384 26e
+D6
+1072536 1362bfd
+D2
+1039d54 1384db1
+1039d54 1344fbd 387e2 1dc40 3fdad 116 26e
+ff9f60 1344fbd
+1039d54 1344fbd 0 3fdf4 3fdf4 384 384
+1039d54 13051c9
+1039d54 1344fbd 3fdf4 0 3fdf4 708 384
+1072536 132737d
+1039d54 1344fbd 0 3fdf4 3fdf4 a8c 26e
+D6
+10f9632 132737d
+D2
+1131e14 13051c9
+1131e14 1344fbd 387e2 1dc40 3fdad 81e 26e
+1144cb2 1307f6d
+1131e14 1344fbd 0 3fdf4 3fdf4 a8c ac
+D6
+114608a 1306b95
+D4
+1146384 1248e7f
+D6
+106e6b4 1320b4f
+D4
+1146384 f5bae3
+D6
+11c6b54 fdc3b1
+D4
+1146e6e 124411b
+D6
+10a056a 119d817
+D4
+1146f6c dc580f
+D6
+10dad0c d596ad
+D4
+1149226 d10ecf
+D6
+11baad8 c9f61d
+D4
+1149918 10143a3
+D6
+1130a3c 102d27f
+D4
+114aeec 126038f
+D6
+1083efe 132737d
+D4
+114b0e8 10e534f
+D6
+1196370 109a0c7
+D4
+114b5de 1017441
+D6
+1130a3c ffc89f
+D4
+114b8d8 11bc633
+D6
+10959c4 110671f
+D4
+114bfca 12f1841
+D6
+f65c0c 110b483
+D4
+114d3a2 f00761
+D6
+1067598 e1aa55
+D4
+114d59e cdd64d
+D6
+118b1d6 d1b285
+D4
+114e088 c97f0d
+D6
+1118b40 c629c5
+D4
+114e57e 1428911
+D6
+108886a 1362bfd
+D4
+114f55e fe31d3
+D6
+1130a3c fc46b1
+D4
+114fa54 e4c80d
+D6
+11a2ed6 e9fc8f
+D4
+1150342 1231479
+D6
+109ae1a 117bf51
+D4
+115053e e4c80d
+D6
+10959c4 f07387
+D4
+1151a14 1428911
+D6
+12024d2 1377e53
+D4
+1151e0c c97f0d
+D6
+1187354 c629c5
+D4
+1152106 11406d1
+D6
+f65c0c 132cbcb
+D4
+1152204 1220e89
+D6
+1060b6e 131251f
+D4
+11525fc 11be6f1
+D6
+1191410 117f8dd
+D4
+11528f6 cdd64d
+D6
+11230f2 d0ce51
+D4
+11536da d53b65
+D6
+11c4d90 dc521b
+D4
+11543c0 f4daa7
+D6
+11ed27c fe6963
+D4
+1155e8a 1379c17
+D6
+1204b84 1428911
+D4
+1156b70 10232c1
+D6
+1136e72 1042fbf
+D4
+115745e d1ee0d
+D6
+11d6c4e c9f61d
+D4
+1158242 126f1af
+D6
+109ff76 132737d
+D4
+1158242 d204df
+D6
+11fe15a dc63f7
+D4
+115863a fdb4cf
+D6
+11ed27c f4688d
+D4
+1159222 10f338b
+D6
+119fa40 10acb6d
+D4
+115951c dc5319
+D6
+11b24e6 d6c34f
+D4
+1159e0a 12e3609
+D6
+f65c0c 10ef40b
+D4
+115b3de ef2725
+D6
+107eba6 e15eed
+D4
+115cfa6 d412bb
+D6
+11ec596 dd09a9
+D4
+115d1a2 c629c5
+D6
+1127c5a c97f0d
+D4
+115e280 d34161
+D6
+11f1fe0 ca0303
+D4
+115e47c c8c18b
+D6
+1134cb6 c629c5
+D4
+115ee68 c629c5
+D6
+11735d4 c77131
+D4
+115fc4c fd7849
+D6
+1130a3c fa853b
+D4
+1160240 114e70d
+D6
+f65c0c 1348d41
+D4
+11623fc f3fa6b
+D6
+11ed27c fca7ed
+D4
+1162de8 11c9f7d
+D6
+119f44c 118d919
+D4
+1163fc4 1068015
+D6
+1130a3c 1034a8d
+D4
+11645b8 136c1cf
+D6
+1220cfa 1428911
+D4
+11646b6 10699e1
+D6
+1130a3c 109d759
+D4
+1165598 104d571
+D6
+1130a3c 1018a15
+D4
+1165c8a 104c395
+D6
+1130a3c 10815e3
+D4
+116725e 11014c5
+D6
+119fa40 10c8ce3
+D4
+1167852 12ddfb7
+D6
+12090f8 123c711
+D4
+1168930 cdc869
+D6
+119abde d0eb17
+D4
+1169022 dcb84d
+D6
+10f6e82 d596ad
+D4
+116941a ee46e9
+D6
+10a0c5c e1bf2b
+D4
+116a5f6 1428911
+D6
+10a48e2 1362bfd
+D4
+116afe2 102afc5
+D6
+113ed72 1057137
+D4
+116afe2 12762cb
+D6
+1203e9e 130f285
+D4
+116bbca e4c80d
+D6
+11c31c8 ea3e0b
+D4
+116c2bc 11dcc1f
+D6
+11ad488 119ba53
+D4
+116c5b6 c7e14f
+D6
+1150e2c c629c5
+D4
+116c5b6 e4c80d
+D6
+10bb8fc efd4c7
+D4
+116c8b0 dce0fb
+D6
+11c0522 d7a38b
+D4
+116cea4 12765c5
+D6
+10bc0ec 132737d
+D4
+116d498 102b2bf
+D6
+117121c 102f043
+D4
+116da8c 1428911
+D6
+120f038 1387365
+D4
+116e27c 115c847
+D6
+f65c0c 1364db9
+D4
+116e37a 1359f19
+D6
+123cd72 1428911
+D4
+116ec68 107b5a5
+D6
+1130a3c 10b97d1
+D4
+116fb4a 12dd1d3
+D6
+f65c0c 10d3295
+D4
+116fe44 fffd35
+D6
+118ee5c 101ed4d
+118ee5c 105cd7d
+D4
+116fe44 124ca07
+D6
+116fe44 1212167
+11433e4 11e5707
+D4
+1170536 f31931
+D6
+11ed27c fae775
+D4
+117092e 103c791
+D6
+1158738 102459b
+D4
+1171a0c 1341435
+D6
+1258ee8 1428911
+D4
+1171c08 1343fdd
+D6
+1217f18 129dccd
+D4
+117529a 110f501
+D6
+11a5a7e 10ded1d
+D4
+1175594 cd6b25
+D6
+113f85c d0c85d
+D4
+1176770 11ee8e1
+D6
+11bb4c4 11a9a8f
+D4
+1177554 ed66ad
+D6
+10b3800 e12959
+D4
+117794c 133015f
+D6
+1170536 1337673
+D4
+1179318 c629c5
+D6
+1143dd0 c97f0d
+D4
+1179f00 fd5987
+D6
+1130a3c f8c4c3
+D4
+117a1fa fd5a85
+D6
+11ed27c f62a03
+D4
+117a5f2 c70113
+D6
+116cea4 c629c5
+D4
+117a5f2 cd24b3
+D6
+11b2ada d0a99b
+D4
+117aee0 c629c5
+D6
+1181610 c690f5
+D4
+117b9ca 132f27d
+D6
+1274f60 1428911
+D4
+117c2b8 116a883
+D6
+f65c0c 1380f2f
+D4
+117e572 f238f5
+D6
+11ed27c f925ff
+D4
+117fb46 108683d
+D6
+113608e 10d02f5
+D4
+1180630 dc6ce5
+D6
+1112ff8 d596ad
+D4
+1180d22 12e0b5f
+D6
+12090f8 1258789
+D4
+1181c04 d3a891
+D6
+10ef37a dcd11b
+D4
+1181e00 d3c061
+D6
+11233ec cdd64d
+D4
+1182ae6 ec5ac9
+D6
+1116f78 e59f5b
+D4
+1182ce2 1271f53
+D6
+1211ae2 1300d53
+D4
+11832d6 ec1f41
+D6
+10d39f4 f71921
+D4
+11832d6 111d53d
+D6
+11b3eb2 10eca5f
+D4
+11847ac 11fc91d
+D6
+11c95fe 11b7acb
+D4
+1185c82 d23d6d
+D6
+113f562 cdd64d
+D4
+118676c 1428911
+D6
+10c0a58 1362bfd
+D4
+1187c42 e4c80d
+D6
+1205e5e ecaa29
+D4
+118862e cc4379
+D6
+123a1ca d75f15
+D4
+118872c e4c80d
+D6
+10cf57e f059bb
+D4
+118901a d4f4f3
+D6
+1113fd8 dc4633
+D4
+1189c02 1428911
+D6
+12229c0 138fb53
+D4
+118a2f4 eb125f
+D6
+112b7e2 e5274d
+D4
+118a2f4 11788bf
+D6
+114706a 11bbc47
+D4
+118c5ae f158b9
+D6
+11ed27c f76587
+D4
+118c9a6 fdf44f
+D6
+11ed27c f7eb79
+D4
+118d098 120be2f
+D6
+1209ae4 128887b
+D4
+118d490 1324ccb
+D6
+12910d6 1428911
+D4
+118d888 120f8b9
+D6
+11dbea8 11c1397
+D4
+118da84 1228991
+D6
+1255d4c 12f0c59
+D4
+118da84 122b833
+D6
+11f7c26 11c1691
+D4
+118da84 122f2bd
+D2
+1199bfe 124ca07
+116fe44 124ca07 1dc40 1d74a 29e05 c51 1bf
+116fe44 12767c1
+116fe44 124ca07 29dba 0 29dba 0 384
+114608a 124ca07
+116fe44 124ca07 0 29dba 29dba 384 384
+1152204 122f2bd
+116fe44 124ca07 29dba 0 29dba 708 1bf
+D6
+1152204 121e6d9
+1142fec 120f4c1
+D2
+111962a 11e5707
+11433e4 11e5707 3f8 29dba 29dbd 387 381
+11433e4 11bb94d
+11433e4 11e5707 29dba 0 29dba 708 384
+116d19e 11e530f
+11433e4 11e5707 0 29dba 29dba a8c 381
+D6
+1184e9e 11fd00f
+D2
+118da84 1212167
+116fe44 1212167 1505a 15158 1dc60 c4d 1c3
+D6
+118da84 122f2bd
+D4
+118ee5c df0b9d
+D6
+116fe44 df0b9d
+1150e2c df0b9d
+D4
+1190b22 12eced5
+D6
+12090f8 12748ff
+D4
+1191410 112b677
+D6
+11caecc 10f1abd
+D4
+1191efa 1264ff5
+D6
+1226b3c 12f9c37
+D4
+11921f4 d14267
+D6
+115b5da cdd64d
+D4
+11921f4 dc482f
+D6
+11ce65c d884c5
+D4
+1193ac2 108e939
+D6
+11440ca 10de331
+D4
+1195c7e 12f52cb
+D6
+11fe15a 135d7a7
+D4
+119656c 109a5bd
+D6
+1183bc4 1087c15
+D4
+119666a cb633d
+D6
+1260aee d807c1
+D4
+1197252 123e1db
+D6
+12090f8 11cc335
+D4
+1197748 d5cf3b
+D6
+1129b1c dcab67
+D4
+1197b40 1259a63
+D6
+12090f8 11e83ad
+D4
+1197e3a 13134ff
+D6
+12ad24c 1428911
+D4
+119842e 11868fb
+D6
+115b7d6 11c3553
+D4
+1198e1a ea3c0f
+D6
+1141a18 e4c80d
+D4
+119940e 130075f
+D6
+120b7aa 128e3c3
+D4
+1199904 1250987
+D6
+124663e 12fd6c1
+D4
+1199bfe fd960d
+D6
+113122c f70c3b
+D4
+119a5ea f0787d
+D6
+11ed27c f5a411
+D4
+119b0d4 10a349d
+D6
+1152106 10ec36d
+D4
+119bfb6 dc65f3
+D6
+1138348 d62985
+D4
+119f44c 11396b3
+D6
+11e7042 10f1abd
+D4
+119fa40 10baba9
+D6
+1160240 10fa4a7
+D4
+119fa40 10bfc07
+D6
+113f268 105f42f
+D4
+11a0f16 10d5849
+D6
+116e27c 11084e3
+D4
+11a25e8 d0be71
+D6
+1205b64 ca88f5
+D4
+11a27e4 1428911
+D6
+10dcad0 1362bfd
+D4
+11a3db8 e4c80d
+D6
+1213f98 ebc9ed
+D4
+11a47a4 ca8301
+D6
+1274574 d781cf
+D4
+11a47a4 e4c80d
+D6
+10dbcec f152c5
+D4
+11a548a d0b387
+D6
+11728ee cd87eb
+D4
+11a5d78 1428911
+D6
+12603fc 136e28d
+D4
+11a646a 1194a35
+D6
+1168832 11d266d
+D4
+11a724e dcb94b
+D6
+11dc698 d96501
+D4
+11a8724 ef9743
+D6
+11ed27c f3e399
+D4
+11ab4c8 d65331
+D6
+114bcd0 dc4b29
+D4
+11ac7a2 10e6035
+D6
+117c2b8 111651f
+D4
+11ad488 11476ef
+D6
+12030ba 10f1abd
+D4
+11ade74 ec9c45
+D6
+1198e1a edec9f
+1198e1a edef99
+1112dfc f64eb9
+1112dfc 105cd7d
+D4
+11ade74 fffd35
+D6
+11cce8c 101ed4d
+11cce8c 105cd7d
+D4
+11af93e e9e6bb
+D6
+115da90 e4c80d
+D4
+11b1010 fd48a9
+D6
+113f366 f62b01
+D4
+11b32ca fd4ba3
+D6
+11ed27c f9abf1
+D4
+11b44a6 11a2a71
+D6
+116f752 11e78c3
+D4
+11b45a4 e9edad
+D6
+121e054 e352fd
+D4
+11b7b38 c9f61d
+D6
+127bf7e d63965
+D4
+11b9504 d7336d
+D6
+1163dc8 dc8aa9
+D4
+11ba2e8 dc88ad
+D6
+114c1c6 d5a68d
+D4
+11bb4c4 115572b
+D6
+121f230 10f1abd
+D4
+11bd386 d0d14b
+D6
+11fa3d6 cd01f9
+D4
+11bd582 ef2529
+D6
+11ed27c f22223
+D4
+11bda78 10f0dd7
+D6
+118a2f4 112455b
+D4
+11be95a 1428911
+D6
+1112cfe 137ccb5
+D4
+11bfe30 e4c80d
+D6
+1221fd4 eae9b1
+D4
+11c091a e4c80d
+D6
+10df182 f2dfa5
+D4
+11c1df0 1428911
+D6
+12b24a6 133825b
+D4
+11c25e0 11b0aad
+D6
+117d78e 11f58ff
+D4
+11c38ba 10f1abd
+D6
+12b88dc 11e6adf
+D4
+11c7540 fdcaa3
+D6
+11ed27c fb6d67
+D4
+11c7540 d813a9
+D6
+11826ee dc62f9
+D4
+11c8226 ea72a1
+D6
+1226548 e48f7f
+D4
+11c8c12 c9f61d
+D6
+1151028 d17207
+D4
+11c95fe 1163865
+D6
+123b2a8 10f1abd
+D4
+11ca4e0 dc4731
+D6
+11ea7d2 da443f
+D4
+11cce8c 105cd7d
+D6
+11dc698 106c589
+11dc698 10aa5b9
+D4
+11ce068 ee6f97
+D6
+11ed27c f061ab
+D4
+11ce264 d183e3
+D6
+1201ce2 ce4965
+D4
+11d1400 11bdd05
+D6
+118a6ec 1204a19
+D4
+11d17f8 fe7055
+D6
+11ed27c 10029db
+D4
+11d27d8 dc4c27
+D6
+1159222 d4b573
+D4
+11d3cae c9f61d
+D6
+11fa0dc cc5a4b
+D4
+11d3cae eb48f1
+D6
+11f7e22 ed8b63
+D4
+11d459c febabf
+D6
+11ed27c fd2ddf
+D4
+11d4c8e eb68b1
+D6
+1235b58 e559e7
+D4
+11d567a d8f4e3
+D6
+119db7e dc6ee1
+D4
+11d763a 11718a1
+D6
+129f706 10a97d5
+D4
+11d7e2a ed4be3
+D6
+11eda6c eea825
+D4
+11d861a d2a0a5
+D6
+120fe1c cf28a3
+D4
+11d9006 10f1abd
+D6
+119842e 1132695
+D4
+11d9104 ece5b1
+D6
+124d858 e59e5d
+D4
+11d93fe e49d63
+D6
+1230010 ea0975
+D4
+11da1e2 1001ef1
+D6
+11ed27c feef55
+D4
+11da9d2 1428911
+D6
+1136b78 1384ab7
+D4
+11ddf66 1428911
+D6
+12c05e0 1346297
+D4
+11df932 10f1abd
+D6
+135d024 126f0b1
+D4
+11e16f6 dc9691
+D6
+11fb6b0 daf6d7
+D4
+11e36b6 d3b17f
+D6
+1224980 cf9eb5
+D4
+11e36b6 d9d51f
+D6
+11b5f70 dcac65
+D4
+11e4c8a c9f61d
+D6
+115bdca d285db
+D4
+11e5676 117f8dd
+D6
+12bb87c 10a97d5
+D4
+11e733c 1010f0d
+D6
+11ed27c 100afcd
+D4
+11e8a0e e3d1fd
+D6
+123e14a e9283b
+D4
+11e9bea 11c1691
+D6
+118da84 121d7f7
+D4
+11eaec4 11c1691
+D6
+12090f8 11df8c5
+D4
+11ed27c ef8071
+D6
+11d3eaa edec9f
+D4
+11ed27c f00663
+D6
+1130a3c fbcea3
+D4
+11ed27c f141e7
+D6
+11c685a eed7c5
+D4
+11ed27c f1c7d9
+D6
+1130a3c fd9019
+D4
+11ed27c f3025f
+D6
+11b1ff0 ef4fd3
+D4
+11ed27c f38851
+D6
+1130a3c ff5091
+D4
+11ed27c f4c3d5
+D6
+11a1608 f00761
+D4
+11ed27c f549c7
+D6
+116d39a fd47ab
+D4
+11ed27c f6844d
+D6
+11935cc f0e89b
+D4
+11ed27c f70a3f
+D6
+11844b2 fd9809
+D4
+11ed27c f845c3
+D6
+1185590 f1c8d7
+D4
+11ed27c f8cbb5
+D6
+11a46a6 fd578b
+D4
+11ed27c fa0739
+D6
+1177554 f2a913
+D4
+11ed27c fa8c2d
+D6
+11be562 fd7a45
+D4
+11ed27c fbc7b1
+D6
+116941a f38a4d
+D4
+11ed27c fc4da3
+D6
+11cea54 fe35cb
+D4
+11ed27c fd8927
+D6
+115b3de f46a89
+D4
+11ed27c fe0f19
+D6
+11d8222 ff5e75
+D4
+11ed27c ff499f
+D6
+114d3a2 f54ac5
+D4
+11ed27c ffcf91
+D6
+11e1200 100900d
+D4
+11ed27c 1010b15
+D6
+11d9300 ffcb99
+D4
+11efe24 c9f61d
+D6
+12012f6 cb0aef
+D4
+11f16f2 d491bb
+D6
+123497c d05f31
+D4
+11f17f0 ee046f
+D6
+11d93fe ec817b
+D4
+11f1ee2 edf887
+D6
+1130a3c fa0e2b
+D4
+11f31bc da9b8f
+D6
+11d7340 dc5a0b
+D4
+11f4594 dca86d
+D6
+115e280 d34559
+D4
+11f507e 10f1abd
+D6
+11a646a 11406d1
+D4
+11f586e 1185e11
+D6
+1130a3c 10c0fdf
+D4
+11f6a4a e2f0c3
+D6
+124c186 e847ff
+D4
+11f6b48 1428911
+D6
+114cfaa 137ed73
+D4
+11f9fde 1428911
+D6
+12ce61c 13542d3
+D4
+11fa9ca cc1acb
+D6
+11b1bf8 d0a89d
+D4
+11fb0bc cd4a67
+D6
+11c5c72 c9f61d
+D4
+11fb2b8 ca5165
+D6
+115c2c0 d4415d
+D4
+11fb2b8 1185e11
+D6
+12d78f4 10a97d5
+D4
+11fbaa8 10f1abd
+D6
+136c732 1262747
+D4
+11fc98a cba2bd
+D6
+11e1cea c9f61d
+D4
+11fd07c cdb58f
+D6
+11c685a d11cb3
+D4
+11fe454 136badd
+D6
+1199bfe 1307287
+D4
+11fea48 136d8a1
+D6
+11439d8 1428911
+D4
+11fee40 ed1a47
+D6
+1179c06 e4c80d
+D4
+11ff532 db9793
+D6
+11a8920 d62b81
+D4
+11ff532 db9891
+D6
+11e9ce8 dcf0db
+D4
+11ff82c d572f5
+D6
+1242ab6 d1406b
+D4
+11ff92a 1318d4d
+D6
+10965ac 11af8d1
+D4
+11ffd22 1318263
+D6
+10ef674 1428911
+D4
+11ffe20 13341dd
+D6
+110b7ea 1428911
+D4
+120080c 1335ca7
+D6
+10853d4 11ba86f
+D4
+12012f6 1352809
+D6
+1068774 11b9d85
+D4
+1204b84 e21087
+D6
+121f922 e3bf23
+D4
+1205c62 134a511
+D6
+1127862 1428911
+D4
+1205c62 11c1691
+D6
+11925ec 1234e05
+D4
+1207e1e 1380641
+D6
+115fa50 1428911
+D4
+1208216 cec56b
+D6
+11d42a2 d203e1
+D4
+12090f8 11d1889
+D6
+11f8f00 11c1691
+D4
+12090f8 11da371
+D6
+1199a02 1249a67
+D4
+12090f8 11ed9ff
+D6
+11dcc8c 11c1495
+D4
+12090f8 11f63e9
+D6
+10d8164 132737d
+D4
+12090f8 1209a77
+D6
+113b2e8 113bd65
+D4
+12090f8 121255f
+D6
+10f42da 132737d
+D4
+12090f8 1225bed
+D6
+1128e36 114592b
+D4
+12090f8 122e6d5
+D6
+1132604 13051c9
+D4
+12090f8 1241c65
+D6
+1104ebe 113da2b
+D4
+12090f8 124a74d
+D6
+1175f80 12dd8c5
+D4
+12090f8 125dddb
+D6
+10b41ec 1108dd1
+D4
+12090f8 12668c3
+D6
+1189a06 12e5fb5
+D4
+12090f8 1279e53
+D6
+116c4b8 11dd213
+D4
+12090f8 128293b
+D6
+1196076 12f5abb
+D4
+1209fda 1307385
+D6
+1178730 12759dd
+D4
+120c196 e1d107
+D6
+10d39f4 f557ab
+D4
+120cf7a ec3a0b
+D6
+1195c7e e4c80d
+D4
+120d868 d65331
+D6
+1250af2 d220a7
+D4
+120dd5e 118218b
+D6
+1130a3c 10a4e69
+D4
+1210ff8 1296bb1
+D6
+1199016 130ea95
+D4
+12111f4 10f1abd
+D6
+11b44a6 114e70d
+D4
+1212cbe 1428911
+D6
+115da90 13737e1
+D4
+1216154 1428911
+D6
+12dc658 136230f
+D4
+1217c1e 10f1abd
+D6
+137423a 124e1d7
+D4
+1217d1c 138c7bb
+D6
+117bbc6 1428911
+D4
+12193ee cf740b
+D6
+11dc698 d34161
+D4
+121a1d2 e1a65d
+D6
+1220014 e2049f
+D4
+121afb6 eb59cf
+D6
+11b1df4 e4c80d
+D4
+121b1b2 12fc2e9
+D6
+118b3d2 126c509
+D4
+121d962 e2bf27
+D6
+120e946 e1cf0b
+D4
+121e34e e26ec9
+D6
+11a6170 e9f0a7
+D4
+121f034 12a4ceb
+D6
+1170040 1353be1
+D4
+12211f0 e4019d
+D6
+11bf444 ea1f49
+D4
+1221dd8 117a18d
+D6
+1130a3c 1088df1
+D4
+1221fd4 d6be59
+D6
+1181610 ccb397
+D4
+12228c2 d6c34f
+D6
+125eb2e d300e3
+D4
+12232ae 1179f91
+D6
+12f3a6a 10a97d5
+D4
+1226d38 11a3a51
+D6
+11df638 11a3a51
+1112dfc 10d7215
+1112dfc 105cd7d
+D4
+1228ff2 ea7993
+D6
+11cde6c e4c80d
+D4
+1229ed4 1325fa5
+D6
+12511e4 1325fa5
+12609f0 1316799
+1267f04 1316799
+D4
+1229ed4 1363fd5
+D6
+1248eec 1344fbd
+1267f04 1344fbd
+D4
+122c488 12f9b39
+D6
+1250204 12d5ebb
+D4
+122d070 12b2d27
+D6
+10b7486 1428911
+D4
+122d26c 10f1abd
+D6
+11c25e0 115c847
+D4
+122d36a e50199
+D6
+11cf440 eae0c3
+D4
+122d95e cfef13
+D6
+11ea6d4 d4219d
+D4
+122ed36 1428911
+D6
+1169f04 13639e1
+D4
+1230702 138fd4f
+D6
+12c92c4 1428911
+D4
+1230800 138fd4f
+D6
+1197c3e 1428911
+D4
+12321cc 1428911
+D6
+12d5046 1385a97
+D4
+1233c96 10f1abd
+D6
+1379e80 1237ca7
+D4
+1235a5a c74e77
+D6
+1295846 cd4c63
+D4
+123624a d74b3d
+D6
+126cb6a d3e11f
+D4
+1236642 12fb701
+D6
+1196d5c 125be1b
+D4
+1236d34 c77725
+D6
+124ba94 c629c5
+D4
+123702e e99859
+D6
+11e19f0 e4421b
+D4
+123a7be 117eaf9
+D6
+130fae2 10a97d5
+D4
+123b0ac 12c0d63
+D6
+10d34fe 1428911
+D4
+123b99a d0cf4f
+D6
+11f8710 d501d9
+D4
+123bb96 e58197
+D6
+125a1c2 e767c3
+D4
+123da58 c629c5
+D6
+12335a4 c6ce79
+D4
+123f620 c629c5
+D6
+12a7802 ccaaa9
+D4
+1240208 e59373
+D6
+11d861a ec0f61
+D4
+12418da 130075f
+D6
+125e240 12e3ef7
+D4
+1244482 1387a57
+D6
+12e543a 1428911
+D4
+1244978 11c6edf
+D6
+127c96a 11feed1
+D4
+1244978 11c8ca3
+D6
+12fbb66 1111ab5
+D4
+1244978 11e2f57
+D6
+127aca4 1219381
+D4
+1244978 11e4d1b
+D6
+130cd3e 111ca53
+D4
+1244978 11ff0cd
+D6
+127e532 1238b89
+D4
+1244978 1200e91
+D6
+13204ca 112533f
+D4
+1244978 121b145
+D6
+12703f8 1246cc3
+D4
+1244978 121cf09
+D6
+132e506 113337b
+D4
+1244978 12372bb
+D6
+12623bc 1254cff
+D4
+1244978 123907f
+D6
+127b78e 120216b
+D4
+1244978 1253333
+D6
+1258104 1266abf
+D4
+1244978 12550f7
+D6
+127c17a 121d8f5
+D4
+1244978 126f4a9
+D6
+1252fa8 127dad9
+D4
+1244978 127126d
+D6
+128701a 122ebcb
+D4
+1244b74 c8595d
+D6
+1267b0c c629c5
+D4
+1245168 e8b81d
+D6
+11efa2c e361df
+D4
+12489f6 d7e409
+D6
+127aca4 d4c259
+D4
+1248eec e2ebcd
+D6
+1248eec df0b9d
+D4
+1248eec 105cd7d
+D6
+1267f04 103dd65
+1267f04 fffd35
+D4
+12490e8 12cee9d
+D6
+121c192 12fbdf3
+D4
+12493e2 10f1abd
+D6
+11d061c 116a883
+D4
+12494e0 118be4f
+D6
+12f6f00 10de42f
+D4
+1249ad4 d1b089
+D6
+120684a d5e313
+D4
+124aeac 1428911
+D6
+1171020 134ea85
+D4
+124c976 c99cd1
+D6
+1283c82 c629c5
+D4
+124ca74 ca8007
+D6
+12899c6 ce4f59
+D4
+124d460 12f63a9
+D6
+1198232 124117b
+D4
+124d75a 11b3b4b
+D6
+1287ffa 11ee3eb
+D4
+124e342 1428911
+D6
+12d99b2 139d2a1
+D4
+124f51e 10f11cf
+D6
+136df02 120fbb3
+D4
+124f818 1199a93
+D6
+129a0b4 11e432f
+D4
+12508f6 11a0baf
+D6
+12f1aaa 10ff9fb
+D4
+12513e0 137883f
+D6
+13014b2 1428911
+D4
+12524be cb0201
+D6
+129fdf8 c629c5
+D4
+1252ab2 d807c1
+D6
+118f64c cbd35b
+D4
+12531a4 e7d7e1
+D6
+11fda68 e280a5
+D4
+1257222 12dced9
+D6
+123810c 12fbef1
+D4
+125761a e57aa5
+D6
+12681fe e68689
+D4
+1257a12 126c20f
+D6
+12490e8 127ab39
+D4
+1257a12 1274507
+D6
+1244978 126146d
+D4
+1257b10 d290c5
+D6
+1218904 d682d1
+D4
+1259ad0 c629c5
+D6
+123dd52 c7e743
+D4
+1259ad0 cc4d65
+D6
+12bbe70 c629c5
+D4
+125b796 c629c5
+D6
+12c3978 ccaba7
+D4
+125bd8a 125c709
+D6
+1244978 12452f7
+D4
+12605f8 12ed4c9
+D6
+118da84 121a955
+D4
+1260ee6 10e6b1f
+D6
+1373358 11f8f91
+D4
+12611e0 e6f7a5
+D6
+124bb92 e5a157
+D4
+12627b4 d807c1
+D6
+127a5b2 d689c3
+D4
+1263696 136e97f
+D6
+131d628 1428911
+D4
+1265b4c cd4d61
+D6
+12d7fe6 c629c5
+D4
+1265b4c d37101
+D6
+122a4c8 d72785
+D4
+1266f24 1428911
+D6
+116fa4c 1331439
+D4
+12686f4 e4ca09
+D6
+1276338 e5a74b
+D4
+12693da 124dce1
+D6
+1244978 122927f
+D4
+126a3ba 1428911
+D6
+12e6b0c 13ac1bf
+D4
+126d556 d7f1ed
+D6
+119d786 caf31f
+D4
+126e040 136e685
+D6
+11b3db4 1428911
+D4
+126ef22 10d89e5
+D6
+137fdc0 11e9883
+D4
+126f21c e6166b
+D6
+1260bec e5303b
+D4
+12703f8 e1c61d
+D6
+12a7110 e53335
+D4
+12729ac e3ac49
+D6
+128b098 e53335
+D4
+1273c86 ce2e9b
+D6
+12f405e c629c5
+D4
+1273c86 d4523b
+D6
+1240404 d789bf
+D4
+127417c e33539
+D6
+128a7aa e1cf0b
+D4
+1275c46 c629c5
+D6
+1249fca c8e543
+D4
+1277416 123fba7
+D6
+1244978 120d109
+D4
+127780e c629c5
+D6
+1366de6 d51f9d
+D4
+12792d8 d6edf9
+D6
+11ab7c2 ca12e3
+D4
+1279bc6 1211f6b
+D6
+1244978 12470bb
+D4
+1279dc2 120a365
+D6
+1244978 11d4f1b
+D4
+127b19a 136a30d
+D6
+13396a0 1428911
+D4
+127cf5e 10ca9a9
+D6
+1392964 11e03af
+D4
+127d552 e1c029
+D6
+1273692 e25ee9
+D4
+127f01c e552f5
+D6
+126e732 e44a0b
+D4
+1280ae6 d5a58f
+D6
+121f726 cf90d1
+D4
+1280be4 1226fc5
+D6
+1244978 1263231
+D4
+12817cc 11f5bf9
+D6
+12485fe 11bca2b
+D4
+1281cc2 cf0ed7
+D6
+1287412 ceb787
+D4
+1281cc2 d53179
+D6
+1254778 d807c1
+D4
+128309a 1428911
+D6
+1185590 132ae07
+D4
+1285550 1231b6b
+D6
+1244978 11f0f93
+D4
+1286432 cefa01
+D6
+12596d8 cc2ca7
+D4
+1286530 1428911
+D6
+12fab86 13b42bb
+D4
+128a1b6 135d2b1
+D6
+1355816 1428911
+D4
+128b098 10bc96d
+D6
+137ca28 11ae2fd
+D4
+128c56e e53335
+D6
+12c289a e1d009
+D4
+128ca64 e1cb13
+D6
+12c3286 e53335
+D4
+128d352 12b7e83
+D6
+133c93a 136746b
+D4
+128da44 1328951
+D6
+12da39e 13752ab
+D4
+128ed1e cdc177
+D6
+124c976 c99ecd
+D4
+12901f4 11e85a9
+D6
+12505fc 11a89b1
+D4
+12901f4 132231f
+D6
+129642e 131c0e5
+D4
+12911d4 133d4b5
+D6
+12a446a 132a121
+D4
+12919c4 1348a47
+D6
+12d4d4c 138bdcf
+D4
+1291cbe c629c5
+D6
+124ca74 ca7c0f
+D4
+1293984 c629c5
+D6
+1382f5c d51f9d
+D4
+129642e 12c7d81
+D6
+138c332 11d1f7b
+D4
+12990d4 e53335
+D6
+1274574 e2e7d5
+D4
+12990d4 10ae931
+D6
+12f8ec0 110e71d
+D4
+12991d2 11e4727
+D6
+133c640 11413b7
+D4
+129a5aa 1270d77
+D6
+1363f44 133a711
+D4
+129a6a8 12a9063
+D6
+1347ecc 1356887
+D4
+129bb7e 12a64bb
+D6
+137f6ce 11c2a69
+D4
+129d44c 1288b75
+D6
+137ca28 11a9599
+D4
+129d44c 1323103
+D6
+128d946 1332c09
+D4
+129db3e ccef1f
+D6
+12315e4 c629c5
+D4
+129f112 1428911
+D6
+11937c8 131cfc7
+D4
+129f112 1291a55
+D6
+1355f08 134884b
+D4
+12a06e6 e1500b
+D6
+1130a3c f84cb5
+D4
+12a0cda e14c13
+D6
+12df2fe e53335
+D4
+12a25a8 1428911
+D6
+1307fda 13c2fdd
+D4
+12a446a 12d5ebb
+D6
+136e000 120c325
+D4
+12a5f34 120eecd
+D6
+12a5f34 123b339
+1275652 126bc1b
+1275652 12957d9
+D4
+12a6724 11e2963
+D6
+1138642 1074881
+D4
+12a83ea cca7af
+D6
+13101d4 c629c5
+D4
+12a85e6 1262d3b
+D6
+1372476 132cbcb
+D4
+12a86e4 e53335
+D6
+12e7ce8 e13c33
+D4
+12ab488 133113f
+D6
+12915cc 134b0f9
+D4
+12ad742 10a97d5
+D6
+11de658 11788bf
+D4
+12ade34 c629c5
+D6
+1257026 cb97d3
+D4
+12af9fc c629c5
+D6
+139efd4 d51f9d
+D4
+12b00ee 10a97d5
+D6
+12f17b0 10eae97
+D4
+12b24a6 12e3ef7
+D6
+1372a6a 1223a31
+D4
+12b3780 cc8ae9
+D6
+124d75a c629c5
+D4
+12b495c 11e5113
+D6
+134a67c 114f3f3
+D4
+12b514c e53335
+D6
+127e238 e1c323
+D4
+12b6720 1254cff
+D6
+1388d9e 132737d
+D4
+12b6c16 e1ab53
+D6
+12798cc e57f9b
+D4
+12b95c2 133f279
+D6
+11cfe2c 1428911
+D4
+12bb288 1428911
+D6
+12223cc 138fa55
+D4
+12be71e 1428911
+D6
+131660a 13d0a25
+D4
+12bf8fa 124a64f
+D6
+137ca28 118d521
+D4
+12c05e0 12f1f33
+D6
+137909c 1239477
+D4
+12c23a4 124480d
+D6
+132ac78 12ad1df
+D4
+12c3e6e ccada3
+D6
+1315b20 c790f1
+D4
+12c475c e53335
+D6
+12fb474 e1c61d
+D4
+12c4f4c 105cd7d
+D6
+12e3f64 103dd65
+12e3f64 fffd35
+D4
+12c5246 e1d107
+D6
+12fb474 e53335
+D4
+12c5c32 11effb3
+D6
+13586b8 115d52d
+D4
+12c6a16 122ce07
+D6
+1332e72 1299263
+D4
+12c75fe 134d2b5
+D6
+11ebfa2 1428911
+D4
+12c98b8 10a97d5
+D6
+11ed27c 1185e11
+D4
+12c9eac c629c5
+D6
+125eb2e ccdd43
+D4
+12cbb72 c629c5
+D6
+13207c4 cb7617
+D4
+12cc264 10a97d5
+D6
+12fb474 10d8ae3
+D4
+12ce322 11fc525
+D6
+1354e2a 128302d
+D4
+12ce61c 130006d
+D6
+132f0ee 129f59b
+D4
+12cf7f8 121e5db
+D6
+137482e 11795a5
+D4
+12d03e0 120197b
+D6
+13667f2 116b569
+D4
+12d0ad2 121ad4d
+D6
+1342580 128c7fb
+D4
+12d12c2 e53335
+D6
+1297bfe e19c71
+D4
+12d2a92 e1ae4d
+D6
+129a6a8 e53335
+D4
+12d563a 135b2f1
+D6
+120801a 1428911
+D4
+12d5c2e cd5159
+D6
+131a58a c907fd
+D4
+12d5d2c 1392eeb
+D6
+1240306 1428911
+D4
+12d6320 137f269
+D6
+12900f6 133903f
+D4
+12d7300 1428911
+D6
+123b6a0 138cbb3
+D4
+12da894 1428911
+D6
+132d526 13d5c7f
+D4
+12db37e e170c9
+D6
+13174ec e53335
+D4
+12db972 13a0a31
+D6
+128f018 13540d7
+D4
+12dc658 130e0a9
+D6
+132c34a 12be3b7
+D4
+12df4fa 13a5795
+D6
+125c37e 1428911
+D4
+12e02de 136d1af
+D6
+12911d4 131e0a5
+D4
+12e08d2 e53335
+D6
+139c42c d976dd
+D4
+12e0ec6 136bbdb
+D6
+1224190 1428911
+D4
+12e17b4 ce564b
+D6
+131e40c ca89f3
+D4
+12e3676 cea8a5
+D6
+12eaa8c cf1cbb
+D4
+12e3f64 ec9c45
+D6
+12e3f64 f5e58d
+1302f7c f7d5a5
+1302f7c 105cd7d
+D4
+12e5930 10a97d5
+D6
+12092f4 1185e11
+D4
+12e6022 c629c5
+D6
+126cb6a cdbd7f
+D4
+12e7ce8 c629c5
+D6
+131e40c c990e9
+D4
+12e82dc 10a97d5
+D6
+130c352 10cd84b
+D4
+12ea792 131c0e5
+D6
+1336af8 12cfd7f
+D4
+12ed438 e53335
+D6
+12b397c e19879
+D4
+12efee2 13b0f23
+D6
+12784f4 1428911
+D4
+12f05d4 10f2e95
+D6
+124e146 1195323
+D4
+12f05d4 10f7df5
+D6
+12a20b2 10a97d5
+D4
+12f08ce e19089
+D6
+12b6720 e53335
+D4
+12f0aca cf24ab
+D6
+132444a cbeb2b
+D4
+12f3476 1428911
+D6
+124b996 1380e31
+D4
+12f5730 10e0ddb
+D6
+12be12a 10a97d5
+D4
+12f5c26 11099b9
+D6
+124e936 11b0bab
+D4
+12f690c 1428911
+D6
+134959e 13d5c7f
+D4
+12f87ce 132a121
+D6
+13482c4 12da62b
+D4
+12fc94a e53335
+D6
+13b85a2 d976dd
+D4
+12fcd42 e1ca15
+D6
+13389ba e5868d
+D4
+12feb06 1389c13
+D6
+12feb06 135a60b
+1226d38 128283d
+1226d38 11a3a51
+D4
+12feb06 1389c13
+D6
+1314b40 139fc4d
+1314b40 13a5991
+13271ee 13b803f
+1387fba 13b803f
+13fb03c 1344fbd
+D4
+13000da cf92cd
+D6
+12697d2 c629c5
+D4
+1300ac6 1116225
+D6
+137ca28 1192187
+D4
+1300fbc 13bbec1
+D6
+129456c 1428911
+D4
+1301aa6 10a97d5
+D6
+1230408 117ad75
+D4
+130209a c629c5
+D6
+127aca4 ce9eb9
+D4
+1302d80 10d22b5
+D6
+12da2a0 10a97d5
+D4
+1303276 cfbe75
+D6
+1331d94 ccd259
+D4
+1303570 11180e7
+D6
+1244978 11d6cdf
+D4
+130376c 10d1bc3
+D6
+138b54e 1049edf
+D4
+1303d60 c629c5
+D6
+131640e c75073
+D4
+1304452 10a97d5
+D6
+13284c8 10cd949
+D4
+130680a 133825b
+D6
+135b45c 12e3609
+D4
+13090b8 e1ca15
+D6
+12d2896 e53335
+D4
+13094b0 e53335
+D6
+12d16ba e1b441
+D4
+130eff8 13c9ffb
+D6
+12b06e2 1428911
+D4
+130f4ee 1428911
+D6
+1255066 136e489
+D4
+13112b2 d09eb1
+D6
+133fece cdb295
+D4
+1312a82 1428911
+D6
+1365714 13d5c7f
+D4
+1314846 1346297
+D6
+1369498 12f1645
+D4
+131552c e19187
+D6
+134581a e49377
+D4
+1316016 c82cb7
+D6
+12f5d24 c629c5
+D4
+1316a02 c86349
+D6
+12cda34 ccf219
+D4
+1317dda 10cb297
+D6
+12f6318 10a97d5
+D4
+1318ac0 e53335
+D6
+13d4718 d976dd
+D4
+1318ac0 111ec0f
+D6
+1244978 11f2e55
+D4
+13199a2 c6a5cb
+D6
+1311d9c c629c5
+D4
+131c746 135a50d
+D6
+13775d2 12ff681
+D4
+131c746 13632ef
+D6
+132ad76 137191f
+D4
+131d034 13d3fb9
+D6
+137188e 1428911
+D4
+131dc1c 10a97d5
+D6
+1242bb4 118473f
+D4
+131e210 c629c5
+D6
+12b80ec cc8ae9
+D4
+131e40c c9a9b7
+D6
+12dc658 cdc76b
+D4
+131e40c ca7223
+D6
+12d9bae c629c5
+D4
+131f2ee d17eed
+D6
+134df0a ce93cf
+D4
+131fbdc cb535d
+D6
+12e4c4a cf02ef
+D4
+13201d0 13d4e9b
+D6
+12cc75a 1428911
+D4
+13202ce 10a95d9
+D6
+13d68d4 115fae1
+D4
+1320fb4 1371d17
+D6
+13869e6 130c2e5
+D4
+1324d38 10cc76d
+D6
+138b54e 1066055
+D4
+132532c e0ce11
+D6
+135949c e40e83
+D4
+1325626 e53335
+D6
+12e347a e11189
+D4
+1325b1c d810af
+D6
+13c74c0 e22955
+D4
+1325b1c d9d127
+D6
+13ad010 e2461b
+D4
+1325b1c d9dc11
+D6
+1334544 d8f1e9
+D4
+1325b1c db929d
+D6
+139c52a e2fcab
+D4
+1325b1c db9d87
+D6
+13482c4 d974e1
+D4
+1325f14 dd570d
+D6
+139246e e41d65
+D4
+1326012 dd5909
+D6
+136423e d976dd
+D4
+13274e8 112c35d
+D6
+1244978 120eecd
+D4
+132a782 12b1e45
+D6
+12d563a 130708b
+D4
+132ad76 cc623b
+D6
+12fb17a cf5f35
+D4
+132b664 1428911
+D6
+1270be8 136de95
+D4
+132b95e 12bbf01
+D6
+12bd542 124d9e7
+D4
+132d32a d26027
+D6
+135bf46 cf740b
+D4
+132d32a d883c7
+D6
+1325b1c d8fbd5
+D4
+132dc18 12a2143
+D6
+12c3b74 1237fa1
+D4
+132e506 df9e75
+D6
+1394c1e e6058d
+D4
+132e9fc de9095
+D6
+13803b4 d976dd
+D4
+132eafa 1428911
+D6
+138178c 13d5c7f
+D4
+13307c0 12c7f7d
+D6
+12e3676 13150c7
+D4
+1332388 e55be3
+D6
+13f0790 d976dd
+D4
+1332f70 10a0105
+D6
+13d68d4 1143a69
+D4
+1333564 139a8f5
+D6
+135ba50 1372409
+135ba50 136cdb7
+138384a 1344fbd
+13bd00c 1344fbd
+D4
+1335524 113a399
+D6
+1244978 122b043
+D4
+133591c 136e489
+D6
+131bd5a 13549c5
+D4
+1336df2 10d6829
+D6
+138b54e 10820cd
+D4
+1338db2 cd4277
+D6
+130a294 d02e93
+D4
+1339c94 1291f4b
+D6
+12cc858 1224c0d
+D4
+133ad72 13d5c7f
+D6
+138da04 1428911
+D4
+133b464 d34063
+D6
+1362b6c d0c85d
+D4
+133b562 13d5c7f
+D6
+12e88d0 1428911
+D4
+133cf2e d9483b
+D6
+1325b1c dabd4b
+D4
+133e404 e4ff9d
+D6
+130aa84 e1c61d
+D4
+133e7fc 12d60b7
+D6
+12f17b0 1323103
+D4
+1340cb2 1360153
+D6
+13300ce 1370d37
+D4
+1340fac 10920c9
+D6
+1393252 10e4271
+D4
+13415a0 128cfeb
+D6
+13592a0 12753e9
+D4
+134189a 10e6c1d
+D6
+13d68d4 117bc57
+D4
+1341a96 135e58b
+D6
+1294a62 12b1557
+D4
+1341d90 10e7a01
+D6
+138b54e 109e243
+D4
+134365e 11483d5
+D6
+12a8fd2 11e2b5f
+D4
+1346eec ce23b1
+D6
+13182d0 d10ecf
+D4
+13477da 1428911
+D6
+128368e 13648c3
+D4
+13494a0 d4209f
+D6
+136eaea d1cb53
+D4
+134a67c 10fb18d
+D6
+138b54e 10ba2bb
+D4
+134ac70 1428911
+D6
+1402a46 1370a3d
+D4
+134cf2a 1289169
+D6
+12d249e 120e6dd
+D4
+134dc10 1082bb7
+D6
+138b74a 10c06f1
+D4
+134e5fc e4411d
+D6
+131e210 e13c33
+D4
+134eeea 134f869
+D6
+129e32e 129ecad
+D4
+13507b8 fdc5ad
+D6
+135a47c fd29e7
+D4
+13507b8 fdd195
+D6
+1392768 101f145
+D4
+13507b8 ff8723
+D6
+136b458 fdda83
+D4
+13507b8 ff920d
+D6
+138b54e 1033fa3
+D4
+13507b8 101479b
+D6
+13873d2 fddc7f
+D4
+13507b8 1015383
+D6
+138b54e 105001b
+D4
+13507b8 1030911
+D6
+1395a02 feb6c7
+D4
+13507b8 10313fb
+D6
+138b54e 106c191
+D4
+13507b8 104ca87
+D6
+1392174 100afcd
+D4
+13507b8 104d571
+D6
+138b54e 1088307
+D4
+13507b8 1068aff
+D6
+138bb42 102d775
+D4
+13507b8 10696e7
+D6
+138b54e 10a437f
+D4
+135169a 1156411
+D6
+12be02c 11e9b7d
+D4
+135443e 12dc4ed
+D6
+12ff7ec 133113f
+D4
+135453c fca7ed
+D6
+13507b8 fce571
+D4
+1354f28 cf03ed
+D6
+132630c d1ef0b
+D4
+1356202 d976dd
+D6
+1325b1c dc7dc3
+D4
+1356dea 13d5c7f
+D6
+13a9a7c 1428911
+D4
+13574dc d500db
+D6
+1380aa6 d26b11
+D4
+13575da 13d5c7f
+D6
+1304948 1428911
+D4
+1357dca 1277f91
+D6
+11d18f6 10f1abd
+D4
+13582c0 d976dd
+D6
+1453124 e92541
+D4
+13586b8 11091c9
+D6
+1391984 10cfefd
+D4
+135cf26 134172f
+D6
+129358c 1277e93
+D4
+135f4da d01eb3
+D6
+1334446 d2d045
+D4
+135f7d4 116454b
+D6
+12cbd6e 11f7eb3
+D4
+135ffc4 e6cbfd
+D6
+137efdc e8bc15
+13bd00c e8bc15
+D4
+135ffc4 ee8c5d
+D6
+130f7e8 e98481
+12996c8 e98481
+1267f04 ec9c45
+D4
+13600c2 d04f51
+D6
+12bdb36 c629c5
+D4
+1361d88 fd9019
+D6
+13507b8 fea6e7
+D4
+136247a 12ea627
+D6
+130d828 133f279
+D4
+1363754 e4088f
+D6
+140372c da08b7
+D4
+1363852 1428911
+D6
+12e7ce8 13acda7
+D4
+1363b4c c9b4a1
+D6
+139c628 c629c5
+D4
+1363d48 1267e97
+D6
+11eda6c 10f1abd
+D4
+13667f2 1117205
+D6
+1392370 10eb589
+D4
+1366ce8 1428911
+D6
+13e77b2 13a7e47
+D4
+13676d4 e4107f
+D6
+132ab7a e04525
+D4
+1367ec4 d1563f
+D6
+1342482 d3b081
+D4
+13685b6 c8ef2f
+D6
+13ac722 cd3199
+D4
+136af62 13336f3
+D6
+12a15c8 1269d59
+D4
+136b752 1262e39
+D6
+1375d04 1258985
+D4
+136bf42 c76843
+D6
+1453124 d5da25
+D4
+136c040 c76f35
+D6
+13805b0 c629c5
+D4
+136d810 1172587
+D6
+12d249e 120d8f9
+D4
+136de04 fde769
+D6
+1390aa2 1001407
+D4
+136f0de 1219283
+D6
+12ab488 12dced9
+D4
+136f6d2 1203249
+D6
+12595da 10ed24f
+D4
+13705b4 12f8663
+D6
+131a094 134ea85
+D4
+1370fa0 caa1c3
+D6
+13b879e c629c5
+D4
+1371790 d51f9d
+D6
+139cf16 d26817
+D4
+1371a8a 1221875
+D6
+1241cd2 10f1abd
+D4
+1372378 d976dd
+D6
+132b468 dde4ef
+D4
+1372574 c629c5
+D6
+13690a0 c6be99
+D4
+1372f60 13d5c7f
+D6
+13c5bf2 1428911
+D4
+1373554 11f8d95
+D6
+129d44c 12cee9d
+D4
+1373750 13d5c7f
+D6
+1320abe 1428911
+D4
+137413c c629c5
+D6
+13ea556 cd8ddf
+D4
+137423a 124c315
+D6
+12c75fe 12f8f51
+D4
+1374338 d976dd
+D6
+1453124 e764c9
+D4
+137482e 1125241
+D6
+1397dba 1101db3
+D4
+1374f20 d51f9d
+D6
+1285948 c629c5
+D4
+1375b08 124196b
+D6
+1225c5a 10f1abd
+D4
+1376de2 d22897
+D6
+13504be d490bd
+D4
+13770dc 125f0b5
+D6
+1209ae4 10f1abd
+D4
+13770dc fdfe3b
+D6
+13507b8 100675f
+D4
+1377fbe 122c519
+D6
+12b95c2 12eaf15
+D4
+13785b2 e47ba7
+D6
+141b726 da4935
+D4
+1378ca4 11f07a3
+D6
+1267f04 10dfa03
+D4
+137b84c 11805c3
+D6
+12c3b74 123829b
+D4
+137bd42 132835d
+D6
+12af702 125bd1d
+D4
+137ca28 118414b
+D6
+13173ee 111eb11
+D4
+137ca28 119b55d
+D6
+1298cdc 127f2a9
+D4
+137ca28 11a01c3
+D6
+12920b6 10b594f
+D4
+137ca28 11b75d5
+D6
+129f40c 1294bf1
+D4
+137d70e 11bd01f
+D6
+128407a 10c398b
+D4
+137e5f0 130669f
+D6
+131c746 1368549
+D4
+137f0da cb81ff
+D6
+13d4914 c629c5
+D4
+137f9c8 1428911
+D6
+132cd36 13d5c7f
+D4
+138286a 113337b
+D6
+13a5900 11102e5
+D4
+1382e5e 1428911
+D6
+13e235c 13c9413
+D4
+1385314 11cae5f
+D6
+128f410 12c0d63
+D4
+13860f8 e560d9
+D6
+1390ba0 e4b631
+D4
+1387ac4 132737d
+D6
+1394f18 1319f29
+D4
+13885ae 11e4035
+D6
+1275f40 10d19c7
+D4
+138a372 fdea63
+D6
+13961f2 fea8e3
+D4
+138b54e 103bea3
+D6
+13507b8 1076b3b
+D4
+138b54e 1041fdf
+D6
+13507b8 1007347
+D4
+138b54e 1057f1b
+D6
+13181d2 10cb297
+D4
+138b54e 105e155
+D6
+13507b8 10233bf
+D4
+138b54e 1074091
+D6
+132ecf6 10d08e9
+D4
+138b54e 107a1cd
+D6
+13507b8 103f535
+D4
+138b54e 1090207
+D6
+133d424 10de233
+D4
+138b54e 1096343
+D6
+13507b8 105b5ad
+D4
+138b54e 10ac27f
+D6
+1343f4c 10f3783
+D4
+138b54e 10b23bb
+D6
+13507b8 1077625
+D4
+138bc40 130e0a9
+D6
+1393154 13155bd
+D4
+138c52e e6bd1b
+D6
+1395bfe e6264b
+D4
+138cc20 d28ad1
+D6
+1363754 d51f9d
+D4
+138cc20 10c6d23
+D6
+135169a 11021ab
+D4
+138d116 cc623b
+D6
+13f098c c629c5
+D4
+138d410 1027e29
+D6
+13507b8 feb1d1
+D4
+138d906 d51f9d
+D6
+13f7ea0 ce7a03
+D4
+138e3f0 d976dd
+D6
+132edf4 df6cd9
+D4
+138e4ee 13d5195
+D6
+13e1d68 1428911
+D4
+138e5ec c629c5
+D6
+136b752 c8585f
+D4
+13902b2 c629c5
+D6
+13e1f64 cb4677
+D4
+13904ae d976dd
+D6
+1453124 e5a353
+D4
+13909a4 11413b7
+D6
+13bb14a 1116c11
+D4
+1390aa2 e4e3d5
+D6
+132f1ec decb1f
+D4
+1390aa2 ffe663
+D6
+13507b8 103e94d
+D4
+1390d9c 13d46ab
+D6
+133cb36 1428911
+D4
+1390f98 d51f9d
+D6
+12a19c0 c629c5
+D4
+1391788 130f67d
+D6
+1376be6 132a21f
+D4
+1391b80 d289d3
+D6
+13bb14a d51f9d
+D4
+1391e7a e58393
+D6
+138a66c e5fba1
+D4
+1392174 ff499f
+D6
+137d316 fdfb41
+D4
+1392768 10f18c1
+D6
+1339f8e 10990e7
+D4
+1393350 11d8f99
+D6
+1387ebc 11e442d
+D4
+1393748 fdf945
+D6
+13507b8 10228d5
+D4
+1393b40 10f7ef3
+D6
+136d810 111e223
+D4
+139452c cc8fdf
+D6
+1363b4c c985ff
+D4
+139462a e6dfd5
+D6
+138bb42 e654ed
+D4
+1395a02 10142a5
+D6
+13507b8 fcf159
+D4
+13960f4 1015089
+D6
+13507b8 105aac3
+D4
+13966e8 e37ea5
+D6
+1325b1c dc72d9
+D4
+1396bde e374b9
+D6
+137ffbc e4e0db
+D4
+1396cdc 10d9dbd
+D6
+1347fca 108b0ab
+D4
+1396dda 132737d
+D6
+134ab72 12db115
+D4
+13981b2 10d7809
+D6
+135f6d6 11101e7
+D4
+139a56a 1322913
+D6
+1395b00 132737d
+D4
+139ba40 1428911
+D6
+1348dae 13d5c7f
+D4
+139ddf8 1109db1
+D6
+137b84c 112c35d
+D4
+139dff4 124cefd
+D6
+139dff4 120eecd
+D4
+139e9e0 114f3f3
+D6
+13cead2 111f3ff
+D4
+139eed6 1428911
+D6
+13e996e 13ddf77
+D4
+139fabe 13ca5ef
+D6
+13fdde0 1428911
+D4
+13a2568 ccce61
+D6
+140cb02 c629c5
+D4
+13a3d38 e2947d
+D6
+1325b1c dab261
+D4
+13a71ce d21fa9
+D6
+13d72c0 d51f9d
+D4
+13a997e d51f9d
+D6
+140aa44 cf0fd5
+D4
+13aa566 d976dd
+D6
+12ee90e e53335
+D4
+13aa762 c629c5
+D6
+1369f82 ca30a7
+D4
+13ac32a c629c5
+D6
+13e8c88 c9f225
+D4
+13ac526 d976dd
+D6
+1453124 e3e2db
+D4
+13aca1c 115d52d
+D6
+13d68d4 1133675
+D4
+13ad10e d51f9d
+D6
+1382374 d27203
+D4
+13adbf8 13bc5b3
+D6
+1419f56 1428911
+D4
+13af1cc 1114b53
+D6
+1389888 113a399
+D4
+13b285e cd8ddf
+D6
+13e59ee ca5b51
+D4
+13b412c cdaba3
+D6
+141e9c0 d45339
+D4
+13b5af8 d1475d
+D6
+13f3338 d51f9d
+D4
+13b76c0 116e901
+D6
+13d68d4 114f6ed
+D4
+13b7bb6 1428911
+D6
+1364f24 13d5c7f
+D4
+13b82a8 11797a1
+D6
+13d68d4 1197dcd
+D4
+13b82a8 1189e8f
+D6
+13d68d4 116b863
+D4
+13b82a8 1195819
+D6
+13d68d4 11b3e45
+D4
+13b82a8 11a6005
+D6
+13d68d4 11879d9
+D4
+13b84a4 e21a73
+D6
+1325b1c d8f0eb
+D4
+13baa58 e21779
+D6
+1453124 d890ad
+D4
+13bb04c 1428911
+D6
+13f69ca 13ecf93
+D4
+13bbc34 13ae577
+D6
+13e76b4 13d9ff7
+D4
+13bc12a 10ece57
+D6
+13bc12a 10d0ae5
+13a918e 10bda4b
+13a918e 10326d5
+13bd00c 101e857
+13bd00c fffd35
+D4
+13bc522 d0720b
+D6
+13ea752 cd8fdb
+D4
+13bc81c cead9b
+D6
+13e2852 cc4e63
+D4
+13bd00c e4dbe5
+D6
+13c1384 e4dbe5
+13dbf26 e68787
+13dbf26 103b3b9
+13dd7f4 103cc87
+13dd7f4 1058ff9
+D4
+13bd00c ec9c45
+D6
+137efdc ec9c45
+132630c e70f75
+1289bc2 e70f75
+120aebc eefc7b
+120aebc 105cd7d
+D4
+13bd00c f07c75
+D6
+137eae6 f07c75
+1332b78 f53be3
+1332b78 107634b
+131d32e 108bb95
+1291cbe 108bb95
+12499d6 10d3e7d
+11c469e 10d3e7d
+11bd680 10cce5f
+11bd680 108b5a1
+D4
+13bd00c f45ca5
+D6
+139b648 f45ca5
+138ecde f5260f
+136faca f5260f
+D4
+13bd00c f83cd5
+D6
+138fbc0 f83cd5
+138d808 f8618b
+1362b6c f8618b
+D4
+13bd00c fc1d05
+D6
+1391788 fc1d05
+1385b04 fb6081
+1378da2 fb6081
+D4
+13bd00c 12c8f5d
+D6
+13bd00c 1265adf
+13c1a76 1261075
+13c1a76 11dd50d
+139a668 11b60ff
+139a668 117522d
+134da14 11285d9
+134d916 11285d9
+131a290 10f4f53
+D4
+13bd00c 12c8f5d
+D6
+13a74c8 12b3419
+13a74c8 12b115f
+137e6ee 1288385
+D4
+13bd00c 1306f8d
+D6
+13a74c8 12f1449
+139344e 12f1449
+135453c 12b2537
+D4
+13bddf0 d009dd
+D6
+14055ee d480dd
+D4
+13c4520 11b5e05
+D6
+13d68d4 11a3a51
+D4
+13c4d10 1115d2f
+D6
+13d68d4 11278f3
+D4
+13c5af4 d51f9d
+D6
+1425cd8 cf1db9
+D4
+13c65de d976dd
+D6
+130aa84 e53335
+D4
+13c67da c629c5
+D6
+13780bc cb11e1
+D4
+13c7ab4 11182e3
+D6
+13979c2 11483d5
+D4
+13c84a0 c629c5
+D6
+13f56f0 c8fc15
+D4
+13c869c d976dd
+D6
+1453124 e22165
+D4
+13c9186 d51f9d
+D6
+139d804 d2651d
+D4
+13c9c70 13a053b
+D6
+13e235c 13b8b29
+D4
+13d1a72 e267d7
+D6
+1453124 da5125
+D4
+13d255c 11c3e41
+D6
+13d68d4 11bfbc7
+D4
+13d3c2e 1428911
+D6
+1380f9c 13d5c7f
+D4
+13d5af0 112641d
+D6
+13a59fe 1156411
+D4
+13d68d4 1135a2d
+D6
+13b76c0 1116819
+D4
+13d68d4 11416b1
+D6
+13b3348 1164c3d
+D4
+13d68d4 1151aa5
+D6
+132af72 10a6241
+D4
+13d68d4 115d827
+D6
+13b82a8 117be53
+D4
+13d68d4 116dc1b
+D6
+131248e 10a97d5
+D4
+13d68d4 117989f
+D6
+13b82a8 1197ecb
+D4
+13d68d4 1189c93
+D6
+13b5700 1168abf
+D4
+13d68d4 1195a15
+D6
+13bd502 11aede7
+D4
+13d68d4 11a5e09
+D6
+13b82a8 11877dd
+D4
+13d68d4 11b1a8d
+D6
+13cb53e 11bce23
+D4
+13d68d4 11c1e81
+D6
+13b82a8 11a3855
+D4
+13d70c4 1428911
+D6
+1408e7c 13f6c57
+D4
+13d7daa 1392401
+D6
+13e996e 13a40c3
+D4
+13e0b8c e33833
+D6
+1453124 dc129b
+D4
+13e1a6e cb7b0d
+D6
+13b85a2 ce10d7
+D4
+13e1b6c d51f9d
+D6
+1453124 ce09e5
+D4
+13e1d68 13c666f
+D6
+13c2c52 13a7559
+D4
+13e1d68 13bb8cd
+D6
+1374e22 1428911
+D4
+13e225e cc2aab
+D6
+1382276 c629c5
+D4
+13e2754 d976dd
+D6
+1326afc e53335
+D4
+13e2950 c629c5
+D6
+13860f8 cbf21d
+D4
+13e4518 c629c5
+D6
+14073b2 c85761
+D4
+13e4714 ca8deb
+D6
+139e2ee c629c5
+D4
+13e4714 d976dd
+D6
+1453124 e060ed
+D4
+13e5100 13d46ab
+D6
+1390e9a 1428911
+D4
+13e5100 13ad891
+D6
+13d0c8e 139941f
+D4
+13e52fc d51f9d
+D6
+13af2ca d1bf6b
+D4
+13e5aec ccfc05
+D6
+13be7dc cf6f15
+D4
+13e5de6 13843c5
+D6
+13f6ac8 13950a7
+D4
+13e829c e43731
+D6
+1453124 eae6b7
+D4
+13e8e84 e476b1
+D6
+1453124 ddd313
+D4
+13ee6d2 c96d31
+D6
+13ba464 c629c5
+D4
+13ef7b0 13e6171
+D6
+13ad010 1428911
+D4
+13ef7b0 139bec9
+D6
+13dedc8 138b3e3
+D4
+13efda4 1428911
+D6
+13983ae 13d0f1b
+D4
+13f088e ce0edb
+D6
+137f8ca d51f9d
+D4
+13f323a 1428911
+D6
+1423032 13f8b19
+D4
+13f3e22 1376389
+D6
+1408e7c 138b3e3
+D4
+13f490c e57ba3
+D6
+1453124 df9489
+D4
+13f9b66 e6eabf
+D6
+1453124 e155ff
+D4
+13f9b66 e7126f
+D6
+1453124 eca72f
+D4
+13f9b66 e8ac35
+D6
+1453124 e31677
+D4
+13f9b66 e8d2e7
+D6
+1453124 ee68a5
+D4
+13f9b66 ea6cad
+D6
+1453124 e4d7ed
+D4
+13f9b66 ea945d
+D6
+1453124 f0291d
+D4
+13f9b66 ec2e23
+D6
+1453124 e69865
+D4
+13f9b66 ec54d5
+D6
+1453124 f1ea93
+D4
+13f9b66 edef99
+D6
+1453124 e859db
+D4
+13f9b66 ee164b
+D6
+1453124 f3ac09
+D4
+13f9b66 efb011
+D6
+1453124 ea1a53
+D4
+13f9b66 efd6c3
+D6
+1453124 f56c81
+D4
+13f9b66 f17187
+D6
+1453124 ebdbc9
+D4
+13f9b66 f19839
+D6
+1453124 f72df7
+D4
+13f9b66 f331ff
+D6
+1453124 ed9c41
+D4
+13f9b66 f358b1
+D6
+1453124 f8ee6f
+D4
+13f9b66 f4f375
+D6
+1453124 ef5db7
+D4
+13f9b66 f51a27
+D6
+1453124 faafe5
+D4
+13f9b66 f6b3ed
+D6
+1453124 f11e2f
+D4
+13f9b66 f6db9d
+D6
+1453124 fc705d
+D4
+13f9b66 f87563
+D6
+1453124 f2dfa5
+D4
+13f9b66 f89c15
+D6
+1453124 fe31d3
+D4
+13f9b66 fa35db
+D6
+1453124 f4a11b
+D4
+13f9b66 fa5d8b
+D6
+1453124 fff24b
+D4
+13f9b66 fbf751
+D6
+1453124 f66193
+D4
+13f9b66 fc1e03
+D6
+1453124 101b3c1
+D4
+13f9b66 fdb7c9
+D6
+1453124 f82309
+D4
+13f9b66 fddf79
+D6
+1453124 1037537
+D4
+13f9b66 ff793f
+D6
+1453124 f9e381
+D4
+13f9b66 ff9ff1
+D6
+1453124 10535af
+D4
+13f9b66 1013ab5
+D6
+1453124 fba4f7
+D4
+13f9b66 1016167
+D6
+1453124 106f725
+D4
+13f9b66 102fb2d
+D6
+1453124 fd656f
+D4
+13f9b66 10321df
+D6
+1453124 108b79d
+D4
+13fa15a 130904b
+D6
+1453124 12b0081
+D4
+13fa15a 130c1e7
+D6
+1408c80 131ad0d
+D4
+13fa15a 1318a53
+D2
+13fb03c 1318a53
+13fb03c 1344fbd ee2 2c56a 2c592 a80 c
+14275a6 1344fbd
+13fb03c 1344fbd 0 2c56a 2c56a a8c 384
+13fb03c 1371527
+13fb03c 1344fbd 2c56a 0 2c56a 0 384
+13f8d82 1371429
+13fb03c 1344fbd 0 2c56a 2c56a 384 1c
+D6
+139d014 13cd099
+D2
+1387fba 13d5c7f
+1387fba 13b803f 1505a 1505a 1dbac 1c2 1c2
+D6
+13271ee 13d5c7f
+D2
+1312194 13cd099
+13271ee 13b803f 0 1dc40 1dc40 384 1c2
+D6
+12ff9e8 13ba9eb
+D2
+12fa592 13b36d3
+1314b40 13a5991 15158 1505a 1dc60 547 ac
+12d4d4c 1389c13
+12feb06 1389c13 4574 29ac0 29e5c 3bf 349
+12e0ec6 136c5c7
+12feb06 1389c13 29dba 0 29dba 708 1be
+D6
+12e0ec6 1366b7d
+1291cbe 1317975
+D2
+128aba2 132dbab
+1267f04 1316799 29dba 11dc 29df7 f 143
+1291cbe 1344fbd
+1267f04 1344fbd 22c9e 17412 29d85 cbe 152
+1267f04 136ed77
+1267f04 1344fbd 29dba 0 29dba 0 384
+1255c4e 136aafd
+1267f04 1344fbd 0 29dba 29dba 384 101
+1229ed4 139053f
+1229ed4 1363fd5 2bd7a 6b28 2c59d 57 32d
+11fd96a 1363fd5
+1229ed4 1363fd5 0 2c56a 2c56a 384 384
+120a3d2 1344fbd
+1229ed4 1363fd5 2c56a 0 2c56a 708 1bc
+11fd96a 1325fa5
+1229ed4 1325fa5 1fb02 1f018 2c558 54c 1bc
+1229ed4 12f9a3b
+1229ed4 1325fa5 2c56a 0 2c56a 708 384
+124389a 1301c35
+1229ed4 1325fa5 0 2c56a 2c56a a8c 161
+1266d28 12ec9df
+1267f04 1316799 2466a 14b64 29e18 830 24d
+D6
+1211cde 1297995
+D2
+12090f8 128283d
+1226d38 128283d 1505a 15158 1dc60 545 1c3
+D6
+12090f8 11c1691
+11df638 11c1691
+D2
+11ca5de 11b8aab
+11df638 11a3a51 0 1dc40 1dc40 384 1c2
+D6
+11434e2 1131aad
+D2
+111ef76 1146c05
+111ef76 111ce4b 2456c 14c62 29db9 12a 25a
+10f51bc 111d243
+111ef76 111ce4b 0 29dba 29dba 384 381
+D6
+10d53c0 10fd447
+D2
+10b5db4 1108ecf
+10b5db4 10d8ddd 1f60c 2466a 300ef 1ec 198
+10959c4 10fc85f
+10b5db4 10d8ddd 0 300f2 300f2 384 1a5
+D6
+10959c4 1175723
+D2
+10a1b3e 1192e6d
+1077d84 1192e6d 1dc40 1d74a 29e05 c51 1bf
+1077d84 11bcc27
+1077d84 1192e6d 29dba 0 29dba 0 384
+104dfca 1192e6d
+1077d84 1192e6d 0 29dba 29dba 384 384
+105a144 1175723
+1077d84 1192e6d 29dba 0 29dba 708 1bf
+D6
+105a144 10c01fb
+D2
+1062d2a 10ab1a1
+1077d84 10c01fb 1dc40 0 1dc40 708 1c2
+D6
+107915c 1094c71
+107915c 107db59
+D2
+1077d84 107c87f
+1096d9c 105cd7d 1dc40 20ddc 2c577 52a 16
+1058d6c 10892e7
+1058d6c 105cd7d 1f018 1fb02 2c558 1c8 1bc
+1039d54 107c87f
+1058d6c 105cd7d 0 2c56a 2c56a 384 1bc
+101ad3c 10892e7
+101ad3c 105cd7d 1f018 1fb02 2c558 1c8 1bc
+ffbd24 107c87f
+101ad3c 105cd7d 0 2c56a 2c56a 384 1bc
+fdcd0c 10892e7
+fdcd0c 105cd7d 1f018 1fb02 2c558 1c8 1bc
+fb07a2 105cd7d
+fdcd0c 105cd7d 0 2c56a 2c56a 384 384
+fdcd0c 1030813
+fdcd0c 105cd7d 2c56a 0 2c56a 708 384
+ffbd24 103d27b
+fdcd0c 105cd7d 0 2c56a 2c56a a8c 1bc
+ffd0fc 103bfa1
+101ad3c 105cd7d 1f018 1fb02 2c558 8d0 16
+D6
+ffd0fc 1018917
+D2
+1005ce2 10038bd
+101ad3c 1018917 1dc40 0 1dc40 708 1c2
+D6
+105a144 faf45b
+105a144 ee9649
+D2
+104c6fc ec9c45
+1077d84 ec9c45 1dc40 1fa04 2b6e3 535 1d3
+1077d84 e9e5bd
+1077d84 ec9c45 2b688 0 2b688 708 384
+10a340c ec9c45
+1077d84 ec9c45 0 2b688 2b688 a8c 384
+10959c4 ee9649
+1077d84 ec9c45 2b688 0 2b688 0 1d3
+D6
+10959c4 f0c1e9
+D2
+10b5db4 efced3
+10b5db4 f26c8d 203f0 1aaa4 29d7d 894 1f8
+10dfb6e f26c8d
+10b5db4 f26c8d 0 29dba 29dba a8c 384
+10d39f4 f443d7
+10b5db4 f26c8d 29dba 0 29dba 0 1bf
+D6
+10d39f4 fc26f1
+D2
+10cae0e fd7849
+10b5db4 fc26f1 1dc40 0 1dc40 0 1c3
+D6
+10a340c fff24b
+D2
+10a340c fffd35
+1077d84 fffd35 2b688 aea 2b69e e07 9
+10a340c 100120b
+1077d84 fffd35 2b688 0 2b688 0 11
+D6
+10abdf6 1009cf3
+D2
+10b49dc 101ed4d
+1096d9c 101ed4d 1505a 1505a 1dbac c4e 1c2
+D6
+10b49dc 103bfa1
+D2
+10b5db4 103d27b
+1096d9c 105cd7d 1dc40 20ddc 2c577 c32 16
+10d4dcc 1030813
+10d4dcc 105cd7d 1f018 1fb02 2c558 8d0 1bc
+10f3de4 103d27b
+10d4dcc 105cd7d 0 2c56a 2c56a a8c 1bc
+10f51bc 103bfa1
+1112dfc 105cd7d 1f018 1fb02 2c558 8d0 16
+D6
+10f51bc f64eb9
+D2
+10fdda2 f4fe5f
+1112dfc f64eb9 1dc40 0 1dc40 708 1c2
+D6
+11823f4 ecb80d
+11827ec ecb219
+D2
+11827ec ec9c45
+11ade74 ecc7ed 2b688 15d4 2b6e0 71a 12
+11ade74 e9e5bd
+11ade74 ec9c45 2b688 0 2b688 708 384
+11d94fc ec9c45
+11ade74 ec9c45 0 2b688 2b688 a8c 384
+11ade74 ef52cd
+11ade74 ec9c45 2b688 0 2b688 0 384
+11acb9a ef52cd
+11ade74 ec9c45 0 2b688 2b688 384 10
+D6
+1130a3c f7142b
+1130a3c 103bfa1
+D2
+113f366 105cd7d
+1112dfc 105cd7d 1dc40 20ddc 2c577 c32 1de
+1130a3c 107db59
+1112dfc 105cd7d 2c56a 0 2c56a 0 1de
+D6
+1130a3c 10caca3
+11ebbaa 1185e11
+12095ee 1185e11
+D2
+1226d38 1179c97
+1226d38 11a3a51 1d74a 1dc40 29e05 8cd 1bf
+1250af2 11a3a51
+1226d38 11a3a51 0 29dba 29dba a8c 384
+1244978 11c119b
+1226d38 11a3a51 29dba 0 29dba 0 1bf
+D6
+1244978 12762cb
+12505fc 128204d
+D2
+1257a12 127818d
+1275652 12957d9 25056 1378c 29d45 81d a9
+D6
+1257a12 126bc1b
+D2
+12605f8 1256ac3
+1275652 126bc1b 1dc40 0 1dc40 708 1c3
+D6
+1287b04 122f5b7
+D2
+12799ca 120eecd
+12a5f34 120eecd 1e430 206ea 2c5ba 532 1d6
+12a5f34 11e2963
+12a5f34 120eecd 2c56a 0 2c56a 708 384
+12d249e 120eecd
+12a5f34 120eecd 0 2c56a 2c56a a8c 384
+12c3b74 122fca9
+12a5f34 120eecd 2c56a 0 2c56a 0 1de
+D6
+12c3b74 123b339
+D2
+12baf8e 1250393
+12a5f34 123b339 1dc40 0 1dc40 0 1c2
+D6
+1293292 127808f
+1293292 127818d
+D2
+129f40c 12957d9
+1275652 12957d9 1dc40 1d64c 29d53 c52 1be
+1288edc 12ba82f
+1275652 12957d9 29dba 0 29dba 0 26e
+D6
+1313b60 13455b1
+D2
+131c746 135a60b
+12feb06 135a60b 1505a 1505a 1dbac c4e 1c2
+D6
+131c746 136c5c7
+D2
+1322882 13743c9
+12feb06 1389c13 1dc40 1d64c 29d53 c52 88
+133316c 1370b3b
+1333564 139a8f5 10ce2 2652c 29d89 99f ea
+D6
+133efec 1364cbb
+D2
+13469f6 1357c5f
+135ba50 136cdb7 1ca64 80fc 1dc31 7a5 126
+D6
+136e7f0 132ff63
+D2
+138384a 132737d
+138384a 1344fbd 1505a 1505a 1dbac 8ca 1c2
+D6
+139c230 132737d
+D2
+139d50a 1325fa5
+13bd00c 1344fbd 20ddc 1dc40 2c577 8ae 16
+139168a 130ef8b
+13bd00c 1306f8d 1fb02 1f018 2c558 54c 154
+137e3f4 13064a3
+139344e 12f1449 1dc4 1db42 1dc30 3a8 19e
+D6
+1354144 12dc2f1
+D2
+132a782 12b2537
+135453c 12b2537 3f8 29dba 29dbd 387 381
+135453c 128877d
+135453c 12b2537 29dba 0 29dba 708 384
+D6
+1354934 128877d
+1354934 1288385
+D2
+13782b8 125edbb
+137e6ee 1288385 29dba 0 29dba 708 32e
+137423a 124cefd
+139dff4 124cefd 25d3c 11ebe 29db9 60a fe
+137da08 1232655
+139dff4 124cefd 29dba 0 29dba 708 189
+136df02 120eecd
+139dff4 120eecd 205ec 23788 30055 52c 1dc
+139958a 11df1d3
+139dff4 120eecd 300f2 0 300f2 708 34c
+D6
+1385510 11cb159
+D2
+137ca28 11b60ff
+139a668 11b60ff 15158 1505a 1dc60 547 1c1
+D6
+137ca28 118179f
+133989c 113e613
+D2
+13387be 113d633
+134d916 11285d9 1407a 1603a 1dc34 52b 1c
+D6
+1319e98 111ed0d
+D2
+12f04d6 10f4f53
+131a290 10f4f53 3f8 29dba 29dbd 387 381
+131a290 10cb199
+131a290 10f4f53 29dba 0 29dba 708 384
+134404a 10f4b5b
+131a290 10f4f53 0 29dba 29dba a8c 381
+D6
+1361990 111259f
+D2
+1362a6e 1113481
+134da14 11285d9 13f7c 1603a 1db89 c32 1b
+D6
+13af6c2 11601d3
+D2
+13b82a8 117522d
+139a668 117522d 1505a 1505a 1dbac c4e 1c2
+D6
+13b82a8 11a9b8d
+13d68d4 11c81b9
+13d68d4 1127201
+13c869c 1118fc9
+D2
+13c58f8 1115a35
+13dd7f4 1103f6f 15158 1505a 1dc60 547 55
+13bc12a 1116c11
+13bc12a 10ece57 97ce 28bde 29d4f 301 83
+1392370 10ece57
+13bc12a 10ece57 0 29dba 29dba 384 384
+13985aa 10d7117
+13bc12a 10ece57 29dba 0 29dba 708 13a
+D6
+1394036 10d2ba3
+D2
+138b54e 10bdb49
+13a918e 10bda4b 15158 15158 1dd13 546 1c1
+D6
+138b54e 10326d5
+D2
+1394036 101d67b
+13a918e 10326d5 1dc40 0 1dc40 708 1c1
+D6
+13987a6 1018f0b
+D2
+1390aa2 fffd35
+13bd00c fffd35 24866 191d6 2c538 5af 159
+139d50a fe0d1d
+13bd00c fffd35 2c56a 0 2c56a 708 1bc
+139c230 fdf945
+13bd00c fc1d05 1fb02 1f018 2c558 54c 16
+D6
+1391788 fdf945
+D2
+1386ae4 fdd887
+1391788 fc1d05 0 1dc40 1dc40 384 d5
+1378da2 fdfe3b
+1378da2 fb6081 dd42 27806 29da2 2c3 c1
+13507b8 fc101f
+1378da2 fb6081 0 29dba 29dba 384 2ec
+D6
+13507b8 107634b
+D2
+1347bd2 108b4a3
+1332b78 107634b 1dc40 0 1dc40 0 1c3
+D6
+1332486 10a0bef
+D2
+131d32e 10a97d5
+131d32e 108bb95 15158 1505a 1dc60 1c1 1c3
+D6
+129e230 10a97d5
+125ea30 10e8ed7
+D2
+12499d6 10f1abd
+12499d6 10d3e7d 1505a 1505a 1dbac 1c2 1c2
+D6
+11c469e 10f1abd
+D2
+11af644 10e8ed7
+11c469e 10d3e7d 0 1dc40 1dc40 384 1c2
+D6
+11a8626 10e1eb9
+D2
+119fa40 10cce5f
+11bd680 10cce5f 1505a 1505a 1dbac 546 1c2
+D6
+119fa40 10a8ceb
+D2
+11938c6 108b5a1
+11bd680 108b5a1 1dc40 1d74a 29e05 549 1bf
+11939c4 1088eef
+11bd680 108b5a1 29dba 0 29dba 708 21
+118ee5c 10892e7
+118ee5c 105cd7d 4b68 2c172 2c577 347 3d
+11628f2 105cd7d
+118ee5c 105cd7d 0 2c56a 2c56a 384 384
+117121c 103bfa1
+118ee5c 105cd7d 2c56a 0 2c56a 708 1de
+D6
+117121c 102b3bd
+D2
+116fe44 102b3bd
+116fe44 fffd35 13d8 2b688 2b6d1 374 10
+11447bc fffd35
+116fe44 fffd35 0 2b688 2b688 384 384
+116fe44 fd46ad
+116fe44 fffd35 2b688 0 2b688 708 384
+118ee5c fe1709
+116fe44 fffd35 0 2b688 2b688 a8c 1c8
+11ade74 fd46ad
+11ade74 fffd35 1f018 1e62c 2b69a 8c4 1c8
+11d94fc fffd35
+11ade74 fffd35 0 2b688 2b688 a8c 384
+11d94fc 100120b
+11ade74 fffd35 2b688 0 2b688 0 11
+D6
+11e1ee6 1009cf3
+D2
+11eaacc 101ed4d
+11cce8c 101ed4d 1505a 1505a 1dbac c4e 1c2
+D6
+11eaacc 103bfa1
+D2
+11ebea4 103d27b
+11cce8c 105cd7d 1dc40 20ddc 2c577 c32 16
+11ed27c 103bfa1
+120aebc 105cd7d 1f018 1fb02 2c558 8d0 16
+D6
+11ed27c eefc7b
+D2
+11f5e62 edab23
+120aebc eefc7b 1dc40 0 1dc40 708 1c3
+D6
+1274b68 e5be1d
+D2
+1289bc2 e53335
+1289bc2 e70f75 1505a 15158 1dc60 8cb 1c1
+D6
+132620e e53335
+D2
+13382c8 e59373
+1326110 e70f75 fe 1dc40 1dc40 a8d 174
+135ffc4 e40693
+135ffc4 e6cbfd 27cfc 1388a 2c587 80d 27f
+138c52e e6cbfd
+135ffc4 e6cbfd 0 2c56a 2c56a a8c 384
+138c52e e6dfd5
+135ffc4 e6cbfd 2c56a 0 2c56a 0 10
+D6
+139c230 e6dfd5
+D2
+139d50a e6cbfd
+13bd00c e8bc15 20ddc 1dc40 2c577 8ae 16
+1390aa2 e4dbe5
+13bd00c e4dbe5 1fb02 1f018 2c558 54c 1bc
+13bd00c e2167b
+13bd00c e4dbe5 2c56a 0 2c56a 708 384
+13e9478 e4bb27
+13bd00c e4dbe5 0 2c56a 2c56a a8c 36a
+D6
+13f107e e5362f
+D2
+13f9b66 e68787
+13dbf26 e68787 15158 15158 1dd13 c4e 1c2
+D6
+13f9b66 10335b7
+D2
+13fb336 103b8af
+13dd7f4 103cc87 1c372 96d0 1dbf8 d57 a1
+14075ae 1058ff9
+13dd7f4 1058ff9 1db42 1d74a 29d51 c50 1c0
+13fb434 1076645
+13dd7f4 1058ff9 29dba 0 29dba 0 1be
+D6
+13fb434 10f79fd
+140956e 1105c35
+D2
+1412154 111ac8f
+13f4514 111ac8f 1505a 1505a 1dbac c4e 1c2
+D6
+1412154 1252947
+D2
+1418c7c 12656e7
+13fb03c 12656e7 17118 12da0 1dcaa c87 189
+D6
+1418c7c 12a8181
+D2
+14275a6 12c8f5d
+13fb03c 12c8f5d 1dc40 20ddc 2c577 c32 1de
+13fb03c 12f54c7
+13fb03c 12c8f5d 2c56a 0 2c56a 0 384
+13fa15a 12f54c7
+13fb03c 12c8f5d 0 2c56a 2c56a 384 c
+D6
+13fa15a 1318a53
+D4
+13fa94a d9b65d
+D6
+1353d4c e4215d
+D4
+13fb03c 12c8f5d
+D6
+13fb03c 12656e7
+13f4514 125ebbf
+13f4514 111ac8f
+13dd7f4 1103f6f
+13dd7f4 1058ff9
+D4
+13fb03c 12c8f5d
+D6
+13dc51a 12e7a7f
+13dc51a 132649b
+13fb03c 1344fbd
+D4
+13fb434 10825c3
+D6
+1453124 102a8d3
+D4
+13fb434 1087e11
+D6
+1453124 10dfb01
+D4
+13fb434 109e739
+D6
+1453124 104694b
+D4
+13fb434 10a3e89
+D6
+1453124 10fbb79
+D4
+13fb434 10ba7b1
+D6
+1453124 1062ac1
+D4
+13fb434 10bffff
+D6
+1453124 1117cef
+D4
+13fb434 10d6927
+D6
+1453124 107ec37
+D4
+13fb434 10dc077
+D6
+1453124 1133d67
+D4
+13fb434 10f299f
+D6
+1453124 109acaf
+D4
+13fbd22 cea5ab
+D6
+1453124 d419ad
+D4
+13fc316 d4ce41
+D6
+13bab56 d0b77f
+D4
+13fd9e8 c89ed1
+D6
+13d64dc c629c5
+D4
+13fe9c8 c629c5
+D6
+1397bbe cc97cf
+D4
+13ff0ba 13f28df
+D6
+13c9088 1428911
+D4
+13ff1b8 138f65d
+D6
+13ece04 137d3a7
+D4
+13ff1b8 12f51cd
+D6
+1453124 1349139
+D4
+140009a 12f4fd1
+D6
+13fa15a 12faf11
+D4
+140009a 1070901
+D6
+1453124 10c398b
+D4
+140068e c629c5
+D6
+1420686 c829bd
+D4
+140088a ced055
+D6
+139b942 d51f9d
+D4
+1400e7e 138e77b
+D6
+1453124 133c4d5
+D4
+140107a 13f39bd
+D6
+1435fce 1428911
+D4
+1401a66 1043da3
+D6
+1453124 ff26e5
+D4
+14050f8 c86447
+D6
+1428b7a c629c5
+D4
+14054f0 1319d2d
+D6
+1453124 12cc0f9
+D4
+1406cc0 1103289
+D6
+1453124 10b6e25
+D4
+14073b2 105bba1
+D6
+1453124 10a7913
+D4
+14075ae 105a3d1
+D6
+1453124 100e75d
+D4
+1408d7e 136f16f
+D6
+1423130 1389521
+D4
+1409078 d46c07
+D6
+1453124 cfcb5b
+D4
+140be1c 1428911
+D6
+13a6bda 13c35d1
+D4
+140c410 11091c9
+D6
+1453124 114fedd
+D4
+140cc00 da3a53
+D6
+1453124 de9f77
+D4
+140e1d4 da3e4b
+D6
+136efe0 e4303f
+D4
+140f3b0 1428911
+D6
+1453124 13e4b9d
+D4
+141068a d4523b
+D6
+13be2e6 cf2d99
+D4
+141166a 1114957
+D6
+1453124 10d2e9d
+D4
+1412154 112af85
+D6
+1453124 116c053
+D4
+1412154 112ffe3
+D6
+1453124 10ef013
+D4
+1412154 11470fb
+D6
+1453124 11880cb
+D4
+1412154 114c159
+D6
+1453124 110b08b
+D4
+1412154 1163173
+D6
+1453124 11a4241
+D4
+1412154 11681d1
+D6
+1453124 1127201
+D4
+1412154 117f2e9
+D6
+1453124 11c02b9
+D4
+1412154 1184347
+D6
+1453124 1143279
+D4
+1412154 119b361
+D6
+1453124 11dc42f
+D4
+1412154 11a03bf
+D6
+1453124 115f3ef
+D4
+1412154 11b74d7
+D6
+1453124 11f84a7
+D4
+1412154 11bc535
+D6
+1453124 117b565
+D4
+1412154 11d364d
+D6
+1453124 121461d
+D4
+1412154 11d85ad
+D6
+1453124 11975dd
+D4
+1412154 11ef6c5
+D6
+1453124 1230695
+D4
+1412154 11f4723
+D6
+1453124 11b3753
+D4
+1412154 120b83b
+D6
+1453124 124c80b
+D4
+1412154 121079b
+D6
+1453124 11cf7cb
+D4
+1412154 12278b3
+D6
+1453124 1268883
+D4
+1412154 122c911
+D6
+1453124 11eb941
+D4
+1412154 1243a29
+D6
+1453124 12849f9
+D4
+1412154 1248a87
+D6
+1453124 12079b9
+D4
+1412846 c82bb9
+D6
+13f2652 c629c5
+D4
+1413d1c 12edbbb
+D6
+1453124 132cfc3
+D4
+1414806 13f9309
+D6
+13e51fe 1428911
+D4
+1414904 1388d31
+D6
+13fcffc 1371429
+D4
+14169c2 cf2f95
+D6
+13b7ab8 d51f9d
+D4
+1417d9a 13234fb
+D6
+1453124 12e826f
+D4
+1418094 125ebbf
+D6
+1453124 1223b2f
+D4
+1418c7c 12666c7
+D6
+1453124 12a0b6f
+D4
+1418c7c 127a04f
+D6
+1453124 123fba7
+D4
+1418c7c 128273f
+D6
+1453124 12bcbe7
+D4
+1418c7c 12961c5
+D6
+1453124 125bd1d
+D4
+1418c7c 129e8b5
+D6
+1453124 12d8d5d
+D4
+141a44c 13646c7
+D6
+1453124 139d49d
+D4
+141ab3e c629c5
+D6
+13ab34a cd21b9
+D4
+141c804 c629c5
+D6
+1453124 c992e5
+D4
+141dade 12ad4d9
+D6
+1453124 1277d95
+D4
+142048a cf2b9d
+D6
+1453124 d25837
+D4
+1421568 12df38f
+D6
+1453124 1310f4b
+D4
+142244a 1389325
+D6
+1453124 135864b
+D4
+1422548 13f8d15
+D6
+1452144 1428911
+D4
+1423c1a 13337f1
+D6
+1453124 13042e7
+D4
+142440a c832ab
+D6
+1444cf0 c629c5
+D4
+14250f0 13531f5
+D6
+1453124 1381327
+D4
+14251ee d46c07
+D6
+1453124 d18cd1
+D4
+14252ec 1337379
+D6
+1453124 13651b1
+D4
+14268c0 12c076f
+D6
+1453124 1293f0b
+D4
+1426abc 134c9c7
+D6
+1453124 132045d
+D4
+14272ac da1f89
+D6
+1453124 dcde01
+D4
+14275a6 12c9257
+D6
+1453124 12f4dd5
+D4
+1427f92 1428911
+D6
+13b4c16 13b5595
+D4
+142b428 1428911
+D6
+1453124 1400c15
+D4
+1430a7a d9d61d
+D6
+13a68e0 e277b7
+D4
+1434df2 c890ed
+D6
+140e6ca c629c5
+D4
+14358dc cebe79
+D6
+1453124 d097bf
+D4
+1436bb6 c629c5
+D6
+14170b4 c824c7
+D4
+1436fae 1390937
+D6
+1453124 13746c3
+D4
+1436fae 13f1703
+D6
+1453124 140d879
+D4
+14371aa d50cc3
+D6
+1453124 d34d49
+D4
+1438582 c8b1ab
+D6
+1453124 c70609
+D4
+143877e d973e3
+D6
+1453124 db1d89
+D4
+143887c c629c5
+D6
+1453124 c7d26d
+D4
+143ac34 13eef53
+D6
+1401276 1428911
+D4
+143b02c 13933e1
+D6
+141264a 136a9ff
+D4
+1442f2c d610b7
+D6
+1453124 d50ebf
+D4
+1443c12 d86701
+D6
+1453124 d95c13
+D4
+144400a 1428911
+D6
+1414a02 13f9309
+D4
+1444eec cdf411
+D6
+1453124 ced649
+D4
+1445fca 139d993
+D6
+1453124 1390839
+D4
+1445fca 13e45a9
+D6
+1453124 13f1703
+D4
+14469b6 d6d32f
+D6
+1453124 d79b9b
+D4
+1446faa d790b1
+D6
+1453124 d6cf37
+D4
+1446faa c988f9
+D6
+1453124 c8c77f
+D4
+144759e 1428911
+D6
+1453124 141cd8b
+D4
+144f3a0 ccd74f
+D6
+1453124 cd15d1
+D4
+1452738 cbaaad
+D2
+141a054 cf3191
+141a054 cbaaad 386e4 0 386e4 0 384
+13e1970 cbaaad
+141a054 cbaaad 0 386e4 386e4 384 384
+141a054 c823c9
+141a054 cbaaad 386e4 0 386e4 708 384
+1452738 cbaaad
+141a054 cbaaad 0 386e4 386e4 a8c 384
+D4
+1452738 13c101d
+D2
+141a054 13f9701
+141a054 13c101d 386e4 0 386e4 0 384
+13e1970 13c101d
+141a054 13c101d 0 386e4 386e4 384 384
+141a054 1388939
+141a054 13c101d 386e4 0 386e4 708 384
+1452738 13c101d
+141a054 13c101d 0 386e4 386e4 a8c 384
+D4
+1452d2c c629c5
+D6
+142f1ac c86545
+D4
+1453124 c629c5
+D6
+1363b4c c629c5
+D2
+136c634 c7ca7d
+1340fac c7ca7d 22ba0 1a0b8 2b688 c9f 171
+1363b4c c96b35
+1340fac c7ca7d 2b688 0 2b688 0 171
+D6
+1363b4c c9cc71
+138f8c6 cc89eb
+D2
+13be8da cf8add
+138e7e8 cf8add 10de 300f2 30121 a99 377
+138e7e8 d28bcf
+138e7e8 cf8add 300f2 0 300f2 0 384
+135e6f6 cf9bbb
+138e7e8 cf8add 0 300f2 300f2 384 377
+D6
+13286c4 cc3b89
+D2
+131e40c cab2a1
+1340fac cab2a1 188e8 188e8 22ba7 546 1c2
+D6
+131e40c c96b35
+D2
+1315924 c7ca7d
+1340fac c7ca7d 22ba0 1a0b8 2b688 597 171
+131e40c c629c5
+1340fac c7ca7d 2b688 0 2b688 708 171
+D6
+122da5c c629c5
+D2
+1235e52 c76843
+120aebc c7ca7d 22ba0 1a0b8 2b688 c9f 120
+D6
+12427bc c831ad
+D2
+124ca74 c9ba95
+1229ed4 c9ba95 188e8 188e8 22ba7 c4e 1c2
+D6
+124ca74 ca8ee9
+D2
+1259fc6 cc91db
+1229ed4 cca2b9 22ba0 213d0 3011e c5b 1a8
+D6
+1285948 cf4b5d
+D2
+12b5740 cc89eb
+12b5740 cf8add 2fdf8 3f80 30099 737 355
+12e5042 cf1cbb
+12b5740 cf8add 0 300f2 300f2 a8c 332
+D6
+12eaa8c cf1cbb
+D2
+1303374 cfbf73
+12eaa8c d1485b 0 22ba0 22ba0 a8c 1c2
+D6
+135939e d51f9d
+13f5de2 d51f9d
+D2
+14171b2 d44a4b
+14171b2 d74b3d 213d0 22ba0 3011e 8d7 1b5
+14472a4 d74b3d
+14171b2 d74b3d 0 300f2 300f2 a8c 384
+14171b2 da4c2f
+14171b2 d74b3d 300f2 0 300f2 0 384
+13f5de2 d976dd
+14171b2 d74b3d 0 300f2 300f2 384 1b5
+D6
+134ad6e d976dd
+D2
+1332486 d8d425
+134ad6e d74b3d 0 22ba0 22ba0 384 1c2
+D6
+1325b1c d80abb
+1325b1c dd5217
+D2
+132f4e6 df0b9d
+1302f7c df0b9d 22ba0 1b986 2c5b1 c8f 181
+1302f7c e1d107
+1302f7c df0b9d 2c56a 0 2c56a 0 384
+12e3f64 e1069f
+1302f7c df0b9d 0 2c56a 2c56a 384 1bc
+12c4f4c e1d107
+12c4f4c df0b9d 1f018 1fb02 2c558 1c8 1bc
+12a5f34 e1069f
+12c4f4c df0b9d 0 2c56a 2c56a 384 1bc
+1286f1c e1d107
+1286f1c df0b9d 1f018 1fb02 2c558 1c8 1bc
+12689ee e11189
+1286f1c df0b9d 0 2c56a 2c56a 384 1af
+1274574 e2ebcd
+1248eec e2ebcd 1fb02 1da44 2b640 c61 1af
+1248eec e5a255
+1248eec e2ebcd 2b688 0 2b688 0 384
+121d864 e2ebcd
+1248eec e2ebcd 0 2b688 2b688 384 384
+12293ea e11189
+1248eec e2ebcd 2b688 0 2b688 708 1af
+120aebc e1d107
+120aebc df0b9d 1e52e 205ec 2c5ad 1d5 1af
+1208c02 e1d009
+120aebc df0b9d 0 2c56a 2c56a 384 1c
+D6
+11e1ee6 e43c27
+D2
+11cce8c e4c80d
+11cce8c e2ebcd 1505a 1505a 1dbac 1c2 1c2
+D6
+1132800 e4c80d
+D2
+1112dfc e5a255
+1112dfc e2ebcd 1fa04 1dc40 2b6e3 1b1 1d3
+10e7774 e2ebcd
+1112dfc e2ebcd 0 2b688 2b688 384 384
+10f32fa e11189
+1112dfc e2ebcd 2b688 0 2b688 708 1af
+10d4dcc e1d107
+10d4dcc df0b9d 1e52e 205ec 2c5ad 1d5 1af
+10b5db4 e1069f
+10d4dcc df0b9d 0 2c56a 2c56a 384 1bc
+1096d9c e1d107
+1096d9c df0b9d 1f018 1fb02 2c558 1c8 1bc
+1077d84 e1069f
+1096d9c df0b9d 0 2c56a 2c56a 384 1bc
+1058d6c e1d107
+1058d6c df0b9d 1f018 1fb02 2c558 1c8 1bc
+1039d54 e1069f
+1058d6c df0b9d 0 2c56a 2c56a 384 1bc
+103897c e11979
+101ad3c df0b9d 1f018 1fb02 2c558 1c8 16
+D6
+103897c ec69ab
+D2
+102fd96 edba05
+101ad3c ec69ab 1dc40 0 1dc40 0 1c2
+D6
+1024112 ee7689
+1024112 f9102b
+D2
+103028c fae775
+10064d2 fae775 1dc40 1d74a 29e05 c51 1bf
+10064d2 fd852f
+10064d2 fae775 29dba 0 29dba 0 384
+fdc718 fae775
+10064d2 fae775 0 29dba 29dba 384 384
+fe2a50 f98937
+10064d2 fae775 29dba 0 29dba 708 13b
+fcb442 f9fb51
+fcb442 f75d97 1760e 22ba0 29dce 231 153
+fa1688 f75d97
+fcb442 f75d97 0 29dba 29dba 384 384
+fad802 f5874b
+fcb442 f75d97 29dba 0 29dba 708 1be
+D6
+fad802 ebd4d7
+D2
+fb63e8 ea847d
+fcb442 ebd4d7 1dc40 0 1dc40 708 1c2
+D6
+fbf0cc e9f69b
+fbf0cc e11979
+D2
+fb07a2 df0b9d
+fdcd0c df0b9d 1dc40 20ddc 2c577 52a 1de
+fdcd0c dc4633
+fdcd0c df0b9d 2c56a 0 2c56a 708 384
+ffbd24 dd109b
+fdcd0c df0b9d 0 2c56a 2c56a a8c 1bc
+101ad3c dc4633
+101ad3c df0b9d 1f018 1fb02 2c558 8d0 1bc
+1039d54 dd109b
+101ad3c df0b9d 0 2c56a 2c56a a8c 1bc
+1058d6c dc4633
+1058d6c df0b9d 1f018 1fb02 2c558 8d0 1bc
+1077d84 dd109b
+1058d6c df0b9d 0 2c56a 2c56a a8c 1bc
+1096d9c dc4633
+1096d9c df0b9d 1f018 1fb02 2c558 8d0 1bc
+10b5db4 dd109b
+1096d9c df0b9d 0 2c56a 2c56a a8c 1bc
+10d4dcc dc4633
+10d4dcc df0b9d 1f018 1fb02 2c558 8d0 1bc
+10f3de4 dd109b
+10d4dcc df0b9d 0 2c56a 2c56a a8c 1bc
+1112dfc dc4633
+1112dfc df0b9d 1f018 1fb02 2c558 8d0 1bc
+1131e14 dd109b
+1112dfc df0b9d 0 2c56a 2c56a a8c 1bc
+1150e2c dc4633
+1150e2c df0b9d 1f018 1fb02 2c558 8d0 1bc
+116fe44 dd109b
+1150e2c df0b9d 0 2c56a 2c56a a8c 1bc
+118ee5c dc4633
+118ee5c df0b9d 1f018 1fb02 2c558 8d0 1bc
+11ade74 dd109b
+118ee5c df0b9d 0 2c56a 2c56a a8c 1bc
+11cce8c dc4633
+11cce8c df0b9d 1f018 1fb02 2c558 8d0 1bc
+11ebea4 dd109b
+11cce8c df0b9d 0 2c56a 2c56a a8c 1bc
+1207530 dc482f
+120aebc df0b9d 1f018 1fb02 2c558 8d0 18d
+11faac8 dac143
+1229ed4 da3361 229a4 214ce 30060 551 14d
+11e8a0e da2877
+12012f6 d89f8f 682e 221b4 22b8f 3f0 156
+D6
+11a8d18 d62b81
+D2
+118190a d36b0d
+11ade74 d36b0d 515c 2c074 2c523 3c6 342
+11ade74 d0a5a3
+11ade74 d36b0d 2c56a 0 2c56a 708 384
+11d9ee8 d319b1
+11ade74 d36b0d 0 2c56a 2c56a a8c 342
+D6
+120f926 d673ef
+1210b02 d673ef
+D2
+12293ea d716a7
+1210b02 d89f8f 0 22ba0 22ba0 a8c 1c2
+D6
+122afb2 d7326f
+D2
+124b2a4 d807c1
+1229ed4 da3361 10de 300f2 30121 a99 1a8
+D6
+126bf82 d807c1
+1278ce4 d73a5f
+D2
+128476c d55531
+12a8dd6 d74b3d 300f2 10de 30121 715 18b
+1280ae6 d5209b
+12993ce d397b3 14c62 1bd7e 22bd3 4f3 53
+D6
+1228df6 cfa3ab
+D2
+11f9de2 cca2b9
+1229ed4 cca2b9 10de 300f2 30121 391 377
+1206a46 ca97d7
+1229ed4 cca2b9 300f2 0 300f2 708 1ac
+D6
+1204c82 ca7a13
+D2
+11f0e04 c9f61d
+120aebc c7ca7d 623a 2af96 2b691 3d5 120
+D6
+11ad38a c9f61d
+1179612 cd3395
+D2
+1160e28 cdd64d
+1160e28 cbaaad 187ea 188e8 22af4 1c3 1c1
+D6
+110f76a cdd64d
+D2
+10f3de4 ce7017
+10f3de4 cbaaad 1b986 22ba0 2c5b1 203 181
+10c787a cbaaad
+10f3de4 cbaaad 0 2c56a 2c56a 384 384
+10f3de4 c8e543
+10f3de4 cbaaad 2c56a 0 2c56a 708 384
+110f76a c97f0d
+10f3de4 cbaaad 0 2c56a 2c56a a8c 181
+D6
+11527f8 c97f0d
+1186570 c64195
+D2
+1187e3e c629c5
+119ee58 c7ca7d 188e8 188e8 22ba7 8ca 23
+D6
+f65c0c c629c5
+f65c0c d31cab
+D2
+f7fcc4 d295bb
+f7fcc4 d55b25 1a0b8 23e7a 2c5b4 924 168
+f9b64a d32f85
+f7fcc4 d55b25 0 2c56a 2c56a a8c 181
+D6
+ff0c88 d32f85
+103be12 ce7dfb
+103be12 cd3e7f
+D2
+10460ca cbb597
+105e9b2 cd3e7f 22ba0 0 22ba0 708 1c2
+D6
+104bd10 cb5951
+D2
+1077d84 c8e543
+1077d84 cbaaad 2c074 515c 2c523 74a 342
+10a42ee cbaaad
+1077d84 cbaaad 0 2c56a 2c56a a8c 384
+1081552 ce5f39
+1077d84 cbaaad 2c56a 0 2c56a 0 308
+D6
+1081552 cf642b
+D2
+107729a d0ed13
+105e9b2 cf642b 22ba0 0 22ba0 0 1c2
+D6
+1017ba0 d6e40d
+D2
+1014b02 d70fb5
+fff2b8 d55b25 188e8 188e8 22ba7 1c2 43
+D6
+101bf18 d70fb5
+106eca8 d1e225
+D2
+1087590 d13f6d
+1087590 d36b0d 188e8 188e8 22ba7 8ca 1c2
+D6
+111648e d13f6d
+D2
+1131e14 d0a5a3
+1131e14 d36b0d 1b986 22ba0 2c5b1 90b 181
+115e37e d36b0d
+1131e14 d36b0d 0 2c56a 2c56a a8c 384
+1131e14 d63077
+1131e14 d36b0d 2c56a 0 2c56a 0 384
+111648e d596ad
+1131e14 d36b0d 0 2c56a 2c56a 384 181
+D6
+1095bc0 d596ad
+1042e30 dac43d
+D2
+102a548 db66f5
+102a548 d93b55 188e8 188e8 22ba7 1c2 1c2
+D6
+f9b64a db66f5
+D2
+f7fcc4 dc00bf
+f7fcc4 d93b55 1b986 22ba0 2c5b1 203 181
+f65c0c db79cf
+f7fcc4 d93b55 0 2c56a 2c56a 384 168
+D6
+f65c0c 1428911
+1453124 1428911
+1453124 c629c5
+D4
+1453124 c6f231
+D6
+14468b8 c629c5
+D4
+1453124 c7e743
+D6
+1440482 c912e7
+D4
+1453124 c8b2a9
+D6
+142a840 c629c5
+D4
+1453124 c9a7bb
+D6
+144c5fc ca12e3
+D4
+1453124 ca741f
+D6
+144ba14 c9fd0f
+D4
+1453124 cd29a9
+D6
+13d3b30 d51f9d
+D4
+1453124 cdf60d
+D6
+144ac30 cd7119
+D4
+1453124 ceeb1f
+D6
+13efca6 d51f9d
+D4
+1453124 cfb685
+D6
+143ddd0 ce642f
+D4
+1453124 d0ab97
+D6
+1419270 d44b49
+D4
+1453124 d177fb
+D6
+142bd16 cf03ed
+D4
+1453124 d26d0d
+D6
+142eeb2 d4af7f
+D4
+1453124 d33873
+D6
+1412056 cf28a3
+D4
+1453124 d42d85
+D6
+143dcd2 d582d5
+D4
+1453124 d4f9e9
+D6
+1366100 c629c5
+D4
+1453124 d5eefb
+D6
+14464c0 d6bb5f
+D4
+1453124 d6bb5f
+D6
+136bb4a c84585
+D4
+1453124 d7b071
+D6
+143fc92 d8e405
+D4
+1453124 d87bd7
+D6
+1446ab4 d7b665
+D4
+1453124 d970e9
+D6
+13c77ba e22a53
+D4
+1453124 da3d4d
+D6
+143eeae d8f9d9
+D4
+1453124 db325f
+D6
+13da064 e2c31f
+D4
+1453124 dbfdc5
+D6
+1430a7a d9d71b
+D4
+1453124 dcf2d7
+D6
+13e5ce8 e3c713
+D4
+1453124 ddbf3b
+D6
+141bb1e da4837
+D4
+1453124 deb44d
+D6
+13edee2 e50591
+D4
+1453124 df7fb3
+D6
+13f284e d976dd
+D4
+1453124 e074c5
+D6
+13f8e80 e61769
+D4
+1453124 e14129
+D6
+13d66d8 d976dd
+D4
+1453124 e2363b
+D6
+13f9b66 e7cbf9
+D4
+1453124 e301a1
+D6
+13ba660 d976dd
+D4
+1453124 e3f6b3
+D6
+13f9b66 e98c71
+D4
+1453124 e4c317
+D6
+139e4ea d976dd
+D4
+1453124 e5b829
+D6
+13f9b66 eb4de7
+D4
+1453124 e6838f
+D6
+1382472 d976dd
+D4
+1453124 e778a1
+D6
+13f9b66 ed0e5f
+D4
+1453124 e84505
+D6
+13662fc d976dd
+D4
+1453124 e93a17
+D6
+13f9b66 eecfd5
+D4
+1453124 ea067b
+D6
+134a186 d976dd
+D4
+1453124 eafb8d
+D6
+13f9b66 f0904d
+D4
+1453124 ebc6f3
+D6
+13f917a e62847
+D4
+1453124 ecbc05
+D6
+13f9b66 f251c3
+D4
+1453124 ed8869
+D6
+13f9b66 e7f2ab
+D4
+1453124 ee7d7b
+D6
+13f9b66 f4123b
+D4
+1453124 ef48e1
+D6
+13f9b66 e9b323
+D4
+1453124 f03df3
+D6
+13f9b66 f5d3b1
+D4
+1453124 f10a57
+D6
+13f9b66 eb7499
+D4
+1453124 f1ff69
+D6
+13f9b66 f79527
+D4
+1453124 f2cacf
+D6
+13f9b66 ed360f
+D4
+1453124 f3bfe1
+D6
+13f9b66 f9559f
+D4
+1453124 f48c45
+D6
+13f9b66 eef687
+D4
+1453124 f58157
+D6
+13f9b66 fb1715
+D4
+1453124 f64cbd
+D6
+13f9b66 f0b7fd
+D4
+1453124 f741cf
+D6
+13f9b66 fcd78d
+D4
+1453124 f80e33
+D6
+13f9b66 f27875
+D4
+1453124 f90345
+D6
+13f9b66 fe9903
+D4
+1453124 f9cfa9
+D6
+13f9b66 f439eb
+D4
+1453124 fac3bd
+D6
+13f9b66 100597b
+D4
+1453124 fb9021
+D6
+13f9b66 f5fa63
+D4
+1453124 fc8533
+D6
+13f9b66 1021af1
+D4
+1453124 fd5197
+D6
+13f9b66 f7bbd9
+D4
+1453124 fe46a9
+D6
+13fb92a 103bda5
+D4
+1453124 ff120f
+D6
+13f9b66 f97c51
+D4
+1453124 1000721
+D6
+1405ce0 104db65
+D4
+1453124 100d385
+D6
+13f9b66 fb3dc7
+D4
+1453124 101c897
+D6
+1401d60 106dc5b
+D4
+1453124 10293fd
+D6
+13f9b66 fcfe3f
+D4
+1453124 103890f
+D6
+13fb434 10905ff
+D4
+1453124 1045573
+D6
+13f9b66 febfb5
+D4
+1453124 1054a85
+D6
+13fb434 10ac775
+D4
+1453124 10615eb
+D6
+13f9b66 100812b
+D4
+1453124 1070afd
+D6
+13fb434 10c87ed
+D4
+1453124 107d761
+D6
+13f9b66 10241a3
+D4
+1453124 108cc73
+D6
+13fb434 10e4963
+D4
+1453124 10997d9
+D6
+14052f4 104b9a9
+D4
+1453124 10a8ceb
+D6
+13ffca2 10fc26b
+D4
+1453124 10b594f
+D6
+1404d00 106752b
+D4
+1453124 10c4e61
+D6
+140d4ee 110aa97
+D4
+1453124 10d1ac5
+D6
+13fb434 1079cd7
+D4
+1453124 10e0fd7
+D6
+1412154 1121fa7
+D4
+1453124 10edb3d
+D6
+13fb434 1095e4d
+D4
+1453124 10fd04f
+D6
+1412154 113e01f
+D4
+1453124 1109cb3
+D6
+13fb434 10b1fc3
+D4
+1453124 11191c5
+D6
+1412154 115a195
+D4
+1453124 1125d2b
+D6
+13fb434 10ce03b
+D4
+1453124 113523d
+D6
+1412154 117620d
+D4
+1453124 1141ea1
+D6
+13fb434 10ea1b1
+D4
+1453124 11513b3
+D6
+1412154 1192383
+D4
+1453124 115df19
+D6
+1412154 111cf49
+D4
+1453124 116d42b
+D6
+1412154 11ae4f9
+D4
+1453124 117a08f
+D6
+1412154 11390bf
+D4
+1453124 11895a1
+D6
+1412154 11ca571
+D4
+1453124 1196107
+D6
+1412154 1155137
+D4
+1453124 11a5619
+D6
+1412154 11e66e7
+D4
+1453124 11b227d
+D6
+1412154 11712ad
+D4
+1453124 11c178f
+D6
+1412154 120275f
+D4
+1453124 11ce2f5
+D6
+1412154 118d325
+D4
+1453124 11dd807
+D6
+1412154 121e8d5
+D4
+1453124 11ea46b
+D6
+1412154 11a949b
+D4
+1453124 11f997d
+D6
+1412154 123a94d
+D4
+1453124 12065e1
+D6
+1412154 11c5513
+D4
+1453124 1215af3
+D6
+1413d1c 1254efb
+D4
+1453124 1222659
+D6
+1412154 11e1689
+D4
+1453124 1231b6b
+D6
+1418c7c 126c013
+D4
+1453124 123e7cf
+D6
+1412154 11fd701
+D4
+1453124 124dce1
+D6
+1418c7c 1288189
+D4
+1453124 125a847
+D6
+1412154 1219877
+D4
+1453124 1269d59
+D6
+1418c7c 12a4201
+D4
+1453124 12769bd
+D6
+1412154 12358ef
+D4
+1453124 1285ecf
+D6
+1423130 12b5ec3
+D4
+1453124 1292a35
+D6
+1412154 1251a65
+D4
+1453124 12a1f47
+D6
+14270b0 12cdfbb
+D4
+1453124 12aebab
+D6
+1418c7c 1274703
+D4
+1453124 12be0bd
+D6
+13fa15a 1317087
+D4
+1453124 12cac23
+D6
+1418c7c 129077b
+D4
+1453124 12da135
+D6
+140f7a8 131dab1
+D4
+1453124 12e6d99
+D6
+1423d18 12b798d
+D4
+1453124 12f62ab
+D6
+141eabe 132a911
+D4
+1453124 1302e11
+D6
+14258e0 12d56cb
+D4
+1453124 1312323
+D6
+1426db6 133e691
+D4
+1453124 131ef87
+D6
+141b628 12e748b
+D4
+1453124 132e499
+D6
+1358cac 1428911
+D4
+1453124 133b0fd
+D6
+140a848 12f2821
+D4
+1453124 134a60f
+D6
+1414904 1388d31
+D4
+1453124 1357175
+D6
+13fa15a 12fe1ab
+D4
+1453124 1366687
+D6
+142d6e2 138c0c9
+D4
+1453124 13732eb
+D6
+14274a8 134766f
+D4
+1453124 13827fd
+D6
+143f1a8 1396779
+D4
+1453124 138f363
+D6
+1420882 135cac1
+D4
+1453124 139e875
+D6
+144b916 13a6083
+D4
+1453124 13ab4d9
+D6
+1447c90 13a0045
+D4
+1453124 13d6a63
+D6
+1447f8a 13e1bfd
+D4
+1453124 13e36c7
+D6
+144ba14 13dbeb9
+D4
+1453124 13f2bd9
+D6
+141d3ec 1428911
+D4
+1453124 13ff73f
+D6
+143f1a8 13eb8c1
+D4
+1453124 140ec51
+D6
+1439464 1428911
+D4
+1453124 141b8b5
+D6
+142d7e0 13f5f71
+A20
+D4
+f7fcc4 d55b25
+D6
+fff2b8 d55b25
+105e9b2 cf642b
+105e9b2 cd3e7f
+1077d84 cbaaad
+D4
+f7fcc4 d93b55
+D6
+102a548 d93b55
+1087590 d36b0d
+1131e14 d36b0d
+D4
+11ade74 d36b0d
+D6
+12012f6 d89f8f
+1210b02 d89f8f
+1229ed4 da3361
+D4
+120aebc c7ca7d
+D6
+119ee58 c7ca7d
+1160e28 cbaaad
+10f3de4 cbaaad
+D4
+1229ed4 cca2b9
+D6
+1229ed4 c9ba95
+120aebc c7ca7d
+D4
+1229ed4 da3361
+D6
+127a5b2 da3361
+127a5b2 da6203
+12c4f4c df0b9d
+D4
+12a8dd6 d74b3d
+D6
+127a5b2 da3361
+D4
+1302f7c df0b9d
+D6
+1302f7c d6ecfb
+12cd936 d397b3
+12993ce d397b3
+1229ed4 cca2b9
+D4
+138e7e8 cf8add
+D6
+1340fac cab2a1
+1340fac c7ca7d
+D4
+14171b2 d74b3d
+D6
+134ad6e d74b3d
+12eaa8c d1485b
+12d14be d1485b
+12b5740 cf8add
+L4
+I0
+C" Job   : F:\SuperComputer\PhoneInterfacePCB\PCB\PhoneInterfacePCB.pcb"
+C" User  : PC-FRHA:frha"
+C" Layer : Border.gdo"
+C" Date  : Tue Jun 06 17:10:26 2000"
+A28
+T0
+N0
+S999
+D4
+f41c94 c3ea4d
+D6
+1480570 c3ea4d
+1480570 14598e5
+f41c94 14598e5
+f41c94 c3ea4d
+D4
+f37c57 3995d7
+D6
+1476533 3995d7
+D4
+f37c57 3995d7
+D6
+f37c57 bb446f
+1476533 bb446f
+1476533 3995d7
+$End
+$Dimensions
+0
+$End
+$Redlining
+$End
+$ConstructionLines
+0
+$End
+$NoteBalloons
+0
+$End
+$HoleCharts
+0
+$End

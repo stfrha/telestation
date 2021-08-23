@@ -1,0 +1,1194 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\TeleStation.ico"
+IDR_PROJECTTYPE         ICON    DISCARDABLE     "res\\idr_work.ico"
+IDR_ANSWERSCRIPTTYPE    ICON    DISCARDABLE     "res\\idr_cphn.ico"
+IDR_CPHNBKTYPE          ICON    DISCARDABLE     "res\\idr_answ.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+IDR_CPHNBKTYPE          BITMAP  MOVEABLE PURE   "res\\mainfram.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_PROJECT_GENRATE_PROJECT_FILES
+    SEPARATOR
+    BUTTON      ID_EDIT_NEW_ENTRY
+    BUTTON      ID_EDIT_DELETE_ENTRY
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+IDR_CPHNBKTYPE TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Main Toolbar",               ID_VIEW_TOOLBAR
+        MENUITEM "S&cript Toolbar",             ID_VIEW_SCRIPT_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About TeleStation...",       ID_APP_ABOUT
+    END
+END
+
+IDR_ANSWERSCRIPTTYPE MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Sen&d...",                    ID_FILE_SEND_MAIL
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "Select &All\tCtrl-A",         ID_EDIT_SELECT_ALL
+    END
+    POPUP "&Project"
+    BEGIN
+        POPUP "&Script File"
+        BEGIN
+            MENUITEM "&Open",                       ID_PROJECT_OPEN_SCRIPT
+            MENUITEM "&Change",                     ID_PROJECT_SELECT_SCRIPT
+        END
+        MENUITEM SEPARATOR
+        POPUP "&Announcement"
+        BEGIN
+            MENUITEM "&New",                        ID_PROJECT_NEW_ANNOUNCEMENT
+
+            MENUITEM "&Add",                        ID_PROJECT_ADD_ANNOUNCEMENT
+
+            MENUITEM "&Open",                       ID_PROJECT_OPEN_ANNOUNCEMENT
+
+            MENUITEM "&Play",                       ID_PROJECT_PLAY_ANNOUNCEMENT
+
+            MENUITEM "&Delete",                     ID_PROJECT_DELETE_ANNOUNCEMENT
+
+        END
+        MENUITEM SEPARATOR
+        POPUP "Phone &Book"
+        BEGIN
+            MENUITEM "&Open",                       ID_PROJECT_OPEN_PHONE_BOOK
+
+            MENUITEM "&Change",                     ID_PROJECT_SELECT_PHONE_BOOK
+
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Si&mulate Project",           ID_PROJECT_SIMULATE_PROJECT
+        MENUITEM "&Properties",                 ID_PROJECT_PROPERTIES
+    END
+    POPUP "&Script"
+    BEGIN
+        POPUP "&Place Object"
+        BEGIN
+            MENUITEM "&Wait for call",              ID_SCRIPT_WAIT_FOR_CALL
+            MENUITEM "&Lift phone",                 ID_SCRIPT_LIFT_PHONE
+            MENUITEM "&Drop phone",                 ID_SCRIPT_DROP_PHONE
+            MENUITEM "&Play file",                  ID_SCRIPT_PLAY
+            MENUITEM "Play &Memo",                  ID_SCRIPT_PLAY_MEMO
+            MENUITEM "Ask &Question",               ID_SCRIPT_ASK_QUESTION
+            MENUITEM "Prompt Caller for &Code",     ID_SCRIPT_PROMPT_CODE
+            MENUITEM "&Rec Message",                ID_SCRIPT_REC_MSG
+            MENUITEM "Play &All",                   ID_SCRIPT_PLAY_ALL
+            MENUITEM "&Erase Messages",             ID_SCRIPT_ERASE_MSG
+            MENUITEM "Answering &On",               ID_SCRIPT_ANSWER_ON
+            MENUITEM "Answering O&ff",              ID_SCRIPT_ANSWER_OFF
+            MENUITEM "Category &Branch",            ID_SCRIPT_BRANCH
+        END
+        MENUITEM "Place &Label",                ID_SCRIPT_INSERT_LABEL
+        MENUITEM "Add &Transition",             ID_OBJECT_ADD_TRANSITION
+        MENUITEM SEPARATOR
+        MENUITEM "Generate &BAT-file",          ID_SCRIPT_GENERATE_BAT_FILE
+        MENUITEM "Script &Simulator",           ID_SCRIPT_SIMULATE_SCRIPT
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_OBJECT_PROP
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Main Toolbar",               ID_VIEW_TOOLBAR
+        MENUITEM "S&cript Toolbar",             ID_VIEW_SCRIPT_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About TeleStation...",       ID_APP_ABOUT
+    END
+END
+
+IDR_PROJECTTYPE MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Project"
+    BEGIN
+        POPUP "&Script File"
+        BEGIN
+            MENUITEM "&Open",                       ID_PROJECT_OPEN_SCRIPT
+            MENUITEM "&Change",                     ID_PROJECT_SELECT_SCRIPT
+        END
+        MENUITEM SEPARATOR
+        POPUP "&Announcement"
+        BEGIN
+            MENUITEM "&New",                        ID_PROJECT_NEW_ANNOUNCEMENT
+
+            MENUITEM "&Add",                        ID_PROJECT_ADD_ANNOUNCEMENT
+
+            MENUITEM "&Open",                       ID_PROJECT_OPEN_ANNOUNCEMENT
+
+            MENUITEM "&Play",                       ID_PROJECT_PLAY_ANNOUNCEMENT
+
+            MENUITEM "&Delete",                     ID_PROJECT_DELETE_ANNOUNCEMENT
+
+        END
+        MENUITEM SEPARATOR
+        POPUP "Phone &Book"
+        BEGIN
+            MENUITEM "&Open",                       ID_PROJECT_OPEN_PHONE_BOOK
+
+            MENUITEM "&Change",                     ID_PROJECT_SELECT_PHONE_BOOK
+
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Si&mulate Project",           ID_PROJECT_SIMULATE_PROJECT
+        MENUITEM "&Genrate Project Files",      ID_PROJECT_GENRATE_PROJECT_FILES
+
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_PROJECT_PROPERTIES
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About TeleStation...",       ID_APP_ABOUT
+    END
+END
+
+IDR_CPHNBKTYPE MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    MENUITEM "&Edit",                       65535
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Phone Book"
+    BEGIN
+        MENUITEM "&New Entry",                  ID_EDIT_NEW_ENTRY
+        MENUITEM "&Delete Entry",               ID_EDIT_DELETE_ENTRY
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_PB_ENTRY_PROPERTIES
+        MENUITEM SEPARATOR
+        MENUITEM "Edit &Categories",            ID_PHONEBOOK_EDIT_CATEGORIES
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About CListTest...",         ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "A",            ID_EDIT_SELECT_ALL,     VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_DELETE,         VIRTKEY, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_ESCAPE,      ID_CUSTOM_CANCEL,       VIRTKEY, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About Telestation"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "Telestation Version 1.0",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2000",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "Telestation Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "Telestation\0"
+            VALUE "LegalCopyright", "Copyright (C) 2000\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "Telestation.EXE\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Telestation Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "Telestation"
+    IDR_ANSWERSCRIPTTYPE    "\nScriptfile\nScript File\nScript File (*.srf)\n.SRF\nTelestation Script.Document\nTelestation Script Document"
+    IDR_PROJECTTYPE         "\nProject\nProject\nProject (*.tsp)\n.TSP\nTelestation Project\nTelestation Project"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "Telestation"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+    ID_FILE_SEND_MAIL       "Send the active document through electronic mail\nSend Mail"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
+    ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
+    ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
+    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the main toolbar\nToggle Main ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+    AFX_IDS_MDICHILD        "Activate this window"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_OBJECT_NEW           "Create new object at default position\nNew object"
+    ID_OBJECT_ADDTRANSITION "Add transition between objects\nAdd transition"
+    ID_OBJECT_ADD_TRANSITION "Add transition between objects\nAdd transition"
+    ID_EDIT_DELETE          "Delete selection\nDelete"
+    ID_SCRIPT_LIFT_PHONE    "Lift the phone off hook\nLift phone"
+    ID_SCRIPT_DROP_PHONE    "Drop the phone on hook\nDrop Phone"
+    ID_SCRIPT_WAIT_FOR_CALL "Wait for caller\nWait for call"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_SCRIPT_PLAY          "Plays a rerecorded announcement file\nPlay File"
+    ID_SCRIPT_ASK_QUESTION  "Asks caller a question expection a response\nAsk Question"
+    ID_SCRIPT_REC_MSG       "Record message from caller\nRec Message"
+    ID_SCRIPT_ERASE_MSG     "Erase all messages recorded by callers\nErase Messages"
+    ID_SCRIPT_ANSWER_ON     "Turns answer function off\nAnswer On"
+    ID_SCRIPT_ANSWER_OFF    "Turn answering function off\nAnswer Off"
+    ID_VIEW_SCRIPT_TOOLBAR  "Show or hide the script toolbar\nToggle Script ToolBar"
+    ID_SCRIPT_PROMPT_CODE   "Prompt caller for identification code\nPrompt code"
+    ID_PROJECT_ADDANNOUNCEMENT 
+                            "Adds an announcement (WAV) file to the project\\Add announcement"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_SCRIPT_PLAY_ALL      "Play all messages recorded by callers\nPlay All"
+    ID_SCRIPT_INSERT_LABEL  "Insert a jump lable\nInsert Label"
+    ID_OBJECT_PROP          "Edit properties of selected object\nProperties"
+    ID_SCRIPT_GENERATE_BAT_FILE 
+                            "Generate script file for answering machine\nGenerate"
+    ID_SCRIPT_SIMULATE_SCRIPT "Simulate current script\\Simulate Script"
+    ID_PROJECT_SELECTSCRIPT "Sets och changes the script file\nSelect Script"
+    ID_PROJECT_SELECTPHONEBOOK 
+                            "Sets och changes the phone book file\nSelect Phone Book"
+    ID_PROJECT_SELECT_SCRIPT 
+                            "Sets or changes the project script file\nSelect Script"
+    ID_PROJECT_ADD_ANNOUNCEMENT 
+                            "Add an announcement to the project\nAdd annaouncement"
+    ID_PROJECT_SELECT_PHONE_BOOK 
+                            "Sets or changes the project phone book file\nSelect Phone Book"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_PROJECT_EDITSCRIPT   "Opens "
+    ID_PROJECT_OPEN_SCRIPT  "Opens project script file for editing\nOpen Script"
+    ID_PROJECT_PLAY_ANNOUNCEMENT 
+                            "Plays currently selected announcement\nPlay Announcement"
+    ID_PROJECT_NEW_ANNOUNCEMENT 
+                            "Record a new announcement using soundcard\nRecord Announcement"
+    ID_PROJECT_OPEN_ANNOUNCEMENT 
+                            "Open selected announcement\nOpen Announcement"
+    ID_PROJECT_DELETE_ANNOUNCEMENT 
+                            "Delete selected announcement\nDelete Announcement"
+    ID_PROJECT_OPEN_PHONE_BOOK 
+                            "Opens project phone book file for editing\nOpen Phone Book"
+    ID_PROJECT_PROPERTIES   "Display project item properties\nProperties"
+    ID_PROJECT_SIMULATE_PROJECT "Invoke script simulator\\Simulate Script"
+    ID_SCRIPT_BRANCH        "Branch according to caller catgory\nCategory Branch"
+    ID_SCRIPT_PLAY_MEMO     "Play latest recorded memo\nPlay Memo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDR_CPHNBKTYPE          "\nPhonebookfile\nPhone Book File\nPhone Book File (*.TPB)\n.TPB\nTelestation Phone Book.Document\nTelestation Phone Book Document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_PROJECT_GENRATE_PROJECT_FILES 
+                            "Generate Downloadable Project Files\nGenerate Files"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Swedish resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_SVE)
+#ifdef _WIN32
+LANGUAGE LANG_SWEDISH, SUBLANG_DEFAULT
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_HAPPY_SUN_BM        BITMAP  DISCARDABLE     "res\\happy_su.bmp"
+IDB_SCRIPT_TOOL_BOX     BITMAP  DISCARDABLE     "res\\Palette.bmp"
+IDR_SCRIPT_TOOLS        BITMAP  DISCARDABLE     "res\\toolbar1.bmp"
+IDB_SCRIPT_LIFT_PHONE   BITMAP  DISCARDABLE     "res\\script_t.bmp"
+IDB_SCRIPT_WAIT_RING    BITMAP  DISCARDABLE     "res\\bmp00002.bmp"
+IDB_SCRIPT_DROP_PHONE   BITMAP  DISCARDABLE     "res\\script_l.bmp"
+IDB_SCRIPT_PROMPT_CODE  BITMAP  DISCARDABLE     "res\\bmp00003.bmp"
+IDB_SCRIPT_REC_MSG      BITMAP  DISCARDABLE     "res\\bmp00004.bmp"
+IDB_SCRIPT_ERASE_ALL    BITMAP  DISCARDABLE     "res\\bmp00001.bmp"
+IDB_SCRIPT_ANS_ON       BITMAP  DISCARDABLE     "res\\bmp00005.bmp"
+IDB_SCRIPT_ANS_OFF      BITMAP  DISCARDABLE     "res\\bmp00006.bmp"
+IDB_SCRIPT_ASK_QUESTION BITMAP  DISCARDABLE     "res\\script_p.bmp"
+IDB_SCRIPT_PLAY_FILE    BITMAP  DISCARDABLE     "res\\bmp00007.bmp"
+IDB_SCRIPT_PLAY_ALL     BITMAP  DISCARDABLE     "res\\script_r.bmp"
+IDB_SCRIPT_LABEL        BITMAP  DISCARDABLE     "res\\bmp00008.bmp"
+IDB_SIMULATION_ARROW    BITMAP  DISCARDABLE     "res\\simulati.bmp"
+IDB_SCRIPT_BRANCH       BITMAP  DISCARDABLE     "res\\script_a.bmp"
+IDB_SCRIPT_PLAY_MEMO    BITMAP  DISCARDABLE     "res\\bmp00009.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_SCRIPT_TOOLS TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_SCRIPT_WAIT_FOR_CALL
+    BUTTON      ID_SCRIPT_LIFT_PHONE
+    BUTTON      ID_SCRIPT_DROP_PHONE
+    BUTTON      ID_SCRIPT_PLAY
+    BUTTON      ID_SCRIPT_PLAY_MEMO
+    BUTTON      ID_SCRIPT_ASK_QUESTION
+    BUTTON      ID_SCRIPT_PROMPT_CODE
+    BUTTON      ID_SCRIPT_REC_MSG
+    BUTTON      ID_SCRIPT_PLAY_ALL
+    BUTTON      ID_SCRIPT_ERASE_MSG
+    BUTTON      ID_SCRIPT_ANSWER_ON
+    BUTTON      ID_SCRIPT_ANSWER_OFF
+    BUTTON      ID_SCRIPT_BRANCH
+    BUTTON      ID_SCRIPT_INSERT_LABEL
+    BUTTON      ID_OBJECT_ADD_TRANSITION
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_RIGHT_MOUSE MENU DISCARDABLE 
+BEGIN
+    POPUP "Popup Menu"
+    BEGIN
+        MENUITEM "Cancel",                      ID_CUSTOM_CANCEL
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "Properties",                  ID_OBJECT_PROP
+    END
+END
+
+IDR_ANNOUNCE_POPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "Annnounce POpup"
+    BEGIN
+        MENUITEM "&New",                        ID_PROJECT_NEW_ANNOUNCEMENT
+        MENUITEM "&Add",                        ID_PROJECT_ADD_ANNOUNCEMENT
+        MENUITEM "O&pen",                       ID_PROJECT_OPEN_ANNOUNCEMENT
+        MENUITEM "&Play",                       ID_PROJECT_PLAY_ANNOUNCEMENT
+        MENUITEM "&Delete",                     ID_PROJECT_DELETE_ANNOUNCEMENT
+
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_PROJECT_PROPERTIES
+    END
+END
+
+IDR_SCRIPT_POPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "Script Popup"
+    BEGIN
+        MENUITEM "&Open",                       ID_PROJECT_OPEN_SCRIPT
+        MENUITEM "&Change",                     ID_PROJECT_SELECT_SCRIPT
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_PROJECT_PROPERTIES
+    END
+END
+
+IDR_PHONE_BOOK_POPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "Script Popup"
+    BEGIN
+        MENUITEM "&Open",                       ID_PROJECT_OPEN_PHONE_BOOK
+        MENUITEM "&Change",                     ID_PROJECT_SELECT_PHONE_BOOK
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_PROJECT_PROPERTIES
+    END
+END
+
+IDR_EDIT_PB_POPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "PB Entry Popup"
+    BEGIN
+        MENUITEM "&New Entry",                  ID_EDIT_NEW_ENTRY
+        MENUITEM "&Delete Entry",               ID_EDIT_DELETE_ENTRY
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_PB_ENTRY_PROPERTIES
+        MENUITEM SEPARATOR
+        MENUITEM "Edit &Categories",            ID_PHONEBOOK_EDIT_CATEGORIES
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PLAY_FILE_PROP DIALOG DISCARDABLE  0, 0, 186, 73
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_ANNOUNCEMENT,15,19,98,90,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add",IDC_ADD_FILE,120,19,24,14
+    DEFPUSHBUTTON   "OK",IDOK,28,52,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,105,52,50,14
+    GROUPBOX        "Select Announcement",IDC_STATIC,7,7,172,33
+    PUSHBUTTON      "Play",IDC_PLAY_FILE,149,19,24,14
+END
+
+IDD_LABEL_PROP DIALOG DISCARDABLE  0, 0, 134, 70
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_LABEL,19,20,96,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,7,49,50,14
+    GROUPBOX        "Enter Label Name",IDC_STATIC,7,7,120,33
+    PUSHBUTTON      "Cancel",IDCANCEL,77,49,50,14
+END
+
+IDD_ENTER_CODE_PROP DIALOG DISCARDABLE  0, 0, 186, 113
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_ANNOUNCEMENT_BOX,15,19,98,90,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add",IDC_ADD_FILE,120,19,24,14
+    EDITTEXT        IDC_CODE,23,60,63,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,28,92,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,105,92,50,14
+    GROUPBOX        "Select Announcement",IDC_STATIC,7,7,172,33
+    GROUPBOX        "Select Code",IDC_STATIC,7,47,172,33
+    LTEXT           "Enter 0-9. Max 12 digits",IDC_STATIC,92,63,75,8
+    PUSHBUTTON      "Play",IDC_PLAY_FILE,149,19,24,14
+END
+
+IDD_NO_PROP DIALOG DISCARDABLE  0, 0, 134, 74
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,41,53,50,14
+    LTEXT           "No properties to set",IDC_STATIC,35,25,62,8
+END
+
+IDD_TRANS_SELECT DIALOG DISCARDABLE  0, 0, 128, 95
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select transition"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,74,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,71,74,50,14
+    LISTBOX         IDC_TRANSITION_LIST,7,7,114,53,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_SCRIPT_SIMULATOR DIALOGEX 0, 0, 68, 161
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Simulation Control"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "1",IDC_DIAL_BUTTON1,7,91,15,14
+    PUSHBUTTON      "2",IDC_DIAL_BUTTON2,26,91,15,14
+    PUSHBUTTON      "3",IDC_DIAL_BUTTON3,44,91,15,14
+    PUSHBUTTON      "4",IDC_DIAL_BUTTON4,7,107,15,14
+    PUSHBUTTON      "5",IDC_DIAL_BUTTON5,26,107,15,14
+    PUSHBUTTON      "6",IDC_DIAL_BUTTON6,44,107,15,14
+    PUSHBUTTON      "7",IDC_DIAL_BUTTON7,7,123,15,14
+    PUSHBUTTON      "8",IDC_DIAL_BUTTON8,26,123,15,14
+    PUSHBUTTON      "9",IDC_DIAL_BUTTON9,44,123,15,14
+    PUSHBUTTON      "*",IDC_DIAL_BUTTON_STAR,7,139,15,14
+    PUSHBUTTON      "0",IDC_DIAL_BUTTON0,26,139,15,14
+    PUSHBUTTON      "#",IDC_DIAL_BUTTON_POUND,44,139,15,14
+    EDITTEXT        IDC_CALLER_NUMBER,7,19,53,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Hang Up",IDC_HANG_UP,7,70,53,14
+    PUSHBUTTON      "Make Call",IDC_MAKE_CALL,7,54,53,14
+    CONTROL         "Simulate On",IDC_SIMULATOR_ON,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,38,54,8
+    LTEXT           "Calling number:",IDC_STATIC,7,7,49,8
+END
+
+IDD_NEW_PROJECT_DLG DIALOG DISCARDABLE  0, 0, 186, 181
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "New Project"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_PROJECT_NAME,15,19,130,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_LOCATION,15,56,130,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BRWS_LOCATION,153,57,20,10
+    PUSHBUTTON      "...",IDC_BRWS_SCRIPT,154,92,20,10
+    PUSHBUTTON      "...",IDC_BRWS_PHONE_BOOK,154,130,20,10
+    DEFPUSHBUTTON   "OK",IDOK,33,160,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,108,160,50,14
+    LTEXT           "",IDC_NEW_PROJECT_SCRIPT,15,92,133,8
+    LTEXT           "",IDC_NEW_PROJECT_PHONE_BOOK,15,130,133,8
+    GROUPBOX        "Select Script File",IDC_STATIC,7,78,172,32
+    GROUPBOX        "Select Phone Book File",IDC_STATIC,7,116,172,32
+    GROUPBOX        "Enter Project Name",IDC_STATIC,7,7,172,32
+    GROUPBOX        "Location",IDC_STATIC,7,43,172,32
+END
+
+IDD_PROJ_PROP_DLG DIALOG DISCARDABLE  0, 0, 229, 85
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,89,64,50,14
+    LTEXT           "",IDC_TITLE,7,19,215,10,SS_SUNKEN
+    LTEXT           "Title",IDC_STATIC,7,7,14,8
+    LTEXT           "Complete path",IDC_STATIC,7,34,46,8
+    EDITTEXT        IDC_PATH,7,44,215,12,ES_AUTOHSCROLL | ES_READONLY
+END
+
+IDD_NEW_PB_ENTRY DIALOG DISCARDABLE  0, 0, 131, 94
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "New Phone Book Entry"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_NUMBER_EDIT,42,7,82,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_NAME_EDIT,42,23,82,12,ES_AUTOHSCROLL
+    COMBOBOX        IDC_CAT_COMBO,7,50,117,111,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,7,73,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,74,73,50,14
+    LTEXT           "Number",IDC_STATIC,7,9,26,8
+    LTEXT           "Name",IDC_STATIC,7,25,20,8
+    LTEXT           "Category",IDC_STATIC,7,39,29,8
+END
+
+IDD_EDIT_CATEGORIES DIALOG DISCARDABLE  0, 0, 245, 191
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Edit Categories"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Done",IDOK,187,170,50,14
+    CONTROL         "List2",IDC_CATEGORY_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | WS_BORDER | WS_TABSTOP,7,44,231,119
+    DEFPUSHBUTTON   "New",IDC_EDIT_CATEGORY,188,17,50,14
+    PUSHBUTTON      "Delete",IDC_DELETE_CATEGORY,7,170,50,14
+    COMBOBOX        IDC_CATEGORY_COMBO,7,18,34,142,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Category",IDC_STATIC,7,7,29,8
+    LTEXT           "Explenation",IDC_STATIC,49,7,38,8
+    EDITTEXT        IDC_CAT_EDIT,49,18,131,12,ES_AUTOHSCROLL
+END
+
+IDD_BRANCH_PROP DIALOG DISCARDABLE  0, 0, 146, 167
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select Branch Categories"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,146,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,89,146,50,14
+    CONTROL         "List1",IDC_CAT_SEL_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_NOCOLUMNHEADER | LVS_NOSORTHEADER | WS_BORDER | 
+                    WS_TABSTOP,7,7,132,102
+    EDITTEXT        IDC_CAT_SEL_EDIT,7,125,132,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Category Selection String",IDC_STATIC,7,114,80,8
+END
+
+IDD_FILE_GEN_LOG DIALOG DISCARDABLE  0, 0, 262, 111
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Generating Project Files"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Cancel",IDCANCEL,105,90,50,14
+    LISTBOX         IDC_LOG_LIST,7,7,248,77,LBS_NOINTEGRALHEIGHT | 
+                    LBS_DISABLENOSCROLL | LBS_NOSEL | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_PLAY_FILE_PROP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 66
+    END
+
+    IDD_LABEL_PROP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 127
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 63
+    END
+
+    IDD_ENTER_CODE_PROP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 106
+    END
+
+    IDD_NO_PROP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 127
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 67
+    END
+
+    IDD_TRANS_SELECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 121
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+
+    IDD_SCRIPT_SIMULATOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 61
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 154
+    END
+
+    IDD_NEW_PROJECT_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 174
+    END
+
+    IDD_PROJ_PROP_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 222
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 78
+    END
+
+    IDD_NEW_PB_ENTRY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 124
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 87
+    END
+
+    IDD_EDIT_CATEGORIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 238
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 184
+    END
+
+    IDD_BRANCH_PROP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 139
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 160
+    END
+
+    IDD_FILE_GEN_LOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 255
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 104
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\TeleStation.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_NEW_ENTRY       "Create new object at default position\nNew object"
+    ID_EDIT_DELETE          "("
+    ID_SCRIPT_LIFT_PHONE    "Lift the phone off hook\nLift phone"
+    ID_SCRIPT_DROP_PHONE    "Drop the phone on hook\nDrop Phone"
+    ID_SCRIPT_WAIT_FOR_CALL "Wait for caller\nWait for call"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_SCRIPT_PLAY          "Plays a rerecorded announcement file\nPlay File"
+    ID_SCRIPT_ASK_QUESTION  "Asks caller a question expection a response\nAsk Question"
+    ID_SCRIPT_REC_MSG       "Record message from caller\nRec Message"
+    ID_SCRIPT_ERASE_MSG     "Erase all messages recorded by callers\nErase Messages"
+    ID_SCRIPT_ANSWER_ON     "Turns answer function off\nAnswer On"
+    ID_SCRIPT_ANSWER_OFF    "Turn answering function off\nAnswer Off"
+    ID_SCRIPT_PROMPT_CODE   "Prompt caller for identification code\nPrompt code"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_SCRIPT_PLAY_ALL      "Play all messages recorded by callers\nPlay All"
+    ID_SCRIPT_INSERT_LABEL  "Insert a jump lable\nInsert Label"
+    ID_OBJECT_PROP          "Edit properties of selected object\nProperties"
+    ID_PROJECT_SELECT_SCRIPT 
+                            "Sets or changes the project script file\nSelect Script"
+    ID_PROJECT_ADD_ANNOUNCEMENT 
+                            "Add an announcement to the project\nAdd annaouncement"
+    ID_PROJECT_SELECT_PHONE_BOOK 
+                            "Sets or changes the project phone book file\nSelect Phone Book"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_PROJECT_OPEN_SCRIPT  "Opens project script file for editing\nOpen Script"
+    ID_PROJECT_PLAY_ANNOUNCEMENT 
+                            "Plays currently selected announcement\nPlay Announcement"
+    ID_PROJECT_NEW_ANNOUNCEMENT 
+                            "Record a new announcement using soundcard\nRecord Announcement"
+    ID_PROJECT_OPEN_ANNOUNCEMENT 
+                            "Open selected announcement\nOpen Announcement"
+    ID_PROJECT_DELETE_ANNOUNCEMENT 
+                            "Delete selected announcement\nDelete Announcement"
+    ID_PROJECT_OPEN_PHONE_BOOK 
+                            "Opens project phone book file for editing\nOpen Phone Book"
+    ID_PROJECT_PROPERTIES   "Display project item properties\nProperties"
+    ID_SCRIPT_BRANCH        "Branch according to caller catgory\nCategory Branch"
+    ID_SCRIPT_PLAY_MEMO     "Play latest recorded memo\nPlay Memo"
+END
+
+#endif    // Swedish resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\TeleStation.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

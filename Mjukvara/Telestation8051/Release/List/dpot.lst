@@ -1,0 +1,1834 @@
+##############################################################################
+#                                                                            #
+# IAR 8051 C-Compiler V5.20A/386                                             #
+# Front End V4.20N                                       19/Sep/104  17:59:48 #
+# Global Optimizer V1.04E                                                    #
+#                                                                            #
+#       Target option =  8051                                                #
+#       Memory model  =  large                                               #
+#       Source file   =  dpot.c                                              #
+#       List file     =  release\list\dpot.lst                               #
+#       Object file   =  release\obj\dpot.r03                                #
+#       Command line  =  DPot.c -S -ml -v0 -e -K -u -s9 -RCODE -gA           #
+#                        -IC:\IAR\EW\8051\inc\ -ORelease\Obj\                #
+#                        -LRelease\List\ -q -i -t8 -x                        #
+#                                                                            #
+#                                             (c) Copyright IAR Systems 1996 #
+##############################################################################
+
+   \   0000                    NAME    dpot(18)
+   \   0000                    RSEG    CODE(0)
+   \   0000                    RSEG    X_UDATA(0)
+   \   0000                    PUBLIC  DTMFVolume
+   \   0000                    $DEFFN  DTMFVolume(0,0,2,0,32768,0,1,0),SetDPWiper
+   \   0000                    PUBLIC  InitializeDPot
+   \   0000                    $DEFFN  InitializeDPot(0,0,0,0,32768,0,0,0)
+   \   0000                    PUBLIC  PhoneInVolume
+   \   0000                    $DEFFN  PhoneInVolume(0,0,2,0,32768,0,1,0),SetDPWiper
+   \   0000                    PUBLIC  PhoneOutVolume
+   \   0000                    $DEFFN  PhoneOutVolume(0,0,2,0,32768,0,1,0),SetDPWiper
+   \   0000                    PUBLIC  ROEPB
+   \   0000                    $DEFFN  ROEPB(0,0,4,0,32768,0,1,0),RPWait,RPWait,RPWait,RPWait,RPWait,
+   \   0000                            RPWait
+   \   0000                    PUBLIC  RPWait
+   \   0000                    $DEFFN  RPWait(0,0,2,0,32768,0,0,0)
+   \   0000                    PUBLIC  ReadDPWiper
+   \   0000                    $DEFFN  ReadDPWiper(0,0,2,0,32768,0,4,0),RPWait,RPWait,RPWait,WOEPB,WOEPB,
+   \   0000                            ROEPB,RPWait,RPWait,RPWait
+   \   0000                    PUBLIC  SetDPWiper
+   \   0000                    $DEFFN  SetDPWiper(0,0,2,0,32768,0,2,0),RPWait,RPWait,RPWait,WOEPB,WOEPB,
+   \   0000                            WOEPB,RPWait,RPWait,RPWait
+   \   0000                    PUBLIC  SpeakerVolume
+   \   0000                    $DEFFN  SpeakerVolume(0,0,2,0,32768,0,1,0),SetDPWiper
+   \   0000                    PUBLIC  WOEPB
+   \   0000                    $DEFFN  WOEPB(0,0,4,0,32768,0,1,0),RPWait,RPWait,RPWait,RPWait,RPWait,
+   \   0000                            RPWait
+   \   0000                    PUBLIC  speakerVolume
+   \   0000                    EXTERN  ?ST_A_R567_L17
+   \   0000                    EXTERN  ?CL8051L_5_20_L17
+   \   0000                    RSEG    CODE
+      1          /*************************************************************
+      2          Fil:            $Id: DPot.c,v 1.4 2003/11/20 22:08:52 Gemensam Exp $
+      3          
+      4          Beskrivning:    Hanterar digitala potentiometern och kan stänga av och
+      5                          sätt på ljudkällot
+      6          
+      7          Skapad:         01-02-04
+      8          
+      9          Ändrad:         $Date: 2003/11/20 22:08:52 $
+     10          
+     11          Ägare:          Fredrik Hoffman
+     12          
+     13          
+     14          Att göra:
+     15          
+     16          Kommentarer:
+     17          
+     18              Varje pot har fyra nonvolatile register. Dessa definieras härmed enligt följande:
+     19              *   0 = Zero Wiper  = 0
+     20              *   1 = Variable Wiper  = ?
+     21              *   2 = Oanvänd = X
+     22              *   3 = Full Wiper = 255
+     23              Vid initialiseringen skall värden för Zero och Full skrivas in i NV-registererna
+     24              Sedan skall Wiper på alla pottar sättas till Zero.
+     25          
+     26          Revisionshistoria:
+     27                                          $Log: DPot.c,v $
+     28                                          Revision 1.4  2003/11/20 22:08:52  Gemensam
+     29                                          Various declarations changes.
+     30                                          Still version 0200.
+     31                                          
+     32                                          Revision 1.3  2003/11/18 19:17:35  Gemensam
+     33                                          Added menu option of setting speaker volume (untested)
+     34                                          Completely changed header files
+     35                                          Version 0200.
+     36                                          
+     37                                          Revision 1.2  2003/11/10 22:44:45  Gemensam
+     38                                          Added header information
+     39                                          
+     40          
+     41          *************************************************************/
+     42                                  
+     43                                  
+     44          //////////////////////
+     45          // Inkluderingar
+     46          
+     47          #include <io517a.h>
+      1          /*                     - IO517A.H -
+      2          
+      3             Special header for the Siemens SAB 80C517A/83C517A-5 processors.
+      4          
+      5             Version 5.20 [IMAF]
+      6          
+      7          */
+      8          
+      9          #pragma language=extended
+     10          
+     11          /* Pre-defined SFR byte addresses: */
+     12          
+     13          /* CPU */
+     14          sfr     ACC    = 0xE0;
+     15          sfr     B      = 0xF0;
+     16          sfr     SP     = 0x81;
+     17          sfr     DPL    = 0x82;
+     18          sfr     DPH    = 0x83;
+     19          sfr     DPSEL  = 0x92;
+     20          sfr     PSW    = 0xD0;
+     21          sfr     XPAGE  = 0x91;
+     22          sfr     SYSCON = 0xB1;
+     23          
+     24          /* Timer 0/Timer 1 */
+     25          sfr     TCON   = 0x88;
+     26          sfr     TMOD   = 0x89;
+     27          sfr     TL0    = 0x8A;
+     28          sfr     TL1    = 0x8B;
+     29          sfr     TH0    = 0x8C;
+     30          sfr     TH1    = 0x8D;
+     31          
+     32          /* CCU */
+     33          sfr     CCEN   = 0xC1;
+     34          sfr     CC4EN  = 0xC9;
+     35          sfr     CCL1   = 0xC2;
+     36          sfr     CCH1   = 0xC3;
+     37          sfr     CCL2   = 0xC4;
+     38          sfr     CCH2   = 0xC5;
+     39          sfr     CCL3   = 0xC6;
+     40          sfr     CCH3   = 0xC7;
+     41          sfr     CCL4   = 0xCE;
+     42          sfr     CCH4   = 0xCF;
+     43          sfr     CMEN   = 0xF6;
+     44          sfr     CML0   = 0xD2;
+     45          sfr     CMH0   = 0xD3;
+     46          sfr     CML1   = 0xD4;
+     47          sfr     CMH1   = 0xD5;
+     48          sfr     CML2   = 0xD6;
+     49          sfr     CMH2   = 0xD7;
+     50          sfr     CML3   = 0xE2;
+     51          sfr     CMH3   = 0xE3;
+     52          sfr     CML4   = 0xE4;
+     53          sfr     CMH4   = 0xE5;
+     54          sfr     CML5   = 0xE6;
+     55          sfr     CMH5   = 0xE7;
+     56          sfr     CML6   = 0xF2;
+     57          sfr     CMH6   = 0xF3;
+     58          sfr     CML7   = 0xF4;
+     59          sfr     CMH7   = 0xF5;
+     60          sfr     CMSEL  = 0xF7;
+     61          sfr     CRCL   = 0xCA;
+     62          sfr     CRCH   = 0xCB;
+     63          sfr     CTCON  = 0xE1;
+     64          sfr     CTRELL = 0xDE;
+     65          sfr     CTRELH = 0xDF;
+     66          sfr     TL2    = 0xCC;
+     67          sfr     TH2    = 0xCD;
+     68          sfr     T2CON  = 0xC8;
+     69          sfr     COMSETL= 0xA1;
+     70          sfr     COMSETH= 0xA2;
+     71          sfr     COMCLRL= 0xA3;
+     72          sfr     COMCLRH= 0xA4;
+     73          sfr     SETMSK = 0xA5;
+     74          sfr     CLRMSK = 0xA6;
+     75          
+     76          /* Ports */
+     77          sfr     P0     = 0x80;
+     78          sfr     P1     = 0x90;
+     79          sfr     P2     = 0xA0;
+     80          sfr     P3     = 0xB0;
+     81          sfr     P4     = 0xE8;
+     82          sfr     P5     = 0xF8;
+     83          sfr     P6     = 0xFA;
+     84          sfr     P7     = 0xDB;        /* Analog/Digital Input */
+     85          sfr     P8     = 0xDD;        /* Analog/Digital Input, 4 Bit */
+     86          
+     87          /* Serial Channels */
+     88          sfr     PCON   = 0x87;
+     89          sfr     S0CON  = 0x98;
+     90          sfr     S0BUF  = 0x99;
+     91          sfr     S1CON  = 0x9B;
+     92          sfr     S1BUF  = 0x9C;
+     93          sfr     S0RELL = 0xAA;
+     94          sfr     S0RELH = 0xBA;
+     95          sfr     S1RELL = 0x9D;
+     96          sfr     S1RELH = 0xBB;
+     97          
+     98          /* A/D Converter */
+     99          sfr     ADCON0 = 0xD8;
+    100          sfr     ADCON1 = 0xDC;
+    101          sfr     ADDATH = 0xD9;
+    102          sfr     ADDATL = 0xDA;
+    103          
+    104          /* MUL/DIV Unit */
+    105          sfr     ARCON  = 0xEF;
+    106          sfr     MD0    = 0xE9;
+    107          sfr     MD1    = 0xEA;
+    108          sfr     MD2    = 0xEB;
+    109          sfr     MD3    = 0xEC;
+    110          sfr     MD4    = 0xED;
+    111          sfr     MD5    = 0xEE;
+    112          
+    113          /* Interrupt System */
+    114          sfr     IEN0   = 0xA8;
+    115          sfr     IP0    = 0xA9;
+    116          sfr     IEN1   = 0xB8;
+    117          sfr     IP1    = 0xB9;
+    118          sfr     IEN2   = 0x9A;
+    119          sfr     IRCON0 = 0xC0;
+    120          sfr     IRCON1 = 0xD1;
+    121          
+    122          
+    123          /* Watchdog */
+    124          sfr     WDTREL = 0x86;
+    125          
+    126          
+    127          /* Pre-defined SFR bit addresses */
+    128          
+    129          /*========ADCON0=======*/
+    130          
+    131          bit     BD     = 0xDF;
+    132          bit     CLK    = 0xDE;
+    133          bit     ADEX   = 0xDD;
+    134          bit     BSY    = 0xDC;
+    135          bit     ADM    = 0xDB;
+    136          bit     MX2    = 0xDA;
+    137          bit     MX1    = 0xD9;
+    138          bit     MX0    = 0xD8;
+    139          
+    140          
+    141          /*========IRCON0=======*/
+    142          
+    143          bit     EXF2   = 0xC7;
+    144          bit     TF2    = 0xC6;
+    145          bit     IEX6   = 0xC5;
+    146          bit     IEX5   = 0xC4;
+    147          bit     IEX4   = 0xC3;
+    148          bit     IEX3   = 0xC2;
+    149          bit     IEX2   = 0xC1;
+    150          bit     IADC   = 0xC0;
+    151          
+    152          /*========T2CON=======*/
+    153          
+    154          bit     T2PS   = 0xCF;
+    155          bit     I3FR   = 0xCE;
+    156          bit     I2FR   = 0xCD;
+    157          bit     T2R1   = 0xCC;
+    158          bit     T2R0   = 0xCB;
+    159          bit     T2CM   = 0xCA;
+    160          bit     T2I1   = 0xC9;
+    161          bit     T2I0   = 0xC8;
+    162          
+    163          /*========PSW=========*/
+    164          
+    165          bit     CY     = 0xD7;
+    166          bit     AC     = 0xD6;
+    167          bit     F0     = 0xD5;
+    168          bit     RS1    = 0xD4;
+    169          bit     RS0    = 0xD3;
+    170          bit     OV     = 0xD2;
+    171          bit     F1     = 0xD1;
+    172          bit     P      = 0xD0;
+    173          
+    174          /*========TCON========*/
+    175          
+    176          bit     TF1    = 0x8F;
+    177          bit     TR1    = 0x8E;
+    178          bit     TF0    = 0x8D;
+    179          bit     TR0    = 0x8C;
+    180          bit     IE1    = 0x8B;
+    181          bit     IT1    = 0x8A;
+    182          bit     IE0    = 0x89;
+    183          bit     IT0    = 0x88;
+    184          
+    185          /*========IEN0========*/
+    186          
+    187          bit     EAL    = 0xAF;
+    188          bit     WDT    = 0xAE;
+    189          bit     ET2    = 0xAD;
+    190          bit     ES0    = 0xAC;
+    191          bit     ET1    = 0xAB;
+    192          bit     EX1    = 0xAA;
+    193          bit     ET0    = 0xA9;
+    194          bit     EX0    = 0xA8;
+    195          
+    196          /*========IEN1========*/
+    197          
+    198          bit     EXEN2  = 0xBF;
+    199          bit     SWDT   = 0xBE;
+    200          bit     EX6    = 0xBD;
+    201          bit     EX5    = 0xBC;
+    202          bit     EX4    = 0xBB;
+    203          bit     EX3    = 0xBA;
+    204          bit     EX2    = 0xB9;
+    205          bit     EADC   = 0xB8;
+    206          
+    207          /*========P3=========*/
+    208          
+    209          bit     RD     = 0xB7;
+    210          bit     WR     = 0xB6;
+    211          bit     T1     = 0xB5;
+    212          bit     T0     = 0xB4;
+    213          bit     INT1   = 0xB3;
+    214          bit     INT0   = 0xB2;
+    215          bit     TXD    = 0xB1;
+    216          bit     RXD    = 0xB0;
+    217          
+    218          /*========S0CON========*/
+    219          
+    220          bit     SM0    = 0x9F;
+    221          bit     SM1    = 0x9E;
+    222          bit     SM20   = 0x9D;
+    223          bit     REN0   = 0x9C;
+    224          bit     TB80   = 0x9B;
+    225          bit     RB80   = 0x9A;
+    226          bit     TI0    = 0x99;
+    227          bit     RI0    = 0x98;
+    228          
+    229          
+    230          /* Interrupt Vector Definitions */
+    231          
+    232          interrupt [0x03] void EX0_int (void);     /* External Interrupt 0 */
+    233          
+    234          interrupt [0x0B] void T0_int (void);      /* Timer 0 Overflow */
+    235          
+    236          interrupt [0x13] void EX1_int (void);     /* External Interrupt 1 */
+    237          
+    238          interrupt [0x1B] void T1_int (void);      /* Timer 1 Overflow */
+    239          
+    240          interrupt [0x23] void SCON0_int (void);   /* Serial Port 0 */
+    241          
+    242          interrupt [0x2B] void T2_int (void);      /* Timer 2 Overflow */
+    243          
+    244          interrupt [0x2B] void T2EX_int (void);    /* Negative Transition on T2EX */
+    245          
+    246          interrupt [0x43] void ADC_int (void);     /* ADC Interrupt */
+    247          
+    248          interrupt [0x4B] void EX2_int (void);     /* External Interrupt 2 */
+    249          
+    250          interrupt [0x53] void EX3_int (void);     /* External Interrupt 3 */
+    251          
+    252          interrupt [0x5B] void EX4_int (void);     /* External Interrupt 4 */
+    253          
+    254          interrupt [0x63] void EX5_int (void);     /* External Interrupt 5 */
+    255          
+    256          interrupt [0x6B] void EX6_int (void);     /* External Interrupt 6 */
+    257          
+    258          interrupt [0x83] void SCON1_int (void);   /* Serial Port 1 */
+    259          
+    260          interrupt [0x93] void ICMP_int (void);    /* Compare match interrupt */
+    261          
+    262          interrupt [0x9B] void CT_int (void);      /* Compare Timer Overflow */
+    263          
+    264          interrupt [0xA3] void ICS_int (void);     /* COMSET interrupt */
+    265          
+    266          interrupt [0xAB] void ICR_int (void);     /* COMCLR interrupt */
+    267          
+    268          
+     48          #include <stdio.h>
+      1          /*                      - STDIO.H -
+      2          
+      3             Subset of ANSI standard I/O function declarations.
+      4          
+      5             Version: 3.30 04/Nov/94 IHAW
+      6          
+      7          
+      8          */
+      9          
+     10          #ifndef _STDIO_INCLUDED
+     11          #define _STDIO_INCLUDED
+     12          
+     13          #ifndef NULL
+     14          #define NULL    (void *) 0
+     15          #endif
+     16          
+     17          #ifndef EOF
+     18          #define EOF     (-1)
+     19          #endif
+     20          
+     21          #ifndef size_t
+     22          #if     sizeof((char*)0 - (char*)0) <= sizeof(int)
+     23          #define size_t  unsigned int
+     24          #else
+     25          #define size_t  unsigned long 
+     26          #endif
+     27          #endif
+     28          
+     29          /* ===
+     30          
+     31          #if __TID__ & 0x8000
+     32          #pragma function=intrinsic(0)
+     33          #endif
+     34          
+     35          === */
+     36          
+     37          #ifndef MEMORY_ATTRIBUTE
+     38          #define MEMORY_ATTRIBUTE
+     39          #endif
+     40          
+     41          MEMORY_ATTRIBUTE int    puts(const char *__s);
+     42          MEMORY_ATTRIBUTE int    putchar(int __value);
+     43          MEMORY_ATTRIBUTE int    getchar(void);
+     44          MEMORY_ATTRIBUTE int    sprintf(char *__s,const char *__format,...);
+     45          MEMORY_ATTRIBUTE int    printf(const char *__format,...);
+     46          MEMORY_ATTRIBUTE int    scanf(const char *__format,...);
+     47          MEMORY_ATTRIBUTE int    sscanf(const char *__s, const char *__format,...);
+     48          MEMORY_ATTRIBUTE char   *gets(char *__s);
+     49          
+     50          #if __TID__ & 0x8000
+     51          #pragma function=default
+     52          #endif
+     53          
+     54          #endif
+     55          
+     56          
+     57          
+     49          #include <stdlib.h>
+      1          /*                      - STDLIB.H -
+      2          
+      3             The ANSI-defined 'standard' functions.
+      4          
+      5             Version: 3.30 04/Nov/94 IHAW
+      6          
+      7          $Name: V3_33B $
+      8          $Log: stdlib.h $
+      9          Revision 1.3  1996/06/07 07:11:26  matsp
+     10          
+     11          Revision 1.2  1996/01/26 16:13:20  matsp
+     12          A lot. Converted to Source Integrity
+     13          Revision 1.2  1996/01/26 17:13:18  MATSP
+     14          Revision 1.4  1996/01/26 16:07:29  MATSP
+     15          Revision 1.3  1995/12/04 09:04:11  MATSP
+     16          RAND_MAX changed from 32768 to 32767.
+     17          */
+     18          
+     19          #ifndef _STDLIB_INCLUDED
+     20          #define _STDLIB_INCLUDED
+     21          
+     22          #ifndef size_t
+     23          #if sizeof((char *)0 - (char *)0) <= sizeof(int)
+     24          #define size_t          unsigned int
+     25          #else
+     26          #define size_t          unsigned long
+     27          #endif
+     28          #endif
+     29          
+     30          #ifndef NULL
+     31          #define NULL    (void*) 0 
+     32          #endif
+     33          
+     34          typedef struct
+     35                  {
+     36                    int   quot;
+     37                    int   rem;
+     38                  } div_t;
+     39          
+     40          typedef struct
+     41                  {
+     42                    long int      quot;
+     43                    long int      rem;
+     44                  } ldiv_t;
+     45          
+     46          
+     47          #define RAND_MAX        32767
+     48          
+     49          #define EXIT_SUCCESS    0
+     50          #define EXIT_FAILURE    1
+     51          
+     52          #define MB_CUR_MAX      1
+     53          
+     54          #if __TID__ & 0x8000
+     55          #pragma function=intrinsic(0)
+     56          #endif
+     57          
+     58          #ifndef MEMORY_ATTRIBUTE
+     59          #define MEMORY_ATTRIBUTE
+     60          #endif
+     61          
+     62          #ifndef PTR_ATTRIBUTE
+     63          #define PTR_ATTRIBUTE
+     64          #endif
+     65          
+     66          MEMORY_ATTRIBUTE void   *malloc(size_t __size);
+     67          
+     68          MEMORY_ATTRIBUTE void   free(void *__ptr);
+     69          
+     70          MEMORY_ATTRIBUTE void   exit(int __status);
+     71          
+     72          MEMORY_ATTRIBUTE void   *calloc(unsigned int __nelem, size_t __elsize);
+     73          
+     74          MEMORY_ATTRIBUTE void   *realloc(void *__ptr, size_t __size);
+     75          
+     76          MEMORY_ATTRIBUTE int atoi (const char *__nptr);
+     77          
+     78          MEMORY_ATTRIBUTE long atol (const char *__nptr);
+     79          
+     80          MEMORY_ATTRIBUTE double atof (const char *__nptr);
+     81          
+     82          MEMORY_ATTRIBUTE double strtod(const char *__nptr, char **__endptr);
+     83          
+     84          MEMORY_ATTRIBUTE long int strtol(const char *__nptr, char **__endptr, int __base);
+     85          
+     86          MEMORY_ATTRIBUTE unsigned long int strtoul(const char *__nptr, char **__endptr, int __base);
+     87          
+     88          MEMORY_ATTRIBUTE int rand(void);
+     89          
+     90          MEMORY_ATTRIBUTE void srand(unsigned int __seed);
+     91          
+     92          MEMORY_ATTRIBUTE void abort(void);
+     93          
+     94          MEMORY_ATTRIBUTE int abs(int __j);
+     95          
+     96          MEMORY_ATTRIBUTE div_t div(int __numer, int __denom);
+     97          
+     98          MEMORY_ATTRIBUTE long int labs(long int __j);
+     99          
+    100          MEMORY_ATTRIBUTE ldiv_t ldiv(long int __numer, long int __denom);
+    101          
+    102          MEMORY_ATTRIBUTE void *bsearch(const void *__key, const void *__base,
+    103                                  size_t __nmemb, size_t __size,
+    104                                  int (*__compar) (const void *, const void *));
+    105          
+    106          MEMORY_ATTRIBUTE void qsort(void *__base, size_t __nmemb, size_t __size,
+    107                                  int (*__compar) (const void *, const void *));
+    108          
+    109          #if __TID__ & 0x8000
+    110          #pragma function=default
+    111          #endif
+    112          
+    113          #endif
+    114          
+     50          #include "DPOT.h"
+      1          /*************************************************************
+      2          Fil:            $Id: DPot.h,v 1.2 2003/11/20 22:08:52 Gemensam Exp $
+      3          
+      4          Beskrivning:    Header fil till DPot.c
+      5          
+      6          Skapad:         03-11-17
+      7          
+      8          Ändrad:         $Date: 2003/11/20 22:08:52 $
+      9          
+     10          Ägare:          Fredrik Hoffman
+     11          
+     12          
+     13          Att göra:
+     14          
+     15          Kommentarer:
+     16          
+     17              Varje pot har fyra nonvolatile register. Dessa definieras härmed enligt följande:
+     18              *   0 = Zero Wiper  = 0
+     19              *   1 = Variable Wiper  = ?
+     20              *   2 = Oanvänd = X
+     21              *   3 = Full Wiper = 255
+     22              Vid initialiseringen skall värden för Zero och Full skrivas in i NV-registererna
+     23              Sedan skall Wiper på alla pottar sättas till Zero.
+     24          
+     25          Revisionshistoria:
+     26                                          $Log: DPot.h,v $
+     27                                          Revision 1.2  2003/11/20 22:08:52  Gemensam
+     28                                          Various declarations changes.
+     29                                          Still version 0200.
+     30                                          
+     31                                          Revision 1.1  2003/11/18 19:17:36  Gemensam
+     32                                          Added menu option of setting speaker volume (untested)
+     33                                          Completely changed header files
+     34                                          Version 0200.
+     35                                          
+     36          
+     37          *************************************************************/
+     38          
+     39          #ifndef _DPOT_INCLUDED_
+     40          #define _DPOT_INCLUDED_
+     41          
+     42          ///////////////////////////////////
+     43          // Definitioner
+     44          
+     45          #define DPCL    P3.3
+     46          #define DPDA    P3.4
+     47           
+     48          #define POT_PHONE_OUT   0x00
+     49          #define POT_PHONE_IN    0x03
+     50          #define POT_SPEAKER     0x01
+     51          #define POT_DTMF        0x02
+     52          
+     53          #define DEFAULT_SPEAKER_VOLUME  50
+     54          
+     55          ///////////////////////////////////
+     56          // Funktioner och procedurer
+     57          
+     58          extern void    InitializeDPot( void );
+     59          extern void    RPWait( void );
+     60          extern char    WOEPB(char dat);
+     61          extern char    ROEPB(char ack);
+     62          extern char    SetDPWiper(char pot, char value);
+     63          extern char    ReadDPWiper(char pot, char* dat);
+     64           
+     65          extern void    SpeakerVolume(char volume);
+     66          extern void    PhoneInVolume(char volume);
+     67          extern void    PhoneOutVolume(char volume);
+     68          extern void    DTMFVolume(char volume);
+     69          
+     70          #endif
+     51          #include "main.h"
+      1          /*************************************************************
+      2          Fil:            $Id: Main.h,v 1.10 2003/12/26 16:17:01 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/12/26 16:17:01 $
+      5          
+      6          Revisionshistoria:
+      7                                          $Log: Main.h,v $
+      8                                          Revision 1.10  2003/12/26 16:17:01  Gemensam
+      9                                          Reinstate 500 ms wait for hang up detection to settle (if not PPD is used).
+     10                                          Fixed PPD detection by decreasing phone volume from 63 to 15.
+     11                                          Version 0304.
+     12                                          
+     13                                          Revision 1.9  2003/12/09 20:52:49  Gemensam
+     14                                          Commented out PPD detection since the HW not work yet.
+     15                                          Ver 0302.
+     16                                          
+     17                                          Revision 1.8  2003/11/29 22:35:59  Gemensam
+     18                                          Fixed problem with to short pulse width on PPD.
+     19                                          Ver 0302.
+     20                                          
+     21                                          Revision 1.7  2003/11/24 22:44:36  Gemensam
+     22                                          Fixed PPD, not working yet,
+     23                                          New command: speaker volume.
+     24                                          Version 0301.
+     25                                          
+     26                                          Revision 1.6  2003/11/23 21:40:03  Gemensam
+     27                                          Parallell phone detection included.
+     28                                          Removed obsolete #define's regarding LCD interface.
+     29                                          Ver 0300
+     30                                          
+     31                                          Revision 1.5  2003/11/23 20:29:34  Gemensam
+     32                                          Complete and tested volume setting in options menu.
+     33                                          Ver 0201
+     34                                          
+     35                                          Revision 1.4  2003/11/20 22:08:53  Gemensam
+     36                                          Various declarations changes.
+     37                                          Still version 0200.
+     38                                          
+     39                                          Revision 1.3  2003/11/18 19:17:36  Gemensam
+     40                                          Added menu option of setting speaker volume (untested)
+     41                                          Completely changed header files
+     42                                          Version 0200.
+     43                                          
+     44                                          Revision 1.2  2003/11/10 22:44:45  Gemensam
+     45                                          Added header information
+     46                                          
+     47          *************************************************************/
+     48          
+     49          #ifndef _MAIN_INCLUDED_
+     50          #define _MAIN_INCLUDED_
+     51          
+     52          #include "FileSystem.h"
+      1          /**************************************************************************************
+      2          Fil:            $Id: FileSystem.h,v 1.4 2003/11/20 22:08:53 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/11/20 22:08:53 $
+      5          
+      6          Kommentarer:    Filhuvudet befinner sig i "Spare" arean tillhörande filens första sida. Huvudet består 
+      7                                          av 16 bytes enligt följande lista:
+      8                                          0       Huvud       0xAA = Legalt filhuvud, annat tillsvidare odefinierat
+      9                                          1-4     Fillängd    Pos 1 = MSB, pos 4 = LSB
+     10                                          5-12    Filtitel    Enl "Titel.ext". Om titeln är mindre än 8 tecken avslutas det med nollor
+     11                                          13-15   Filext      Enl "Titel.ext". Om ext är mindre än 3 tecken avslutas det med nollor
+     12          
+     13                                          En nolla skriven i fileName[0] indikerar att
+     14                                          filstrukturen är ledig.
+     15                  
+     16          Revisionshistoria:
+     17                                          $Log: FileSystem.h,v $
+     18                                          Revision 1.4  2003/11/20 22:08:53  Gemensam
+     19                                          Various declarations changes.
+     20                                          Still version 0200.
+     21                                          
+     22                                          Revision 1.3  2003/11/18 19:17:36  Gemensam
+     23                                          Added menu option of setting speaker volume (untested)
+     24                                          Completely changed header files
+     25                                          Version 0200.
+     26                                          
+     27                                          Revision 1.2  2003/11/10 22:44:45  Gemensam
+     28                                          Added header information
+     29                                          
+     30          
+     31          **************************************************************************************/
+     32          
+     33          #ifndef _FILESYSTEM_INCLUDED_
+     34          #define _FILESYSTEM_INCLUDED_
+     35          
+     36          ///////////////////////////////////
+     37          // Definitioner
+     38          
+     39          #define FS_MAXFILES         8 
+     40          #define FS_FILENAMELENGTH   13
+     41          #define FS_FLASHSIZE        0x800000
+     42          
+     43          #define OFF            0
+     44          #define READY        1
+     45          #define NEMPTY        2
+     46          #define WRITING        3
+     47          #define OCCUPIED    4
+     48          
+     49          #define CLE     P4.0                                //Command Latch Enable
+     50          #define ALE     P4.1                                //Address Latch Enable
+     51          #define WP      P4.2                                //Write Protect
+     52          #define SE      P4.3                                //Spare Enable
+     53          //#define CE      P4.4                                //Chip Enable
+     54          #define FBUSY   P4.5                                //Busy
+     55          
+     56          #define FREG (*(unsigned char xdata *) 0xE000)
+     57          #define FLASH (*(unsigned char xdata *) 0xB000) 
+     58          
+     59          ///////////////////////////////////
+     60          // Strukturer
+     61          
+     62          struct ST_FILE_HEAD {
+     63              unsigned long   length;
+     64              char            name[FS_FILENAMELENGTH];
+     65          };
+     66          #define FILE_HEAD struct ST_FILE_HEAD
+     67          
+     68          
+     69          struct ST_FILE {
+     70              char            fileName[FS_FILENAMELENGTH];
+     71              unsigned long   startAddress;
+     72              unsigned long   length; 
+     73              unsigned long   offset; 
+     74              char            write;
+     75              char            append;
+     76          };
+     77          #define FILE struct ST_FILE 
+     78          
+     79          
+     80          
+     81          ///////////////////////////////////
+     82          // Funktioner och procedurer
+     83          
+     84          extern void            InitializeFileSystem( void );
+     85          extern void            InitializeFlash( void );
+     86          extern void            SetupReadSeq( void );
+     87          extern unsigned char   ReadFLASH( void );
+     88          extern void            TerminateReadSeq( void );
+     89          extern void            GetDeviceIDRS232(void);
+     90          extern void            SetupWriteSeq( void );
+     91          extern void            WriteFLASH(unsigned char);
+     92          extern void            TerminateWriteSeq( void );
+     93          extern void            PerformWriteSeq( void );
+     94          extern void            EraseBlock( void );
+     95          extern void            WriteFileHead(const char* name, long size);
+     96          extern FILE*           fopen(const char* name, const char* def);
+     97          extern FILE*               fopenA(const char* name, long maxSize, long offset);
+     98          extern void            fputc(FILE* filePtr, char c);
+     99          extern void            fputLine(FILE* filePtr, const char* str);
+    100          extern void            fupLoad( void );
+    101          extern int             fgetc(FILE* filePtr);
+    102          extern void            fgetLine(FILE* filePtr, char* str, int maxLen);
+    103          extern void            fdownLoad( void );
+    104          extern void            fclose(FILE* filePtr);
+    105          extern long            ftell(FILE* filePtr);
+    106          //void            Rewind(FILE* filePtr);
+    107          extern void            fSetPos(FILE* filePtr, long offset);
+    108          extern void            ReleaseCurrFile( void );
+    109          extern void            EraseAll( void );
+    110          extern void            StartDynamic( void );
+    111          extern void            EraseDynamic( void );
+    112          extern char                        MemUsage( void );
+    113          extern void                        Dir( void );
+    114          extern void                        Type( void );
+    115          extern void                        TypeA( void );
+    116          
+    117          #endif
+     53          
+     54          
+     55          ///////////////////////////////////
+     56          // Definitioner
+     57          
+     58          #define VERSION_MENU_STRING     "Telestation 3.5       (c) 2004-09-19 FRHA"
+     59          
+     60          #define CM_PARSIZE              24
+     61          #define CM_NRPAR                16
+     62          
+     63          #define MAX_LABEL_LEN   8
+     64          #define MAX_LABELS      64
+     65          
+     66          // Nedan var ett försök till multipla bat-filer, kanske införs senare
+     67          /*
+     68          #define MAX_BATFILES    8
+     69          */
+     70          
+     71          ///////////////////////////////////
+     72          // Strukturer
+     73          
+     74          // Nedan var ett försök till multipla bat-filer, kanske införs senare
+     75          /*
+     76          struct ST_Label {
+     77              char    name[MAX_LABEL_LEN];
+     78              long    pos;
+     79          };
+     80          #define Label struct ST_Label
+     81           
+     82          struct ST_BatFileObj {
+     83              FILE*       fp;                 //Filpekare till bat-filen
+     84              Label*      labels;             //Pekare till lista med ingående labels
+     85              char        labelIndex;         //Pekar på nästa lediga label
+     86              BatFileObj* caller;             //Den batfil som kallade på denna. Om användaren gav kommandot 
+     87                                              //skall den inehålla NULL
+     88              char        occupied;           //1 om detta objekt används, 0 annars
+     89          };    
+     90          #define BatFileObj struct ST_BatFileObj
+     91          */
+     92          
+     93          ///////////////////////////////////
+     94          // Funktioner och procedurer
+     95          
+     96          extern void    InitializeComputer1( void );
+     97          extern void    InitializePhoneAnsApp( void );
+     98          extern void    MainShell( void );
+     99          extern char    DecodeAndPerform(const char* cmdStr);
+    100          //int     MainCommandInterper(char c);
+    101          extern void    Hello( void );
+    102          extern void    TestHW( void );
+    103          extern void    FlashID( void );
+    104          extern void    Erase( void );
+    105          extern void    BackRead( void );
+    106          extern void    ReadSpare( void );
+    107          extern void    WF1( void );
+    108          extern void    WF2( void );
+    109          extern void    WF3( void );
+    110          extern void    RF1( void );
+    111          extern void    RF2( void );
+    112          extern void    RF3( void );
+    113          extern void    CreateLong( void );
+    114          extern void    ReadSpare2( void );
+    115          extern void    Append( void );
+    116          
+    117          extern void    SetupBatFile( void );
+    118          extern void    ClearLabelList( void );
+    119          extern void    ExecuteBatFile(const char* batFileName);
+    120          extern char    InsertLabel(const char* name, long pos);
+    121          extern int     FindLabel(const char *name);
+    122          extern char    GotoLabel(const char* name);
+    123          
+    124          extern void    myStrCpy(char* dest, const char* src);
+    125          extern int     myStrLen(char* str);
+    126          extern void    myLong2HexStr(long v, char* str);
+    127          extern void    myInt2DecStr(int v, char* str);
+    128          extern void    myInt2DecStr00(char v, char* str);
+    129          extern int     myStr2Int(const char* str);
+    130          extern char    myStrCmpNoCase(const char* s1, const char* s2);
+    131          
+    132          // Nedan var ett försök till multipla bat-filer, kanske införs senare
+    133          /*
+    134          void    SetupBatFile( void );
+    135          void    ClearLabelList( void );
+    136          void    ClearLabelList(Label* list);
+    137          BatFileObj*    VacantBatFileObj(FILE* fp);
+    138          void    ExecuteBatFile(const char* batFileName);
+    139          char    InsertLabel(const char* name, long pos);
+    140          char    FindLabel(const char *name, Label* l);
+    141          char    GotoLabel(const char* name);
+    142          */
+    143          
+    144          ///////////////////////////
+    145          // Globala variabler
+    146          
+    147          
+    148          ///////////////////////////
+    149          // Lokala variabler
+    150          
+    151          
+    152          #endif
+     52          #include "rs232.h"
+      1          /********************************************************
+      2          Fil:            $Id: RS232.h,v 1.2 2003/11/20 22:08:53 Gemensam Exp $
+      3          
+      4          Ändrad:         $Date: 2003/11/20 22:08:53 $
+      5          
+      6          Revisionshistoria:
+      7                                          $Log: RS232.h,v $
+      8                                          Revision 1.2  2003/11/20 22:08:53  Gemensam
+      9                                          Various declarations changes.
+     10                                          Still version 0200.
+     11                                          
+     12                                          Revision 1.1  2003/11/18 19:17:36  Gemensam
+     13                                          Added menu option of setting speaker volume (untested)
+     14                                          Completely changed header files
+     15                                          Version 0200.
+     16                                          
+     17                                          
+     18          
+     19          ********************************************************/
+     20          
+     21          #ifndef _RS232_INCLUDED_
+     22          #define _RS232_INCLUDED_
+     23          
+     24          ///////////////////////////////////
+     25          // Definitioner
+     26          
+     27          
+     28          ///////////////////////////////////
+     29          // Strukturer
+     30          
+     31          
+     32          ///////////////////////////////////
+     33          // Funktioner och procedurer
+     34          
+     35          extern void             InitializeRS232( void );
+     36          extern void             SendRS232(char tecken);
+     37          extern void             SendStringRS232(const char *str);
+     38          extern void             SendStringEOLRS232(const char *str);
+     39          extern char             WaitAndReceiveRS232( void );
+     40          extern char             WaitAndReceiveTimeout( void );
+     41          extern int      ReceiveLineRS232(char* str, int maxLen);
+     42          
+     43          #endif
+     53          
+     54          //////////////////////
+     55          // Globala variabler
+     56          
+     57          xdata char      speakerVolume;
+     58          
+     59          //////////////////////
+     60          // Lokala variabler
+     61          
+     62          
+     63          //////////////////////
+     64          // Kod
+     65          
+     66          void    InitializeDPot( void )
+     67          {                                                                                 
+   \   0000            InitializeDPot:
+     68              DPDA = 1;
+   \   0000  D2B4              SETB    P3.4
+     69              DPCL = 1;
+   \   0002  D2B3              SETB    P3.3
+     70          
+     71                  speakerVolume = DEFAULT_SPEAKER_VOLUME;
+   \   0004  7432              MOV     A,#50
+   \   0006  900000            MOV     DPTR,#speakerVolume
+   \   0009  F0                MOVX    @DPTR,A
+     72          }
+   \   000A  22                RET
+     73          
+     74          
+     75          void    RPWait( void )
+     76          {
+   \   000B            RPWait:
+     77          //    xdata char    a;
+     78             
+     79          //    a = 1;
+     80          //    a = a+1;
+     81          
+     82              xdata unsigned int   i;
+     83              
+     84              for (i = 0 ; i<10 ; i++) {
+   \   000B  E4                CLR     A
+   \   000C  FE                MOV     R6,A
+   \   000D  FF                MOV     R7,A
+   \   000E            ?0001:
+   \   000E  C3                CLR     C
+   \   000F  EE                MOV     A,R6
+   \   0010  940A              SUBB    A,#10
+   \   0012  EF                MOV     A,R7
+   \   0013  9400              SUBB    A,#0
+   \   0015  500B              JNC     ?0000
+   \   0017            ?0002:
+     85                  WDT = 1;
+   \   0017  D2AE              SETB    IE.6
+     86                  SWDT = 1;
+   \   0019  D2BE              SETB    IP.6
+   \   001B  0E                INC     R6
+   \   001C  BE0001            CJNE    R6,#0,?0024
+   \   001F  0F                INC     R7
+   \   0020            ?0024:
+     87              }
+     88              
+     89          }
+   \   0020  80EC              SJMP    ?0001
+   \   0022            ?0000:
+   \   0022  900000            MOV     DPTR,#$LOCBX RPWait
+   \   0025  EF                MOV     A,R7
+   \   0026  F0                MOVX    @DPTR,A
+   \   0027  A3                INC     DPTR
+   \   0028  EE                MOV     A,R6
+   \   0029  F0                MOVX    @DPTR,A
+   \   002A  22                RET
+     90          
+     91           
+     92          char WOEPB(char dat)
+     93          //WriteOneCalenderByte (intern funktion)
+     94          {
+   \   002B            WOEPB:
+   \   002B  900000            MOV     DPTR,#$LOCBX WOEPB+2
+   \   002E  D0E0              POP     ACC
+   \   0030  F0                MOVX    @DPTR,A
+   \   0031  A3                INC     DPTR
+   \   0032  D0E0              POP     ACC
+   \   0034  F0                MOVX    @DPTR,A
+     95              xdata char    ack;
+     96              xdata char     i;
+     97          
+     98              for (i=0 ; i<8 ; i++) {
+   \   0035  E4                CLR     A
+   \   0036  900000            MOV     DPTR,#$LOCBX WOEPB+1
+   \   0039  F0                MOVX    @DPTR,A
+   \   003A  EC                MOV     A,R4
+   \   003B  900000            MOV     DPTR,#$LOCBX WOEPB+4
+   \   003E  F0                MOVX    @DPTR,A
+   \   003F            ?0005:
+   \   003F  900000            MOV     DPTR,#$LOCBX WOEPB+1
+   \   0042  E0                MOVX    A,@DPTR
+   \   0043  24F8              ADD     A,#248
+   \   0045  4024              JC      ?0004
+   \   0047            ?0006:
+     99                  DPDA = (dat >> 7) & 0x01;
+   \   0047  900000            MOV     DPTR,#$LOCBX WOEPB+4
+   \   004A  E0                MOVX    A,@DPTR
+   \   004B  A2E7              MOV     C,ACC.7
+   \   004D  92B4              MOV     P3.4,C
+    100                  RPWait();
+   \   004F  120000            LCALL   $REFFN RPWait
+    101                  DPCL = 1;
+   \   0052  D2B3              SETB    P3.3
+    102                  RPWait();
+   \   0054  120000            LCALL   $REFFN RPWait
+    103                  DPCL = 0;
+   \   0057  C2B3              CLR     P3.3
+    104                  RPWait();
+   \   0059  120000            LCALL   $REFFN RPWait
+    105                  dat = dat << 1;
+   \   005C  900000            MOV     DPTR,#$LOCBX WOEPB+4
+   \   005F  E0                MOVX    A,@DPTR
+   \   0060  25E0              ADD     A,ACC
+   \   0062  F0                MOVX    @DPTR,A
+   \   0063  900000            MOV     DPTR,#$LOCBX WOEPB+1
+   \   0066  E0                MOVX    A,@DPTR
+   \   0067  04                INC     A
+   \   0068  F0                MOVX    @DPTR,A
+   \   0069  80D4              SJMP    ?0005
+   \   006B            ?0004:
+    106              }
+    107          
+    108              DPDA = 1;            //Sätt DPDA till ingång
+   \   006B  D2B4              SETB    P3.4
+    109              RPWait();
+   \   006D  120000            LCALL   $REFFN RPWait
+    110              DPCL = 1;
+   \   0070  D2B3              SETB    P3.3
+    111              RPWait();
+   \   0072  120000            LCALL   $REFFN RPWait
+    112              ack = DPDA;            //Hämta ack-bit
+   \   0075  E4                CLR     A
+   \   0076  A2B4              MOV     C,P3.4
+   \   0078  92E0              MOV     ACC.0,C
+   \   007A  900000            MOV     DPTR,#$LOCBX WOEPB
+   \   007D  F0                MOVX    @DPTR,A
+    113              DPCL = 0;
+   \   007E  C2B3              CLR     P3.3
+    114              RPWait();
+   \   0080  120000            LCALL   $REFFN RPWait
+    115              return ack;
+   \   0083  900000            MOV     DPTR,#$LOCBX WOEPB
+   \   0086  E0                MOVX    A,@DPTR
+   \   0087  FC                MOV     R4,A
+    116          }
+   \   0088  900000            MOV     DPTR,#$LOCBX WOEPB+2
+   \   008B  E0                MOVX    A,@DPTR
+   \   008C  F8                MOV     R0,A
+   \   008D  A3                INC     DPTR
+   \   008E  E0                MOVX    A,@DPTR
+   \   008F  C0E0              PUSH    ACC
+   \   0091  E8                MOV     A,R0
+   \   0092  C0E0              PUSH    ACC
+   \   0094  22                RET
+    117           
+    118          char ROEPB(char ack)
+    119          //ReadOneCalenderByte (intern funktion)
+    120          {
+   \   0095            ROEPB:
+   \   0095  900000            MOV     DPTR,#$LOCBX ROEPB+2
+   \   0098  D0E0              POP     ACC
+   \   009A  F0                MOVX    @DPTR,A
+   \   009B  A3                INC     DPTR
+   \   009C  D0E0              POP     ACC
+   \   009E  F0                MOVX    @DPTR,A
+    121              xdata char    dat;
+    122              xdata char     i;
+    123          
+    124              dat = 0;
+    125          
+    126              DPDA = 1;            //Sätt DPDA till ingång
+   \   009F  D2B4              SETB    P3.4
+    127              RPWait();
+   \   00A1  EC                MOV     A,R4
+   \   00A2  A3                INC     DPTR
+   \   00A3  F0                MOVX    @DPTR,A
+   \   00A4  120000            LCALL   $REFFN RPWait
+    128          
+    129              for (i=0 ; i<8 ; i++) {
+   \   00A7  E4                CLR     A
+   \   00A8  900000            MOV     DPTR,#$LOCBX ROEPB
+   \   00AB  F0                MOVX    @DPTR,A
+   \   00AC  A3                INC     DPTR
+   \   00AD  F0                MOVX    @DPTR,A
+   \   00AE            ?0009:
+   \   00AE  900000            MOV     DPTR,#$LOCBX ROEPB+1
+   \   00B1  E0                MOVX    A,@DPTR
+   \   00B2  24F8              ADD     A,#248
+   \   00B4  4022              JC      ?0008
+   \   00B6            ?0010:
+    130                  dat = dat << 1;
+   \   00B6  900000            MOV     DPTR,#$LOCBX ROEPB
+   \   00B9  E0                MOVX    A,@DPTR
+   \   00BA  25E0              ADD     A,ACC
+   \   00BC  F0                MOVX    @DPTR,A
+    131                  DPCL = 1;
+   \   00BD  D2B3              SETB    P3.3
+    132                  RPWait();
+   \   00BF  120000            LCALL   $REFFN RPWait
+    133                  dat = dat + DPDA;
+   \   00C2  900000            MOV     DPTR,#$LOCBX ROEPB
+   \   00C5  E0                MOVX    A,@DPTR
+   \   00C6  A2B4              MOV     C,P3.4
+   \   00C8  3400              ADDC    A,#0
+   \   00CA  F0                MOVX    @DPTR,A
+    134                  DPCL = 0;
+   \   00CB  C2B3              CLR     P3.3
+    135                  RPWait();
+   \   00CD  120000            LCALL   $REFFN RPWait
+   \   00D0  900000            MOV     DPTR,#$LOCBX ROEPB+1
+   \   00D3  E0                MOVX    A,@DPTR
+   \   00D4  04                INC     A
+   \   00D5  F0                MOVX    @DPTR,A
+   \   00D6  80D6              SJMP    ?0009
+   \   00D8            ?0008:
+    136              }
+    137          
+    138          
+    139              DPDA = ack;
+   \   00D8  900000            MOV     DPTR,#$LOCBX ROEPB+4
+   \   00DB  E0                MOVX    A,@DPTR
+   \   00DC  A2E0              MOV     C,ACC.0
+   \   00DE  92B4              MOV     P3.4,C
+    140              RPWait();
+   \   00E0  120000            LCALL   $REFFN RPWait
+    141              DPCL = 1;
+   \   00E3  D2B3              SETB    P3.3
+    142              RPWait();
+   \   00E5  120000            LCALL   $REFFN RPWait
+    143              DPCL = 0;
+   \   00E8  C2B3              CLR     P3.3
+    144              RPWait();
+   \   00EA  120000            LCALL   $REFFN RPWait
+    145              return dat;
+   \   00ED  900000            MOV     DPTR,#$LOCBX ROEPB
+   \   00F0  E0                MOVX    A,@DPTR
+   \   00F1  FC                MOV     R4,A
+    146          }
+   \   00F2  900000            MOV     DPTR,#$LOCBX ROEPB+2
+   \   00F5  E0                MOVX    A,@DPTR
+   \   00F6  F8                MOV     R0,A
+   \   00F7  A3                INC     DPTR
+   \   00F8  E0                MOVX    A,@DPTR
+   \   00F9  C0E0              PUSH    ACC
+   \   00FB  E8                MOV     A,R0
+   \   00FC  C0E0              PUSH    ACC
+   \   00FE  22                RET
+    147          
+    148          
+    149          char    SetDPWiper(char pot, char value)
+    150          {   
+   \   00FF            SetDPWiper:
+   \   00FF  900000            MOV     DPTR,#$LOCBX SetDPWiper
+   \   0102  D0E0              POP     ACC
+   \   0104  F0                MOVX    @DPTR,A
+   \   0105  A3                INC     DPTR
+   \   0106  D0E0              POP     ACC
+   \   0108  F0                MOVX    @DPTR,A
+    151              DPCL = 1;            //Start
+   \   0109  D2B3              SETB    P3.3
+    152              RPWait();
+   \   010B  ED                MOV     A,R5
+   \   010C  A3                INC     DPTR
+   \   010D  A3                INC     DPTR
+   \   010E  F0                MOVX    @DPTR,A
+   \   010F  EC                MOV     A,R4
+   \   0110  900000            MOV     DPTR,#$LOCBX SetDPWiper+2
+   \   0113  F0                MOVX    @DPTR,A
+   \   0114  120000            LCALL   $REFFN RPWait
+    153              DPDA = 0;
+   \   0117  C2B4              CLR     P3.4
+    154              RPWait();
+   \   0119  120000            LCALL   $REFFN RPWait
+    155              DPCL = 0;
+   \   011C  C2B3              CLR     P3.3
+    156              RPWait();
+   \   011E  120000            LCALL   $REFFN RPWait
+    157           
+    158              if (WOEPB(0x50)) return 1;                   //Adressering
+   \   0121  7C50              MOV     R4,#80
+   \   0123  120000            LCALL   $REFFN WOEPB
+   \   0126  EC                MOV     A,R4
+   \   0127  6004              JZ      ?0013
+   \   0129            ?0012:
+   \   0129  7C01              MOV     R4,#1
+   \   012B  8039              SJMP    ?0018
+   \   012D            ?0013:
+    159              if (WOEPB(0xA0 + ((pot & 0x03) << 2))) return 2;      //Instruktion
+   \   012D  900000            MOV     DPTR,#$LOCBX SetDPWiper+2
+   \   0130  E0                MOVX    A,@DPTR
+   \   0131  5403              ANL     A,#3
+   \   0133  25E0              ADD     A,ACC
+   \   0135  25E0              ADD     A,ACC
+   \   0137  24A0              ADD     A,#160
+   \   0139  FC                MOV     R4,A
+   \   013A  120000            LCALL   $REFFN WOEPB
+   \   013D  EC                MOV     A,R4
+   \   013E  6004              JZ      ?0015
+   \   0140            ?0014:
+   \   0140  7C02              MOV     R4,#2
+   \   0142  8022              SJMP    ?0018
+   \   0144            ?0015:
+    160              if (WOEPB(value)) return 3;      //Data
+   \   0144  900000            MOV     DPTR,#$LOCBX SetDPWiper+3
+   \   0147  E0                MOVX    A,@DPTR
+   \   0148  FC                MOV     R4,A
+   \   0149  120000            LCALL   $REFFN WOEPB
+   \   014C  EC                MOV     A,R4
+   \   014D  6004              JZ      ?0017
+   \   014F            ?0016:
+   \   014F  7C03              MOV     R4,#3
+   \   0151  8013              SJMP    ?0018
+   \   0153            ?0017:
+    161           
+    162              DPDA = 0;            //Stopp
+   \   0153  C2B4              CLR     P3.4
+    163              RPWait();
+   \   0155  120000            LCALL   $REFFN RPWait
+    164              DPCL = 1;
+   \   0158  D2B3              SETB    P3.3
+    165              RPWait();
+   \   015A  120000            LCALL   $REFFN RPWait
+    166              DPDA = 1;
+   \   015D  D2B4              SETB    P3.4
+    167              RPWait();
+   \   015F  120000            LCALL   $REFFN RPWait
+    168              DPCL = 0;
+   \   0162  C2B3              CLR     P3.3
+    169              return 0;
+   \   0164  7C00              MOV     R4,#0
+    170          }
+   \   0166            ?0018:
+   \   0166  900000            MOV     DPTR,#$LOCBX SetDPWiper
+   \   0169  E0                MOVX    A,@DPTR
+   \   016A  F8                MOV     R0,A
+   \   016B  A3                INC     DPTR
+   \   016C  E0                MOVX    A,@DPTR
+   \   016D  C0E0              PUSH    ACC
+   \   016F  E8                MOV     A,R0
+   \   0170  C0E0              PUSH    ACC
+   \   0172  22                RET
+    171          
+    172          /*
+    173          char    SetDPNVRegister(char pot, char reg, char value)
+    174          {
+    175              DPCL = 1;            //Start
+    176              RPWait();
+    177              DPDA = 0;
+    178              RPWait();
+    179              DPCL = 0;
+    180              RPWait();
+    181          
+    182              if (WOEPB(0x50)) return 1;                       //Adressering
+    183              if (WOEPB(0xC0 + (pot << 2) + reg)) return 2;    //Instruktion
+    184              if (WOEPB(value)) return 3;                      //Data
+    185          
+    186              DPDA = 0;            //Stopp
+    187              RPWait();
+    188              DPCL = 1;
+    189              RPWait();
+    190              DPDA = 1;
+    191              DPCL = 0;
+    192              RPWait();
+    193          
+    194              while (WOEPB(0x50)) {                           //Ack polling
+    195                  WDT = 1;
+    196                  SWDT = 1;
+    197              }
+    198              return 0;
+    199          }
+    200          
+    201          char    TransferDPNVRegister(char pot, char reg)
+    202          {
+    203              DPCL = 1;            //Start
+    204              RPWait();
+    205              DPDA = 0;
+    206              RPWait();
+    207              DPCL = 0;
+    208              RPWait();
+    209          
+    210              if (WOEPB(0x50)) return 1;                   //Adressering
+    211              if (WOEPB(0xD0 + (pot << 2) + reg)) return 2;      //Instruktion
+    212           
+    213              DPDA = 0;            //Stopp
+    214              RPWait();
+    215              DPCL = 1;
+    216              RPWait();
+    217              DPDA = 1;
+    218              RPWait();
+    219              DPCL = 0;
+    220              return 0;
+    221          } 
+    222          */ 
+    223          
+    224          char    ReadDPWiper(char pot, char* dat)
+    225          {
+   \   0173            ReadDPWiper:
+   \   0173  900000            MOV     DPTR,#$LOCBX ReadDPWiper
+   \   0176  D0E0              POP     ACC
+   \   0178  F0                MOVX    @DPTR,A
+   \   0179  A3                INC     DPTR
+   \   017A  D0E0              POP     ACC
+   \   017C  F0                MOVX    @DPTR,A
+    226              DPCL = 1;            //Start
+   \   017D  D2B3              SETB    P3.3
+    227              RPWait();
+   \   017F  A3                INC     DPTR
+   \   0180  A3                INC     DPTR
+   \   0181  EF                MOV     A,R7
+   \   0182  F0                MOVX    @DPTR,A
+   \   0183  A3                INC     DPTR
+   \   0184  EE                MOV     A,R6
+   \   0185  F0                MOVX    @DPTR,A
+   \   0186  A3                INC     DPTR
+   \   0187  ED                MOV     A,R5
+   \   0188  F0                MOVX    @DPTR,A
+   \   0189  EC                MOV     A,R4
+   \   018A  900000            MOV     DPTR,#$LOCBX ReadDPWiper+2
+   \   018D  F0                MOVX    @DPTR,A
+   \   018E  120000            LCALL   $REFFN RPWait
+    228              DPDA = 0;
+   \   0191  C2B4              CLR     P3.4
+    229              RPWait();
+   \   0193  120000            LCALL   $REFFN RPWait
+    230              DPCL = 0;
+   \   0196  C2B3              CLR     P3.3
+    231              RPWait();
+   \   0198  120000            LCALL   $REFFN RPWait
+    232          
+    233              if (WOEPB(0x50)) return 1;                   //Adressering
+   \   019B  7C50              MOV     R4,#80
+   \   019D  120000            LCALL   $REFFN WOEPB
+   \   01A0  EC                MOV     A,R4
+   \   01A1  6004              JZ      ?0020
+   \   01A3            ?0019:
+   \   01A3  7C01              MOV     R4,#1
+   \   01A5  803E              SJMP    ?0023
+   \   01A7            ?0020:
+    234              if (WOEPB(0x90 + ((pot & 0x03) << 2))) return 3;      //Instruktion
+   \   01A7  900000            MOV     DPTR,#$LOCBX ReadDPWiper+2
+   \   01AA  E0                MOVX    A,@DPTR
+   \   01AB  5403              ANL     A,#3
+   \   01AD  25E0              ADD     A,ACC
+   \   01AF  25E0              ADD     A,ACC
+   \   01B1  2490              ADD     A,#144
+   \   01B3  FC                MOV     R4,A
+   \   01B4  120000            LCALL   $REFFN WOEPB
+   \   01B7  EC                MOV     A,R4
+   \   01B8  6004              JZ      ?0022
+   \   01BA            ?0021:
+   \   01BA  7C03              MOV     R4,#3
+   \   01BC  8027              SJMP    ?0023
+   \   01BE            ?0022:
+    235              *dat = ROEPB(1);
+   \   01BE  7C01              MOV     R4,#1
+   \   01C0  120000            LCALL   $REFFN ROEPB
+   \   01C3  900000            MOV     DPTR,#$LOCBX ReadDPWiper+3
+   \   01C6  E0                MOVX    A,@DPTR
+   \   01C7  FF                MOV     R7,A
+   \   01C8  A3                INC     DPTR
+   \   01C9  E0                MOVX    A,@DPTR
+   \   01CA  FE                MOV     R6,A
+   \   01CB  A3                INC     DPTR
+   \   01CC  E0                MOVX    A,@DPTR
+   \   01CD  FD                MOV     R5,A
+   \   01CE  EC                MOV     A,R4
+   \   01CF  120000            LCALL   ?ST_A_R567_L17
+    236          
+    237              DPDA = 0;            //Stopp
+   \   01D2  C2B4              CLR     P3.4
+    238              RPWait();
+   \   01D4  120000            LCALL   $REFFN RPWait
+    239              DPCL = 1;
+   \   01D7  D2B3              SETB    P3.3
+    240              RPWait();
+   \   01D9  120000            LCALL   $REFFN RPWait
+    241              DPDA = 1;
+   \   01DC  D2B4              SETB    P3.4
+    242              RPWait();
+   \   01DE  120000            LCALL   $REFFN RPWait
+    243              DPCL = 0;
+   \   01E1  C2B3              CLR     P3.3
+    244              return 0;
+   \   01E3  7C00              MOV     R4,#0
+    245          }
+   \   01E5            ?0023:
+   \   01E5  900000            MOV     DPTR,#$LOCBX ReadDPWiper
+   \   01E8  E0                MOVX    A,@DPTR
+   \   01E9  F8                MOV     R0,A
+   \   01EA  A3                INC     DPTR
+   \   01EB  E0                MOVX    A,@DPTR
+   \   01EC  C0E0              PUSH    ACC
+   \   01EE  E8                MOV     A,R0
+   \   01EF  C0E0              PUSH    ACC
+   \   01F1  22                RET
+    246          
+    247          
+    248           
+    249           //Volume control
+    250           
+    251          void    SpeakerVolume(char volume)
+    252          {
+   \   01F2            SpeakerVolume:
+   \   01F2  900000            MOV     DPTR,#$LOCBX SpeakerVolume
+   \   01F5  D0E0              POP     ACC
+   \   01F7  F0                MOVX    @DPTR,A
+   \   01F8  A3                INC     DPTR
+   \   01F9  D0E0              POP     ACC
+   \   01FB  F0                MOVX    @DPTR,A
+    253              SetDPWiper(POT_SPEAKER, volume & 0x3F);
+   \   01FC  EC                MOV     A,R4
+   \   01FD  A3                INC     DPTR
+   \   01FE  F0                MOVX    @DPTR,A
+   \   01FF  543F              ANL     A,#63
+   \   0201  FD                MOV     R5,A
+   \   0202  7C01              MOV     R4,#1
+   \   0204  120000            LCALL   $REFFN SetDPWiper
+    254          }
+   \   0207  900000            MOV     DPTR,#$LOCBX SpeakerVolume
+   \   020A  E0                MOVX    A,@DPTR
+   \   020B  F8                MOV     R0,A
+   \   020C  A3                INC     DPTR
+   \   020D  E0                MOVX    A,@DPTR
+   \   020E  C0E0              PUSH    ACC
+   \   0210  E8                MOV     A,R0
+   \   0211  C0E0              PUSH    ACC
+   \   0213  22                RET
+    255           
+    256          void    PhoneInVolume(char volume)
+    257          {
+   \   0214            PhoneInVolume:
+   \   0214  900000            MOV     DPTR,#$LOCBX PhoneInVolume
+   \   0217  D0E0              POP     ACC
+   \   0219  F0                MOVX    @DPTR,A
+   \   021A  A3                INC     DPTR
+   \   021B  D0E0              POP     ACC
+   \   021D  F0                MOVX    @DPTR,A
+    258              SetDPWiper(POT_PHONE_IN, volume & 0x3F);
+   \   021E  EC                MOV     A,R4
+   \   021F  A3                INC     DPTR
+   \   0220  F0                MOVX    @DPTR,A
+   \   0221  543F              ANL     A,#63
+   \   0223  FD                MOV     R5,A
+   \   0224  7C03              MOV     R4,#3
+   \   0226  120000            LCALL   $REFFN SetDPWiper
+    259          }
+   \   0229  900000            MOV     DPTR,#$LOCBX PhoneInVolume
+   \   022C  E0                MOVX    A,@DPTR
+   \   022D  F8                MOV     R0,A
+   \   022E  A3                INC     DPTR
+   \   022F  E0                MOVX    A,@DPTR
+   \   0230  C0E0              PUSH    ACC
+   \   0232  E8                MOV     A,R0
+   \   0233  C0E0              PUSH    ACC
+   \   0235  22                RET
+    260           
+    261          void    PhoneOutVolume(char volume)
+    262          {
+   \   0236            PhoneOutVolume:
+   \   0236  900000            MOV     DPTR,#$LOCBX PhoneOutVolume
+   \   0239  D0E0              POP     ACC
+   \   023B  F0                MOVX    @DPTR,A
+   \   023C  A3                INC     DPTR
+   \   023D  D0E0              POP     ACC
+   \   023F  F0                MOVX    @DPTR,A
+    263              SetDPWiper(POT_PHONE_OUT, volume & 0x3F);
+   \   0240  EC                MOV     A,R4
+   \   0241  A3                INC     DPTR
+   \   0242  F0                MOVX    @DPTR,A
+   \   0243  543F              ANL     A,#63
+   \   0245  FD                MOV     R5,A
+   \   0246  7C00              MOV     R4,#0
+   \   0248  120000            LCALL   $REFFN SetDPWiper
+    264          }
+   \   024B  900000            MOV     DPTR,#$LOCBX PhoneOutVolume
+   \   024E  E0                MOVX    A,@DPTR
+   \   024F  F8                MOV     R0,A
+   \   0250  A3                INC     DPTR
+   \   0251  E0                MOVX    A,@DPTR
+   \   0252  C0E0              PUSH    ACC
+   \   0254  E8                MOV     A,R0
+   \   0255  C0E0              PUSH    ACC
+   \   0257  22                RET
+    265           
+    266          void    DTMFVolume(char volume)
+    267          {
+   \   0258            DTMFVolume:
+   \   0258  900000            MOV     DPTR,#$LOCBX DTMFVolume
+   \   025B  D0E0              POP     ACC
+   \   025D  F0                MOVX    @DPTR,A
+   \   025E  A3                INC     DPTR
+   \   025F  D0E0              POP     ACC
+   \   0261  F0                MOVX    @DPTR,A
+    268              SetDPWiper(POT_DTMF, volume & 0x3F);
+   \   0262  EC                MOV     A,R4
+   \   0263  A3                INC     DPTR
+   \   0264  F0                MOVX    @DPTR,A
+   \   0265  543F              ANL     A,#63
+   \   0267  FD                MOV     R5,A
+   \   0268  7C02              MOV     R4,#2
+   \   026A  120000            LCALL   $REFFN SetDPWiper
+    269          }
+   \   026D  900000            MOV     DPTR,#$LOCBX DTMFVolume
+   \   0270  E0                MOVX    A,@DPTR
+   \   0271  F8                MOV     R0,A
+   \   0272  A3                INC     DPTR
+   \   0273  E0                MOVX    A,@DPTR
+   \   0274  C0E0              PUSH    ACC
+   \   0276  E8                MOV     A,R0
+   \   0277  C0E0              PUSH    ACC
+   \   0279  22                RET
+    270          
+    271          
+    272          
+    273          
+    274          /*    Arv från Calender.c
+    275          
+    276          
+    277          
+    278          char    WriteDPByte(char address, char dat)
+    279          {
+    280              DPDA = 0;            //Start
+    281              RPWait();
+    282              DPCL = 0;
+    283              RPWait();
+    284          
+    285              if (WOEPB(0xD0)) return 1;        //Slave address och R/W = 0
+    286              if (WOEPB(address)) return 1;
+    287              if (WOEPB(dat)) return 1;
+    288           
+    289              DPDA = 0;
+    290              RPWait();
+    291              DPCL = 1;
+    292              RPWait();
+    293              DPDA = 1;
+    294              RPWait();
+    295          
+    296              return 0;
+    297          
+    298          }
+    299          
+    300          char    ReadDPByte(char address, char* dat)
+    301          {
+    302              DPDA = 0;            //Start
+    303              RPWait();
+    304              DPCL = 0;
+    305              RPWait();
+    306           
+    307              if (WOEPB(0xD0)) return 1;        //Slave address och R/W = 0
+    308              if (WOEPB(address)) return 1;
+    309          
+    310              DPDA = 0;            //Stop condition
+    311              RPWait();
+    312              DPCL = 1;
+    313              RPWait();
+    314              DPDA = 1;
+    315              RPWait();
+    316          
+    317              DPDA = 0;            //Restart
+    318              RPWait();
+    319              DPCL = 0;
+    320              RPWait();
+    321          
+    322              if (WOEPB(0xD1)) return 1;        //Slave address och R/W = 1
+    323              *dat = ROCB(1);
+    324          
+    325              DPDA = 0;
+    326              RPWait();
+    327              DPCL = 1;
+    328              RPWait();
+    329              DPDA = 1;
+    330              RPWait();
+    331           
+    332              return 0;
+    333          }               
+    334          
+    335          */
+    336          
+    337          
+    338              
+    339           
+   \   0000                    RSEG    X_UDATA
+   \   0000            speakerVolume:
+   \   0001                    DS      1
+   \   0001                    END
+
+
+                                       S Y M B O L - T A B L E
+                                       =======================
+
+
+            #include file(s):
+
+       [1]       c:\iar\ew\8051\inc\io517a.h
+       [2]       c:\iar\ew\8051\inc\stdio.h
+       [3]       c:\iar\ew\8051\inc\stdlib.h
+       [4]       dpot.h
+       [5]       main.h
+       [6]       filesystem.h
+       [7]       rs232.h
+
+
+            Symbol                     Type     Mem     Class   Defline   Refline(s)
+            ------                     ----     ---     -----   -------   ----------
+
+AC                                      bit             ---      166:1  
+ACC                                     sfr             ---       14:1  
+ADCON0                                  sfr             ---       99:1  
+ADCON1                                  sfr             ---      100:1  
+ADDATH                                  sfr             ---      101:1  
+ADDATL                                  sfr             ---      102:1  
+ADEX                                    bit             ---      133:1  
+ADM                                     bit             ---      135:1  
+ARCON                                   sfr             ---      105:1  
+B                                       sfr             ---       15:1  
+BD                                      bit             ---      131:1  
+BSY                                     bit             ---      134:1  
+CC4EN                                   sfr             ---       34:1  
+CCEN                                    sfr             ---       33:1  
+CCH1                                    sfr             ---       36:1  
+CCH2                                    sfr             ---       38:1  
+CCH3                                    sfr             ---       40:1  
+CCH4                                    sfr             ---       42:1  
+CCL1                                    sfr             ---       35:1  
+CCL2                                    sfr             ---       37:1  
+CCL3                                    sfr             ---       39:1  
+CCL4                                    sfr             ---       41:1  
+CLK                                     bit             ---      132:1  
+CLRMSK                                  sfr             ---       74:1  
+CMEN                                    sfr             ---       43:1  
+CMH0                                    sfr             ---       45:1  
+CMH1                                    sfr             ---       47:1  
+CMH2                                    sfr             ---       49:1  
+CMH3                                    sfr             ---       51:1  
+CMH4                                    sfr             ---       53:1  
+CMH5                                    sfr             ---       55:1  
+CMH6                                    sfr             ---       57:1  
+CMH7                                    sfr             ---       59:1  
+CML0                                    sfr             ---       44:1  
+CML1                                    sfr             ---       46:1  
+CML2                                    sfr             ---       48:1  
+CML3                                    sfr             ---       50:1  
+CML4                                    sfr             ---       52:1  
+CML5                                    sfr             ---       54:1  
+CML6                                    sfr             ---       56:1  
+CML7                                    sfr             ---       58:1  
+CMSEL                                   sfr             ---       60:1  
+COMCLRH                                 sfr             ---       72:1  
+COMCLRL                                 sfr             ---       71:1  
+COMSETH                                 sfr             ---       70:1  
+COMSETL                                 sfr             ---       69:1  
+CRCH                                    sfr             ---       62:1  
+CRCL                                    sfr             ---       61:1  
+CTCON                                   sfr             ---       63:1  
+CTRELH                                  sfr             ---       65:1  
+CTRELL                                  sfr             ---       64:1  
+CY                                      bit             ---      165:1  
+DPH                                     sfr             ---       18:1  
+DPL                                     sfr             ---       17:1  
+DPSEL                                   sfr             ---       19:1  
+DTMFVolume                         function    code    public      267       68:4
+EADC                                    bit             ---      205:1  
+EAL                                     bit             ---      187:1  
+ES0                                     bit             ---      190:1  
+ET0                                     bit             ---      193:1  
+ET1                                     bit             ---      191:1  
+ET2                                     bit             ---      189:1  
+EX0                                     bit             ---      194:1  
+EX1                                     bit             ---      192:1  
+EX2                                     bit             ---      204:1  
+EX3                                     bit             ---      203:1  
+EX4                                     bit             ---      202:1  
+EX5                                     bit             ---      201:1  
+EX6                                     bit             ---      200:1  
+EXEN2                                   bit             ---      198:1  
+EXF2                                    bit             ---      143:1  
+F0                                      bit             ---      167:1  
+F1                                      bit             ---      171:1  
+I2FR                                    bit             ---      156:1  
+I3FR                                    bit             ---      155:1  
+IADC                                    bit             ---      150:1  
+IE0                                     bit             ---      182:1  
+IE1                                     bit             ---      180:1  
+IEN0                                    sfr             ---      114:1  
+IEN1                                    sfr             ---      116:1  
+IEN2                                    sfr             ---      118:1  
+IEX2                                    bit             ---      149:1  
+IEX3                                    bit             ---      148:1  
+IEX4                                    bit             ---      147:1  
+IEX5                                    bit             ---      146:1  
+IEX6                                    bit             ---      145:1  
+INT0                                    bit             ---      214:1  
+INT1                                    bit             ---      213:1  
+IP0                                     sfr             ---      115:1  
+IP1                                     sfr             ---      117:1  
+IRCON0                                  sfr             ---      119:1  
+IRCON1                                  sfr             ---      120:1  
+IT0                                     bit             ---      183:1  
+IT1                                     bit             ---      181:1  
+InitializeDPot                     function    code    public       67       58:4
+MD0                                     sfr             ---      106:1  
+MD1                                     sfr             ---      107:1  
+MD2                                     sfr             ---      108:1  
+MD3                                     sfr             ---      109:1  
+MD4                                     sfr             ---      110:1  
+MD5                                     sfr             ---      111:1  
+MX0                                     bit             ---      138:1  
+MX1                                     bit             ---      137:1  
+MX2                                     bit             ---      136:1  
+OV                                      bit             ---      170:1  
+P                                       bit             ---      172:1  
+P0                                      sfr             ---       77:1  
+P1                                      sfr             ---       78:1  
+P2                                      sfr             ---       79:1  
+P3                                      sfr             ---       80:1         68       69       99      101
+                                                                              103      108      110      112
+                                                                              113      126      131      133
+                                                                              134      139      141      143
+                                                                              151      153      155      162
+                                                                              164      166      168      226
+                                                                              228      230      237      239
+                                                                              241      243
+P4                                      sfr             ---       81:1  
+P5                                      sfr             ---       82:1  
+P6                                      sfr             ---       83:1  
+P7                                      sfr             ---       84:1  
+P8                                      sfr             ---       85:1  
+PCON                                    sfr             ---       88:1  
+PSW                                     sfr             ---       20:1  
+PhoneInVolume                      function    code    public      257       66:4
+PhoneOutVolume                     function    code    public      262       67:4
+RB80                                    bit             ---      225:1  
+RD                                      bit             ---      209:1  
+REN0                                    bit             ---      223:1  
+RI0                                     bit             ---      227:1  
+ROEPB                              function    code    public      120       61:4      235
+RPWait                             function    code    public       76       59:4      100      102      104
+                                                                              109      111      114      127
+                                                                              132      135      140      142
+                                                                              144      152      154      156
+                                                                              163      165      167      227
+                                                                              229      231      238      240
+                                                                              242
+RS0                                     bit             ---      169:1  
+RS1                                     bit             ---      168:1  
+RXD                                     bit             ---      216:1  
+ReadDPWiper                        function    code    public      225       63:4
+S0BUF                                   sfr             ---       90:1  
+S0CON                                   sfr             ---       89:1  
+S0RELH                                  sfr             ---       94:1  
+S0RELL                                  sfr             ---       93:1  
+S1BUF                                   sfr             ---       92:1  
+S1CON                                   sfr             ---       91:1  
+S1RELH                                  sfr             ---       96:1  
+S1RELL                                  sfr             ---       95:1  
+SETMSK                                  sfr             ---       73:1  
+SM0                                     bit             ---      220:1  
+SM1                                     bit             ---      221:1  
+SM20                                    bit             ---      222:1  
+SP                                      sfr             ---       16:1  
+SWDT                                    bit             ---      199:1         86
+SYSCON                                  sfr             ---       22:1  
+SetDPWiper                         function    code    public      150       62:4      253      258      263
+                                                                              268
+SpeakerVolume                      function    code    public      252       65:4
+T0                                      bit             ---      212:1  
+T1                                      bit             ---      211:1  
+T2CM                                    bit             ---      159:1  
+T2CON                                   sfr             ---       68:1  
+T2I0                                    bit             ---      161:1  
+T2I1                                    bit             ---      160:1  
+T2PS                                    bit             ---      154:1  
+T2R0                                    bit             ---      158:1  
+T2R1                                    bit             ---      157:1  
+TB80                                    bit             ---      224:1  
+TCON                                    sfr             ---       25:1  
+TF0                                     bit             ---      178:1  
+TF1                                     bit             ---      176:1  
+TF2                                     bit             ---      144:1  
+TH0                                     sfr             ---       29:1  
+TH1                                     sfr             ---       30:1  
+TH2                                     sfr             ---       67:1  
+TI0                                     bit             ---      226:1  
+TL0                                     sfr             ---       27:1  
+TL1                                     sfr             ---       28:1  
+TL2                                     sfr             ---       66:1  
+TMOD                                    sfr             ---       26:1  
+TR0                                     bit             ---      179:1  
+TR1                                     bit             ---      177:1  
+TXD                                     bit             ---      215:1  
+WDT                                     bit             ---      188:1         85
+WDTREL                                  sfr             ---      124:1  
+WOEPB                              function    code    public       94       60:4      158      159      160
+                                                                              233      234
+WR                                      bit             ---      210:1  
+XPAGE                                   sfr             ---       21:1  
+div_t                                struct           typedef     38:3       96:3
+ldiv_t                               struct           typedef     44:3      100:3
+speakerVolume                          char   xdata    public       57         71
+
+
+Errors: none
+Warnings: none
+Code size: 634
+Constant size: 0
+Static variable size: Data(0) Idata(0) Bit(0) Xdata(1) Pdata(0) Bdata(0)
+
